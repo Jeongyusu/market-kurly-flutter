@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/_core/utils/validator_util.dart';
 import 'package:flutter_blog/data/dto/request_dto/user_request/user_request.dart';
 import 'package:flutter_blog/data/store/session_store.dart';
+import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_text_form_field.dart';
+import 'package:flutter_blog/ui/widgets/button_items/button/custom_text_button.dart';
 import 'package:flutter_blog/ui/widgets/custom_date_picker.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_rich_text_item.dart';
-import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_term_agreement.dart';
 import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
 import 'package:flutter_blog/ui/widgets/button_items/custom_radio_button_item.dart';
-import 'package:flutter_blog/ui/widgets/line/custom_line.dart';
-import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_text_form_field.dart';
-import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
-import 'package:flutter_check_box_rounded/flutter_check_box_rounded.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class JoinForm extends ConsumerWidget {
@@ -23,7 +21,7 @@ class JoinForm extends ConsumerWidget {
   final _userConfirmPassword = TextEditingController();
   final _username = TextEditingController();
   final _userEmail = TextEditingController();
-  final _userBirth = DateTime.now();
+  DateTime _userBirth = DateTime.now();
 
   JoinForm({Key? key}) : super(key: key);
 
@@ -39,7 +37,7 @@ class JoinForm extends ConsumerWidget {
             placeholderText: "아이디를 입력해주세요",
             obscureText: false,
             funValidator: validateUsername(),
-            controller: _username,
+            controller: _userId,
           ),
           const SizedBox(height: mediumGap),
           CustomJoinTextFormField(
@@ -80,12 +78,28 @@ class JoinForm extends ConsumerWidget {
           const SizedBox(height: mediumGap),
           DatePicker(
             onDateChanged: (value) {
-              _userBirth;
+              _userBirth = value; // 생년월일 업데이트
             },
           ),
           const SizedBox(height: mediumGap),
           RadioButton(),
           const SizedBox(height: mediumGap),
+          CustomTextButton(
+            "가입하기",
+            () {
+              if (_formKey.currentState!.validate()) {
+                JoinReqDTO joinReqDTO = JoinReqDTO(
+                  userId: _userId.text,
+                  username: _username.text,
+                  userPassword: _userPassword.text,
+                  userEmail: _userEmail.text,
+                );
+
+                ref.read(sessionProvider).join(joinReqDTO);
+                Navigator.pushNamed(context, Move.joinScreen);
+              }
+            },
+          ),
         ],
       ),
     );
