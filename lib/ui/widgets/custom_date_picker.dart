@@ -13,7 +13,7 @@ class DatePicker extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    JoinFormModel model = ref.watch(joinFormProvider);
+    JoinFormModel? model = ref.watch(joinFormProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +45,7 @@ class DatePicker extends ConsumerWidget {
             );
           },
           child: Text(
-            "${model.userBirth?.year ?? 0000}.${model.userBirth?.month ?? 00}.${model.userBirth?.day ?? 00}",
+            "${model?.userBirth?.year ?? 0000}.${model?.userBirth?.month ?? 00}.${model?.userBirth?.day ?? 00}",
             style: basicText(),
           ),
         ),

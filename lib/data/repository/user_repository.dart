@@ -8,11 +8,12 @@ import 'package:logger/logger.dart';
 // V -> P(전역프로바이더, 뷰모델) -> R
 class UserRepository {
   Future<ResponseDTO> fetchJoin(JoinReqDTO requestDTO) async {
+    Logger().d(requestDTO.userBirth);
     try {
       // dynamic -> http body
       Response<dynamic> response =
           await dio.post("/api/userJoin", data: requestDTO.toJson());
-      Logger().d("이까지완료");
+      Logger().d("요청완료됨111");
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       // responseDTO.data = User.fromJson(responseDTO.data);
 
