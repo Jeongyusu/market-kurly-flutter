@@ -3,21 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
+import 'package:flutter_blog/data/store/param_store.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_rich_text_item.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class DatePicker extends StatefulWidget {
-  const DatePicker({super.key, required this.onDateChanged});
-  final ValueChanged<DateTime> onDateChanged;
-
-  @override
-  State<DatePicker> createState() => _DatePickerState();
-}
-
-class _DatePickerState extends State<DatePicker> {
-  DateTime today = DateTime.now();
+class DatePicker extends ConsumerWidget {
+  const DatePicker({Key? key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    Param? param = ref.read(paramProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -39,10 +34,7 @@ class _DatePickerState extends State<DatePicker> {
                     child: CupertinoDatePicker(
                       mode: CupertinoDatePickerMode.date,
                       onDateTimeChanged: (DateTime date) {
-                        setState(() {
-                          today = date;
-                          widget.onDateChanged(today);
-                        });
+                        ref.watch(paramProvider.notifier).saveDateTime(date);
                       },
                     ),
                   ),
@@ -51,7 +43,7 @@ class _DatePickerState extends State<DatePicker> {
             );
           },
           child: Text(
-            "${today.year}.${today.month}.${today.day}",
+            "${param?.birth?.year ?? 0000}.${param?.birth?.month ?? 00}.${param?.birth?.day ?? 00}",
             style: basicText(),
           ),
         ),
