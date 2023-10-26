@@ -2,31 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
+import 'package:flutter_blog/data/store/param_store.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_rich_text_item.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-enum Gender { MAN, WOMEN }
-
-class RadioButton extends StatefulWidget {
-  const RadioButton({super.key});
-
-  @override
-  State<RadioButton> createState() => _RadioButtonState();
-}
-
-class _RadioButtonState extends State<RadioButton> {
-  int _counter = 0;
-  var _ischecked = false;
-  Gender _gender = Gender.MAN;
+class RadioButton extends ConsumerWidget {
+  const RadioButton({Key? key});
 
   @override
-  void initState() {
-    setState(() {
-      _counter++;
-    });
-  }
+  Widget build(BuildContext context, WidgetRef ref) {
+    Param? param = ref.watch(paramProvider);
 
-  @override
-  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -45,16 +31,13 @@ class _RadioButtonState extends State<RadioButton> {
               child: Transform.scale(
                 scale: 1.3,
                 child: Radio(
-                    value: Gender.MAN,
-                    groupValue: _gender,
-                    onChanged: (Gender? value) {
-                      setState(() {
-                        if (value != null) {
-                          _gender = value;
-                        }
-                      });
-                    },
-                    activeColor: primaryColor02),
+                  value: "MAN",
+                  groupValue: param?.gender ?? "성별없음",
+                  onChanged: (value) {
+                    ref.watch(paramProvider.notifier).selectedGenderMan();
+                  },
+                  activeColor: primaryColor02,
+                ),
               ),
             ),
             SizedBox(
@@ -74,16 +57,13 @@ class _RadioButtonState extends State<RadioButton> {
               child: Transform.scale(
                 scale: 1.3,
                 child: Radio(
-                    value: Gender.WOMEN,
-                    groupValue: _gender,
-                    onChanged: (Gender? value) {
-                      setState(() {
-                        if (value != null) {
-                          _gender = value;
-                        }
-                      });
-                    },
-                    activeColor: primaryColor02),
+                  value: "WOMAN",
+                  groupValue: param?.gender ?? "성별 없음",
+                  onChanged: (value) {
+                    ref.watch(paramProvider.notifier).selectedGenderWoman();
+                  },
+                  activeColor: primaryColor02,
+                ),
               ),
             ),
             SizedBox(
