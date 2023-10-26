@@ -24,7 +24,6 @@ class JoinForm extends ConsumerWidget {
   final _username = TextEditingController();
   final _userEmail = TextEditingController();
   final _userBirth = DateTime.now();
-  final _gender = Gender;
 
   JoinForm({Key? key}) : super(key: key);
 
@@ -40,7 +39,7 @@ class JoinForm extends ConsumerWidget {
             placeholderText: "아이디를 입력해주세요",
             obscureText: false,
             funValidator: validateUsername(),
-            controller: _userId,
+            controller: _username,
           ),
           const SizedBox(height: mediumGap),
           CustomJoinTextFormField(
@@ -48,7 +47,7 @@ class JoinForm extends ConsumerWidget {
             strong: " *",
             placeholderText: "비밀번호를 입력해주세요",
             obscureText: false,
-            funValidator: validateEmail(),
+            funValidator: validatePassword(),
             controller: _userPassword,
           ),
           const SizedBox(height: mediumGap),
@@ -66,7 +65,7 @@ class JoinForm extends ConsumerWidget {
             strong: " *",
             placeholderText: "이름을 입력해주세요",
             obscureText: true,
-            funValidator: validatePassword(),
+            funValidator: validateUsername(),
             controller: _username,
           ),
           const SizedBox(height: mediumGap),
@@ -75,13 +74,15 @@ class JoinForm extends ConsumerWidget {
             strong: " *",
             placeholderText: "예) marketkurly@kurly.com",
             obscureText: true,
-            funValidator: validatePassword(),
+            funValidator: validateEmail(),
             controller: _userEmail,
           ),
-          SizedBox(
-            height: mediumGap,
+          const SizedBox(height: mediumGap),
+          DatePicker(
+            onDateChanged: (value) {
+              _userBirth;
+            },
           ),
-          DatePicker(),
           const SizedBox(height: mediumGap),
           RadioButton(),
           const SizedBox(height: mediumGap),

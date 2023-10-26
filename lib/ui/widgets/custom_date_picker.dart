@@ -6,7 +6,8 @@ import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_rich_text_item.dart';
 
 class DatePicker extends StatefulWidget {
-  const DatePicker({super.key});
+  const DatePicker({super.key, required this.onDateChanged});
+  final ValueChanged<DateTime> onDateChanged;
 
   @override
   State<DatePicker> createState() => _DatePickerState();
@@ -40,6 +41,7 @@ class _DatePickerState extends State<DatePicker> {
                       onDateTimeChanged: (DateTime date) {
                         setState(() {
                           today = date;
+                          widget.onDateChanged(today);
                         });
                       },
                     ),
