@@ -35,20 +35,7 @@ class JoinBody extends ConsumerWidget {
                     SizedBox(height: smallGap),
                     JoinForm(),
                     SizedBox(height: smallGap),
-                    CustomLineBold(),
                     const SizedBox(height: mediumGap),
-                    JoinTermAgreement(),
-                    CustomElevatedButton(
-                      text: "가입하기",
-                      funPageRoute: () {
-                        // if (_formKey.currentState!.validate()) {
-                        //   LoginReqDTO loginReqDTO = LoginReqDTO(
-                        //       username: _username.text, password: _password.text);
-                        //   ref.read(sessionProvider).login(loginReqDTO);
-                        // }
-                        Navigator.pushNamed(context, Move.loginScreen);
-                      },
-                    ),
                   ],
                 ),
               ),

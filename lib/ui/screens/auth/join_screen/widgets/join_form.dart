@@ -7,10 +7,13 @@ import 'package:flutter_blog/_core/utils/validator_util.dart';
 import 'package:flutter_blog/data/dto/request_dto/user_request/user_request.dart';
 import 'package:flutter_blog/data/store/param_store.dart';
 import 'package:flutter_blog/data/store/session_store.dart';
+import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_term_agreement.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_text_form_field.dart';
+import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_text_button.dart';
 import 'package:flutter_blog/ui/widgets/custom_date_picker.dart';
 import 'package:flutter_blog/ui/widgets/button_items/custom_radio_button_item.dart';
+import 'package:flutter_blog/ui/widgets/line/custom_line_bold.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
@@ -113,18 +116,25 @@ class JoinForm extends ConsumerWidget {
           const SizedBox(height: mediumGap),
           RadioButton(),
           const SizedBox(height: mediumGap),
-          CustomTextButton("가입하기", () {
-            JoinReqDTO joinReqDTO = JoinReqDTO(
-                userId: _userId.text,
-                username: _username.text,
-                userPassword: _userPassword.text,
-                userEmail: _userEmail.text,
-                userGender: param?.gender ?? "성별선택되지않음",
-                userBirth: DateFormat('YYYY-MM-DD')
-                    .format(param?.birth ?? DateTime.now()));
-            ref.read(sessionProvider).join(joinReqDTO);
-            Navigator.pushNamed(context, Move.joinScreen);
-          }),
+          CustomLineBold(),
+          const SizedBox(height: mediumGap),
+          JoinTermAgreement(),
+          const SizedBox(height: mediumGap),
+          CustomElevatedButton(
+            text: "가입하기",
+            funPageRoute: () {
+              JoinReqDTO joinReqDTO = JoinReqDTO(
+                  userId: _userId.text,
+                  username: _username.text,
+                  userPassword: _userPassword.text,
+                  userEmail: _userEmail.text,
+                  userGender: param?.gender ?? "성별선택되지않음",
+                  userBirth: DateFormat('YYYY-MM-DD')
+                      .format(param?.birth ?? DateTime.now()));
+              ref.read(sessionProvider).join(joinReqDTO);
+              Navigator.pushNamed(context, Move.loginScreen);
+            },
+          ),
         ],
       ),
     );
