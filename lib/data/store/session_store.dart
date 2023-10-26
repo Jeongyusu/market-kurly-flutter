@@ -8,6 +8,7 @@ import 'package:flutter_blog/data/model/user.dart';
 import 'package:flutter_blog/data/repository/user_repository.dart';
 import 'package:flutter_blog/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 
 // 1. 창고 데이터
 class SessionUser {
@@ -23,8 +24,10 @@ class SessionStore extends SessionUser {
   final mContext = navigatorKey.currentContext;
 
   Future<void> join(JoinReqDTO joinReqDTO) async {
+    Logger().d("여기까지 실행됨");
     // 1. 통신 코드
     ResponseDTO responseDTO = await UserRepository().fetchJoin(joinReqDTO);
+    Logger().d("여기까지 실행됨1");
 
     // 2. 비지니스 로직
     if (responseDTO.response == true) {
