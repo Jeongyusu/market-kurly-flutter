@@ -20,6 +20,7 @@ const int _writePrimaryValue = 0xFFFFFFFF;
 
 ThemeData theme() {
   return ThemeData(
+    fontFamily: "NotoSansKR",
     scaffoldBackgroundColor: basicColorW,
     primaryColor: basicColorW,
     appBarTheme: appBarTheme(),

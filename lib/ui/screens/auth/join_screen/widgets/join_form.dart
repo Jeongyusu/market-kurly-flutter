@@ -7,12 +7,13 @@ import 'package:flutter_blog/_core/utils/validator_util.dart';
 import 'package:flutter_blog/data/dto/request_dto/user_request/user_request.dart';
 import 'package:flutter_blog/data/store/param_store.dart';
 import 'package:flutter_blog/data/store/session_store.dart';
+import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_term_agreement.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_text_form_field.dart';
+import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_text_button.dart';
 import 'package:flutter_blog/ui/widgets/custom_date_picker.dart';
-import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_rich_text_item.dart';
-import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
 import 'package:flutter_blog/ui/widgets/button_items/custom_radio_button_item.dart';
+import 'package:flutter_blog/ui/widgets/line/custom_line_bold.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
@@ -25,7 +26,6 @@ class JoinForm extends ConsumerWidget {
   final _userEmail = TextEditingController();
   JoinForm({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     Param? param = ref.read(paramProvider);
@@ -33,13 +33,47 @@ class JoinForm extends ConsumerWidget {
       key: _formKey,
       child: Column(
         children: [
-          CustomJoinTextFormField(
-            text: "아이디",
-            strong: " *",
-            placeholderText: "아이디를 입력해주세요",
-            obscureText: false,
-            funValidator: validateUsername(),
-            controller: _userId,
+          Container(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: CustomJoinTextFormField(
+                    text: "아이디",
+                    strong: " *",
+                    placeholderText: "아이디를 입력해주세요",
+                    obscureText: false,
+                    funValidator: validateUsername(),
+                    controller: _userId,
+                  ),
+                ),
+                SizedBox(
+                  width: smallGap,
+                ),
+                Expanded(
+                  child: InkWell(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: primaryColor), // 보라색 선
+                        color: Colors.white, // 흰색 배경색
+                        borderRadius:
+                            BorderRadius.circular(5), // border-radius 설정
+                      ),
+                      padding: EdgeInsets.all(13), // 내용과 경계 사이의 간격 설정
+                      child: Align(
+                        alignment: Alignment.center,
+                        child:
+                            Text("중복확인", style: TextStyle(color: primaryColor)),
+                      ), // 텍스트 스타일 지정
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, Move.loginScreen);
+                    },
+                  ),
+                )
+              ],
+            ),
           ),
           const SizedBox(height: mediumGap),
           CustomJoinTextFormField(
@@ -82,20 +116,24 @@ class JoinForm extends ConsumerWidget {
           const SizedBox(height: mediumGap),
           RadioButton(),
           const SizedBox(height: mediumGap),
-          CustomTextButton(
-            "가입하기",
-            () {
-                JoinReqDTO joinReqDTO = JoinReqDTO(
+          CustomLineBold(),
+          const SizedBox(height: mediumGap),
+          JoinTermAgreement(),
+          const SizedBox(height: mediumGap),
+          CustomElevatedButton(
+            text: "가입하기",
+            funPageRoute: () {
+              JoinReqDTO joinReqDTO = JoinReqDTO(
                   userId: _userId.text,
                   username: _username.text,
                   userPassword: _userPassword.text,
                   userEmail: _userEmail.text,
                   userGender: param?.gender ?? "성별선택되지않음",
-                  userBirth: DateFormat('YYYY-MM-DD').format(param?.birth ?? DateTime.now())
-                );
-                ref.read(sessionProvider).join(joinReqDTO);
-                Navigator.pushNamed(context, Move.joinScreen);
-              }
+                  userBirth: DateFormat('YYYY-MM-DD')
+                      .format(param?.birth ?? DateTime.now()));
+              ref.read(sessionProvider).join(joinReqDTO);
+              Navigator.pushNamed(context, Move.loginScreen);
+            },
           ),
         ],
       ),

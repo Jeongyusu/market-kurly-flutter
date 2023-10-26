@@ -19,13 +19,25 @@ TextStyle subTitle() {
       fontSize: 18, fontWeight: FontWeight.w500, color: basicColorB1);
 }
 
+// id&pw search-contents
+TextStyle subContentsPoint() {
+  return TextStyle(
+      fontSize: 20, fontWeight: FontWeight.w600, color: primaryColor);
+}
+
+TextStyle basicTextBig() {
+  return TextStyle(
+      fontSize: 18, fontWeight: FontWeight.w400, color: basicColorB3);
+}
+
 // basic-text
 TextStyle basicText() {
   return TextStyle(
       fontSize: 16, fontWeight: FontWeight.w400, color: basicColorB3);
 }
 
-TextStyle basicText02() {
+// basic-text
+TextStyle basicTextSmall() {
   return TextStyle(
       fontSize: 14, fontWeight: FontWeight.w400, color: basicColorB3);
 }
@@ -49,13 +61,25 @@ TextStyle disabledText() {
 // discount-text
 TextStyle discountText() {
   return TextStyle(
-      fontSize: 18, fontWeight: FontWeight.w500, color: accentColor);
+      fontSize: 16, fontWeight: FontWeight.w500, color: accentColor);
 }
 
 // price-text
-TextStyle StrongText() {
+TextStyle strongTextBig() {
   return TextStyle(
       fontSize: 22, fontWeight: FontWeight.w600, color: basicColorB1);
+}
+
+// price-text
+TextStyle strongTextmMedium() {
+  return TextStyle(
+      fontSize: 18, fontWeight: FontWeight.w600, color: basicColorB1);
+}
+
+// price-text
+TextStyle strongTextSmall() {
+  return TextStyle(
+      fontSize: 16, fontWeight: FontWeight.w600, color: basicColorB1);
 }
 
 // validation-text

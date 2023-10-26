@@ -37,12 +37,14 @@ class CategoryProducts extends ConsumerWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
-                        child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "${categorys[index].categoryType}",
-                              style: TextStyle(fontWeight: FontWeight.w200),
-                            ))),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "${categorys[index].categoryType}",
+                          style: TextStyle(fontWeight: FontWeight.w200),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),

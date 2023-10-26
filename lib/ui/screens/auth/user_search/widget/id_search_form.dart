@@ -9,12 +9,12 @@ import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_butt
 import 'package:flutter_blog/ui/screens/auth/login_screen/widgets/login_text_form_field.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LoginForm extends ConsumerWidget {
+class IdSearchForm extends ConsumerWidget {
   final _formKey = GlobalKey<FormState>();
   final _username = TextEditingController();
   final _password = TextEditingController();
 
-  LoginForm({Key? key}) : super(key: key);
+  IdSearchForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,27 +23,28 @@ class LoginForm extends ConsumerWidget {
       child: Column(
         children: [
           CustomLoginTextFormField(
-            placeholderText: "아이디를 입력해주세요",
+            placeholderText: "이름을 입력해주세요",
             obscureText: false,
             funValidator: validateUsername(),
             controller: _username,
           ),
           const SizedBox(height: xsmallGap),
           CustomLoginTextFormField(
-            placeholderText: "비밀번호를 입력해주세요",
+            placeholderText: "이메일을 입력해주세요",
             obscureText: true,
             funValidator: validatePassword(),
             controller: _password,
           ),
-          const SizedBox(height: xmediumGap),
+          const SizedBox(height: largeGap),
           CustomElevatedButton(
-            text: "로그인",
+            text: "확인",
             funPageRoute: () {
-              if (_formKey.currentState!.validate()) {
-                LoginReqDTO loginReqDTO = LoginReqDTO(
-                    username: _username.text, password: _password.text);
-                ref.read(sessionProvider).login(loginReqDTO);
-              }
+              // if (_formKey.currentState!.validate()) {
+              //   LoginReqDTO loginReqDTO = LoginReqDTO(
+              //       username: _username.text, password: _password.text);
+              //   ref.read(sessionProvider).login(loginReqDTO);
+              // }
+              Navigator.pushNamed(context, Move.idSearchCompleteScreen);
             },
           ),
         ],
