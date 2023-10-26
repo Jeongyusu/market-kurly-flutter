@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_blog/_core/constants/http.dart';
 import 'package:flutter_blog/data/dto/response_dto.dart';
-import 'package:flutter_blog/data/dto/request_dto/user_request/user_request.dart';
+import 'package:flutter_blog/data/dto/request_dto/user_request.dart';
 import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_dto.dart';
 import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_product_dto.dart';
 import 'package:flutter_blog/data/model/post.dart';
