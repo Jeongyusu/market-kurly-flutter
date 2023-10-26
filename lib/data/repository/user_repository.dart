@@ -26,13 +26,12 @@ class UserRepository {
 
   Future<ResponseDTO> fetchLogin(LoginReqDTO requestDTO) async {
     try {
+      Logger().d("fetchLogin요청됨");
       Response<dynamic> response =
-          await dio.post<dynamic>("/login", data: requestDTO.toJson());
+          await dio.post<dynamic>("/api/userLogin", data: requestDTO.toJson());
 
-      print(response.data);
-
+      Logger().d(response);
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
-      responseDTO.response = User.fromJson(responseDTO.response);
 
       final jwt = response.headers["Authorization"];
 
