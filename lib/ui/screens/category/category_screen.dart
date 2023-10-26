@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/ui/screens/category/widget/category_product.dart';
+import 'package:flutter_blog/ui/screens/category/category_body/category_body.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
@@ -7,7 +7,7 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CategoryProducts(),
+      body: CategoryBody(),
     );
   }
 }

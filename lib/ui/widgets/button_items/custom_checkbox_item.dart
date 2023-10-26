@@ -9,9 +9,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class CheckBoxItem extends ConsumerWidget {
   static const double defaultSize = 24.0;
   String text;
+  TextStyle? textStyle;
   double? iconSize;
   CheckBoxItem({
     required this.text,
+    this.textStyle,
     this.iconSize,
     Key? key,
   }) : super(key: key);
@@ -28,7 +30,7 @@ class CheckBoxItem extends ConsumerWidget {
           size: iconSize ?? defaultSize,
           uncheckedWidget: Icon(
             Icons.check,
-            size: iconSize ?? defaultSize,
+            size: 20 ?? defaultSize,
             color: basicColorB9,
           ),
         ),
@@ -37,7 +39,7 @@ class CheckBoxItem extends ConsumerWidget {
         ),
         Text(
           "$text",
-          style: basicText02(),
+          style: textStyle,
         ),
       ],
     );

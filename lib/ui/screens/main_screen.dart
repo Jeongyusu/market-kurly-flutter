@@ -29,6 +29,7 @@ class _MainScreenState extends State<MainScreen> {
     List<String> categories = ["컬리추천", "신상품", "베스트", "금주혜택"];
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Image.asset(
           "assets/images/logo_dark.png",
           width: 100,

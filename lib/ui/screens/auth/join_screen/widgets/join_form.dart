@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/_core/utils/validator_util.dart';
 import 'package:flutter_blog/data/dto/request_dto/user_request/user_request.dart';
 import 'package:flutter_blog/data/store/session_store.dart';
+import 'package:flutter_blog/ui/widgets/button_items/button/custom_text_button.dart';
 import 'package:flutter_blog/ui/widgets/custom_date_picker.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_rich_text_item.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_term_agreement.dart';
 import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
 import 'package:flutter_blog/ui/widgets/button_items/custom_radio_button_item.dart';
-import 'package:flutter_blog/ui/widgets/line/custom_line.dart';
+import 'package:flutter_blog/ui/widgets/line/custom_line_bold.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_text_form_field.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
 import 'package:flutter_check_box_rounded/flutter_check_box_rounded.dart';
@@ -33,13 +35,47 @@ class JoinForm extends ConsumerWidget {
       key: _formKey,
       child: Column(
         children: [
-          CustomJoinTextFormField(
-            text: "아이디",
-            strong: " *",
-            placeholderText: "아이디를 입력해주세요",
-            obscureText: false,
-            funValidator: validateUsername(),
-            controller: _username,
+          Container(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: CustomJoinTextFormField(
+                    text: "아이디",
+                    strong: " *",
+                    placeholderText: "아이디를 입력해주세요",
+                    obscureText: false,
+                    funValidator: validateUsername(),
+                    controller: _userId,
+                  ),
+                ),
+                SizedBox(
+                  width: smallGap,
+                ),
+                Expanded(
+                  child: InkWell(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: primaryColor), // 보라색 선
+                        color: Colors.white, // 흰색 배경색
+                        borderRadius:
+                            BorderRadius.circular(5), // border-radius 설정
+                      ),
+                      padding: EdgeInsets.all(13), // 내용과 경계 사이의 간격 설정
+                      child: Align(
+                        alignment: Alignment.center,
+                        child:
+                            Text("중복확인", style: TextStyle(color: primaryColor)),
+                      ), // 텍스트 스타일 지정
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, Move.loginScreen);
+                    },
+                  ),
+                )
+              ],
+            ),
           ),
           const SizedBox(height: mediumGap),
           CustomJoinTextFormField(
