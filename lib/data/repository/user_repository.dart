@@ -32,17 +32,21 @@ class UserRepository {
 
       Logger().d(response);
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      Logger().d("파싱완료1");
+      responseDTO.response = User.fromJson(responseDTO.response);
+      Logger().d("파싱완료2");
+
 
       final jwt = response.headers["Authorization"];
 
-      // if (jwt != null) {
-      //   responseDTO.token = jwt.first;
-      // }
-
+      if (jwt != null) {
+        responseDTO.token = jwt.first;
+      }
+      Logger().d("jwt토큰 넣기");
       return responseDTO;
     } catch (e) {
       // 200이 아니면 catch로 감
-      return ResponseDTO(success: false, response: null, error: "중복된 유저명입니다.");
+      return ResponseDTO(success: false, response: null, error: "로그인실패.");
     }
   }
 }
