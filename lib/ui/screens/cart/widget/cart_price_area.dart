@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
@@ -43,6 +44,29 @@ class CartPriceArea extends ConsumerWidget {
             rightText: "0원",
             leftTextStyle: basicText(),
             rightTextStyle: basicText(),
+          ),
+          SizedBox(
+            height: smallGap,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: bgAndLineColor, // 선의 색상 설정
+                  width: 1.0, // 선의 두께 설정
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextSpaceBetweenItem(
+              leftText: "결제예정금액",
+              rightText:
+                  "${cartDTOListModel!.cartDTO.totalBeforePrice - cartDTOListModel.cartDTO.totalDiscountPrice}원",
+              leftTextStyle: basicTextBig(),
+              rightTextStyle: strongTextmMedium(),
+            ),
           ),
         ],
       ),
