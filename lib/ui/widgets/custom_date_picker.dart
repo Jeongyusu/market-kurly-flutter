@@ -12,7 +12,7 @@ class DatePicker extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Param? param = ref.read(paramProvider);
+    Param? param = ref.watch(paramProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -43,7 +43,7 @@ class DatePicker extends ConsumerWidget {
             );
           },
           child: Text(
-            "${param?.birth?.year ?? 0000}.${param?.birth?.month ?? 00}.${param?.birth?.day ?? 00}",
+            "${param!.birth!.year}.${param!.birth!.month}.${param!.birth!.day}",
             style: basicText(),
           ),
         ),

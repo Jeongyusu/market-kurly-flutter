@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Param {
   bool? isChecked;
-  String? gender ="MAN";
-  DateTime? birth = DateTime.now();
+  String? gender;
+  DateTime? birth;
   Param({this.isChecked, this.gender, this.birth});
 }
 
@@ -12,16 +12,19 @@ class Param {
 class ParamStore extends StateNotifier<Param?> {
   ParamStore(super._state);
 
+  void init() {
+    state = Param(gender: "MAN", birth: DateTime.now());
+  }
 
   void saveDateTime(DateTime userBirth) {
     state = Param(birth: userBirth);
   }
 
-  void selectedGenderMan(){
+  void selectedGenderMan() {
     state = Param(gender: "MAN");
   }
 
-  void selectedGenderWoman(){
+  void selectedGenderWoman() {
     state = Param(gender: "Woman");
   }
 
@@ -39,5 +42,5 @@ class ParamStore extends StateNotifier<Param?> {
 }
 
 final paramProvider = StateNotifierProvider<ParamStore, Param?>((ref) {
-  return ParamStore(null);
+  return ParamStore(null)..init();
 });
