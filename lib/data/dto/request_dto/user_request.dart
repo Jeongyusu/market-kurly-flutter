@@ -1,3 +1,4 @@
+import 'package:flutter_blog/ui/screens/auth/join_screen/join_form_view_model.dart';
 import 'package:flutter_blog/ui/widgets/button_items/custom_radio_button_item.dart';
 
 class JoinReqDTO {

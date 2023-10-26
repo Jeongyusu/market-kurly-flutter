@@ -3,6 +3,7 @@ import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/data/store/param_store.dart';
+import 'package:flutter_blog/ui/screens/auth/join_screen/join_form_view_model.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_rich_text_item.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,7 +12,7 @@ class RadioButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Param? param = ref.watch(paramProvider);
+    JoinFormModel? model = ref.watch(joinFormProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,9 +33,9 @@ class RadioButton extends ConsumerWidget {
                 scale: 1.3,
                 child: Radio(
                   value: "MAN",
-                  groupValue: param?.gender ?? "성별없음",
+                  groupValue: model?.userGender ?? "성별없음",
                   onChanged: (value) {
-                    ref.watch(paramProvider.notifier).selectedGenderMan();
+                    ref.read(joinFormProvider.notifier).setUserGender(value!);
                   },
                   activeColor: primaryColor02,
                 ),
@@ -58,9 +59,9 @@ class RadioButton extends ConsumerWidget {
                 scale: 1.3,
                 child: Radio(
                   value: "WOMAN",
-                  groupValue: param?.gender ?? "성별 없음",
+                  groupValue: model?.userGender ?? "성별 없음",
                   onChanged: (value) {
-                    ref.watch(paramProvider.notifier).selectedGenderWoman();
+                    ref.read(joinFormProvider.notifier).setUserGender(value!);
                   },
                   activeColor: primaryColor02,
                 ),

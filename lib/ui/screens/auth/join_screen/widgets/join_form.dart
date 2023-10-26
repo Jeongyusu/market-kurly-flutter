@@ -4,9 +4,10 @@ import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/_core/utils/validator_util.dart';
-import 'package:flutter_blog/data/dto/request_dto/user_request/user_request.dart';
+import 'package:flutter_blog/data/dto/request_dto/user_request.dart';
 import 'package:flutter_blog/data/store/param_store.dart';
 import 'package:flutter_blog/data/store/session_store.dart';
+import 'package:flutter_blog/ui/screens/auth/join_screen/join_form_view_model.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_term_agreement.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_text_form_field.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
@@ -16,19 +17,15 @@ import 'package:flutter_blog/ui/widgets/button_items/custom_radio_button_item.da
 import 'package:flutter_blog/ui/widgets/line/custom_line_bold.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:logger/logger.dart';
 
 class JoinForm extends ConsumerWidget {
   final _formKey = GlobalKey<FormState>();
-  final _userId = TextEditingController();
-  final _userPassword = TextEditingController();
-  final _userConfirmPassword = TextEditingController();
-  final _username = TextEditingController();
-  final _userEmail = TextEditingController();
   JoinForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Param? param = ref.read(paramProvider);
+    JoinFormModel? joinFormModel = ref.watch(joinFormProvider);
     return Form(
       key: _formKey,
       child: Column(
@@ -40,12 +37,14 @@ class JoinForm extends ConsumerWidget {
                 Expanded(
                   flex: 3,
                   child: CustomJoinTextFormField(
+                    changeFormData: (value) {
+                      ref.read(joinFormProvider.notifier).setUserId(value);
+                    },
                     text: "아이디",
                     strong: " *",
                     placeholderText: "아이디를 입력해주세요",
                     obscureText: false,
                     funValidator: validateUsername(),
-                    controller: _userId,
                   ),
                 ),
                 SizedBox(
@@ -77,39 +76,47 @@ class JoinForm extends ConsumerWidget {
           ),
           const SizedBox(height: mediumGap),
           CustomJoinTextFormField(
+            changeFormData: (value) {
+              ref.read(joinFormProvider.notifier).setUserPassword(value);
+            },
             text: "비밀번호",
             strong: " *",
             placeholderText: "비밀번호를 입력해주세요",
             obscureText: false,
             funValidator: validatePassword(),
-            controller: _userPassword,
           ),
           const SizedBox(height: mediumGap),
           CustomJoinTextFormField(
+            changeFormData: (value) {
+              ref.read(joinFormProvider.notifier).setUserConfirmPassword(value);
+            },
             text: "비밀번호 확인",
             strong: " *",
             placeholderText: "비밀번호를 한번 더 입력해주세요",
             obscureText: true,
             funValidator: validatePassword(),
-            controller: _userConfirmPassword,
           ),
           const SizedBox(height: mediumGap),
           CustomJoinTextFormField(
+            changeFormData: (value) {
+              ref.read(joinFormProvider.notifier).setUsername(value);
+            },
             text: "이름",
             strong: " *",
             placeholderText: "이름을 입력해주세요",
             obscureText: true,
             funValidator: validateUsername(),
-            controller: _username,
           ),
           const SizedBox(height: mediumGap),
           CustomJoinTextFormField(
+            changeFormData: (value) {
+              ref.read(joinFormProvider.notifier).setUserEmail(value);
+            },
             text: "이메일",
             strong: " *",
             placeholderText: "예) marketkurly@kurly.com",
             obscureText: true,
             funValidator: validateEmail(),
-            controller: _userEmail,
           ),
           const SizedBox(height: mediumGap),
           DatePicker(),
@@ -123,16 +130,17 @@ class JoinForm extends ConsumerWidget {
           CustomElevatedButton(
             text: "가입하기",
             funPageRoute: () {
-              JoinReqDTO joinReqDTO = JoinReqDTO(
-                  userId: _userId.text,
-                  username: _username.text,
-                  userPassword: _userPassword.text,
-                  userEmail: _userEmail.text,
-                  userGender: param?.gender ?? "성별선택되지않음",
-                  userBirth: DateFormat('YYYY-MM-DD')
-                      .format(param?.birth ?? DateTime.now()));
-              ref.read(sessionProvider).join(joinReqDTO);
-              Navigator.pushNamed(context, Move.loginScreen);
+              //ref.read(sessionProvider).join(joinReqDTO);
+              //Navigator.pushNamed(context, Move.loginScreen);
+              Logger().d("joinFormModel", joinFormModel);
+
+              // JoinReqDTO joinReqDTO = JoinReqDTO(
+              //     userId: joinFormModel.userId,
+              //     userPassword: userPassword,
+              //     username: username,
+              //     userEmail: userEmail);
+
+              // ref.read(sessionProvider).join(joinReqDTO);
             },
           ),
         ],

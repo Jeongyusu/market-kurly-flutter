@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
+import 'package:flutter_blog/ui/screens/auth/join_screen/join_form_view_model.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_rich_text_item.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CustomJoinTextFormField extends StatelessWidget {
+class CustomJoinTextFormField extends ConsumerWidget {
   final String text;
   final String? strong;
 
   final String placeholderText;
   final bool obscureText;
   final funValidator;
-  final TextEditingController controller;
+  final changeFormData;
+  final controller;
 
   const CustomJoinTextFormField({
     Key? key,
@@ -18,12 +21,13 @@ class CustomJoinTextFormField extends StatelessWidget {
     required this.placeholderText,
     this.obscureText = false,
     required this.funValidator,
-    required this.controller,
+    this.changeFormData,
+    this.controller,
     this.strong,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -31,6 +35,7 @@ class CustomJoinTextFormField extends StatelessWidget {
         const SizedBox(height: smallGap),
         TextFormField(
           controller: controller,
+          onChanged: changeFormData,
           validator: funValidator,
           obscureText: obscureText,
           decoration: InputDecoration(
