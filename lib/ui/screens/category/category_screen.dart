@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/ui/screens/category/category_body/category_body.dart';
 
+import 'widget/category_product.dart';
+
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
 
