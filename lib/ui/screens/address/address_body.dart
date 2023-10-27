@@ -1,16 +1,31 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/address/address_detail.dart';
-import 'package:flutter_blog/ui/screens/address/address_setting.dart';
+import 'package:flutter_blog/ui/screens/address/address_detail_setting.dart';
 import 'package:flutter_blog/ui/screens/address/widget/address_caption.dart';
 import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:remedi_kopo/remedi_kopo.dart';
 
 class AddressBody extends ConsumerWidget {
   AddressBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    /// Form State
+    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    Map<String, String> formData = {};
+
+    /// Controller
+    // _postcodeController 지번을 받음
+    final TextEditingController _postcodeController = TextEditingController();
+    // _postcodeController 주소를 받음
+    final TextEditingController _addressController = TextEditingController();
+    // _addressDetailController 상세 주소를 받음
+    final TextEditingController _addressDetailController =
+        TextEditingController();
+
     // 더미 데이터
     List<String> addresses = [
       "서울 관악",
@@ -35,13 +50,39 @@ class AddressBody extends ConsumerWidget {
             Navigator.pop(context);
           },
           actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.push(
+            MaterialButton(
+              onPressed: () async {
+                KopoModel? model = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RemediKopo(),
+                  ),
+                );
+                if (model != null) {
+                  final postcode = model.zonecode ?? '';
+                  _postcodeController.value = TextEditingValue(
+                    text: postcode,
+                  );
+                  formData['postcode'] = postcode;
+
+                  final address = model.address ?? '';
+                  _addressController.value = TextEditingValue(
+                    text: address,
+                  );
+                  formData['address'] = address;
+
+                  final buildingName = model.buildingName ?? '';
+                  _addressDetailController.value = TextEditingValue(
+                    text: buildingName,
+                  );
+                  formData['address_detail'] = buildingName;
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AddressSetPage(),
-                    ));
+                      builder: (context) => AddressDetailSetForm(model: model),
+                    ),
+                  );
+                }
               },
               child: Text(
                 "추가",
