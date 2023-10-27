@@ -4,7 +4,7 @@ import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/_core/utils/validator_util.dart';
-import 'package:flutter_blog/data/dto/request_dto/user_request/user_request.dart';
+import 'package:flutter_blog/data/dto/request_dto/user_request.dart';
 import 'package:flutter_blog/data/store/param_store.dart';
 import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_term_agreement.dart';

@@ -30,7 +30,7 @@ class IdSearchCompleteScreen extends StatelessWidget {
       backgroundColor: basicColorW,
       title: Text(
         text,
-        style: subTitle(),
+        style: subTitleReqular(),
       ),
       centerTitle: true,
       leading: IconButton(

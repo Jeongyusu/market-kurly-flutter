@@ -28,7 +28,7 @@ class CustomNavAppBar extends StatelessWidget {
       centerTitle: true, // 제목을 가운데로 정렬
       title: Text(
         "${text}",
-        style: subTitle(),
+        style: subTitleReqular(),
       ),
     );
   }

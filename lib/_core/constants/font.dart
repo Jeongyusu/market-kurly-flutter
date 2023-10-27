@@ -14,15 +14,25 @@ TextStyle tabBarTitle() {
 }
 
 // menu-title
-TextStyle subTitle() {
+TextStyle subTitleReqular() {
   return TextStyle(
       fontSize: 18, fontWeight: FontWeight.w500, color: basicColorB1);
+}
+
+TextStyle subTitleBold() {
+  return TextStyle(
+      fontSize: 20, fontWeight: FontWeight.w500, color: basicColorB1);
 }
 
 // id&pw search-contents
 TextStyle subContentsPoint() {
   return TextStyle(
       fontSize: 20, fontWeight: FontWeight.w600, color: primaryColor);
+}
+
+TextStyle subContentsPointSmall() {
+  return TextStyle(
+      fontSize: 14, fontWeight: FontWeight.w500, color: primaryColor);
 }
 
 TextStyle basicTextBig() {
@@ -61,7 +71,7 @@ TextStyle disabledText() {
 // discount-text
 TextStyle discountText() {
   return TextStyle(
-      fontSize: 16, fontWeight: FontWeight.w500, color: accentColor);
+      fontSize: 16, fontWeight: FontWeight.w600, color: accentColor);
 }
 
 // price-text

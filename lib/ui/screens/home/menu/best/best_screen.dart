@@ -6,7 +6,7 @@ import 'package:flutter_blog/data/dto/model_dto/product_dto/product_dto.dart';
 import 'package:flutter_blog/ui/screens/home/product_list_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class BestPage extends ConsumerWidget {
+class BestScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ProductListModel? model = ref.watch(productListProvider);
@@ -84,7 +84,7 @@ class BestPage extends ConsumerWidget {
                           ),
                           TextSpan(
                             text: "${model.products[index].totalPrice}원",
-                            style: subTitle(),
+                            style: subTitleReqular(),
                           ),
                         ],
                       ),
