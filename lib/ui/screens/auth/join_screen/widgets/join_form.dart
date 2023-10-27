@@ -132,15 +132,18 @@ class JoinForm extends ConsumerWidget {
             funPageRoute: () {
               //ref.read(sessionProvider).join(joinReqDTO);
               //Navigator.pushNamed(context, Move.loginScreen);
-              Logger().d("joinFormModel", joinFormModel);
+              Logger().d("나여기 ${joinFormModel}");
 
-              // JoinReqDTO joinReqDTO = JoinReqDTO(
-              //     userId: joinFormModel.userId,
-              //     userPassword: userPassword,
-              //     username: username,
-              //     userEmail: userEmail);
+              JoinReqDTO joinReqDTO = JoinReqDTO(
+                  userId: joinFormModel!.userId,
+                  userPassword: joinFormModel!.userPassword,
+                  username: joinFormModel!.username,
+                  userEmail: joinFormModel!.userEmail,
+                  userBirth: joinFormModel?.userBirth ?? null,
+                  userGender: joinFormModel?.userGender ?? null
+              );
 
-              // ref.read(sessionProvider).join(joinReqDTO);
+              ref.read(sessionProvider).join(joinReqDTO);
             },
           ),
         ],

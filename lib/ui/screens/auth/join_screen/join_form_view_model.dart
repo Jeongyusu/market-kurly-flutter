@@ -2,22 +2,23 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class JoinFormModel {
-  String? userId;
-  String? userPassword;
-  String? userConfirmPassword;
-  String? username;
-  String? userEmail;
+  String userId;
+  String userPassword;
+  String userConfirmPassword;
+  String username;
+  String userEmail;
   DateTime? userBirth;
   String? userGender;
 
   JoinFormModel(
-      {this.userId,
-      this.userPassword,
-      this.userConfirmPassword,
-      this.username,
-      this.userEmail,
-      this.userBirth,
-      this.userGender});
+        {required this.userId,
+         required this.userPassword,
+         required this.userConfirmPassword,
+         required this.username,
+         required this.userEmail,
+         this.userBirth,
+         this.userGender}
+      );
 
   @override
   String toString() {
@@ -130,10 +131,11 @@ class JoinFormViewModel extends StateNotifier<JoinFormModel> {
 
 // 창고관리자
 final joinFormProvider =
-    StateNotifierProvider.autoDispose<JoinFormViewModel, JoinFormModel>((ref) {
+    StateNotifierProvider.autoDispose<JoinFormViewModel, JoinFormModel?>((ref) {
   return JoinFormViewModel(JoinFormModel(
       userId: "",
       userPassword: "",
+      userConfirmPassword: "",
       username: "",
       userEmail: "",
       userBirth: DateTime.now(),

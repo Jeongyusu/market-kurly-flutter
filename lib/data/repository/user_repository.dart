@@ -8,11 +8,12 @@ import 'package:logger/logger.dart';
 // V -> P(전역프로바이더, 뷰모델) -> R
 class UserRepository {
   Future<ResponseDTO> fetchJoin(JoinReqDTO requestDTO) async {
+    Logger().d(requestDTO.userBirth);
     try {
       // dynamic -> http body
       Response<dynamic> response =
           await dio.post("/api/userJoin", data: requestDTO.toJson());
-      Logger().d("이까지완료");
+      Logger().d("요청완료됨111");
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       // responseDTO.data = User.fromJson(responseDTO.data);
 
@@ -25,24 +26,27 @@ class UserRepository {
 
   Future<ResponseDTO> fetchLogin(LoginReqDTO requestDTO) async {
     try {
+      Logger().d("fetchLogin요청됨");
       Response<dynamic> response =
-          await dio.post<dynamic>("/login", data: requestDTO.toJson());
+          await dio.post<dynamic>("/api/userLogin", data: requestDTO.toJson());
 
-      print(response.data);
-
+      Logger().d(response);
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      Logger().d("파싱완료1");
       responseDTO.response = User.fromJson(responseDTO.response);
+      Logger().d("파싱완료2");
+
 
       final jwt = response.headers["Authorization"];
 
-      // if (jwt != null) {
-      //   responseDTO.token = jwt.first;
-      // }
-
+      if (jwt != null) {
+        responseDTO.token = jwt.first;
+      }
+      Logger().d("jwt토큰 넣기");
       return responseDTO;
     } catch (e) {
       // 200이 아니면 catch로 감
-      return ResponseDTO(success: false, response: null, error: "중복된 유저명입니다.");
+      return ResponseDTO(success: false, response: null, error: "로그인실패.");
     }
   }
 }
