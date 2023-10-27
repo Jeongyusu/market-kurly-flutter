@@ -3,27 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Param {
   bool? isChecked;
-  String? gender ="MAN";
-  DateTime? birth = DateTime.now();
-  Param({this.isChecked, this.gender, this.birth});
+  Param({this.isChecked});
 }
 
 // 창고데이터
 class ParamStore extends StateNotifier<Param?> {
   ParamStore(super._state);
-
-
-  void saveDateTime(DateTime userBirth) {
-    state = Param(birth: userBirth);
-  }
-
-  void selectedGenderMan(){
-    state = Param(gender: "MAN");
-  }
-
-  void selectedGenderWoman(){
-    state = Param(gender: "Woman");
-  }
 
   void initChecked() {
     state = Param(isChecked: true);
@@ -39,5 +24,5 @@ class ParamStore extends StateNotifier<Param?> {
 }
 
 final paramProvider = StateNotifierProvider<ParamStore, Param?>((ref) {
-  return ParamStore(null);
+  return ParamStore(Param(isChecked: true));
 });

@@ -9,21 +9,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class CartPriceArea extends ConsumerWidget {
   const CartPriceArea({
     super.key,
-    required this.cartDTOListModel,
   });
-
-  final CartListModel? cartDTOListModel;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CartListModel? cartDTOListModel = ref.watch(cartDTOListProvider);
+    CartListModel? cartListModel = ref.watch(cartListProvider);
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
           TextSpaceBetweenItem(
             leftText: "상품금액",
-            rightText: "${cartDTOListModel!.cartDTO.totalBeforePrice}원",
+            rightText: "${cartListModel!.cartDTO.totalBeforePrice}원",
             leftTextStyle: basicText(),
             rightTextStyle: basicText(),
           ),
@@ -32,7 +29,7 @@ class CartPriceArea extends ConsumerWidget {
           ),
           TextSpaceBetweenItem(
             leftText: "상품할인금액",
-            rightText: "${cartDTOListModel!.cartDTO.totalDiscountPrice}원",
+            rightText: "${cartListModel!.cartDTO.totalDiscountPrice}원",
             leftTextStyle: basicText(),
             rightTextStyle: basicText(),
           ),
@@ -63,7 +60,7 @@ class CartPriceArea extends ConsumerWidget {
             child: TextSpaceBetweenItem(
               leftText: "결제예정금액",
               rightText:
-                  "${cartDTOListModel!.cartDTO.totalBeforePrice - cartDTOListModel.cartDTO.totalDiscountPrice}원",
+                  "${cartListModel!.cartDTO.totalBeforePrice - cartListModel.cartDTO.totalDiscountPrice}원",
               leftTextStyle: basicTextBig(),
               rightTextStyle: strongTextmMedium(),
             ),

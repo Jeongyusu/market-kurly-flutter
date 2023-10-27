@@ -14,7 +14,7 @@ class CartOptionItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CartListModel? cartDTOListModel = ref.watch(cartDTOListProvider);
+    CartListModel? cartListModel = ref.watch(cartListProvider);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Container(
@@ -25,7 +25,7 @@ class CartOptionItem extends ConsumerWidget {
             AspectRatio(
               aspectRatio: 1 / 1,
               child: Image.asset(
-                'assets${cartDTOListModel?.cartDTO.cartProducts[index].image}',
+                'assets${cartListModel?.cartDTO.cartProducts[index].image}',
                 fit: BoxFit.cover,
               ),
             ),
@@ -37,7 +37,7 @@ class CartOptionItem extends ConsumerWidget {
               children: [
                 CartPriceTextItem(index: index),
                 Spacer(),
-                CustomOptionCount(index: index),
+                // CustomOptionCount(index: index),
               ],
             ),
           ],

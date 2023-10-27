@@ -19,21 +19,21 @@ import 'package:flutter_check_box_rounded/flutter_check_box_rounded.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CartBody extends StatelessWidget {
-  const CartBody({
+class CartOrderSheetBody extends ConsumerWidget {
+  const CartOrderSheetBody({
     super.key,
   });
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return CustomScrollView(
       slivers: [
         CustomNavAppBar(
-          text: "장바구니",
+          text: "주문서",
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        _cartButtonAppbar(),
         SliverList(
           delegate: SliverChildListDelegate([
             Column(
@@ -49,30 +49,6 @@ class CartBody extends StatelessWidget {
           ]),
         ),
       ],
-    );
-  }
-
-  Widget _cartButtonAppbar() {
-    return SliverAppBar(
-      automaticallyImplyLeading: false,
-      pinned: true,
-      elevation: 0.1,
-      backgroundColor: basicColorW,
-      // 다른 SliverAppBar 설정
-      flexibleSpace: FlexibleSpaceBar(
-        titlePadding: EdgeInsets.symmetric(vertical: 5.0),
-        background: Container(
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                width: 10,
-                color: bgAndLineColor,
-              ),
-            ),
-          ),
-          child: _cartTotalBtn(),
-        ),
-      ),
     );
   }
 

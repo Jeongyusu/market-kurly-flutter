@@ -13,7 +13,7 @@ class CartPriceTextItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CartListModel? cartDTOListModel = ref.watch(cartDTOListProvider);
+    CartListModel? cartDTOListModel = ref.watch(cartListProvider);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

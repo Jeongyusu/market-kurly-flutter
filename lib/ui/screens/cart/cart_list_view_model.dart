@@ -96,7 +96,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
 }
 
 // 3. 창고 관리자 (View 빌드되기 직전에 생성됨)
-final cartDTOListProvider =
+final cartListProvider =
     StateNotifierProvider.autoDispose<CartListViewModel, CartListModel?>((ref) {
   return CartListViewModel(null, ref)..notifyInit();
 });

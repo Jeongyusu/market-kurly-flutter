@@ -7,6 +7,7 @@ import 'package:flutter_blog/ui/screens/auth/user_search/pw_search_complete_scre
 import 'package:flutter_blog/ui/screens/auth/user_search/pw_search_screen/pw_new_set_screen/pw_new_set_screen.dart';
 import 'package:flutter_blog/ui/screens/auth/user_search/pw_search_screen/pw_search_screen.dart';
 import 'package:flutter_blog/ui/screens/auth/user_search/widget/pw_new_form.dart';
+import 'package:flutter_blog/ui/screens/cart/cart_oder_sheet_screen.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_screen.dart';
 import 'package:flutter_blog/ui/screens/main_screen.dart';
 import 'package:flutter_blog/ui/screens/splash_screen.dart';
@@ -18,6 +19,7 @@ class Move {
   static String userInfoScreen = "/user/info";
   static String mainScreen = "/main/productList";
   static String cartScreen = "/cart/save";
+  static String cartOrderSheetScreen = "/cart/orderSheetScreen";
   static String pwSearchScreen = "/login/pwSearch";
   static String idSearchScreen = "/login/idSearch";
   static String idSearchCompleteScreen = "/login/idSearch/complete";
@@ -37,5 +39,6 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.pwSearchCompleteScreen: (context) => PwSearchCompleteScreen(),
     Move.idSearchCompleteScreen: (context) => IdSearchCompleteScreen(),
     Move.pwNewSetScreen: (context) => PwNewSetScreen(),
+    Move.cartOrderSheetScreen: (context) => CartOderSheetScreen(),
   };
 }
