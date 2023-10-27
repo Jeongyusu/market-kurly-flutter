@@ -9,14 +9,22 @@ import 'package:flutter_blog/ui/widgets/navigation_items/custom_navigation_item.
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends State<MainScreen>
+    with SingleTickerProviderStateMixin {
   int _currentIndex = 0;
+  TabController? _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 4, vsync: this);
+  }
 
   void _onTabbed(int index) {
     setState(() {
@@ -79,7 +87,7 @@ class _MainScreenState extends State<MainScreen> {
       body: IndexedStack(
         index: _currentIndex,
         children: [
-          HomeScreen(),
+          HomeScreen(tabController: _tabController),
           CategoryScreen(),
           SearchScreen(),
           MyInfoScreen(),

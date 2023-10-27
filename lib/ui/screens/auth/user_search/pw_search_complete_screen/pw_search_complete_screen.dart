@@ -19,7 +19,7 @@ class PwSearchCompleteScreen extends StatelessWidget {
         backgroundColor: basicColorW,
         title: Text(
           "비밀번호 찾기",
-          style: subTitle(),
+          style: subTitleReqular(),
         ),
         centerTitle: true,
         leading: IconButton(
