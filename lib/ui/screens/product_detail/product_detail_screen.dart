@@ -64,9 +64,8 @@ class _BestScreenState extends State<BestScreen> {
             )
           ],
         ),
-        SliverPadding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          sliver: CustomProductGrid(images: images),
+        CustomProductGrid(
+          images: images,
         ),
       ],
     );
