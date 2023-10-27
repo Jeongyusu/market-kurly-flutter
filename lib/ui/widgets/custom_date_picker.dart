@@ -4,6 +4,7 @@ import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/data/store/param_store.dart';
+import 'package:flutter_blog/ui/screens/auth/join_screen/join_form_view_model.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_rich_text_item.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,7 +13,8 @@ class DatePicker extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Param? param = ref.read(paramProvider);
+    JoinFormModel? model = ref.watch(joinFormProvider);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -34,7 +36,7 @@ class DatePicker extends ConsumerWidget {
                     child: CupertinoDatePicker(
                       mode: CupertinoDatePickerMode.date,
                       onDateTimeChanged: (DateTime date) {
-                        ref.watch(paramProvider.notifier).saveDateTime(date);
+                        ref.read(joinFormProvider.notifier).setUserBirth(date);
                       },
                     ),
                   ),
@@ -43,7 +45,7 @@ class DatePicker extends ConsumerWidget {
             );
           },
           child: Text(
-            "${param?.birth?.year ?? 0000}.${param?.birth?.month ?? 00}.${param?.birth?.day ?? 00}",
+            "${model?.userBirth?.year ?? 0000}.${model?.userBirth?.month ?? 00}.${model?.userBirth?.day ?? 00}",
             style: basicText(),
           ),
         ),

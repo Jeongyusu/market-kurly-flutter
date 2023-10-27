@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:flutter_blog/_core/constants/http.dart';
 import 'package:flutter_blog/data/dto/request_dto/user_request.dart';
@@ -7,13 +6,19 @@ import 'package:flutter_blog/ui/widgets/button_items/custom_radio_button_item.da
 import 'package:logger/logger.dart';
 
 void main() async {
-  JoinReqDTO requestDTO = JoinReqDTO(userId: "as32df", userPassword: "1234", username: "ssar123", userEmail: "12342@naver.com", userBirth: "1992-01-20", userGender: "MAN");
+  JoinReqDTO requestDTO = JoinReqDTO(
+      userId: "as13tt233df",
+      userPassword: "1234",
+      username: "ssar123",
+      userEmail: "12342@naver.com",
+      userBirth: DateTime.now(),
+      userGender: "MAN");
   await fetchJoin(requestDTO);
 }
 
-
 Future<ResponseDTO> fetchJoin(JoinReqDTO requestDTO) async {
   try {
+    Logger().d(requestDTO.toJson());
     Logger().d("이까지완료");
     Logger().d(requestDTO.username);
     // dynamic -> http body

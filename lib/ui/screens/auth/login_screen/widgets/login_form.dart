@@ -11,8 +11,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LoginForm extends ConsumerWidget {
   final _formKey = GlobalKey<FormState>();
-  final _username = TextEditingController();
-  final _password = TextEditingController();
+  final _userId = TextEditingController();
+  final _userPassword = TextEditingController();
 
   LoginForm({Key? key}) : super(key: key);
 
@@ -26,14 +26,14 @@ class LoginForm extends ConsumerWidget {
             placeholderText: "아이디를 입력해주세요",
             obscureText: false,
             funValidator: validateUsername(),
-            controller: _username,
+            controller: _userId,
           ),
           const SizedBox(height: xsmallGap),
           CustomLoginTextFormField(
             placeholderText: "비밀번호를 입력해주세요",
             obscureText: true,
             funValidator: validatePassword(),
-            controller: _password,
+            controller: _userPassword,
           ),
           const SizedBox(height: xmediumGap),
           CustomElevatedButton(
@@ -41,7 +41,7 @@ class LoginForm extends ConsumerWidget {
             funPageRoute: () {
               if (_formKey.currentState!.validate()) {
                 LoginReqDTO loginReqDTO = LoginReqDTO(
-                    username: _username.text, password: _password.text);
+                    userId: _userId.text, userPassword: _userPassword.text);
                 ref.read(sessionProvider).login(loginReqDTO);
               }
             },

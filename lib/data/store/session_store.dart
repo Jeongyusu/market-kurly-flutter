@@ -48,13 +48,15 @@ class SessionStore extends SessionUser {
     // 2. 비지니스 로직
     if (responseDTO.success == true) {
       // 1. 세션값 갱신
+      Logger().d("세션값 갱신 진입");
+      Logger().d(responseDTO.response);
       this.user = responseDTO.response as User;
-      // this.jwt = responseDTO.token;
+      this.jwt = responseDTO.token;
       this.isLogin = true;
-
+      Logger().d("세션값 갱신 완료");
       // 2. 디바이스에 JWT 저장 (자동 로그인)
-      // await secureStorage.write(key: "jwt", value: responseDTO.token);
-
+      await secureStorage.write(key: "jwt", value: responseDTO.token);
+      Logger().d("여기까지 실행됨");
       // 3. 페이지 이동
       Navigator.pushNamed(mContext!, Move.mainScreen);
     } else {

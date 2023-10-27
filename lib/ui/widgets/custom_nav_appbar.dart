@@ -5,10 +5,12 @@ import 'package:flutter_blog/_core/constants/font.dart';
 class CustomNavAppBar extends StatelessWidget {
   final String text;
   final onPressed;
+  final List<Widget>? actions;
   const CustomNavAppBar({
     super.key,
     required this.text,
     this.onPressed,
+    this.actions,
   });
 
   @override
