@@ -8,7 +8,7 @@ class CategoryProducts extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CategoryModel? model = ref.watch(CategoryListProvider);
+    CategoryModel? model = ref.watch(categoryListProvider);
 
     List<Category> categorys = [];
 

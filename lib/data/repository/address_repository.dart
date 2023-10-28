@@ -8,21 +8,24 @@ class AddressRepository {
   Future<ResponseDTO> fetchAddressList() async {
     try {
       // 1. 통신
-      Logger().d("fetchCategoryList 동작중");
+      Logger().d("fetchAddressList 동작중");
       final response = await dio.get("/api/addresses");
       Logger().d(response.data);
       // 2. ResponseDTO 파싱
       ResponseDTO toyResponseDTO = ResponseDTO.fromJson(response.data);
 
+      Logger().d(toyResponseDTO.response);
       List<dynamic> mapList = toyResponseDTO.response;
-      List<Address> categorys =
+      List<Address> addresses =
           mapList.map((e) => Address.fromJson(e)).toList();
 
-      toyResponseDTO.response = categorys;
+      Logger().d(response.data);
+      toyResponseDTO.response = addresses;
 
+      Logger().d(toyResponseDTO.response);
       return toyResponseDTO;
     } catch (e) {
-      return ResponseDTO(success: false, response: null, error: "카테고리 불러오기실패");
+      return ResponseDTO(success: false, response: null, error: "주소목록 불러오기실패");
     }
   }
 }

@@ -3,8 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
 
 class AddressDetail extends StatelessWidget {
-  String? address;
-  AddressDetail({super.key, this.address});
+  String? destination;
+  String? destinationDetail;
+  bool? isDefaultAddress;
+  AddressDetail(
+      {super.key,
+      this.destination,
+      this.destinationDetail,
+      this.isDefaultAddress});
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +27,30 @@ class AddressDetail extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("기본 배송지", style: TextStyle(fontSize: 12)),
+                if (isDefaultAddress == true)
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text("기본 배송지", style: TextStyle(fontSize: 12)),
+                      ),
+                      decoration: BoxDecoration(color: Colors.black12),
+                    ),
+                  ),
+                SizedBox(
+                  height: 1,
+                ),
                 Text(
-                  "${address}",
-                  style: TextStyle(fontSize: 16),
+                  "${destination}",
+                  style: TextStyle(fontSize: 13),
+                ),
+                SizedBox(
+                  height: 3,
+                ),
+                Text(
+                  "${destinationDetail}",
+                  style: TextStyle(fontSize: 13),
                 ),
               ],
             ),

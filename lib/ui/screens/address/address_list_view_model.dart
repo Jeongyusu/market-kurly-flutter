@@ -19,20 +19,20 @@ class AddressViewModel extends StateNotifier<AddressModel?> {
   Ref ref;
 
   Future<void> notifyInit() async {
-    print("category notifyInit 실행");
+    print("Address notifyInit 실행");
     // 1. 통신 코드
     ResponseDTO responseDTO = await AddressRepository().fetchAddressList();
 
-    print("CategoryViewModel 통신코드실행 responseDTO : ${responseDTO.response}");
+    print("AddressViewModel 통신코드실행 responseDTO : ${responseDTO.response}");
     List<Address> addresses = responseDTO.response;
-    print("categorys 파싱 responseDTO : ${addresses}");
+    print("Address 파싱 responseDTO : ${addresses}");
     // 2. 비지니스 로직
     state = AddressModel(addresses);
   }
 }
 
 // 3. 창고 관리자
-final CategoryListProvider =
+final addressListProvider =
     StateNotifierProvider<AddressViewModel, AddressModel?>((ref) {
   return AddressViewModel(null, ref)..notifyInit();
 });

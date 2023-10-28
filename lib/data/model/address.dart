@@ -9,15 +9,15 @@ class Address {
   final User? user;
   bool isDefaultAddress = false;
 
-  Address({
+  Address(
     this.id,
     this.destination,
     this.destinationDetail,
     this.receiverName,
     this.receiverTel,
     this.user,
-    required this.isDefaultAddress,
-  });
+    this.isDefaultAddress,
+  );
 
 // Map 형태로 받아서 Dart 객체로 변환합니다.
   Address.fromJson(Map<String, dynamic> json)
@@ -26,7 +26,8 @@ class Address {
         destinationDetail = json["destinationDetail"],
         receiverName = json["receiverName"],
         receiverTel = json["receiverTel"],
-        user = json["user"],
+        // 객체 안의 객체는 fromJson으로 파싱해서 넣어줌
+        user = User.fromJson(json["user"]),
         isDefaultAddress = json["isDefaultAddress"];
 
   Map<String, dynamic> toJson() => {
