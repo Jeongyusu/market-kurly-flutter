@@ -35,22 +35,6 @@ class AddressBody extends ConsumerWidget {
     final TextEditingController _addressDetailController =
         TextEditingController();
 
-    // 더미 데이터
-    // List<String> addresses = [
-    //   "서울 관악",
-    //   "부산 동래",
-    //   "전남 광주",
-    //   "경북 경산",
-    //   "경기 김포",
-    //   "제주 서귀포",
-    //   "강원 태백",
-    //   "경남 마산",
-    //   "충북 청주",
-    //   "충남 태안",
-    //   "강원 동해",
-    //   "전북 무주",
-    // ];
-
     return CustomScrollView(
       slivers: [
         CustomNavAppBar(
