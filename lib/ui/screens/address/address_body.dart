@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/address/address_detail.dart';
@@ -50,7 +49,7 @@ class AddressBody extends ConsumerWidget {
             Navigator.pop(context);
           },
           actions: [
-            MaterialButton(
+            TextButton(
               onPressed: () async {
                 KopoModel? model = await Navigator.push(
                   context,
