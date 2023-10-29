@@ -18,7 +18,7 @@ class AddressBody extends ConsumerWidget {
     final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
     Map<String, String> formData = {};
 
-    AddressModel? model = ref.watch(addressListProvider);
+    AddressListModel? model = ref.watch(addressListProvider);
 
     List<Address> addresses = [];
 

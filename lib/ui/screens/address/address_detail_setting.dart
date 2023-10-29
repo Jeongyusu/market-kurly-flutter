@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
-import 'package:flutter_blog/ui/screens/address/widget/address_detail_form.dart';
+import 'package:flutter_blog/data/dto/request_dto/address_request.dart';
+import 'package:flutter_blog/ui/screens/address/address_list_view_model.dart';
+import 'package:flutter_blog/ui/screens/address/widget/address_detail_text_form.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
 import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 import 'package:flutter_check_box_rounded/flutter_check_box_rounded.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:remedi_kopo/remedi_kopo.dart';
 
 // class AddressDetailSetForm extends StatelessWidget {
@@ -24,8 +27,8 @@ class AddressDetailSetForm extends StatefulWidget {
 }
 
 class _AddressDetailSetFormState extends State<AddressDetailSetForm> {
-  final destinationDatail = TextEditingController();
-  final receiver = TextEditingController();
+  final destinationDetail = TextEditingController();
+  final receiverName = TextEditingController();
   final receiverTel = TextEditingController();
   bool isDefaultAddress = false;
 
@@ -48,11 +51,11 @@ class _AddressDetailSetFormState extends State<AddressDetailSetForm> {
                   AddressDetailTextForm(
                       hintText: "상세주소를 입력하세요",
                       title: "${widget.model!.address}",
-                      controller: destinationDatail),
+                      controller: destinationDetail),
                   AddressDetailTextForm(
                       hintText: "받는사람 이름을 입력하세요",
                       title: "받으실분",
-                      controller: receiver),
+                      controller: receiverName),
                   AddressDetailTextForm(
                       title: "연락처",
                       hintText: "'-' 를 제외한 번호를 입력하세요",
@@ -98,9 +101,15 @@ class _AddressDetailSetFormState extends State<AddressDetailSetForm> {
                       ),
                     ],
                   )),
-                  CustomElevatedButton(
-                    text: "저장",
-                    funPageRoute: submit,
+                  Consumer(
+                    builder: (context, ref, child) {
+                      return CustomElevatedButton(
+                        text: "저장",
+                        funPageRoute: () {
+                          submit(ref);
+                        },
+                      );
+                    },
                   )
                 ],
               ),
@@ -111,12 +120,20 @@ class _AddressDetailSetFormState extends State<AddressDetailSetForm> {
     );
   }
 
-  void submit() {
+  void submit(WidgetRef ref) {
     print("destination : ${widget.model!.address}");
-    print("destinationDatail : ${destinationDatail.text}");
-    print("receiver : ${receiver.text}");
+    print("destinationDatail : ${destinationDetail.text}");
+    print("receiverName : ${receiverName.text}");
     print("receiverTel : ${receiverTel.text}");
     print("isDefaultAddress : ${isDefaultAddress}");
+    AddressSaveReqDTO dto = AddressSaveReqDTO(
+        destination: "${widget.model!.address}",
+        receiverName: "${receiverName.text}",
+        isDefaultAddress: isDefaultAddress,
+        receiverTel: "${receiverTel.text}",
+        destinationDetail: "${destinationDetail.text}");
+
+    ref.read(addressListProvider.notifier).notifyAdd(dto);
     Navigator.pop(context);
   }
 }
