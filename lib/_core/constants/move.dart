@@ -8,23 +8,27 @@ import 'package:flutter_blog/ui/screens/auth/user_search/pw_search_screen/pw_new
 import 'package:flutter_blog/ui/screens/auth/user_search/pw_search_screen/pw_search_screen.dart';
 import 'package:flutter_blog/ui/screens/auth/user_search/widget/pw_new_form.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_oder_sheet_screen.dart';
+import 'package:flutter_blog/ui/screens/cart/cart_order_cancel_screen.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_screen.dart';
 import 'package:flutter_blog/ui/screens/main_screen.dart';
+import 'package:flutter_blog/ui/screens/my_info/my_info_screen.dart';
 import 'package:flutter_blog/ui/screens/splash_screen.dart';
 
 class Move {
   static String splashScreen = "/splash";
   static String loginScreen = "/login";
   static String joinScreen = "/join";
-  static String userInfoScreen = "/user/info";
+  static String myInfoScreen = "/user/info";
   static String mainScreen = "/main/productList";
   static String cartScreen = "/cart/save";
   static String cartOrderSheetScreen = "/cart/orderSheetScreen";
+  static String cartOrderCancelScreen = "/cart/orderCancelScreen";
   static String pwSearchScreen = "/login/pwSearch";
   static String idSearchScreen = "/login/idSearch";
   static String idSearchCompleteScreen = "/login/idSearch/complete";
   static String pwSearchCompleteScreen = "/login/pwSearch/complete";
   static String pwNewSetScreen = "/login/pw/insert";
+
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
@@ -40,5 +44,7 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.idSearchCompleteScreen: (context) => IdSearchCompleteScreen(),
     Move.pwNewSetScreen: (context) => PwNewSetScreen(),
     Move.cartOrderSheetScreen: (context) => CartOderSheetScreen(),
+    Move.cartOrderCancelScreen: (context) => CartOderCancelScreen(),
+    Move.myInfoScreen: (context) => MyInfoScreen(),
   };
 }

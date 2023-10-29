@@ -17,12 +17,12 @@ class CartDTORepository {
       final response = await dio.get("/api/carts");
       Logger().d(response.data);
       // 2. ResponseDTO 파싱
-      ResponseDTO toyResponseDTO = ResponseDTO.fromJson(response.data);
-      toyResponseDTO.response = CartDTO.fromJson(toyResponseDTO.response);
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      responseDTO.response = CartDTO.fromJson(responseDTO.response);
 
       // 3. ResponseDTO의 data 파싱
       Logger().d("CartProductDTO파싱완료");
-      return toyResponseDTO;
+      return responseDTO;
     } catch (e) {
       return ResponseDTO(success: false, response: null, error: "카트목록불러오기실패");
     }

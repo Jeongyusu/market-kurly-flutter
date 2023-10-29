@@ -24,7 +24,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
     // SessionStore sessionStore = ref.read(sessionProvider);
     ResponseDTO responseDTO = await CartDTORepository().fetchCartList();
     Logger().d("여까지실행");
-    Logger().d(responseDTO.response);
+    Logger().d("여기까지2 ${responseDTO.response}");
     state = CartListModel(responseDTO.response);
   }
 
