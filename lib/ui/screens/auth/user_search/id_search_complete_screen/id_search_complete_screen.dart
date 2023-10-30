@@ -4,7 +4,7 @@ import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/auth/user_search/id_search_complete_screen/id_search_complete_body.dart';
-import 'package:flutter_blog/ui/widgets/custom_svg_image.dart';
+import 'package:flutter_blog/ui/widgets/icons_and_images/custom_svg_image.dart';
 import 'package:flutter_blog/ui/widgets/text_items/custom_text_item.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
