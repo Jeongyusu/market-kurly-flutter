@@ -9,14 +9,14 @@ import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 import 'package:flutter_blog/ui/widgets/icons_and_images/custom_review_icon.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class BestScreen extends StatefulWidget {
-  const BestScreen({Key? key}) : super(key: key);
+class NewScreen extends StatefulWidget {
+  const NewScreen({Key? key}) : super(key: key);
 
   @override
-  State<BestScreen> createState() => _BestScreenState();
+  State<NewScreen> createState() => _NewScreenState();
 }
 
-class _BestScreenState extends State<BestScreen> {
+class _NewScreenState extends State<NewScreen> {
   final List<String> imagePaths = [
     'assets/images/banner_01.png',
     'assets/images/banner_02.png',
@@ -61,7 +61,7 @@ class _BestScreenState extends State<BestScreen> {
     "마감인박순",
     "가격순"
   ];
-  String _selectedValue = "평점순";
+  String _selectedValue = "신상품순";
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +86,7 @@ class _BestScreenState extends State<BestScreen> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      '총 182 개',
+                      '총 34 개',
                       style: strongTextSmall(),
                     ),
                   ],
@@ -213,7 +213,7 @@ class _BestScreenState extends State<BestScreen> {
                     itemCount: images.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        padding: const EdgeInsets.symmetric(vertical: 12.0),
                         child: InkWell(
                           onTap: () {},
                           child: Column(

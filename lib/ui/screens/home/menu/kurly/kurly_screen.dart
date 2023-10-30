@@ -31,10 +31,10 @@ class _KurlyScreenState extends State<KurlyScreen>
   }
 
   final List<String> imagePaths = [
-    'assets/images/banner_01.png',
-    'assets/images/banner_02.png',
-    'assets/images/banner_03.png',
-    'assets/images/banner_04.png',
+    'assets/images/banner01.jpg',
+    'assets/images/banner02.jpg',
+    'assets/images/banner03.jpg',
+    'assets/images/banner04.jpg',
   ];
 
   final List<String> images = [
@@ -51,7 +51,7 @@ class _KurlyScreenState extends State<KurlyScreen>
         controller: _scrollController,
         slivers: [
           SliverAppBar(
-            expandedHeight: 300.0,
+            expandedHeight: 280.0,
             floating: false,
             pinned: false,
             automaticallyImplyLeading: false,
@@ -62,7 +62,17 @@ class _KurlyScreenState extends State<KurlyScreen>
                 controller: _swiperController,
                 itemCount: imagePaths.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return _mainSlider(index);
+                  return Container(
+                    height: 200,
+                    width: 200,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(imagePaths[index]),
+                        fit: BoxFit.cover,
+                        alignment: Alignment.center,
+                      ),
+                    ),
+                  );
                 },
                 autoplay: true,
                 autoplayDelay: 3000,
@@ -72,14 +82,14 @@ class _KurlyScreenState extends State<KurlyScreen>
           HomeKurlyMenuTitle(title: "지금 가장 핫한 상품"),
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.only(left: 16.0, bottom: largeGap),
+              padding: const EdgeInsets.only(left: 16.0),
               child: CustomProductHorizontalList(images: images),
             ),
           ),
           HomeKurlyMenuTitle(title: "초특가 반값 SALE"),
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.only(left: 16.0, bottom: largeGap),
+              padding: const EdgeInsets.only(left: 16.0),
               child: CustomProductHorizontalList(images: images),
             ),
           ),
@@ -89,11 +99,7 @@ class _KurlyScreenState extends State<KurlyScreen>
             sliver: CustomProductGrid(images: images),
           ),
           SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            sliver: CustomProductGrid(images: images),
-          ),
-          SliverPadding(
-            padding: EdgeInsets.only(top: 30.0),
+            padding: EdgeInsets.only(top: smallGap),
             sliver: SliverToBoxAdapter(
               child: AspectRatio(
                 aspectRatio: 12 / 9,
@@ -165,12 +171,11 @@ class _KurlyScreenState extends State<KurlyScreen>
       },
       backgroundColor: basicColorW,
       shape: RoundedRectangleBorder(
-        // 테두리 모양 설정
         side: BorderSide(
-          color: bgAndLineColor, // 원하는 테두리 색상 설정
-          width: 1.0, // 테두리 두께 설정
+          color: bgAndLineColor,
+          width: 1.0,
         ),
-        borderRadius: BorderRadius.circular(50.0), // 원형 모양
+        borderRadius: BorderRadius.circular(50.0),
       ),
       child: Icon(
         Icons.arrow_upward,

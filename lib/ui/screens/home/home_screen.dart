@@ -4,16 +4,14 @@ import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/ui/screens/home/menu/benefit/benefit_screen.dart';
 import 'package:flutter_blog/ui/screens/home/menu/best/best_screen.dart';
 import 'package:flutter_blog/ui/screens/home/menu/kurly/kurly_screen.dart';
-import 'package:flutter_blog/ui/screens/home/menu/new_product/new_product_screen.dart';
+import 'package:flutter_blog/ui/screens/home/menu/new_product/new_screen.dart';
 import 'package:flutter_blog/ui/widgets/custom_main_appbar.dart';
 import 'package:flutter_blog/ui/widgets/custom_main_tabbar.dart';
 import 'package:flutter_blog/ui/widgets/custom_main_tabbar_view.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({
-    super.key,
-    required TabController? tabController,
-  }) : _tabController = tabController;
+  const HomeScreen({super.key, required TabController? tabController})
+      : _tabController = tabController;
   final TabController? _tabController;
 
   @override
@@ -73,18 +71,16 @@ class _HomeScreenState extends State<HomeScreen>
                 child: Text("금주혜택", style: tabBarTitle()),
               ),
             ],
-            indicatorColor: primaryColor, // 선택된 탭 아래의 선 색상
+            indicatorColor: primaryColor,
             labelColor: primaryColor,
             indicatorSize: TabBarIndicatorSize.label,
-            // 인디캐이터의 패딩
-            indicatorPadding: const EdgeInsets.symmetric(vertical: 5.0),
           ),
           Expanded(
             child: TabBarView(
               controller: _tabController,
               children: [
                 KurlyScreen(),
-                NewProductScreen(),
+                NewScreen(),
                 BestScreen(),
                 BenefitScreen(),
               ],

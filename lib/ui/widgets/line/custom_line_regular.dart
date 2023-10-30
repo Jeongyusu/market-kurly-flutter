@@ -12,8 +12,8 @@ class CustomLineRegular extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: bgAndLineColor, // 선의 색상 설정
-            width: 5.0, // 선의 두께 설정
+            color: bgAndLineColor,
+            width: 5.0,
           ),
         ),
       ),

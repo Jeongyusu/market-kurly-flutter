@@ -44,9 +44,9 @@ class LoginBody extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: Container(
-                          width: 1, // 선의 너비
-                          height: 15, // 선의 높이
-                          color: basicColorB9, // 선의 색상
+                          width: 1,
+                          height: 15,
+                          color: basicColorB9,
                         ),
                       ),
                       InkWell(

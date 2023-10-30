@@ -29,7 +29,7 @@ class CategoryItem extends StatelessWidget {
   Widget _categoryItemImg() {
     return Expanded(
       child: Image.asset(
-        "assets/images/$imagePathIndex.jpg", // Construct the image path using imagePathIndex
+        "assets/images/$imagePathIndex.jpg",
         fit: BoxFit.cover,
       ),
     );

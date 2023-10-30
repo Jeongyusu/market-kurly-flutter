@@ -24,7 +24,7 @@ class MyInfoScreen extends StatelessWidget {
             Container(
               child: Text(
                 "회원 가입하고\n다양한 혜택을 받아보세요!",
-                textAlign: TextAlign.center, // 텍스트를 가운데 정렬하려면 사용합니다.
+                textAlign: TextAlign.center,
               ),
             ),
             CustomElevatedButton(

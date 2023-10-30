@@ -27,9 +27,8 @@ class CategoryBody extends ConsumerWidget {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {},
-            // 카테고리 아이템
             child: CategoryItem(
-              imagePathIndex: index + 1, // Pass the index as imagePathIndex
+              imagePathIndex: index + 1,
               category: categorys[index],
             ),
           );

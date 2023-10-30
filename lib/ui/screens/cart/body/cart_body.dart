@@ -66,7 +66,6 @@ class CartBody extends ConsumerWidget {
       pinned: true,
       elevation: 0.1,
       backgroundColor: basicColorW,
-      // 다른 SliverAppBar 설정
       flexibleSpace: FlexibleSpaceBar(
         titlePadding: EdgeInsets.symmetric(vertical: 5.0),
         background: Container(
@@ -87,7 +86,7 @@ class CartBody extends ConsumerWidget {
   // 장바구니 삭제버튼
   Widget _cartTotalBtn() {
     return Align(
-      alignment: Alignment.center, // 요소를 수평 중앙에 정렬
+      alignment: Alignment.center,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Row(

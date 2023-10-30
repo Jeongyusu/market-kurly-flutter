@@ -12,8 +12,8 @@ class CustomLineThin extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: bgAndLineColor, // 선의 색상 설정
-            width: 1.0, // 선의 두께 설정
+            color: bgAndLineColor,
+            width: 1.0,
           ),
         ),
       ),

@@ -33,7 +33,6 @@ class PwNewSetBody extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Padding(
                 padding: EdgeInsets.only(bottom: 30),
-                // 여러분의 위젯 내용
                 child: Column(
                   children: [
                     SizedBox(height: smallGap),

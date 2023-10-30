@@ -20,8 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: SplashScreen(),
-      navigatorKey:
-          navigatorKey, // context가 없는 곳에서 context를 사용할 수 있는 방법 (몰라도 됨)
+      navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       initialRoute: Move.mainScreen,
       routes: getRouters(),

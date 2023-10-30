@@ -5,7 +5,7 @@
 // import 'package:flutter_blog/ui/screens/home/menu/benefit/benefit_screen.dart';
 // import 'package:flutter_blog/ui/screens/home/menu/best/best_screen.dart';
 // import 'package:flutter_blog/ui/screens/home/menu/kurly/kurly_screen.dart';
-// import 'package:flutter_blog/ui/screens/home/menu/new_product/new_product_screen.dart';
+// import 'package:flutter_blog/ui/screens/home/menu/new_product/new_screen.dart';
 // import 'package:flutter_blog/ui/widgets/custom_main_tabbar_view.dart';
 //
 // class MainTabBar extends StatefulWidget {

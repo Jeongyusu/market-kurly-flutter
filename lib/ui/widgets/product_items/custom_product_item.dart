@@ -37,23 +37,34 @@ class CustomProductItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Container(
-                width: 145, // 아이콘의 크기를 설정합니다.
-                height: 40,
+                width: 145,
+                height: 35,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: basicColorB9, // 테두리의 색상을 설정합니다.
-                    width: 1, // 테두리의 두께를 설정합니다.
+                    color: basicColorB9,
+                    width: 1,
                   ),
                   borderRadius: BorderRadius.circular(5),
-                ), // 가로 세로 크기를 동일하게 설정하거나 필요에 따라 다르게 설정할 수 있습니다.
+                ),
                 child: InkWell(
-                  onTap: () {
-                    // 아이콘이 클릭되었을 때의 동작을 정의합니다.
-                  },
-                  child: Icon(
-                    Icons.shopping_cart, // 원하는 아이콘을 선택합니다.
-                    size: 16, // 아이콘의 크기를 설정합니다.
-                    color: basicColorB3, // 아이콘의 색상을 설정합니다.
+                  onTap: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.shopping_cart_outlined,
+                        size: 16,
+                        color: basicColorB3,
+                      ),
+                      SizedBox(
+                        width: xsmallGap,
+                      ),
+                      Text(
+                        "담기",
+                        style: basicTextSmall(),
+                      ),
+                    ],
                   ),
                 ),
               ),
