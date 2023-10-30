@@ -4,105 +4,71 @@ import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/data/dto/model_dto/product_dto/product_dto.dart';
 import 'package:flutter_blog/ui/screens/home/product_list_view_model.dart';
+import 'package:flutter_blog/ui/widgets/product_items/custom_product_grid.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class BestPage extends ConsumerWidget {
+class BestScreen extends StatefulWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    ProductListModel? model = ref.watch(productListProvider);
+  State<BestScreen> createState() => _BestScreenState();
+}
 
-    if (model == null) {
-      return CircularProgressIndicator();
-    } else {
-      return CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            pinned: true,
-            elevation: 0.0,
-            automaticallyImplyLeading: false,
-            backgroundColor: basicColorW,
-            titleSpacing: 0,
-            actions: [
-              Container(
-                child: Text(
-                  "신상품순",
-                  style: TextStyle(color: basicColorB3),
-                ),
-              )
-            ],
-          ),
-          SliverGrid(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {},
-                        child: Image.asset(
-                          "assets${model.products[index].thumbnail}",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 5),
-                    Container(
-                      height: 50,
-                      width: double.infinity,
-                      child: RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: "${model.products[index].seller}",
-                              style: basicText(),
-                            ),
-                            WidgetSpan(
-                              child: SizedBox(width: smallGap),
-                            ),
-                            TextSpan(
-                              text: "${model.products[index].productTitle}",
-                              style: basicText(),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Text(
-                      "${model.products[index].price} 원",
-                      style: disabledText(),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "${model.products[index].discountRate}%",
-                            style: discountText(),
-                          ),
-                          WidgetSpan(
-                            child: SizedBox(width: smallGap),
-                          ),
-                          TextSpan(
-                            text: "${model.products[index].totalPrice}원",
-                            style: subTitle(),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                );
-              },
-              childCount: model.products.length,
-            ),
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200.0,
-              mainAxisSpacing: 30.0,
-              crossAxisSpacing: 8.0,
-              childAspectRatio: 0.6,
-            ),
-          ),
-        ],
-      );
-    }
+class _BestScreenState extends State<BestScreen> {
+  final List<String> imagePaths = [
+    'assets/images/banner_01.png',
+    'assets/images/banner_02.png',
+    'assets/images/banner_03.png',
+    'assets/images/banner_04.png',
+  ];
+
+  final List<String> images = [
+    'assets/images/1.jpg',
+    'assets/images/2.jpg',
+    'assets/images/3.jpg',
+    'assets/images/4.jpg',
+  ];
+
+  final List<String> _themeMode = <String>[
+    'system',
+    'dark',
+    'light',
+  ];
+
+  String selectedTheme = 'system';
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+      slivers: [
+        SliverAppBar(
+          pinned: true,
+          elevation: 0.0,
+          automaticallyImplyLeading: false,
+          backgroundColor: basicColorW,
+          titleSpacing: 0,
+          actions: [
+            Container(
+              child: DropdownButton(
+                value: selectedTheme,
+                items: _themeMode.map((String item) {
+                  return DropdownMenuItem<String>(
+                    child: Text('$item'),
+                    value: item,
+                  );
+                }).toList(),
+                onChanged: (dynamic value) {
+                  setState(() {
+                    selectedTheme = value;
+                  });
+                },
+              ),
+            )
+          ],
+        ),
+        SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          sliver: CustomProductGrid(images: images),
+        ),
+      ],
+    );
   }
 }

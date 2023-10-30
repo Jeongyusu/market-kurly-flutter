@@ -9,14 +9,22 @@ import 'package:flutter_blog/ui/widgets/navigation_items/custom_navigation_item.
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends State<MainScreen>
+    with SingleTickerProviderStateMixin {
   int _currentIndex = 0;
+  TabController? _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 4, vsync: this);
+  }
 
   void _onTabbed(int index) {
     setState(() {
@@ -28,58 +36,10 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     List<String> categories = ["컬리추천", "신상품", "베스트", "금주혜택"];
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Image.asset(
-          "assets/images/logo_dark.png",
-          width: 100,
-          height: 50,
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Stack(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) => CartScreen()), // CartPage로 이동
-                    );
-                  },
-                  icon: SvgPicture.asset(
-                    "assets/icons/cart.svg", // SVG 이미지 파일 경로
-                    width: 30, // 이미지 너비
-                    height: 30, // 이미지 높이
-                  ),
-                ),
-                Positioned(
-                  top: 5,
-                  right: 8,
-                  child: Container(
-                    width: 14,
-                    height: 14,
-                    child: Center(
-                      child: Text(
-                        "3",
-                        style: TextStyle(fontSize: 10, color: basicColorB3),
-                      ),
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
       body: IndexedStack(
         index: _currentIndex,
         children: [
-          HomeScreen(),
+          HomeScreen(tabController: _tabController),
           CategoryScreen(),
           SearchScreen(),
           MyInfoScreen(),

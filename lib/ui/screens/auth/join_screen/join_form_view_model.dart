@@ -10,6 +10,7 @@ class JoinFormModel {
   DateTime? userBirth;
   String? userGender;
 
+
   JoinFormModel(
         {required this.userId,
          required this.userPassword,

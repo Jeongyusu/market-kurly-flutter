@@ -13,10 +13,25 @@ TextStyle tabBarTitle() {
       fontSize: 16, fontWeight: FontWeight.w400, color: basicColorB3);
 }
 
+TextStyle appBarTitle() {
+  return TextStyle(
+      fontSize: 20, fontWeight: FontWeight.w500, color: basicColorW);
+}
+
 // menu-title
+TextStyle subTitleReqular() {
+  return TextStyle(
+      fontSize: 18, fontWeight: FontWeight.w500, color: basicColorB1);
+}
+
 TextStyle subTitle() {
   return TextStyle(
       fontSize: 18, fontWeight: FontWeight.w500, color: basicColorB1);
+}
+
+TextStyle subTitleBold() {
+  return TextStyle(
+      fontSize: 20, fontWeight: FontWeight.w500, color: basicColorB1);
 }
 
 // id&pw search-contents
@@ -27,7 +42,7 @@ TextStyle subContentsPoint() {
 
 TextStyle subContentsPointSmall() {
   return TextStyle(
-      fontSize: 15, fontWeight: FontWeight.w600, color: primaryColor);
+      fontSize: 14, fontWeight: FontWeight.w500, color: primaryColor);
 }
 
 TextStyle basicTextBig() {
@@ -66,7 +81,7 @@ TextStyle disabledText() {
 // discount-text
 TextStyle discountText() {
   return TextStyle(
-      fontSize: 16, fontWeight: FontWeight.w500, color: accentColor);
+      fontSize: 16, fontWeight: FontWeight.w600, color: accentColor);
 }
 
 // price-text
@@ -96,7 +111,7 @@ TextStyle validationText() {
 // | <-- 스타일
 TextStyle greyToneText() {
   return TextStyle(
-    fontSize: 16, fontWeight: FontWeight.w400, color: disableColor);
+      fontSize: 16, fontWeight: FontWeight.w400, color: disableColor);
 }
 
 // 주문자 정보 내부 텍스트

@@ -3,7 +3,7 @@ import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
-import 'package:flutter_blog/ui/widgets/custom_svg_image.dart';
+import 'package:flutter_blog/ui/widgets/icons_and_images/custom_svg_image.dart';
 import 'package:flutter_blog/ui/widgets/text_items/custom_text_item.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -19,7 +19,7 @@ class PwSearchCompleteScreen extends StatelessWidget {
         backgroundColor: basicColorW,
         title: Text(
           "비밀번호 찾기",
-          style: subTitle(),
+          style: subTitleReqular(),
         ),
         centerTitle: true,
         leading: IconButton(

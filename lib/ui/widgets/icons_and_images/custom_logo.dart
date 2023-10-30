@@ -13,10 +13,7 @@ class CustomLogo extends StatelessWidget {
           height: 200,
           width: 200,
         ),
-        // Text(
-        //   title,
-        //   style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-        // ),
+
       ],
     );
   }

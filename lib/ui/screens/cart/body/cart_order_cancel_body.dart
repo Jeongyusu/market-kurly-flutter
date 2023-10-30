@@ -50,18 +50,29 @@ class CartOrderCancelBody extends ConsumerWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 25, bottom: 25),
                   child: Container(
-                    alignment: Alignment.topLeft,
-                      child: Text("주문번호 129319239",style: subTitle())),
+                      alignment: Alignment.topLeft,
+                      child: Text("주문번호 129319239", style: subTitle())),
                 ),
                 Container(
                   alignment: Alignment.center,
-                    width: 340, height: 50, child: Text("전체 상품 다시 담기", style: subTitle(),),
-                decoration: BoxDecoration(border: Border.all(color: disableColor, width: 1.0), borderRadius: BorderRadius.circular(5)),),
+                  width: 340,
+                  height: 50,
+                  child: Text(
+                    "전체 상품 다시 담기",
+                    style: subTitle(),
+                  ),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: disableColor, width: 1.0),
+                      borderRadius: BorderRadius.circular(5)),
+                ),
                 CartOrderOptionArea(),
                 CustomLineBold(),
                 Container(
                   child: ExpansionTile(
-                    title: Text("결제 정보", style: subTitle(),),
+                    title: Text(
+                      "결제 정보",
+                      style: subTitle(),
+                    ),
                     children: [
                       CartOrderCancelPriceArea(),
                     ],
@@ -69,8 +80,11 @@ class CartOrderCancelBody extends ConsumerWidget {
                 ),
                 CustomLineBold(),
                 Container(
-                  child:
-                  ExpansionTile(title: Text("주문 정보", style: subTitle(),),
+                  child: ExpansionTile(
+                    title: Text(
+                      "주문 정보",
+                      style: subTitle(),
+                    ),
                     children: [
                       CartOrderOrdererInfo(),
                     ],
@@ -79,7 +93,10 @@ class CartOrderCancelBody extends ConsumerWidget {
                 CustomLineBold(),
                 Container(
                   child: ExpansionTile(
-                    title: Text("배송 정보", style: subTitle(),),
+                    title: Text(
+                      "배송 정보",
+                      style: subTitle(),
+                    ),
                     children: [
                       CartOrderShipmentAddress(),
                     ],
@@ -88,9 +105,11 @@ class CartOrderCancelBody extends ConsumerWidget {
                 CustomLineBold(),
                 Container(
                   child: ExpansionTile(
-                    title: Text("추가 정보", style: subTitle(),),
-                    children: [
-                    ],
+                    title: Text(
+                      "추가 정보",
+                      style: subTitle(),
+                    ),
+                    children: [],
                   ),
                 ),
                 CustomLineBold(),
