@@ -13,6 +13,11 @@ TextStyle tabBarTitle() {
       fontSize: 16, fontWeight: FontWeight.w400, color: basicColorB3);
 }
 
+TextStyle appBarTitle() {
+  return TextStyle(
+      fontSize: 20, fontWeight: FontWeight.w500, color: basicColorW);
+}
+
 // menu-title
 TextStyle subTitleReqular() {
   return TextStyle(

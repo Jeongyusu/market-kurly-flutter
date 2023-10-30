@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/main.dart';
 import 'package:flutter_blog/ui/screens/auth/login_screen/login_screen.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_text_button.dart';
+import 'package:flutter_blog/ui/widgets/custom_main_appbar.dart';
 
 class MyInfoScreen extends StatelessWidget {
   const MyInfoScreen({super.key});
@@ -10,6 +12,12 @@ class MyInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomMainAppbar(
+        title: Text(
+          "마이컬리",
+          style: appBarTitle(),
+        ),
+      ),
       body: Center(
         child: Column(
           children: [
