@@ -32,7 +32,7 @@ class CategoryViewModel extends StateNotifier<CategoryModel?> {
 }
 
 // 3. 창고 관리자
-final CategoryListProvider =
+final categoryListProvider =
     StateNotifierProvider<CategoryViewModel, CategoryModel?>((ref) {
   return CategoryViewModel(null, ref)..notifyInit();
 });
