@@ -20,7 +20,7 @@ class CartOptionItem extends ConsumerWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Container(
-        width: 330,
+        width: 325,
         height: 100,
         child: Row(
           children: [
@@ -37,8 +37,8 @@ class CartOptionItem extends ConsumerWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CartOptionTitle(index: index),
-                CartOrderPriceTextItem(index: index),
+                CartPriceTextItem(index: index),
+                CustomOptionCount(index: index),
                 Spacer(),
                 // CustomOptionCount(index: index),
               ],
