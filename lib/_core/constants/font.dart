@@ -24,6 +24,11 @@ TextStyle subTitleReqular() {
       fontSize: 18, fontWeight: FontWeight.w500, color: basicColorB1);
 }
 
+TextStyle subTitle() {
+  return TextStyle(
+      fontSize: 18, fontWeight: FontWeight.w500, color: basicColorB1);
+}
+
 TextStyle subTitleBold() {
   return TextStyle(
       fontSize: 20, fontWeight: FontWeight.w500, color: basicColorB1);
@@ -101,4 +106,22 @@ TextStyle strongTextSmall() {
 TextStyle validationText() {
   return TextStyle(
       fontSize: 18, fontWeight: FontWeight.w600, color: validationColor);
+}
+
+// | <-- 스타일
+TextStyle greyToneText() {
+  return TextStyle(
+      fontSize: 16, fontWeight: FontWeight.w400, color: disableColor);
+}
+
+// 주문자 정보 내부 텍스트
+TextStyle greyToneLargeText() {
+  return TextStyle(
+      fontSize: 17, fontWeight: FontWeight.w400, color: basicColorB1);
+}
+
+// 기본 배송지 버튼모양텍스트 스타일
+TextStyle greyToneButtonText() {
+  return TextStyle(
+      fontSize: 12, fontWeight: FontWeight.w400, color: basicColorB1);
 }

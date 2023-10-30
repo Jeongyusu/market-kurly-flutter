@@ -19,13 +19,12 @@ class CartScreen extends ConsumerWidget {
   // 초기 수량
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Param? param = ref.watch(paramProvider);
-    CartListModel? cartDTOListModel = ref.watch(cartDTOListProvider);
-    if (cartDTOListModel == null) {
+    CartListModel? cartListModel = ref.watch(cartListProvider);
+    if (cartListModel == null) {
       return Center(child: CircularProgressIndicator());
     } else {
       return Scaffold(
-        body: CartBody(param: param, cartDTOListModel: cartDTOListModel),
+        body: CartBody(),
         bottomNavigationBar: BottomAppBar(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),

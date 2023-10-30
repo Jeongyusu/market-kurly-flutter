@@ -4,9 +4,9 @@ import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CartPriceTextItem extends ConsumerWidget {
+class CartOrderPriceTextItem extends ConsumerWidget {
   final int index;
-  const CartPriceTextItem({
+  const CartOrderPriceTextItem({
     super.key,
     required this.index,
   });
@@ -29,6 +29,10 @@ class CartPriceTextItem extends ConsumerWidget {
             "${cartDTOListModel?.cartDTO.cartProducts[index].beforeDiscount}원" ??
                 "에러",
             style: disabledText()),
+        Text(" |  ", style: greyToneText(),),
+        Text("${cartDTOListModel?.cartDTO.cartProducts[index].quentity}개" ?? "에러",
+          style: basicText(),
+        ),
       ],
     );
   }

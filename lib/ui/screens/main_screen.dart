@@ -3,7 +3,7 @@ import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_screen.dart';
 import 'package:flutter_blog/ui/screens/category/category_screen.dart';
 import 'package:flutter_blog/ui/screens/home/home_screen.dart';
-import 'package:flutter_blog/ui/screens/my_info/mykurly_screen.dart';
+import 'package:flutter_blog/ui/screens/my_info/my_info_screen.dart';
 import 'package:flutter_blog/ui/screens/search/search_screen.dart';
 import 'package:flutter_blog/ui/widgets/navigation_items/custom_navigation_item.dart';
 import 'package:flutter_svg/flutter_svg.dart';

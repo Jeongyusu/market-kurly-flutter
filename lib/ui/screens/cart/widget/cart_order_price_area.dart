@@ -6,8 +6,8 @@ import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_blog/ui/widgets/text_items/custom_text_sbtween_item.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CartPriceArea extends ConsumerWidget {
-  const CartPriceArea({
+class CartOrderPriceArea extends ConsumerWidget {
+  const CartOrderPriceArea({
     super.key,
   });
 
@@ -18,26 +18,45 @@ class CartPriceArea extends ConsumerWidget {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
+          Container(
+              alignment: Alignment.topLeft,child: Text("결제금액", style: subTitle(),)),
+          SizedBox(height: 20,),
           TextSpaceBetweenItem(
-            leftText: "상품금액",
+            leftText: " 주문금액",
             rightText: "${cartListModel!.cartDTO.totalBeforePrice}원",
             leftTextStyle: basicText(),
             rightTextStyle: basicText(),
           ),
+          SizedBox(height: 20,),
+          TextSpaceBetweenItem(
+            leftText: " - 상품금액",
+            rightText: "${cartListModel!.cartDTO.totalBeforePrice}원",
+            leftTextStyle: greyToneText(),
+            rightTextStyle: greyToneText(),
+          ),
           SizedBox(
-            height: xsmallGap,
+            height: smallGap,
           ),
           TextSpaceBetweenItem(
-            leftText: "상품할인금액",
+            leftText: " - 상품할인금액",
             rightText: "${cartListModel!.cartDTO.totalDiscountPrice}원",
+            leftTextStyle: greyToneText(),
+            rightTextStyle: greyToneText(),
+          ),
+          SizedBox(
+            height: mediumGap,
+          ),
+          TextSpaceBetweenItem(
+            leftText: " 배송비",
+            rightText: "0원",
             leftTextStyle: basicText(),
             rightTextStyle: basicText(),
           ),
           SizedBox(
-            height: xsmallGap,
+            height: smallGap,
           ),
           TextSpaceBetweenItem(
-            leftText: "배송비",
+            leftText: " 쿠폰할인",
             rightText: "0원",
             leftTextStyle: basicText(),
             rightTextStyle: basicText(),
@@ -56,9 +75,9 @@ class CartPriceArea extends ConsumerWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.only(top: 20, left: 3, bottom: 10),
             child: TextSpaceBetweenItem(
-              leftText: "결제예정금액",
+              leftText: "최종결제금액",
               rightText:
                   "${cartListModel!.cartDTO.totalBeforePrice - cartListModel.cartDTO.totalDiscountPrice}원",
               leftTextStyle: basicTextBig(),
