@@ -24,6 +24,11 @@ TextStyle subTitleReqular() {
       fontSize: 18, fontWeight: FontWeight.w500, color: basicColorB1);
 }
 
+TextStyle subTitleSmall() {
+  return TextStyle(
+      fontSize: 16, fontWeight: FontWeight.w500, color: basicColorB1);
+}
+
 TextStyle subTitle() {
   return TextStyle(
       fontSize: 18, fontWeight: FontWeight.w500, color: basicColorB1);

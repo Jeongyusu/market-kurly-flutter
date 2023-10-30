@@ -32,6 +32,7 @@ class CustomNavAppBar extends StatelessWidget {
         "${text}",
         style: subTitleReqular(),
       ),
+      actions: actions,
     );
   }
 }
