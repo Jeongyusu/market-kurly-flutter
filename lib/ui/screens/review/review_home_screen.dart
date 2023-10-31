@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
-import 'package:flutter_blog/ui/screens/cart/widget/cart_option_area.dart';
-import 'package:flutter_blog/ui/screens/cart/widget/cart_order_option_area.dart';
-import 'package:flutter_blog/ui/screens/cart/widget/cart_price_area.dart';
 import 'package:flutter_blog/ui/screens/review/widget/review_home_product_second.dart';
-import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
-import 'package:flutter_blog/ui/widgets/custom_main_appbar.dart';
-import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 import 'package:flutter_blog/ui/widgets/custom_review_home_appbar.dart';
 
 import 'widget/review_home_order_number.dart';
