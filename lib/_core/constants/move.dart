@@ -12,6 +12,7 @@ import 'package:flutter_blog/ui/screens/cart/cart_order_cancel_screen.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_screen.dart';
 import 'package:flutter_blog/ui/screens/main_screen.dart';
 import 'package:flutter_blog/ui/screens/my_info/my_info_screen.dart';
+import 'package:flutter_blog/ui/screens/review/review_home_screen.dart';
 import 'package:flutter_blog/ui/screens/splash_screen.dart';
 
 class Move {
@@ -28,7 +29,7 @@ class Move {
   static String idSearchCompleteScreen = "/login/idSearch/complete";
   static String pwSearchCompleteScreen = "/login/pwSearch/complete";
   static String pwNewSetScreen = "/login/pw/insert";
-
+  static String reviewHomeScreen = "/review/homeScreen";
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
@@ -46,5 +47,6 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.cartOrderSheetScreen: (context) => CartOderSheetScreen(),
     Move.cartOrderCancelScreen: (context) => CartOderCancelScreen(),
     Move.myInfoScreen: (context) => MyInfoScreen(),
+    Move.reviewHomeScreen: (context) => ReviewHomeScreen(),
   };
 }
