@@ -26,13 +26,13 @@ class CustomMainAppbar extends StatelessWidget implements PreferredSizeWidget {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                        builder: (context) => CartScreen()), // CartPage로 이동
+                        builder: (context) => CartScreen()),
                   );
                 },
                 icon: SvgPicture.asset(
-                  "assets/icons/cart.svg", // SVG 이미지 파일 경로
-                  width: 30, // 이미지 너비
-                  height: 30, // 이미지 높이
+                  "assets/icons/cart.svg",
+                  width: 30,
+                  height: 30,
                 ),
               ),
               Positioned(

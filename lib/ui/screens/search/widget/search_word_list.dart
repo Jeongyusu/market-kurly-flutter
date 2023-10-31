@@ -44,8 +44,8 @@ class SearchWordList extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
-                      color: bgAndLineColor, // 테두리 색상 설정
-                      width: 1.0, // 테두리 너비 설정
+                      color: bgAndLineColor,
+                      width: 1.0,
                     ),
                   ),
                 ),

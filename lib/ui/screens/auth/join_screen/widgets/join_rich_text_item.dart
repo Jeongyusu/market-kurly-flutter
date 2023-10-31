@@ -19,7 +19,10 @@ class JoinRichTextItem extends StatelessWidget {
           TextSpan(
             text: text,
             style: TextStyle(
-                color: basicColorB3, fontSize: 14, fontWeight: FontWeight.w500),
+              color: basicColorB3,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
           ),
           TextSpan(
             text: strong,

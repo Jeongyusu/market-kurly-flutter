@@ -13,7 +13,6 @@ class CustomLogo extends StatelessWidget {
           height: 200,
           width: 200,
         ),
-
       ],
     );
   }

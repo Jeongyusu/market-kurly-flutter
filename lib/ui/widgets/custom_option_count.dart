@@ -18,7 +18,7 @@ class CustomOptionCount extends ConsumerWidget {
       decoration: BoxDecoration(
         border: Border.all(color: bgAndLineColor),
         borderRadius: BorderRadius.all(
-          Radius.circular(4.0), // 선택적으로 모서리를 라운드 처리할 수 있음
+          Radius.circular(4.0),
         ),
       ),
       child: Padding(

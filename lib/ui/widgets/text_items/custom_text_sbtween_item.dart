@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 class TextSpaceBetweenItem extends StatelessWidget {
   final String leftText;
   final String rightText;
-  final TextStyle leftTextStyle; // 왼쪽 텍스트 스타일
-  final TextStyle rightTextStyle; // 오른쪽 텍스트 스타일
+  final TextStyle leftTextStyle;
+  final TextStyle rightTextStyle;
 
   const TextSpaceBetweenItem({
     Key? key,
     required this.leftText,
     required this.rightText,
     required this.leftTextStyle,
-    required this.rightTextStyle, // 기본 색상 설정
+    required this.rightTextStyle,
   }) : super(key: key);
 
   @override

@@ -16,17 +16,16 @@ class JoinBirthTextForm extends StatelessWidget {
       decoration: InputDecoration(
         labelText: labelText,
         floatingLabelBehavior: FloatingLabelBehavior.never,
-        // 오른쪽 테두리 스타일을 정의
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.black, // 오른쪽 테두리 색상
-            width: 2.0, // 오른쪽 테두리 두께
+            color: Colors.black,
+            width: 2.0,
           ),
         ),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.black, // 오른쪽 테두리 색상
-            width: 2.0, // 오른쪽 테두리 두께
+            color: Colors.black,
+            width: 2.0,
           ),
         ),
       ),

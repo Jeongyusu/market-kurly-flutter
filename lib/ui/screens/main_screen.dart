@@ -58,8 +58,8 @@ class _MainScreenState extends State<MainScreen>
         selectedItemColor: primaryColor,
         unselectedItemColor: basicColorB3,
         backgroundColor: Colors.white,
-        selectedFontSize: 12.0, // 선택된 아이템의 글꼴 크기 설정
-        unselectedFontSize: 12.0, // 선택되지 않은 아이템의 글꼴 크기 설정
+        selectedFontSize: 12.0,
+        unselectedFontSize: 12.0,
         onTap: _onTabbed,
       ),
     );
@@ -82,7 +82,7 @@ class _MainScreenState extends State<MainScreen>
         padding: EdgeInsets.symmetric(vertical: 5.0),
         child: SizedBox(
           child: SvgPicture.asset(
-            "${imgUrl}", // 아이콘의 이미지를 변경
+            "${imgUrl}",
             width: 24,
             height: 24,
           ),

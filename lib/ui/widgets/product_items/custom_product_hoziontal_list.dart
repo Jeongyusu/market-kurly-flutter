@@ -12,13 +12,14 @@ class CustomProductHorizontalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 355,
+      height: 370,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: images.length,
+        itemExtent: 150,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
-            padding: const EdgeInsets.only(right: 8.0),
+            padding: const EdgeInsets.only(right: 12.0),
             child: CustomProductItem(images: images, index: index),
           );
         },

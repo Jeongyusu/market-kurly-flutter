@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/ui/screens/product_category/product_category_screen.dart';
 
 class HomeKurlyMenuTitle extends StatelessWidget {
   final String title;
@@ -13,7 +14,7 @@ class HomeKurlyMenuTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 12, 4, 12),
+        padding: const EdgeInsets.fromLTRB(16, 24, 12, 0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -21,16 +22,20 @@ class HomeKurlyMenuTitle extends StatelessWidget {
               children: [
                 Text(
                   "${title}",
-                  style: subTitleBold(),
+                  style: subTitleReqular(),
                 ),
               ],
             ),
             InkWell(
               onTap: () {
-                // 아이콘이 클릭되었을 때의 동작을 정의합니다.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ProductDetailScreen()),
+                );
               },
               child: Container(
-                padding: EdgeInsets.all(4.0), // 아이콘과 텍스트 사이의 간격을 조절합니다.
+                padding: EdgeInsets.all(4.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,8 +44,7 @@ class HomeKurlyMenuTitle extends StatelessWidget {
                       "전체보기",
                       style: subContentsPointSmall(),
                     ),
-                    SizedBox(width: 2.0), // 아이콘과 텍스트 사이의 간격을 조절합니다.
-
+                    SizedBox(width: 2.0),
                     Icon(
                       Icons.arrow_forward_ios,
                       color: primaryColor,

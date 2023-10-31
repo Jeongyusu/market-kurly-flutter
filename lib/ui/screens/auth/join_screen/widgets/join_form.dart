@@ -8,6 +8,7 @@ import 'package:flutter_blog/data/dto/request_dto/user_request.dart';
 import 'package:flutter_blog/data/store/param_store.dart';
 import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/join_form_view_model.dart';
+import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_gender_radio_button.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_term_agreement.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_text_form_field.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
@@ -54,17 +55,17 @@ class JoinForm extends ConsumerWidget {
                   child: InkWell(
                     child: Container(
                       decoration: BoxDecoration(
-                        border: Border.all(color: primaryColor), // 보라색 선
-                        color: Colors.white, // 흰색 배경색
+                        border: Border.all(color: primaryColor),
+                        color: Colors.white,
                         borderRadius:
-                            BorderRadius.circular(5), // border-radius 설정
+                            BorderRadius.circular(5),
                       ),
-                      padding: EdgeInsets.all(13), // 내용과 경계 사이의 간격 설정
+                      padding: EdgeInsets.all(13),
                       child: Align(
                         alignment: Alignment.center,
                         child:
                             Text("중복확인", style: TextStyle(color: primaryColor)),
-                      ), // 텍스트 스타일 지정
+                      ),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, Move.loginScreen);
@@ -121,7 +122,7 @@ class JoinForm extends ConsumerWidget {
           const SizedBox(height: mediumGap),
           DatePicker(),
           const SizedBox(height: mediumGap),
-          RadioButton(),
+          JoinGenderRadioButton(),
           const SizedBox(height: mediumGap),
           CustomLineBold(),
           const SizedBox(height: mediumGap),
@@ -140,8 +141,7 @@ class JoinForm extends ConsumerWidget {
                   username: joinFormModel!.username,
                   userEmail: joinFormModel!.userEmail,
                   userBirth: joinFormModel?.userBirth ?? null,
-                  userGender: joinFormModel?.userGender ?? null
-              );
+                  userGender: joinFormModel?.userGender ?? null);
 
               ref.read(sessionProvider).join(joinReqDTO);
             },

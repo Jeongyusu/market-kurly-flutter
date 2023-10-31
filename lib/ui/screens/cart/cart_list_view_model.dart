@@ -20,7 +20,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
   Ref ref;
 
   Future<void> notifyInit() async {
-    // // jwt 가져오기
+
     // SessionStore sessionStore = ref.read(sessionProvider);
     ResponseDTO responseDTO = await CartDTORepository().fetchCartList();
     Logger().d("여까지실행");
