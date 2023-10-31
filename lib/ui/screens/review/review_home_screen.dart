@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_option_area.dart';
+import 'package:flutter_blog/ui/screens/cart/widget/cart_order_option_area.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_price_area.dart';
 import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
 import 'package:flutter_blog/ui/widgets/custom_main_appbar.dart';
 import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
+import 'package:flutter_blog/ui/widgets/custom_review_home_appbar.dart';
+
+import 'widget/review_home_order_number.dart';
+import 'widget/review_home_product.dart';
 
 class ReviewHomeScreen extends StatefulWidget {
   const ReviewHomeScreen({super.key});
@@ -28,7 +33,11 @@ class _ReviewHomeScreenState extends State<ReviewHomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomMainAppbar(title: Text("상품후기")),
+        appBar: CustomReviewHomeAppbar(
+            title: Text(
+          "상품 후기",
+          style: subTitleBold(),
+        )),
         body: Column(
           children: [
             TabBar(
@@ -52,16 +61,12 @@ class _ReviewHomeScreenState extends State<ReviewHomeScreen>
                 controller: _tabController,
                 children: [
                   ListView.builder(
-                    itemCount: 30,
+                    itemCount: 2,
                     itemBuilder: (context, index) {
                       return Column(
                         children: [
-                          Container(
-                            width: double.infinity,
-                            height: 50,
-                            color: Colors.yellow,
-                            child: Text("나나나"),
-                          )
+                          ReviewHomeOrderNumber(),
+                          ReviewHomeProduct(),
                         ],
                       );
                     },

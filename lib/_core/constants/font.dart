@@ -130,3 +130,19 @@ TextStyle greyToneButtonText() {
   return TextStyle(
       fontSize: 12, fontWeight: FontWeight.w400, color: basicColorB1);
 }
+
+// 상품후기 홈 후기쓰기 텍스트 스타일
+TextStyle reviewWrite() {
+  return TextStyle(
+      fontSize: 12, fontWeight: FontWeight.w500, color: basicColorW);
+}
+
+TextStyle reviewDeadLine() {
+  return TextStyle(
+      fontSize: 14, fontWeight: FontWeight.w600, color: validationColor);
+}
+
+TextStyle reviewOrderNumber() {
+  return TextStyle(
+      fontSize: 14, fontWeight: FontWeight.w600, color: basicColorB7);
+}

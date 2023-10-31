@@ -4,9 +4,9 @@ import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CartOptionTitle extends ConsumerWidget {
+class ReviewHomePriceTextItem extends ConsumerWidget {
   final int index;
-  const CartOptionTitle({
+  const ReviewHomePriceTextItem({
     super.key,
     required this.index,
   });
@@ -14,16 +14,13 @@ class CartOptionTitle extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     CartListModel? cartDTOListModel = ref.watch(cartListProvider);
-
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Flexible(
-          child: Container(
-              child: Text(
-            "${cartDTOListModel?.cartDTO.cartProducts[index].productSeller ?? ""} "
-            "${cartDTOListModel?.cartDTO.cartProducts[index].productTitle ?? ""}",
-            style: strongTextmMedium(),
-          )),
+        Text(
+          "${cartDTOListModel?.cartDTO.cartProducts[index].quentity}개 구매" ??
+              "에러",
+          style: basicText(),
         ),
       ],
     );
