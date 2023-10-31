@@ -4,10 +4,14 @@ import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/main_screen.dart';
-import 'package:flutter_blog/ui/screens/product_category/widget/product_category_grid.dart';
+import 'package:flutter_blog/ui/screens/product_category/widget/product_category_item.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
 import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 import 'package:flutter_blog/ui/widgets/icons_and_images/custom_review_icon.dart';
+import 'package:flutter_blog/ui/widgets/product_items/custom_filter_dropdown.dart';
+import 'package:flutter_blog/ui/widgets/product_items/custom_product_count.dart';
+import 'package:flutter_blog/ui/widgets/product_items/product_category.dart';
+import 'package:flutter_blog/ui/widgets/product_items/product_count_and_filter.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductDetailBody extends StatefulWidget {
@@ -35,15 +39,9 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
   final List<String> categoryTitle = [
     '한식,양식 중식',
     '중식, 한식,양식 중식',
-    '양식,한식,양식 중식',
-    '양식',
-    '양식',
-    '양식',
-    '양식',
-    '양식',
-    '양식',
-    '양식',
-    '양식',
+    '양식,한식',
+    '한식,양식',
+    '중식, 한식,양식',
   ];
 
   int selectedCategory = 0;
@@ -75,80 +73,8 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
             Navigator.pop(context);
           },
         ),
-        SliverAppBar(
-          toolbarHeight: 30,
-          title: Text('0'),
-          pinned: true,
-          elevation: 0.0,
-          automaticallyImplyLeading: false,
-          backgroundColor: basicColorW,
-          titleSpacing: 0,
-          flexibleSpace: Container(
-            padding: const EdgeInsets.all(8.0),
-            alignment: Alignment.bottomLeft,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    '총 182 개',
-                    style: strongTextSmall(),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          actions: [
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.all(4.0), // Dropdown 버튼 간격 조절
-                child: DropdownButton2<String>(
-                  value: _selectedValue,
-                  style: TextStyle(),
-                  alignment: Alignment.centerRight,
-                  items: _valueList.map((value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          value,
-                          style: basicTextSmall(),
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (String? value) {
-                    setState(() {
-                      _selectedValue = value ?? "첫 번째";
-                    });
-                  },
-                  underline: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.transparent,
-                    ),
-                  ),
-                  buttonStyleData: ButtonStyleData(
-                    height: 50,
-                    width: 90,
-                  ),
-                  iconStyleData: const IconStyleData(
-                    icon: Icon(Icons.keyboard_arrow_down),
-                    iconSize: 18,
-                    iconEnabledColor: basicColorB3,
-                    iconDisabledColor: basicColorB9,
-                  ),
-                  menuItemStyleData: const MenuItemStyleData(
-                    height: 40,
-                    padding: EdgeInsets.only(left: 8, right: 8),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+        ProductCountAndFilter(
+            selectedValue: _selectedValue, valueList: _valueList),
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.only(left: 16.0),

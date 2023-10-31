@@ -14,7 +14,7 @@ class HomeKurlyMenuTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 40, 12, 8),
+        padding: const EdgeInsets.fromLTRB(16, 24, 12, 0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

@@ -31,10 +31,10 @@ class _KurlyScreenState extends State<KurlyScreen>
   }
 
   final List<String> imagePaths = [
-    'assets/images/banner01.jpg',
-    'assets/images/banner02.jpg',
-    'assets/images/banner03.jpg',
-    'assets/images/banner04.jpg',
+    'assets/images/banner_01.png',
+    'assets/images/banner_02.png',
+    'assets/images/banner_03.png',
+    'assets/images/banner_04.png',
   ];
 
   final List<String> images = [
