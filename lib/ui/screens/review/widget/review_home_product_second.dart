@@ -17,10 +17,10 @@ import 'package:flutter_blog/ui/widgets/line/custom_line_bold.dart';
 import 'package:flutter_check_box_rounded/flutter_check_box_rounded.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ReviewHomeProduct extends ConsumerWidget {
+class ReviewHomeProductSecond extends ConsumerWidget {
   String bottomRightText;
   TextStyle bottomRightTextStyle;
-  ReviewHomeProduct({
+  ReviewHomeProductSecond({
     super.key, required this.bottomRightText, required this.bottomRightTextStyle
   });
 
@@ -58,17 +58,31 @@ class ReviewHomeProduct extends ConsumerWidget {
                         child: Column(
                           children: [
                             SizedBox(
-                              height: 70,
+                              height: 15,
                             ),
                             Container(
-                              width: 100,
+                              width: 80,
                               height: 40,
                               color: primaryColor02,
                               padding: EdgeInsets.all(10),
                               child: InkWell(
                                 onTap: () {},
                                 child: Text(
-                                  " 후기 쓰기",
+                                  " 후기 수정",
+                                  style: reviewWrite(),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 10,),
+                            Container(
+                              width: 100,
+                              height: 40,
+                              color: primaryColor,
+                              padding: EdgeInsets.all(10),
+                              child: InkWell(
+                                onTap: () {},
+                                child: Text(
+                                  " 후기 삭제",
                                   style: reviewWrite(),
                                 ),
                               ),

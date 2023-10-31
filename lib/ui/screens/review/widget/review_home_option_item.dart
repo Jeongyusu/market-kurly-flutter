@@ -10,7 +10,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ReviewHomeOptionItem extends ConsumerWidget {
   final int index;
-  const ReviewHomeOptionItem({super.key, required this.index});
+  String bottomRightText;
+  TextStyle bottomRightTextStyle;
+  ReviewHomeOptionItem({
+    super.key, required this.index,
+    required this.bottomRightText, required this.bottomRightTextStyle});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -41,11 +45,14 @@ class ReviewHomeOptionItem extends ConsumerWidget {
                 children: [
                   ReviewHomeOptionTitle(index: index),
                   ReviewHomePriceTextItem(index: index),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 140),
-                    child: Text(
-                      "7일 남음",
-                      style: reviewDeadLine(),
+                  Flexible(
+                    child: Container(
+                      padding: EdgeInsets.only(right: 15),
+                      alignment: Alignment.topRight,
+                      child: Text(
+                        bottomRightText,
+                        style: bottomRightTextStyle,
+                      ),
                     ),
                   ),
                   // CustomOptionCount(index: index),

@@ -4,6 +4,7 @@ import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_option_area.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_order_option_area.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_price_area.dart';
+import 'package:flutter_blog/ui/screens/review/widget/review_home_product_second.dart';
 import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
 import 'package:flutter_blog/ui/widgets/custom_main_appbar.dart';
 import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
@@ -61,12 +62,23 @@ class _ReviewHomeScreenState extends State<ReviewHomeScreen>
                 controller: _tabController,
                 children: [
                   ListView.builder(
+                    itemCount: 1,
+                    itemBuilder: (context, index) {
+                      return Column(
+                        children: [
+                          ReviewHomeOrderNumber(),
+                          ReviewHomeProduct(bottomRightText: "7일 남음", bottomRightTextStyle: reviewDeadLine()),
+                        ],
+                      );
+                    },
+                  ),
+                  ListView.builder(
                     itemCount: 2,
                     itemBuilder: (context, index) {
                       return Column(
                         children: [
                           ReviewHomeOrderNumber(),
-                          ReviewHomeProduct(),
+                          ReviewHomeProductSecond(bottomRightText: "2023-10-14 작성", bottomRightTextStyle: basicTextSmall()),
                         ],
                       );
                     },
