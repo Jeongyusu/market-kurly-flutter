@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
+import 'package:flutter_blog/data/model/address.dart';
 import 'package:flutter_blog/ui/screens/address/address_detail.dart';
 import 'package:flutter_blog/ui/screens/address/address_detail_setting.dart';
+import 'package:flutter_blog/ui/screens/address/address_list_view_model.dart';
 import 'package:flutter_blog/ui/screens/address/widget/address_caption.dart';
 import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,6 +18,14 @@ class AddressBody extends ConsumerWidget {
     final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
     Map<String, String> formData = {};
 
+    AddressListModel? model = ref.watch(addressListProvider);
+
+    List<Address> addresses = [];
+
+    if (model != null) {
+      addresses = model.addresses;
+    }
+
     /// Controller
     // _postcodeController 지번을 받음
     final TextEditingController _postcodeController = TextEditingController();
@@ -26,22 +35,6 @@ class AddressBody extends ConsumerWidget {
     final TextEditingController _addressDetailController =
         TextEditingController();
 
-    // 더미 데이터
-    List<String> addresses = [
-      "서울 관악",
-      "부산 동래",
-      "전남 광주",
-      "경북 경산",
-      "경기 김포",
-      "제주 서귀포",
-      "강원 태백",
-      "경남 마산",
-      "충북 청주",
-      "충남 태안",
-      "강원 동해",
-      "전북 무주",
-    ];
-
     return CustomScrollView(
       slivers: [
         CustomNavAppBar(
@@ -50,7 +43,7 @@ class AddressBody extends ConsumerWidget {
             Navigator.pop(context);
           },
           actions: [
-            MaterialButton(
+            TextButton(
               onPressed: () async {
                 KopoModel? model = await Navigator.push(
                   context,
@@ -112,7 +105,10 @@ class AddressBody extends ConsumerWidget {
                         InkWell(
                           onTap: () {},
                           child: AddressDetail(
-                            address: addresses[index],
+                            destination: addresses[index].destination,
+                            destinationDetail:
+                                addresses[index].destinationDetail,
+                            isDefaultAddress: addresses[index].isDefaultAddress,
                           ),
                         ),
                         SizedBox(height: smallGap),

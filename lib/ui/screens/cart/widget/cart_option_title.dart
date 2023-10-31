@@ -13,18 +13,27 @@ class CartOptionTitle extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CartListModel? cartDTOListModel = ref.watch(cartDTOListProvider);
+    CartListModel? cartDTOListModel = ref.watch(cartListProvider);
 
     return Row(
       children: [
-        Text(
-          cartDTOListModel?.cartDTO.cartProducts[index].productSeller ?? "",
-          style: basicText(),
+        Container(
+          child: Text(
+            cartDTOListModel?.cartDTO.cartProducts[index].productSeller ?? "",
+            style: basicText(),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
         SizedBox(width: smallGap),
-        Text(
-          cartDTOListModel?.cartDTO.cartProducts[index].productTitle ?? "",
-          style: basicText(),
+        Container(
+          width: 100,
+          child: Text(
+            cartDTOListModel?.cartDTO.cartProducts[index].productTitle ?? "",
+            style: basicText(),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ],
     );

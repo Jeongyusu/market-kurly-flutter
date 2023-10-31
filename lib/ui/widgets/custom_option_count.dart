@@ -13,7 +13,7 @@ class CustomOptionCount extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CartListModel? cartDTOListModel = ref.watch(cartDTOListProvider);
+    CartListModel? cartListModel = ref.watch(cartListProvider);
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: bgAndLineColor),
@@ -30,9 +30,9 @@ class CustomOptionCount extends ConsumerWidget {
               height: 20,
               child: GestureDetector(
                 onTap: () {
-                  ref.watch(cartDTOListProvider.notifier).minusQuantity(index);
-                  ref.read(cartDTOListProvider.notifier).calSumOriginPrice();
-                  ref.read(cartDTOListProvider.notifier).calSumDiscountPrice();
+                  ref.watch(cartListProvider.notifier).minusQuantity(index);
+                  ref.read(cartListProvider.notifier).calSumOriginPrice();
+                  ref.read(cartListProvider.notifier).calSumDiscountPrice();
                 },
                 child: SvgPicture.asset(
                   "assets/icons/minus.svg",
@@ -44,7 +44,7 @@ class CustomOptionCount extends ConsumerWidget {
             SizedBox(
               width: 10,
             ),
-            Text("${cartDTOListModel?.cartDTO.cartProducts[index].quentity}" ??
+            Text("${cartListModel?.cartDTO.cartProducts[index].quentity}" ??
                 "에러"),
             SizedBox(
               width: 10,
@@ -54,9 +54,9 @@ class CustomOptionCount extends ConsumerWidget {
               height: 20,
               child: GestureDetector(
                 onTap: () {
-                  ref.watch(cartDTOListProvider.notifier).calSumDiscountPrice();
-                  ref.read(cartDTOListProvider.notifier).calSumOriginPrice();
-                  ref.read(cartDTOListProvider.notifier).plusQuantity(index);
+                  ref.watch(cartListProvider.notifier).calSumDiscountPrice();
+                  ref.read(cartListProvider.notifier).calSumOriginPrice();
+                  ref.read(cartListProvider.notifier).plusQuantity(index);
                 },
                 child: SvgPicture.asset(
                   "assets/icons/plus.svg",

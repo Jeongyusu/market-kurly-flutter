@@ -24,7 +24,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
     // SessionStore sessionStore = ref.read(sessionProvider);
     ResponseDTO responseDTO = await CartDTORepository().fetchCartList();
     Logger().d("여까지실행");
-    Logger().d(responseDTO.response);
+    Logger().d("여기까지2 ${responseDTO.response}");
     state = CartListModel(responseDTO.response);
   }
 
@@ -96,7 +96,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
 }
 
 // 3. 창고 관리자 (View 빌드되기 직전에 생성됨)
-final cartDTOListProvider =
+final cartListProvider =
     StateNotifierProvider.autoDispose<CartListViewModel, CartListModel?>((ref) {
   return CartListViewModel(null, ref)..notifyInit();
 });
