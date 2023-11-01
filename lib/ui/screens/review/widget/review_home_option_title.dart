@@ -4,9 +4,9 @@ import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CartOptionTitle extends ConsumerWidget {
+class ReviewHomeOptionTitle extends ConsumerWidget {
   final int index;
-  const CartOptionTitle({
+  const ReviewHomeOptionTitle({
     super.key,
     required this.index,
   });

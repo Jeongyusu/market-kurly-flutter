@@ -19,10 +19,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SplashScreen(),
+      // home: SplashScreen(),
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
-      initialRoute: Move.mainScreen,
+      initialRoute: Move.myInfoUpdateScreen,
       routes: getRouters(),
       theme: theme(),
     );
