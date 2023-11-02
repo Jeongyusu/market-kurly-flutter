@@ -24,7 +24,6 @@ TextStyle subTitleSmall() {
       fontSize: 16, fontWeight: FontWeight.w500, color: basicColorB1);
 }
 
-// menu-title
 TextStyle subTitleReqular() {
   return TextStyle(
       fontSize: 18, fontWeight: FontWeight.w500, color: basicColorB1);
