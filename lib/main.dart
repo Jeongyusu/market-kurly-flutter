@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       // home: SplashScreen(),
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
-      initialRoute: Move.myInfoUpdateScreen,
+      initialRoute: Move.reviewHomeScreen,
       routes: getRouters(),
       theme: theme(),
     );
