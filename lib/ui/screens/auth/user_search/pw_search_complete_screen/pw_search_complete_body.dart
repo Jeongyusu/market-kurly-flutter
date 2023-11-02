@@ -33,6 +33,8 @@ class PwSearchCompleteBody extends StatelessWidget {
               CustomTextItem(
                 text: "비밀번호 : ",
                 subtext: "zh *****",
+                style: basicTextBig(),
+                subStyle: basicTextBig(),
               ),
             ],
           ),

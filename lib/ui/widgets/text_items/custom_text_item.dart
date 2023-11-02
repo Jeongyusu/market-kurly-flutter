@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/_core/constants/size.dart';
 
 class CustomTextItem extends StatelessWidget {
   final String text;
   final String subtext;
+  final TextStyle style;
+  final TextStyle subStyle;
   const CustomTextItem({
     super.key,
     required this.text,
     required this.subtext,
+    required this.style,
+    required this.subStyle,
   });
 
   @override
@@ -16,11 +21,14 @@ class CustomTextItem extends StatelessWidget {
       children: [
         Text(
           "${text}",
-          style: basicTextBig(),
+          style: style,
+        ),
+        SizedBox(
+          width: xsmallGap,
         ),
         Text(
           "${subtext}",
-          style: basicTextBig(),
+          style: subStyle,
         ),
       ],
     );

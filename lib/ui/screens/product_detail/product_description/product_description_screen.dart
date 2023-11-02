@@ -4,7 +4,7 @@ import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/main_screen.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
-import 'package:flutter_blog/ui/widgets/product_detail_bottombar.dart';
+import 'package:flutter_blog/ui/screens/product_detail/widget/product_detail_bottom_sheet.dart';
 import 'package:flutter_blog/ui/widgets/icons_and_images/custom_review_icon.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_bold.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_thin.dart';
