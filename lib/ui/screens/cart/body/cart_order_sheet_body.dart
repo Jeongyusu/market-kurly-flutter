@@ -48,15 +48,20 @@ class CartOrderSheetBody extends ConsumerWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 25),
                   child: Container(
-                    alignment: Alignment.topLeft,
-                      child: Text("주문상품",style: subTitle())),
+                      alignment: Alignment.topLeft,
+                      child: Text("주문상품", style: subTitleReqular())),
                 ),
                 CartOrderOptionArea(),
                 CustomLineBold(),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 Container(
-                  child:
-                  ExpansionTile(title: Text("주문자 정보", style: subTitle(),),
+                  child: ExpansionTile(
+                    title: Text(
+                      "주문자 정보",
+                      style: subTitleReqular(),
+                    ),
                     children: [
                       CartOrderOrdererInfo(),
                     ],
@@ -65,7 +70,10 @@ class CartOrderSheetBody extends ConsumerWidget {
                 CustomLineBold(),
                 Container(
                   child: ExpansionTile(
-                    title: Text("배송지", style: subTitle(),),
+                    title: Text(
+                      "배송지",
+                      style: subTitleReqular(),
+                    ),
                     children: [
                       CartOrderShipmentAddress(),
                     ],
@@ -74,7 +82,10 @@ class CartOrderSheetBody extends ConsumerWidget {
                 CustomLineBold(),
                 Container(
                   child: ExpansionTile(
-                    title: Text("쿠폰", style: subTitle(),),
+                    title: Text(
+                      "쿠폰",
+                      style: subTitleReqular(),
+                    ),
                     children: [
                       CartOrderCoupondropdown(),
                     ],

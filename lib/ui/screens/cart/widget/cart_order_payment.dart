@@ -12,7 +12,7 @@ class CartOrderPayment extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          ExpansionTile(title: Text("결제수단", style: subTitle(),),
+          ExpansionTile(title: Text("결제수단", style: subTitleReqular(),),
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 20),
@@ -89,11 +89,11 @@ class CartOrderPayment extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 20,),
-                    CheckBoxItem(text: "선택한 결제수단을 다음에도 사용", textStyle: subTitle(),),
+                    CheckBoxItem(text: "선택한 결제수단을 다음에도 사용", textStyle: subTitleReqular(),),
                     SizedBox(height: 20,),
                     CustomLineBold(),
                     SizedBox(height: 20,),
-                    CheckBoxItem(text: "결제 진행 필수 동의", textStyle: subTitle(),),
+                    CheckBoxItem(text: "결제 진행 필수 동의", textStyle: subTitleReqular(),),
                     SizedBox(height: 10,),
                     Row(
                       children: [

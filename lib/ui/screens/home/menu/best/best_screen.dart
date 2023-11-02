@@ -4,7 +4,7 @@ import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/main_screen.dart';
-import 'package:flutter_blog/ui/screens/product_category/widget/product_category_item.dart';
+import 'package:flutter_blog/ui/screens/product_category/widget/product_category_grid.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
 import 'package:flutter_blog/ui/widgets/custom_cart_button.dart';
 import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
@@ -137,7 +137,7 @@ class _BestScreenState extends State<BestScreen> {
             child: IndexedStack(
               index: selectedCategory,
               children: [
-                ProductDetailGrid(images: images),
+                ProductCategoryGrid(images: images),
                 Center(child: Text("트렌드")),
                 Center(child: Text("라이프")),
                 Center(child: Text("힐링")),

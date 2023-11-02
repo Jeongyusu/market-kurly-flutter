@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
+import 'package:flutter_blog/ui/screens/product_category/product_category_screen.dart';
+import 'package:flutter_blog/ui/screens/product_detail/product_detail_screen.dart';
 import 'package:flutter_blog/ui/widgets/custom_cart_button.dart';
 import 'package:flutter_blog/ui/widgets/icons_and_images/custom_review_icon.dart';
 import 'package:flutter_blog/ui/widgets/product_items/product_discount_and_price.dart';
@@ -24,7 +26,16 @@ class CustomProductItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 16.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ProductDetailScreen(
+                tabController: null,
+              ),
+            ),
+          );
+        },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

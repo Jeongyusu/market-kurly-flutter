@@ -19,17 +19,12 @@ TextStyle appBarTitle() {
 }
 
 // menu-title
-TextStyle subTitleReqular() {
-  return TextStyle(
-      fontSize: 18, fontWeight: FontWeight.w500, color: basicColorB1);
-}
-
 TextStyle subTitleSmall() {
   return TextStyle(
       fontSize: 16, fontWeight: FontWeight.w500, color: basicColorB1);
 }
 
-TextStyle subTitle() {
+TextStyle subTitleReqular() {
   return TextStyle(
       fontSize: 18, fontWeight: FontWeight.w500, color: basicColorB1);
 }
@@ -73,10 +68,28 @@ TextStyle subContents() {
       fontSize: 14, fontWeight: FontWeight.w400, color: basicColorB7);
 }
 
-// cancle-text
+TextStyle subContentsReqular() {
+  return TextStyle(
+      fontSize: 16, fontWeight: FontWeight.w500, color: basicColorB9);
+}
+
+TextStyle subContentsBold() {
+  return TextStyle(
+      fontSize: 16, fontWeight: FontWeight.w500, color: basicColorB5);
+}
+
 TextStyle disabledText() {
   return TextStyle(
     fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: disableColor,
+    decoration: TextDecoration.lineThrough,
+  );
+}
+
+TextStyle disabledTextBig() {
+  return TextStyle(
+    fontSize: 18,
     fontWeight: FontWeight.w400,
     color: disableColor,
     decoration: TextDecoration.lineThrough,
@@ -87,6 +100,12 @@ TextStyle disabledText() {
 TextStyle discountText() {
   return TextStyle(
       fontSize: 16, fontWeight: FontWeight.w600, color: accentColor);
+}
+
+// discount-text
+TextStyle discountTextBig() {
+  return TextStyle(
+      fontSize: 22, fontWeight: FontWeight.w600, color: accentColor);
 }
 
 // price-text
