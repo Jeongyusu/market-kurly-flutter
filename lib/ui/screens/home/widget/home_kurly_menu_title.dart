@@ -31,7 +31,7 @@ class HomeKurlyMenuTitle extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => ProductDetailScreen()),
+                      builder: (context) => ProductCategoryScreen()),
                 );
               },
               child: Container(

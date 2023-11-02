@@ -19,12 +19,13 @@ TextStyle appBarTitle() {
 }
 
 // menu-title
-TextStyle subTitleReqular() {
+TextStyle subTitleSmall() {
   return TextStyle(
-      fontSize: 18, fontWeight: FontWeight.w500, color: basicColorB1);
+      fontSize: 16, fontWeight: FontWeight.w500, color: basicColorB1);
 }
 
-TextStyle subTitle() {
+// menu-title
+TextStyle subTitleReqular() {
   return TextStyle(
       fontSize: 18, fontWeight: FontWeight.w500, color: basicColorB1);
 }
@@ -68,10 +69,28 @@ TextStyle subContents() {
       fontSize: 14, fontWeight: FontWeight.w400, color: basicColorB7);
 }
 
-// cancle-text
+TextStyle subContentsReqular() {
+  return TextStyle(
+      fontSize: 16, fontWeight: FontWeight.w500, color: basicColorB9);
+}
+
+TextStyle subContentsBold() {
+  return TextStyle(
+      fontSize: 16, fontWeight: FontWeight.w500, color: basicColorB5);
+}
+
 TextStyle disabledText() {
   return TextStyle(
     fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: disableColor,
+    decoration: TextDecoration.lineThrough,
+  );
+}
+
+TextStyle disabledTextBig() {
+  return TextStyle(
+    fontSize: 18,
     fontWeight: FontWeight.w400,
     color: disableColor,
     decoration: TextDecoration.lineThrough,
@@ -82,6 +101,12 @@ TextStyle disabledText() {
 TextStyle discountText() {
   return TextStyle(
       fontSize: 16, fontWeight: FontWeight.w600, color: accentColor);
+}
+
+// discount-text
+TextStyle discountTextBig() {
+  return TextStyle(
+      fontSize: 22, fontWeight: FontWeight.w600, color: accentColor);
 }
 
 // price-text
@@ -124,4 +149,20 @@ TextStyle greyToneLargeText() {
 TextStyle greyToneButtonText() {
   return TextStyle(
       fontSize: 12, fontWeight: FontWeight.w400, color: basicColorB1);
+}
+
+// 상품후기 홈 후기쓰기 텍스트 스타일
+TextStyle reviewWrite() {
+  return TextStyle(
+      fontSize: 12, fontWeight: FontWeight.w500, color: basicColorW);
+}
+
+TextStyle reviewDeadLine() {
+  return TextStyle(
+      fontSize: 14, fontWeight: FontWeight.w600, color: validationColor);
+}
+
+TextStyle reviewOrderNumber() {
+  return TextStyle(
+      fontSize: 14, fontWeight: FontWeight.w600, color: basicColorB7);
 }

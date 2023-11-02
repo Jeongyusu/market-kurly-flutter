@@ -19,15 +19,23 @@ class CartOrderPriceArea extends ConsumerWidget {
       child: Column(
         children: [
           Container(
-              alignment: Alignment.topLeft,child: Text("결제금액", style: subTitle(),)),
-          SizedBox(height: 20,),
+              alignment: Alignment.topLeft,
+              child: Text(
+                "결제금액",
+                style: subTitleReqular(),
+              )),
+          SizedBox(
+            height: 20,
+          ),
           TextSpaceBetweenItem(
             leftText: " 주문금액",
             rightText: "${cartListModel!.cartDTO.totalBeforePrice}원",
             leftTextStyle: basicText(),
             rightTextStyle: basicText(),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           TextSpaceBetweenItem(
             leftText: " - 상품금액",
             rightText: "${cartListModel!.cartDTO.totalBeforePrice}원",

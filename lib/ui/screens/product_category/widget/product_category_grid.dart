@@ -9,8 +9,8 @@ import 'package:flutter_blog/ui/widgets/product_items/product_discount_and_price
 import 'package:flutter_blog/ui/widgets/product_items/product_seller_and_title.dart';
 import 'package:flutter_blog/ui/widgets/product_items/product_thumbnail.dart';
 
-class ProductDetailGrid extends StatelessWidget {
-  const ProductDetailGrid({
+class ProductCategoryGrid extends StatelessWidget {
+  const ProductCategoryGrid({
     super.key,
     required this.images,
   });

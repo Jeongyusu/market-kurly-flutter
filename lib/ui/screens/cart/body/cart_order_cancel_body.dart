@@ -51,7 +51,7 @@ class CartOrderCancelBody extends ConsumerWidget {
                   padding: const EdgeInsets.only(left: 25, bottom: 25),
                   child: Container(
                       alignment: Alignment.topLeft,
-                      child: Text("주문번호 129319239", style: subTitle())),
+                      child: Text("주문번호 129319239", style: subTitleReqular())),
                 ),
                 Container(
                   alignment: Alignment.center,
@@ -59,7 +59,7 @@ class CartOrderCancelBody extends ConsumerWidget {
                   height: 50,
                   child: Text(
                     "전체 상품 다시 담기",
-                    style: subTitle(),
+                    style: subTitleReqular(),
                   ),
                   decoration: BoxDecoration(
                       border: Border.all(color: disableColor, width: 1.0),
@@ -71,7 +71,7 @@ class CartOrderCancelBody extends ConsumerWidget {
                   child: ExpansionTile(
                     title: Text(
                       "결제 정보",
-                      style: subTitle(),
+                      style: subTitleReqular(),
                     ),
                     children: [
                       CartOrderCancelPriceArea(),
@@ -83,7 +83,7 @@ class CartOrderCancelBody extends ConsumerWidget {
                   child: ExpansionTile(
                     title: Text(
                       "주문 정보",
-                      style: subTitle(),
+                      style: subTitleReqular(),
                     ),
                     children: [
                       CartOrderOrdererInfo(),
@@ -95,7 +95,7 @@ class CartOrderCancelBody extends ConsumerWidget {
                   child: ExpansionTile(
                     title: Text(
                       "배송 정보",
-                      style: subTitle(),
+                      style: subTitleReqular(),
                     ),
                     children: [
                       CartOrderShipmentAddress(),
@@ -107,7 +107,7 @@ class CartOrderCancelBody extends ConsumerWidget {
                   child: ExpansionTile(
                     title: Text(
                       "추가 정보",
-                      style: subTitle(),
+                      style: subTitleReqular(),
                     ),
                     children: [],
                   ),
