@@ -6,7 +6,7 @@ import 'package:flutter_blog/ui/screens/product_detail/product_info/product_info
 import 'package:flutter_blog/ui/screens/product_detail/product_inquiry/product_inquiry_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/widget/product_detail_tabbar.dart';
-import 'package:flutter_blog/ui/widgets/product_detail_bottombar.dart';
+import 'package:flutter_blog/ui/screens/product_detail/widget/product_detail_bottom_sheet.dart';
 import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 
 class ProductDetailScreen extends StatefulWidget {
