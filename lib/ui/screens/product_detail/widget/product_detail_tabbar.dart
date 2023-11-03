@@ -30,6 +30,12 @@ class ProductDetailTabBar extends SliverPersistentHeaderDelegate {
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         unselectedLabelColor: Colors.grey,
         labelColor: primaryColor,
+        indicator: UnderlineTabIndicator(
+          borderSide: BorderSide(
+            width: 2, // 선의 두께
+            color: primaryColor,
+          ),
+        ),
         indicatorColor: primaryColor,
         indicatorSize: TabBarIndicatorSize.label,
       ),

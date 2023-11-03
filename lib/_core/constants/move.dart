@@ -17,6 +17,8 @@ import 'package:flutter_blog/ui/screens/my_info/my_info_screen.dart';
 import 'package:flutter_blog/ui/screens/my_info/my_info_update_screen.dart';
 import 'package:flutter_blog/ui/screens/notice/notice_detail_screen.dart';
 import 'package:flutter_blog/ui/screens/notice/notice_home_screen.dart';
+import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_img_screen.dart';
+import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_save_screen.dart';
 import 'package:flutter_blog/ui/screens/review/review_home_screen.dart';
 import 'package:flutter_blog/ui/screens/splash_screen.dart';
 import 'package:flutter_blog/ui/screens/user_question/user_question_screen.dart';
@@ -37,6 +39,8 @@ class Move {
   static String pwSearchCompleteScreen = "/login/pwSearch/complete";
   static String pwNewSetScreen = "/login/pw/insert";
   static String reviewHomeScreen = "/review/homeScreen";
+  static String productReviewImgScreen = "/review/detailImg";
+  static String productReviewSaveScreen = "/review/save";
   static String couponHomeScreen = "/coupon/homeScreen";
   static String customerCenterHomeScreen = "/customerCenter/homeScreen";
   static String noticeHomeScreen = "/notice/homeScreen";
@@ -61,6 +65,8 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.myInfoScreen: (context) => MyInfoScreen(),
     Move.myInfoUpdateScreen: (context) => MyInfoUpdateScreen(),
     Move.reviewHomeScreen: (context) => ReviewHomeScreen(),
+    Move.productReviewImgScreen: (context) => ProductReviewImgScreen(),
+    Move.productReviewSaveScreen: (context) => ProductReviewSaveScreen(),
     Move.couponHomeScreen: (context) => CouponHomeScreen(),
     Move.customerCenterHomeScreen: (context) => CustomerCenterHomeScreen(),
     Move.noticeHomeScreen: (context) => NoticeHomeScreen(),

@@ -33,9 +33,11 @@ class CustomNavAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: Container(
         width: 250,
-        child: Text(
-          "${text}",
-          style: subTitleSmall(),
+        child: Center(
+          child: Text(
+            "${text}",
+            style: subTitleSmall(),
+          ),
         ),
       ),
       actions: [

@@ -34,6 +34,8 @@ class IdSearchCompleteBody extends StatelessWidget {
               CustomTextItem(
                 text: "아이디 : ",
                 subtext: "gaml ***",
+                style: basicTextBig(),
+                subStyle: basicTextBig(),
               ),
             ],
           ),
