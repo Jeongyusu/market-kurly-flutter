@@ -13,7 +13,6 @@ import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 import 'package:flutter_blog/ui/widgets/icons_and_images/custom_review_icon.dart';
 import 'package:flutter_blog/ui/widgets/text_form_field/custom_text_area.dart';
 import 'package:flutter_blog/ui/widgets/text_items/custom_text_item.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
 
 class ProductReviewSaveScreen extends StatelessWidget {
