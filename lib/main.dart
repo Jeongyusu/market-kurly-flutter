@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       // home: SplashScreen(),
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
-      initialRoute: Move.mainScreen,
+      initialRoute: Move.userQuestionScreen,
       routes: getRouters(),
       theme: theme(),
     );

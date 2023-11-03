@@ -28,7 +28,7 @@ class CustomLoginTextFormField extends StatelessWidget {
           validator: funValidator,
           obscureText: obscureText,
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             hintText: "$placeholderText",
             hintStyle: TextStyle(
               color: formColor,
@@ -53,6 +53,7 @@ class CustomLoginTextFormField extends StatelessWidget {
             ),
           ),
         ),
+        const SizedBox(height: xsmallGap),
       ],
     );
   }
