@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/_core/constants/color.dart';
+import 'package:flutter_blog/_core/constants/font.dart';
 
-class CartOrderCoupondropdown extends StatefulWidget {
-  const CartOrderCoupondropdown({super.key});
+class UserQuestionDropdown extends StatefulWidget {
+  UserQuestionDropdown({Key? key}) : super(key: key);
 
   @override
-  State<CartOrderCoupondropdown> createState() =>
-      _CartOrderCoupondropdownState();
+  _UserQuestionDropdownState createState() => _UserQuestionDropdownState();
 }
 
-class _CartOrderCoupondropdownState extends State<CartOrderCoupondropdown> {
+class _UserQuestionDropdownState extends State<UserQuestionDropdown> {
   final _optionList = [
     "취소/교환/반품",
     "회원/이벤트/쿠폰",
