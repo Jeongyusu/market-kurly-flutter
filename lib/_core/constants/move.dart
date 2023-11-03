@@ -14,6 +14,7 @@ import 'package:flutter_blog/ui/screens/main_screen.dart';
 import 'package:flutter_blog/ui/screens/my_info/my_info_screen.dart';
 import 'package:flutter_blog/ui/screens/my_info/my_info_update_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_img_screen.dart';
+import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_save_screen.dart';
 import 'package:flutter_blog/ui/screens/review/review_home_screen.dart';
 import 'package:flutter_blog/ui/screens/splash_screen.dart';
 
@@ -34,6 +35,7 @@ class Move {
   static String pwNewSetScreen = "/login/pw/insert";
   static String reviewHomeScreen = "/review/homeScreen";
   static String productReviewImgScreen = "/review/detailImg";
+  static String productReviewSaveScreen = "/review/save";
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
@@ -54,5 +56,8 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.myInfoUpdateScreen: (context) => MyInfoUpdateScreen(),
     Move.reviewHomeScreen: (context) => ReviewHomeScreen(),
     Move.productReviewImgScreen: (context) => ProductReviewImgScreen(),
+    Move.productReviewSaveScreen: (context) => ProductReviewSaveScreen(
+          controller: null,
+        ),
   };
 }

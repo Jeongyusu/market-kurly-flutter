@@ -83,6 +83,7 @@ class _ProductReviewImgScreenState extends State<ProductReviewImgScreen> {
   }
 
   Widget _buildHeaderSelectorButton(int id, String reviewImg) {
+    bool isSelected = selectedId == id;
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -98,6 +99,10 @@ class _ProductReviewImgScreenState extends State<ProductReviewImgScreen> {
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.circular(5),
+          border: Border.all(
+            color: isSelected ? primaryColor02 : Colors.transparent,
+            width: 2.0,
+          ),
         ),
       ),
     );

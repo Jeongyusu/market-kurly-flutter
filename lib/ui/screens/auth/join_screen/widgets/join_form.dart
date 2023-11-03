@@ -57,8 +57,7 @@ class JoinForm extends ConsumerWidget {
                       decoration: BoxDecoration(
                         border: Border.all(color: primaryColor),
                         color: Colors.white,
-                        borderRadius:
-                            BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(5),
                       ),
                       padding: EdgeInsets.all(13),
                       child: Align(
@@ -68,7 +67,38 @@ class JoinForm extends ConsumerWidget {
                       ),
                     ),
                     onTap: () {
-                      Navigator.pushNamed(context, Move.loginScreen);
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Container(
+                            width: 150,
+                            child: AlertDialog(
+                              title: Text(
+                                '사용할 수 없는 아이디입니다.',
+                                style: subTitleSmall(),
+                              ),
+                              actions: [
+                                Container(
+                                  height: 40,
+                                  child: TextButton(
+                                    onPressed: () {
+                                      // 모달 창 닫기 로직
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text('확인'),
+                                  ),
+                                ),
+                              ],
+                              elevation: 10.0,
+                              backgroundColor: basicColorW,
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                              ),
+                            ),
+                          );
+                        },
+                      );
                     },
                   ),
                 )

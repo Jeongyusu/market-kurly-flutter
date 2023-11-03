@@ -25,7 +25,9 @@ class ProductDetailAppbar extends StatelessWidget
       backgroundColor: basicColorW,
       leading: IconButton(
         icon: Icon(Icons.close, size: 22, color: basicColorB5),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
       titleSpacing: 0,
       centerTitle: true,
