@@ -11,31 +11,23 @@ class MyInfoBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomMainAppbar(
-        title: Text(
-          "마이컬리",
-          style: appBarTitle(),
-        ),
-      ),
-      body: CustomScrollView(
-        slivers: [
-          SliverList(
-              delegate: SliverChildListDelegate([
-            Column(
-              children: [
-                MyInfoProfile(),
-                MyInfoCoupon(),
-                MyInfoShipmentAddress(),
-                Container(
-                  padding: EdgeInsets.only(left: 20),
-                  child: MyInfoArrowBoard(),
-                ),
-              ],
-            ),
-          ]))
-        ],
-      ),
+    return CustomScrollView(
+      slivers: [
+        SliverList(
+            delegate: SliverChildListDelegate([
+          Column(
+            children: [
+              MyInfoProfile(),
+              MyInfoCoupon(),
+              MyInfoShipmentAddress(),
+              Container(
+                padding: EdgeInsets.only(left: 20),
+                child: MyInfoArrowBoard(),
+              ),
+            ],
+          ),
+        ]))
+      ],
     );
   }
 }
