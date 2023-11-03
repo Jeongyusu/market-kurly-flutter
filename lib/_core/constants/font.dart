@@ -170,3 +170,8 @@ TextStyle reviewOrderNumber() {
   return TextStyle(
       fontSize: 14, fontWeight: FontWeight.w600, color: basicColorB7);
 }
+
+TextStyle couponTitle() {
+  return TextStyle(
+      fontSize: 18, fontWeight: FontWeight.w700, color: basicColorB1);
+}

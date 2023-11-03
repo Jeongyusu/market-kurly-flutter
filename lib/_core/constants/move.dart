@@ -10,6 +10,8 @@ import 'package:flutter_blog/ui/screens/auth/user_search/widget/pw_new_form.dart
 import 'package:flutter_blog/ui/screens/cart/cart_oder_sheet_screen.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_order_cancel_screen.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_screen.dart';
+import 'package:flutter_blog/ui/screens/coupon/coupon_home_screen.dart';
+import 'package:flutter_blog/ui/screens/customer_center/customer_center_home_screen.dart';
 import 'package:flutter_blog/ui/screens/main_screen.dart';
 import 'package:flutter_blog/ui/screens/my_info/my_info_screen.dart';
 import 'package:flutter_blog/ui/screens/my_info/my_info_update_screen.dart';
@@ -36,6 +38,8 @@ class Move {
   static String reviewHomeScreen = "/review/homeScreen";
   static String productReviewImgScreen = "/review/detailImg";
   static String productReviewSaveScreen = "/review/save";
+  static String couponHomeScreen = "/coupon/homeScreen";
+  static String customerCenterHomeScreen = "/customerCenter/homeScreen";
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
@@ -56,8 +60,8 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.myInfoUpdateScreen: (context) => MyInfoUpdateScreen(),
     Move.reviewHomeScreen: (context) => ReviewHomeScreen(),
     Move.productReviewImgScreen: (context) => ProductReviewImgScreen(),
-    Move.productReviewSaveScreen: (context) => ProductReviewSaveScreen(
-          controller: null,
-        ),
+    Move.productReviewSaveScreen: (context) => ProductReviewSaveScreen(),
+    Move.couponHomeScreen: (context) => CouponHomeScreen(),
+    Move.customerCenterHomeScreen: (context) => CustomerCenterHomeScreen(),
   };
 }
