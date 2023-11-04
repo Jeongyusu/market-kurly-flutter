@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/ui/screens/my_info/widget/my_info_sub_menu.dart';
+import 'package:flutter_blog/ui/screens/my_info/widget/my_info_sub_menu_logout.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_thin.dart';
 
 class MyInfoArrowBoard extends StatelessWidget {
@@ -27,7 +28,7 @@ class MyInfoArrowBoard extends StatelessWidget {
           rightText: "최신 버전",
         ),
         CustomLineThin(),
-        MyInfoSubMenu(leftText: "로그아웃"),
+        MyInfoSubMenuLogout(leftText: "로그아웃"),
         CustomLineThin(),
       ],
     );
