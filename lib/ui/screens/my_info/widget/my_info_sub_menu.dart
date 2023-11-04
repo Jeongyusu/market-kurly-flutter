@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/_core/constants/move.dart';
+import 'package:flutter_blog/data/store/session_store.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MyInfoSubMenu extends StatelessWidget {
   String leftText;
@@ -11,7 +14,13 @@ class MyInfoSubMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Consumer(builder: (context, ref, child) {
+          ref.read(sessionProvider).logout();
+          Navigator.pushNamed(context, Move.loginScreen);
+          return SizedBox();
+        },);
+      },
       child: Padding(
         padding: const EdgeInsets.only(top: 20, bottom: 20),
         child: Row(
