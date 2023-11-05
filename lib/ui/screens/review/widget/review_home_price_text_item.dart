@@ -18,7 +18,7 @@ class ReviewHomePriceTextItem extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "${cartDTOListModel?.cartDTO.cartProducts[index].quentity}개 구매" ??
+          "${cartDTOListModel?.cartDTO.cartProducts[index].optionQuantity}개 구매" ??
               "에러",
           style: basicText(),
         ),

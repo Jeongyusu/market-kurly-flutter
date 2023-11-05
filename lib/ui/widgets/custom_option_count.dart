@@ -44,7 +44,7 @@ class CustomOptionCount extends ConsumerWidget {
             SizedBox(
               width: 10,
             ),
-            Text("${cartListModel?.cartDTO.cartProducts[index].quentity}" ??
+            Text("${cartListModel?.cartDTO.cartProducts[index].optionQuantity}" ??
                 "에러"),
             SizedBox(
               width: 10,

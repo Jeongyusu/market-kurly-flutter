@@ -21,8 +21,10 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
 
   Future<void> notifyInit() async {
 
-    // SessionStore sessionStore = ref.read(sessionProvider);
-    ResponseDTO responseDTO = await CartDTORepository().fetchCartList();
+    SessionStore sessionStore = ref.read(sessionProvider);
+    String jwt = sessionStore.jwt ?? "";
+    Logger().d("jwt테스트${jwt}");
+    ResponseDTO responseDTO = await CartDTORepository().fetchCartList(jwt);
     Logger().d("여까지실행");
     Logger().d("여기까지2 ${responseDTO.response}");
     state = CartListModel(responseDTO.response);
@@ -31,7 +33,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
   void plusQuantity(int index) {
     Logger().d("플러스 클릭됨");
     if (index >= 0 && index < state!.cartDTO.cartProducts.length) {
-      state!.cartDTO.cartProducts[index].quentity++;
+      state!.cartDTO.cartProducts[index].optionQuantity++;
     }
     state = CartListModel(state!.cartDTO);
   }
@@ -39,8 +41,8 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
   void minusQuantity(int index) {
     Logger().d("마이너스 클릭됨");
     if (index >= 0 && index < state!.cartDTO.cartProducts.length) {
-      if (state!.cartDTO.cartProducts[index].quentity > 0) {
-        state!.cartDTO.cartProducts[index].quentity--;
+      if (state!.cartDTO.cartProducts[index].optionQuantity > 0) {
+        state!.cartDTO.cartProducts[index].optionQuantity--;
       }
     }
     state = CartListModel(state!.cartDTO);
@@ -52,7 +54,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
     if (state != null) {
       int sumOriginPrice = 0;
       state!.cartDTO.cartProducts.forEach((cartProduct) {
-        sumOriginPrice += cartProduct.beforeDiscount * cartProduct.quentity;
+        sumOriginPrice += cartProduct.originPrice * cartProduct.optionQuantity;
         state!.cartDTO.totalBeforePrice = sumOriginPrice;
         state = CartListModel(state!.cartDTO);
       });
@@ -66,8 +68,8 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
       int sumDiscountPrice = 0;
       state!.cartDTO.cartProducts.forEach((cartProduct) {
         sumDiscountPrice +=
-            (cartProduct.beforeDiscount - cartProduct.discountedPrice) *
-                (cartProduct.quentity);
+            (cartProduct.originPrice - cartProduct.discountedPrice) *
+                (cartProduct.optionQuantity);
         state!.cartDTO.totalDiscountPrice = sumDiscountPrice;
         state = CartListModel(state!.cartDTO);
       });

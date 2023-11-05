@@ -20,8 +20,8 @@ class CartOptionTitle extends ConsumerWidget {
         Flexible(
           child: Container(
               child: Text(
-            "${cartDTOListModel?.cartDTO.cartProducts[index].productSeller ?? ""} "
-            "${cartDTOListModel?.cartDTO.cartProducts[index].productTitle ?? ""}",
+            "${cartDTOListModel?.cartDTO.cartProducts[index].sellerName ?? ""} "
+            "${cartDTOListModel?.cartDTO.cartProducts[index].productName ?? ""}",
             style: strongTextmMedium(),
           )),
         ),
