@@ -67,13 +67,16 @@ class SessionStore extends SessionUser {
 
   // JWT는 로그아웃할 때 서버측으로 요청할 필요가 없음.
   Future<void> logout() async {
+    Logger().d("로그아웃 테스트10");
+
     this.jwt = null;
     this.isLogin = false;
     this.user = null;
+    Logger().d("로그아웃 테스트11");
 
     await secureStorage.delete(key: "jwt");
-
-    Navigator.pushNamedAndRemoveUntil(mContext!, "/login", (route) => false);
+    Logger().d("로그아웃 테스트12");
+    Navigator.pushNamedAndRemoveUntil(mContext!, Move.loginScreen, (route) => false);
   }
 }
 

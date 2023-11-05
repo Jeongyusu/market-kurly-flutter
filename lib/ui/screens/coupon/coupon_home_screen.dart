@@ -21,7 +21,7 @@ class CouponHomeScreen extends StatelessWidget {
       )),
       body: CouponHomeScreenBody(),
       bottomNavigationBar:
-          UserQuestionBottomAppbar(text: "등록하기", funPageRoute: () {}),
+          CouponBottomAppbar(text: "등록하기", funPageRoute: () {}, controller: TextEditingController(),),
     );
   }
 }

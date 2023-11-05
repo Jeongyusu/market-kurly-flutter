@@ -5,17 +5,19 @@ import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
-class MyInfoSubMenu extends StatelessWidget {
+class MyInfoSubMenuLogout extends ConsumerWidget {
   String leftText;
   String? left2Text;
   String? rightText;
-  MyInfoSubMenu(
+  MyInfoSubMenuLogout(
       {super.key, required this.leftText, this.left2Text, this.rightText});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+          ref.read(sessionProvider).logout();
+      },
       child: Padding(
         padding: const EdgeInsets.only(top: 20, bottom: 20),
         child: Row(
