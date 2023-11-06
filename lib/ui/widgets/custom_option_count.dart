@@ -30,7 +30,7 @@ class CustomOptionCount extends ConsumerWidget {
               height: 20,
               child: GestureDetector(
                 onTap: () {
-                  ref.watch(cartListProvider.notifier).minusQuantity(index);
+                  ref.read(cartListProvider.notifier).minusQuantity(index);
                   ref.read(cartListProvider.notifier).calSumOriginPrice();
                   ref.read(cartListProvider.notifier).calSumDiscountPrice();
                 },
