@@ -1,4 +1,5 @@
 // 창고
+import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Param {
@@ -9,7 +10,8 @@ class Param {
 
 // 창고데이터
 class ParamStore extends StateNotifier<Param?> {
-  ParamStore(super._state);
+  ParamStore(super._state, this.ref);
+  Ref ref;
 
   void removeListAdd(int index) {
     List<int> updatedRemoveList = [...state!.removeList ?? [], index];
@@ -21,6 +23,16 @@ class ParamStore extends StateNotifier<Param?> {
       currentRemoveList.remove(index);
       state = Param(removeList: currentRemoveList);
     }
+  }
+
+  void notifyInit(){
+    CartListModel? cartListModel = ref.read(cartListProvider);
+    List<int> initialRemoveList = state!.removeList ?? [];
+    for (int i = initialRemoveList.length; i < cartListModel!.cartDTO!.cartProducts.length; i++) {
+      initialRemoveList.add(i);
+    }
+    state = Param(removeList: initialRemoveList, isChecked: true);
+
   }
 
   void AllChecked(bool value) {
@@ -38,5 +50,5 @@ class ParamStore extends StateNotifier<Param?> {
 }
 
 final paramProvider = StateNotifierProvider<ParamStore, Param?>((ref) {
-  return ParamStore(Param(isChecked: true, removeList: []));
+  return ParamStore(null, ref)..notifyInit();
 });

@@ -12,16 +12,19 @@ class CartTotalBtn extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Param? param = ref.read(paramProvider);
     CartListModel? cartListModel = ref.read(cartListProvider);
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CheckBoxItem(
-              text: "전체선택",
-              textStyle: basicTextBig(),
+            InkWell(
+              onTap: () {
+              },
+              child: CheckBoxItem(
+                text: "전체선택",
+                textStyle: basicTextBig(),
+              ),
             ),
             InkWell(
               onTap: () {
