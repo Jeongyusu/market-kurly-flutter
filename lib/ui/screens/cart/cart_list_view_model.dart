@@ -3,6 +3,7 @@ import 'package:flutter_blog/data/dto/response_dto.dart';
 import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_dto.dart';
 import 'package:flutter_blog/data/model/post.dart';
 import 'package:flutter_blog/data/repository/cart_repsository.dart';
+import 'package:flutter_blog/data/store/param_store.dart';
 import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_blog/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -74,6 +75,17 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
         state = CartListModel(state!.cartDTO);
       });
     }
+  }
+  void selectedCartItemRemove() {
+
+    Param? param = ref.read(paramProvider);
+    param!.removeList!.sort((a, b) => b.compareTo(a));
+    for (int index in param!.removeList!) {
+      if (index >= 0 && index < state!.cartDTO!.cartProducts.length) {
+        state!.cartDTO!.cartProducts.removeAt(index);
+      }
+    }
+    state = CartListModel(state!.cartDTO);
   }
   // Future<void> notifyAdd(PostSaveReqDTO dto) async {
   //   SessionStore sessionStore = ref.read(sessionProvider);

@@ -4,11 +4,13 @@ import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/data/store/param_store.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
+import 'package:flutter_blog/ui/screens/cart/widget/cart_button_appbar.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_option_area.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_option_item.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_option_title.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_price_area.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_price_text_item.dart';
+import 'package:flutter_blog/ui/screens/cart/widget/cart_total_btn.dart';
 import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
 import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 import 'package:flutter_blog/ui/widgets/custom_option_count.dart';
@@ -23,6 +25,7 @@ class CartBody extends StatelessWidget {
   const CartBody({
     super.key,
   });
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -33,7 +36,7 @@ class CartBody extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        _cartButtonAppbar(),
+        CartButtonAppbar(),
         SliverList(
           delegate: SliverChildListDelegate([
             Column(
@@ -51,50 +54,5 @@ class CartBody extends StatelessWidget {
       ],
     );
   }
-
-  Widget _cartButtonAppbar() {
-    return SliverAppBar(
-      automaticallyImplyLeading: false,
-      pinned: true,
-      elevation: 0.1,
-      backgroundColor: basicColorW,
-      flexibleSpace: FlexibleSpaceBar(
-        titlePadding: EdgeInsets.symmetric(vertical: 5.0),
-        background: Container(
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                width: 10,
-                color: bgAndLineColor,
-              ),
-            ),
-          ),
-          child: _cartTotalBtn(),
-        ),
-      ),
-    );
-  }
-
-  // 장바구니 삭제버튼
-  Widget _cartTotalBtn() {
-    return Align(
-      alignment: Alignment.center,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CheckBoxItem(
-              text: "전체선택",
-              textStyle: basicTextBig(),
-            ),
-            Text(
-              "선택삭제",
-              style: basicText(),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }
+
