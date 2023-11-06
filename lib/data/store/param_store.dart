@@ -50,5 +50,6 @@ class ParamStore extends StateNotifier<Param?> {
 }
 
 final paramProvider = StateNotifierProvider<ParamStore, Param?>((ref) {
-  return ParamStore(null, ref)..notifyInit();
+  return ParamStore(
+      Param(isChecked: true, removeList: []),ref)..notifyInit();
 });
