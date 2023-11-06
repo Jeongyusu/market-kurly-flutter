@@ -26,7 +26,7 @@ class CartPriceTextItem extends ConsumerWidget {
           width: smallGap,
         ),
         Text(
-            "${cartDTOListModel?.cartDTO.cartProducts[index].beforeDiscount}원" ??
+            "${cartDTOListModel?.cartDTO.cartProducts[index].originPrice}원" ??
                 "에러",
             style: disabledText()),
       ],

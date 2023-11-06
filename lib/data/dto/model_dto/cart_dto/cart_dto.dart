@@ -16,7 +16,7 @@ class CartDTO {
   );
 
   Map<String, dynamic> toJson() => {
-        // "cartProducts": cartProducts.map((product) => product.toJson()).toList(),
+        "cartProducts": cartProducts.map((product) => product.toJson()).toList(),
         "totalBeforePrice": totalBeforePrice,
         "totalDiscountPrice": totalDiscountPrice,
         "deliveryFee": deliveryFee,

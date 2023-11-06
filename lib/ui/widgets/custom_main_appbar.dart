@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
+import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_screen.dart';
+import 'package:flutter_blog/ui/widgets/custom_cart_and_quantity.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomMainAppbar extends StatelessWidget implements PreferredSizeWidget {
+class CustomMainAppbar extends ConsumerWidget implements PreferredSizeWidget {
   final Widget title;
   const CustomMainAppbar({
     super.key,
@@ -13,50 +16,13 @@ class CustomMainAppbar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => Size.fromHeight(56);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    SessionStore sessionStore = ref.read(sessionProvider);
     return AppBar(
       automaticallyImplyLeading: false,
       title: title,
-      actions: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Stack(
-            children: [
-              IconButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                        builder: (context) => CartScreen()),
-                  );
-                },
-                icon: SvgPicture.asset(
-                  "assets/icons/cart.svg",
-                  width: 30,
-                  height: 30,
-                ),
-              ),
-              Positioned(
-                top: 5,
-                right: 8,
-                child: Container(
-                  width: 14,
-                  height: 14,
-                  child: Center(
-                    child: Text(
-                      "3",
-                      style: TextStyle(fontSize: 10, color: basicColorB3),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
+      actions: sessionStore.isLogin
+          ? [CustomCartAndQuantity()] : [],
     );
   }
 }

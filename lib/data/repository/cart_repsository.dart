@@ -6,15 +6,22 @@ import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_dto.dart';
 import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_product_dto.dart';
 import 'package:flutter_blog/data/model/post.dart';
 import 'package:flutter_blog/data/model/user.dart';
+import 'package:flutter_blog/data/store/session_store.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
 // V -> P(전역프로바이더, 뷰모델) -> R
 class CartDTORepository {
-  Future<ResponseDTO> fetchCartList() async {
+  Future<ResponseDTO> fetchCartList(String jwt) async {
     try {
       // 1. 통신
       Logger().d("fetchCartList동작중");
-      final response = await dio.get("/api/carts");
+      final response = await dio.get("/api/carts", options: Options(
+        headers: {
+          "Authorization": "Bearer $jwt",
+          // 다른 필요한 헤더도 추가할 수 있습니다.
+        },
+      ),);
       Logger().d(response.data);
       // 2. ResponseDTO 파싱
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);

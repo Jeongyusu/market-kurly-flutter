@@ -161,8 +161,6 @@ class JoinForm extends ConsumerWidget {
           CustomElevatedButton(
             text: "가입하기",
             funPageRoute: () {
-              //ref.read(sessionProvider).join(joinReqDTO);
-              //Navigator.pushNamed(context, Move.loginScreen);
               Logger().d("나여기 ${joinFormModel}");
 
               JoinReqDTO joinReqDTO = JoinReqDTO(
@@ -171,9 +169,11 @@ class JoinForm extends ConsumerWidget {
                   username: joinFormModel!.username,
                   userEmail: joinFormModel!.userEmail,
                   userBirth: joinFormModel?.userBirth ?? null,
-                  userGender: joinFormModel?.userGender ?? null);
+                  userGender: joinFormModel?.userGender ?? null,
+                  role: "NORMAL");
 
               ref.read(sessionProvider).join(joinReqDTO);
+              Navigator.pushNamed(context, Move.loginScreen);
             },
           ),
         ],

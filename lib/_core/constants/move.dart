@@ -21,6 +21,7 @@ import 'package:flutter_blog/ui/screens/product_detail/product_review/product_re
 import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_save_screen.dart';
 import 'package:flutter_blog/ui/screens/review/review_home_screen.dart';
 import 'package:flutter_blog/ui/screens/splash_screen.dart';
+import 'package:flutter_blog/ui/screens/user_question/user_question_form_screen.dart';
 import 'package:flutter_blog/ui/screens/user_question/user_question_screen.dart';
 
 class Move {
@@ -45,7 +46,8 @@ class Move {
   static String customerCenterHomeScreen = "/customerCenter/homeScreen";
   static String noticeHomeScreen = "/notice/homeScreen";
   static String noticeDetailScreen = "/notice/detailScreen";
-  static String userQuestionScreen = "/user/questionScreen";
+  static String userQuestionFormScreen = "/user/questionFormScreen";
+  static String userQuestionScreen = "/product/questionScreen";
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
@@ -71,6 +73,7 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.customerCenterHomeScreen: (context) => CustomerCenterHomeScreen(),
     Move.noticeHomeScreen: (context) => NoticeHomeScreen(),
     Move.noticeDetailScreen: (context) => NoticeDetailScreen(),
+    Move.userQuestionFormScreen: (context) => UserQuestionFormScreen(),
     Move.userQuestionScreen: (context) => UserQuestionScreen(),
   };
 }

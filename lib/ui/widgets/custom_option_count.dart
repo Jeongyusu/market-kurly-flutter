@@ -30,7 +30,7 @@ class CustomOptionCount extends ConsumerWidget {
               height: 20,
               child: GestureDetector(
                 onTap: () {
-                  ref.watch(cartListProvider.notifier).minusQuantity(index);
+                  ref.read(cartListProvider.notifier).minusQuantity(index);
                   ref.read(cartListProvider.notifier).calSumOriginPrice();
                   ref.read(cartListProvider.notifier).calSumDiscountPrice();
                 },
@@ -44,7 +44,7 @@ class CustomOptionCount extends ConsumerWidget {
             SizedBox(
               width: 10,
             ),
-            Text("${cartListModel?.cartDTO.cartProducts[index].quentity}" ??
+            Text("${cartListModel?.cartDTO.cartProducts[index].optionQuantity}" ??
                 "에러"),
             SizedBox(
               width: 10,

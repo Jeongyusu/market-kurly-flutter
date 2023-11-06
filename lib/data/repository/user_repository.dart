@@ -12,7 +12,7 @@ class UserRepository {
     try {
       // dynamic -> http body
       Response<dynamic> response =
-          await dio.post("/api/userJoin", data: requestDTO.toJson());
+          await dio.post("/api/users/join", data: requestDTO.toJson());
       Logger().d("요청완료됨111");
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       // responseDTO.data = User.fromJson(responseDTO.data);
@@ -28,7 +28,7 @@ class UserRepository {
     try {
       Logger().d("fetchLogin요청됨");
       Response<dynamic> response =
-          await dio.post<dynamic>("/api/userLogin", data: requestDTO.toJson());
+          await dio.post<dynamic>("/api/users/login", data: requestDTO.toJson());
 
       Logger().d(response);
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
