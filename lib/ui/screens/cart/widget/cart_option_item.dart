@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/_core/constants/http.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_option_title.dart';
@@ -17,6 +18,7 @@ class CartOptionItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     CartListModel? cartListModel = ref.watch(cartListProvider);
+    String imgUrl = dio.options.baseUrl;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Container(
@@ -27,7 +29,7 @@ class CartOptionItem extends ConsumerWidget {
             AspectRatio(
                 aspectRatio: 1 / 1,
                 child: Image.network(
-                  'http://192.168.0.42:8080${cartListModel?.cartDTO.cartProducts[index].productPic}', // 이미지의 URL
+                  '${imgUrl}${cartListModel?.cartDTO.cartProducts[index].productPic}', // 이미지의 URL
                   width: 200, // 이미지의 가로 크기
                   height: 150, // 이미지의 세로 크기
                   fit: BoxFit.cover, // 이미지의 맞춤 방법 (옵션)
