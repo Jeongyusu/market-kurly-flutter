@@ -17,13 +17,11 @@ class CartOptionTitle extends ConsumerWidget {
 
     return Container(
       width: 320,
-      child: Flexible(
-        child: RichText(
-           text: TextSpan(text:  "[${cartDTOListModel?.cartDTO.cartProducts[index].sellerName ?? ""}]"
-                "${cartDTOListModel?.cartDTO.cartProducts[index].productName ?? ""}",
-              style: subContentsBold(),),
-              overflow: TextOverflow.ellipsis, maxLines: 2,
-        ),
+      child: RichText(
+         text: TextSpan(text:  "[${cartDTOListModel?.cartDTO.cartProducts[index].sellerName ?? ""}]"
+              "${cartDTOListModel?.cartDTO.cartProducts[index].productName ?? ""}",
+            style: subContentsBold(),),
+            overflow: TextOverflow.ellipsis, maxLines: 2,
       ),
     );
   }
