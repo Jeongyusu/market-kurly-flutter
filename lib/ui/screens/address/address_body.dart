@@ -5,6 +5,7 @@ import 'package:flutter_blog/ui/screens/address/address_detail.dart';
 import 'package:flutter_blog/ui/screens/address/address_detail_setting.dart';
 import 'package:flutter_blog/ui/screens/address/address_list_view_model.dart';
 import 'package:flutter_blog/ui/screens/address/widget/address_caption.dart';
+import 'package:flutter_blog/ui/screens/address/widget/address_nav_appbar.dart';
 import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:remedi_kopo/remedi_kopo.dart';
@@ -37,50 +38,57 @@ class AddressBody extends ConsumerWidget {
 
     return CustomScrollView(
       slivers: [
-        CustomNavAppBar(
+        AddressNavAppbar(
           text: "배송지 관리",
           onPressed: () {
             Navigator.pop(context);
           },
           actions: [
-            TextButton(
-              onPressed: () async {
-                KopoModel? model = await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => RemediKopo(),
-                  ),
-                );
-                if (model != null) {
-                  final postcode = model.zonecode ?? '';
-                  _postcodeController.value = TextEditingValue(
-                    text: postcode,
-                  );
-                  formData['postcode'] = postcode;
-
-                  final address = model.address ?? '';
-                  _addressController.value = TextEditingValue(
-                    text: address,
-                  );
-                  formData['address'] = address;
-
-                  final buildingName = model.buildingName ?? '';
-                  _addressDetailController.value = TextEditingValue(
-                    text: buildingName,
-                  );
-                  formData['address_detail'] = buildingName;
-                  Navigator.push(
+            Container(
+              width: 50,
+              child: TextButton(
+                onPressed: () async {
+                  KopoModel? model = await Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AddressDetailSetForm(model: model),
+                      builder: (context) => RemediKopo(),
                     ),
                   );
-                }
-              },
-              child: Text(
-                "추가",
-                style: TextStyle(
-                    color: Colors.purple, fontWeight: FontWeight.bold),
+                  if (model != null) {
+                    final postcode = model.zonecode ?? '';
+                    _postcodeController.value = TextEditingValue(
+                      text: postcode,
+                    );
+                    formData['postcode'] = postcode;
+
+                    final address = model.address ?? '';
+                    _addressController.value = TextEditingValue(
+                      text: address,
+                    );
+                    formData['address'] = address;
+
+                    final buildingName = model.buildingName ?? '';
+                    _addressDetailController.value = TextEditingValue(
+                      text: buildingName,
+                    );
+                    formData['address_detail'] = buildingName;
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            AddressDetailSetForm(model: model),
+                      ),
+                    );
+                  }
+                },
+                style: ButtonStyle(
+                  side: MaterialStateProperty.all(BorderSide.none),
+                ),
+                child: Text(
+                  "추가",
+                  style: TextStyle(
+                      color: Colors.purple, fontWeight: FontWeight.bold),
+                ),
               ),
             )
           ],

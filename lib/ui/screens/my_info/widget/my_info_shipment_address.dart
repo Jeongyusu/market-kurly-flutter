@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/_core/constants/move.dart';
 
 class MyInfoShipmentAddress extends StatelessWidget {
   const MyInfoShipmentAddress({super.key});
@@ -15,7 +16,9 @@ class MyInfoShipmentAddress extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, Move.addressScreen);
+            },
             child: Padding(
               padding: const EdgeInsets.only(left: 20),
               child: Text(

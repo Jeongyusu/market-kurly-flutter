@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/_core/constants/move.dart';
+import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/_core/utils/validator_util.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
 import 'package:flutter_blog/ui/widgets/custom_simple_appbar.dart';
@@ -48,6 +50,9 @@ class MyInfoUpdateBody extends StatelessWidget {
                         funValidator: validatePassword(),
                         controller: password)),
               ),
+              SizedBox(
+                height: smallGap,
+              ),
               Text(
                 "비밀번호",
                 style: subTitleReqular(),
@@ -62,11 +67,17 @@ class MyInfoUpdateBody extends StatelessWidget {
                         controller: password)),
               ),
               SizedBox(
-                height: 10,
+                height: mediumGap,
               ),
               Container(
-                  width: 350,
-                  child: CustomElevatedButton(text: "확인", funPageRoute: () {}))
+                width: 350,
+                child: CustomElevatedButton(
+                  text: "확인",
+                  funPageRoute: () {
+                    Navigator.pushNamed(context, Move.myInfoUpdateDetailScreen);
+                  },
+                ),
+              )
             ],
           ),
         ),

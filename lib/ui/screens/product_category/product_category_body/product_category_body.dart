@@ -53,15 +53,6 @@ class _ProductCategoryBodyState extends State<ProductCategoryBody> {
     });
   }
 
-  final List<String> _valueList = <String>[
-    "신상품순",
-    "평점순",
-    "판매량순",
-    "마감인박순",
-    "가격순"
-  ];
-  String _selectedValue = "신상품순";
-
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -73,81 +64,7 @@ class _ProductCategoryBodyState extends State<ProductCategoryBody> {
             Navigator.pop(context);
           },
         ),
-        // 드롭다운
-        SliverAppBar(
-          toolbarHeight: 30,
-          title: Text('0'),
-          pinned: true,
-          elevation: 0.0,
-          automaticallyImplyLeading: false,
-          backgroundColor: basicColorW,
-          titleSpacing: 0,
-          flexibleSpace: Container(
-            padding: const EdgeInsets.all(8.0),
-            alignment: Alignment.bottomLeft,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    '총 182 개',
-                    style: strongTextSmall(),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          actions: [
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.all(4.0), // Dropdown 버튼 간격 조절
-                child: DropdownButton2<String>(
-                  value: _selectedValue,
-                  style: TextStyle(),
-                  alignment: Alignment.centerRight,
-                  items: _valueList.map((value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          value,
-                          style: basicTextSmall(),
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (String? value) {
-                    setState(() {
-                      _selectedValue = value ?? "첫 번째";
-                    });
-                  },
-                  underline: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.transparent,
-                    ),
-                  ),
-                  buttonStyleData: ButtonStyleData(
-                    height: 50,
-                    width: 90,
-                  ),
-                  iconStyleData: const IconStyleData(
-                    icon: Icon(Icons.keyboard_arrow_down),
-                    iconSize: 18,
-                    iconEnabledColor: basicColorB3,
-                    iconDisabledColor: basicColorB9,
-                  ),
-                  menuItemStyleData: const MenuItemStyleData(
-                    height: 40,
-                    padding: EdgeInsets.only(left: 8, right: 8),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+        ProductCountAndFilter(),
         // 카테고리
         SliverToBoxAdapter(
           child: Padding(
@@ -208,7 +125,7 @@ class _ProductCategoryBodyState extends State<ProductCategoryBody> {
           child: IndexedStack(
             index: selectedCategory,
             children: [
-              ProductCategoryGrid(images: images),
+              // ProductCategoryGrid(images: images),
               Center(child: Text("트렌드")),
               Center(child: Text("라이프")),
               Center(child: Text("힐링")),

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 
 class ProductItemCount extends StatelessWidget {
-  final int count;
+  final int? count;
   const ProductItemCount({
     super.key,
-    required this.count,
+    this.count,
   });
 
   @override

@@ -4,15 +4,9 @@ import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 
 class CustomFilterDropdown extends StatefulWidget {
-  const CustomFilterDropdown({
-    super.key,
-    required String selectedValue,
-    required List<String> valueList,
-  })  : _selectedValue = selectedValue,
-        _valueList = valueList;
-
-  final String _selectedValue;
-  final List<String> _valueList;
+  CustomFilterDropdown({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<CustomFilterDropdown> createState() => _CustomFilterDropdownState();
@@ -20,13 +14,15 @@ class CustomFilterDropdown extends StatefulWidget {
 
 class _CustomFilterDropdownState extends State<CustomFilterDropdown> {
   final List<String> _valueList = <String>[
+    "필터",
     "신상품순",
     "평점순",
     "판매량순",
     "마감인박순",
     "가격순"
   ];
-  String _selectedValue = "신상품순";
+
+  String _selectedValue = "필터";
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +30,10 @@ class _CustomFilterDropdownState extends State<CustomFilterDropdown> {
       child: Padding(
         padding: const EdgeInsets.all(4.0), // Dropdown 버튼 간격 조절
         child: DropdownButton2<String>(
-          value: widget._selectedValue,
+          value: _selectedValue,
           style: TextStyle(),
           alignment: Alignment.centerRight,
-          items: widget._valueList.map((value) {
+          items: _valueList.map((value) {
             return DropdownMenuItem<String>(
               value: value,
               child: Align(

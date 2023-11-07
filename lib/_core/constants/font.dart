@@ -31,7 +31,7 @@ TextStyle subTitleReqular() {
 
 TextStyle subTitleBold() {
   return TextStyle(
-      fontSize: 20, fontWeight: FontWeight.w500, color: basicColorB1);
+      fontSize: 17, fontWeight: FontWeight.w500, color: basicColorB1);
 }
 
 // id&pw search-contents
@@ -43,6 +43,11 @@ TextStyle subContentsPoint() {
 TextStyle subContentsPointSmall() {
   return TextStyle(
       fontSize: 14, fontWeight: FontWeight.w500, color: primaryColor);
+}
+
+TextStyle subContentsMedium() {
+  return TextStyle(
+      fontSize: 16, fontWeight: FontWeight.w500, color: basicColorB3);
 }
 
 TextStyle basicTextBig() {
@@ -62,10 +67,20 @@ TextStyle basicTextSmall() {
       fontSize: 14, fontWeight: FontWeight.w400, color: basicColorB3);
 }
 
+TextStyle basicTextSmallAndBold() {
+  return TextStyle(
+      fontSize: 14, fontWeight: FontWeight.w500, color: basicColorB1);
+}
+
 // sub-content
 TextStyle subContents() {
   return TextStyle(
       fontSize: 14, fontWeight: FontWeight.w400, color: basicColorB7);
+}
+
+TextStyle subContentsSmaill() {
+  return TextStyle(
+      fontSize: 12, fontWeight: FontWeight.w400, color: basicColorB7);
 }
 
 TextStyle subContentsReqular() {

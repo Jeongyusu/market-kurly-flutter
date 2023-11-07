@@ -12,14 +12,24 @@ import '../../../_core/constants/color.dart';
 import 'product_seller_and_title.dart';
 
 class CustomProductItem extends StatelessWidget {
+  final String? images;
+  final String? sellerName;
+  final String? productTitle;
+  final int? disablePrice;
+  final int? discountRate;
+  final int? totalPrice;
   final int index;
+
   const CustomProductItem({
     super.key,
-    required this.images,
+    this.images,
     required this.index,
+    this.sellerName,
+    this.productTitle,
+    this.disablePrice,
+    this.discountRate,
+    this.totalPrice,
   });
-
-  final List<String> images;
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +57,15 @@ class CustomProductItem extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 8.0),
                   child: CustomCartButton(),
                 ),
-                ProductSellerAndTitle(),
-                ProductDiscountAndPrice(),
+                ProductSellerAndTitle(
+                  productTitle: productTitle,
+                  sellerName: sellerName,
+                ),
+                ProductDiscountAndPrice(
+                  disablePrice: disablePrice,
+                  discountRate: discountRate,
+                  totalPrice: totalPrice,
+                ),
                 CustomReviewIcon(),
               ],
             )

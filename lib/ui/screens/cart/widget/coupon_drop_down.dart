@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:multi_dropdown/multiselect_dropdown.dart';
 
 class CartOrderCoupondropdown extends StatefulWidget {
   const CartOrderCoupondropdown({super.key});
@@ -10,38 +9,53 @@ class CartOrderCoupondropdown extends StatefulWidget {
 }
 
 class _CartOrderCoupondropdownState extends State<CartOrderCoupondropdown> {
-  static const _headerStyle = TextStyle(
-    fontSize: 12,
-    color: Colors.blue,
-  );
+  final _optionList = [
+    "취소/교환/반품",
+    "회원/이벤트/쿠폰",
+    "상품(식품/비식품/티켓)",
+    "배송",
+    "주문/결제",
+    "서비스/오류/기타"
+  ];
+  String _selectedOption = '';
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _selectedOption = _optionList[0];
+    });
+  }
+
+  void onChanged(String? newValue) {
+    setState(() {
+      _selectedOption = newValue!;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
-          height: 4,
+        SizedBox(
+          height: 10,
         ),
-        MultiSelectDropDown(
-          onOptionSelected: (options) {
-            debugPrint(options.toString());
-          },
-          options: const <ValueItem>[
-            ValueItem(label: 'Option 1', value: '1'),
-            ValueItem(label: 'Option 2', value: '2'),
-            ValueItem(label: 'Option 3', value: '3'),
-            ValueItem(label: 'Option 4', value: '4'),
-            ValueItem(label: 'Option 5', value: '5'),
-            ValueItem(label: 'Option 6', value: '6'),
-          ],
-          selectionType: SelectionType.multi,
-          chipConfig: const ChipConfig(wrapType: WrapType.scroll),
-          dropdownHeight: 400,
-          optionTextStyle: const TextStyle(fontSize: 16),
-          selectedOptionIcon: const Icon(Icons.check_circle),
-          hint: "사용 가능 쿠폰 0장",
+        Container(
+          width: 300,
+          child: DropdownButton<String>(
+            isExpanded: true,
+            items: _optionList.map((String option) {
+              return DropdownMenuItem<String>(
+                value: option,
+                child: Text(option),
+              );
+            }).toList(),
+            onChanged: onChanged,
+            value: _selectedOption,
+            hint: Text("유형을 선택하세요"),
+          ),
         ),
-        const SizedBox(
+        SizedBox(
           height: 20,
         ),
       ],

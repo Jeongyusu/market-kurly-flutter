@@ -10,13 +10,22 @@ import 'package:flutter_blog/ui/widgets/product_items/product_seller_and_title.d
 import 'package:flutter_blog/ui/widgets/product_items/product_thumbnail.dart';
 
 class ProductCategoryGrid extends StatelessWidget {
+  final String images;
+  final String sellerName;
+  final String productTitle;
+  final int disablePrice;
+  final int discountRate;
+  final int totalPrice;
+
   const ProductCategoryGrid({
     super.key,
     required this.images,
+    required this.sellerName,
+    required this.productTitle,
+    required this.disablePrice,
+    required this.discountRate,
+    required this.totalPrice,
   });
-
-  final List<String> images;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,6 +41,11 @@ class ProductCategoryGrid extends StatelessWidget {
           return CustomProductItem(
             images: images,
             index: index,
+            sellerName: sellerName,
+            productTitle: productTitle,
+            disablePrice: disablePrice,
+            discountRate: discountRate,
+            totalPrice: totalPrice,
           );
         },
       ),

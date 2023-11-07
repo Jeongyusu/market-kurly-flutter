@@ -12,17 +12,14 @@ import 'package:flutter_blog/ui/widgets/product_items/product_thumbnail.dart';
 class CustomProductGrid extends StatelessWidget {
   const CustomProductGrid({
     super.key,
-    required this.images,
   });
-
-  final List<String> images;
 
   @override
   Widget build(BuildContext context) {
     return SliverGrid(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          return CustomProductItem(images: images, index: index);
+          return CustomProductItem(index: index);
         },
         childCount: 4,
       ),

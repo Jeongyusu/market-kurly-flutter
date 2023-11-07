@@ -1,8 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
+import 'package:flutter_blog/ui/screens/product_detail/widget/product_cart_bottom_sheet.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomCartButton extends StatelessWidget {
   const CustomCartButton({
@@ -22,7 +23,17 @@ class CustomCartButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          showModalBottomSheet<void>(
+            context: context,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            builder: (BuildContext context) {
+              return ProductCartBottomSheet();
+            },
+          );
+        },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
