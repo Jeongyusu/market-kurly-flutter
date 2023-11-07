@@ -46,8 +46,7 @@ class CustomNavAppBar extends ConsumerWidget implements PreferredSizeWidget {
           ),
         ),
       ),
-      actions: sessionStore.isLogin
-          ? [CustomCartAndQuantityBlack()] : [],
+      actions: sessionStore.isLogin ? [CustomCartAndQuantityBlack()] : [],
     );
   }
 
