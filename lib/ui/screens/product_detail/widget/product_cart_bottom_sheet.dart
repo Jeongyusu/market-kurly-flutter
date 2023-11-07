@@ -12,95 +12,67 @@ class ProductCartBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: basicColorW,
-      width: double.infinity,
-      height: 50,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          minimumSize: Size(double.infinity, 50),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(0),
-          ),
-          backgroundColor: primaryColor,
-        ),
-        onPressed: () {
-          showModalBottomSheet<void>(
-            context: context,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            builder: (BuildContext context) {
-              return Container(
-                height: 250,
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      children: [
-                        Expanded(child: Container()),
-                        IconButton(
-                          icon: Icon(
-                            Icons.close_rounded,
-                            color: basicColorB5,
-                          ),
-                          onPressed: () => Navigator.pop(context),
-                        ),
-                      ],
-                    ),
-                    Expanded(
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0)),
-                            child: Image.asset(
-                              "assets/images/product01.jpg",
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          SizedBox(
-                            height: smallGap,
-                          ),
-                          Text(
-                            "장바구니에 상품을 담았습니다.",
-                            style: subTitleSmall(),
-                          ),
-                          SizedBox(
-                            height: smallGap,
-                          ),
-                          InkWell(
-                            onTap: () {},
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  "assets/icons/cart_dark.svg",
-                                  width: 20,
-                                  height: 20,
-                                ),
-                                SizedBox(
-                                  width: xsmallGap,
-                                ),
-                                Text(
-                                  "장바구니로 이동하기",
-                                  style: subContentsPointSmall(),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+      height: 250,
+      child: Column(
+        children: <Widget>[
+          Row(
+            children: [
+              Expanded(child: Container()),
+              IconButton(
+                icon: Icon(
+                  Icons.close_rounded,
+                  color: basicColorB5,
                 ),
-              );
-            },
-          );
-        },
-        child: Text(
-          "장바구니 담기",
-        ),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ],
+          ),
+          Expanded(
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  child: Image.asset(
+                    "assets/images/product01.jpg",
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                SizedBox(
+                  height: smallGap,
+                ),
+                Text(
+                  "장바구니에 상품을 담았습니다.",
+                  style: subTitleSmall(),
+                ),
+                SizedBox(
+                  height: smallGap,
+                ),
+                InkWell(
+                  onTap: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        "assets/icons/cart_dark.svg",
+                        width: 20,
+                        height: 20,
+                      ),
+                      SizedBox(
+                        width: xsmallGap,
+                      ),
+                      Text(
+                        "장바구니로 이동하기",
+                        style: subContentsPointSmall(),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

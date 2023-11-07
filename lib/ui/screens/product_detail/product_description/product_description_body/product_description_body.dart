@@ -41,7 +41,7 @@ class ProductDescriptionBody extends StatelessWidget {
                               style: strongTextSmall(),
                             ),
                             TextSpan(
-                              text: "고당도 제주 유라 감귤 800g",
+                              text: " 고당도 제주 유라 감귤 800g",
                               style: strongTextSmall(),
                             ),
                           ],

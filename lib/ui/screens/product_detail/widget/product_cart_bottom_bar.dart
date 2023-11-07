@@ -5,25 +5,26 @@ import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/product_detail/widget/product_cart_bottom_sheet.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomCartButton extends StatelessWidget {
-  const CustomCartButton({
+class ProductCartBottomBar extends StatelessWidget {
+  const ProductCartBottomBar({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: basicColorW,
       width: double.infinity,
-      height: 35,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: formColor,
-          width: 1,
+      height: 50,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          minimumSize: Size(double.infinity, 50),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(0),
+          ),
+          backgroundColor: primaryColor,
         ),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: InkWell(
-        onTap: () {
+        onPressed: () {
           showModalBottomSheet<void>(
             context: context,
             shape: RoundedRectangleBorder(
@@ -34,23 +35,8 @@ class CustomCartButton extends StatelessWidget {
             },
           );
         },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.shopping_cart_outlined,
-              size: 16,
-              color: basicColorB3,
-            ),
-            SizedBox(
-              width: xsmallGap,
-            ),
-            Text(
-              "담기",
-              style: basicTextSmall(),
-            ),
-          ],
+        child: Text(
+          "장바구니 담기",
         ),
       ),
     );

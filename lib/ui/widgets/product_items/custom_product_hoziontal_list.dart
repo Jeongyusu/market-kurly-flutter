@@ -4,10 +4,10 @@ import 'package:flutter_blog/ui/widgets/product_items/custom_product_item.dart';
 class CustomProductHorizontalList extends StatelessWidget {
   const CustomProductHorizontalList({
     super.key,
-    required this.images,
+    this.images,
   });
 
-  final List<String> images;
+  final String? images;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class CustomProductHorizontalList extends StatelessWidget {
       height: 370,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: images.length,
+        itemCount: images!.length,
         itemExtent: 150,
         itemBuilder: (BuildContext context, int index) {
           return Padding(

@@ -4,7 +4,9 @@ import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/_core/utils/validator_util.dart';
+import 'package:flutter_blog/ui/screens/product_detail/product_review/widget/product_rating.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/widget/product_rating_bar_item.dart';
+import 'package:flutter_blog/ui/screens/product_detail/product_review/widget/product_review_contents.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/widget/product_review_img_list.dart';
 import 'package:flutter_blog/ui/screens/product_detail/widget/product_detail_bottom_sheet.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
@@ -36,47 +38,8 @@ class ProductReviewSaveScreen extends StatelessWidget {
             sliver: SliverToBoxAdapter(
               child: Column(
                 children: [
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "상품 평가",
-                          style: subTitleSmall(),
-                        ),
-                        SizedBox(height: xsmallGap),
-                        Text(
-                          "이 상품의 품질에 대해 얼마나 만족하시나요?",
-                          style: subContents(),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Center(
-                            child: ProductRatingBarItem(),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "후기 내용",
-                          style: subTitleSmall(),
-                        ),
-                        Container(
-                          height: 160,
-                          child: CustomTextArea(
-                            hintText: "문의하실 내용을 입력해주세요. (0/5,000)",
-                            funValidator: validateContent(),
-                            controller: controller ?? TextEditingController(),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  ProductRating(),
+                  ProductReviewContents(controller: controller),
                 ],
               ),
             ),
