@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/ui/screens/address/widget/address_nav_appbar.dart';
 import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 
 class AddressSetPage extends StatelessWidget {
@@ -8,7 +9,7 @@ class AddressSetPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        CustomNavAppBar(
+        AddressNavAppbar(
           text: "주소 등록",
           onPressed: () {
             Navigator.pop(context);

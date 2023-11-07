@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/move.dart';
-import 'package:flutter_blog/data/store/session_store.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logger/logger.dart';
 
 class MyInfoSubMenu extends StatelessWidget {
   String leftText;
@@ -15,7 +12,9 @@ class MyInfoSubMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, Move.myInfoUpdateScreen);
+      },
       child: Padding(
         padding: const EdgeInsets.only(top: 20, bottom: 20),
         child: Row(

@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/ui/screens/home/product_list_view_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProductThumbnail extends StatelessWidget {
-  const ProductThumbnail({
-    super.key,
-    required this.images,
-    required this.index,
-  });
+class ProductThumbnail extends ConsumerWidget {
+  const ProductThumbnail({Key? key, this.images, this.index});
 
-  final List<String> images;
-  final int index;
+  final String? images;
+  final int? index;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ProductListModel? model = ref.watch(productNewListProvider);
     return Expanded(
       child: ClipRRect(
         borderRadius: BorderRadius.circular(5),
         child: AspectRatio(
-          aspectRatio: 1.0,
-          child: Image.asset(
-            images[index],
+          aspectRatio: 1 / 1,
+          child: Image.network(
+            "${images}",
             fit: BoxFit.cover,
           ),
         ),

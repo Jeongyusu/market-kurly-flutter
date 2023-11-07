@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
+import 'package:flutter_blog/ui/screens/home/product_list_view_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProductSellerAndTitle extends StatelessWidget {
+class ProductSellerAndTitle extends ConsumerWidget {
+  final String? sellerName;
+  final String? productTitle;
   const ProductSellerAndTitle({
     super.key,
+    this.sellerName,
+    this.productTitle,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ProductListModel? model = ref.watch(productNewListProvider);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Container(
@@ -17,14 +24,14 @@ class ProductSellerAndTitle extends StatelessWidget {
           text: TextSpan(
             children: [
               TextSpan(
-                text: "판매자",
+                text: "${sellerName}",
                 style: basicText(),
               ),
               WidgetSpan(
                 child: SizedBox(width: smallGap),
               ),
               TextSpan(
-                text: "제목제목제목제목제목제목제목제목제목제목제목제목제목",
+                text: "${productTitle}",
                 style: basicText(),
               ),
             ],

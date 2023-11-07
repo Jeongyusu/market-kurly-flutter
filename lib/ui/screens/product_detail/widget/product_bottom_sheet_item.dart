@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
-import 'package:flutter_blog/ui/screens/product_detail/widget/product_cart_bottom_sheet.dart';
+import 'package:flutter_blog/ui/screens/product_detail/widget/product_cart_bottom_bar.dart';
 import 'package:flutter_blog/ui/screens/product_detail/widget/product_detail_appbar.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
 import 'package:flutter_blog/ui/widgets/custom_option_count.dart';
@@ -146,7 +146,7 @@ class ProductBottomSheetItem extends StatelessWidget {
               bottom: 0,
               left: 0,
               right: 0,
-              child: ProductCartBottomSheet(),
+              child: ProductCartBottomBar(),
             ),
           ],
         );

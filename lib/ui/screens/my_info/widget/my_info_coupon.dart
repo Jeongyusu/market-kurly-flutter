@@ -16,12 +16,13 @@ class MyInfoCoupon extends StatelessWidget {
               style: basicText(),
             )),
         Container(
-            padding: EdgeInsets.only(left: 20, bottom: 25),
-            alignment: Alignment.topLeft,
-            child: Text(
-              "2만원 이상 무료배송",
-              style: basicText(),
-            ))
+          padding: EdgeInsets.only(left: 20, bottom: 25),
+          alignment: Alignment.topLeft,
+          child: Text(
+            "2만원 이상 무료배송",
+            style: basicText(),
+          ),
+        )
       ],
     );
   }
