@@ -19,11 +19,12 @@ class CouponBottomAppbar extends StatelessWidget {
   final TextEditingController controller;
   final funValidator;
 
-  CouponBottomAppbar({
-    Key? key,
-    required this.text,
-    this.funPageRoute, required this.controller, this.funValidator
-  });
+  CouponBottomAppbar(
+      {Key? key,
+      required this.text,
+      this.funPageRoute,
+      required this.controller,
+      this.funValidator});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class CouponBottomAppbar extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: ElevatedButton(
-          onPressed: (){
+          onPressed: () {
             couponShowDialog(context);
           },
           style: ElevatedButton.styleFrom(
@@ -45,37 +46,55 @@ class CouponBottomAppbar extends StatelessWidget {
   }
 
   void couponShowDialog(BuildContext context) {
-    showDialog(context: context, barrierDismissible: true, builder: (context) {
-      return AlertDialog(title: Text("쿠폰 등록"),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-          CouponTextFormField(placeholderText: "발급된 쿠폰번호를 입력해주세요", funValidator: funValidator, controller: controller),
-            SizedBox(height: 10,),
-            Text("쿠폰에 하이픈 '-'이 포함되어 있을 경우, 하이픈 '-'을 반드시 입력해주세요", style: subContents(),)
-      ],),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Row(
-            children: [
-              Container(
-                child: Expanded(child: CustomElevatedWhiteButton(text: "취소",funPageRoute: (){
-                  Navigator.of(context).pop(); //창 닫기
-                })),
-              ),
-              SizedBox(width: 10,),
-              Expanded(
-                child: Container(
-                  child: CustomElevatedButton(text: "확인", funPageRoute: (){
-                  }),
+    showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("쿠폰 등록"),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CouponTextFormField(
+                    placeholderText: "발급된 쿠폰번호를 입력해주세요",
+                    funValidator: funValidator,
+                    controller: controller),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "쿠폰에 하이픈 '-'이 포함되어 있을 경우, 하이픈 '-'을 반드시 입력해주세요",
+                  style: subContents(),
+                )
+              ],
+            ),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  children: [
+                    Container(
+                      child: Expanded(
+                          child: CustomElevatedWhiteButton(
+                              text: "취소",
+                              funPageRoute: () {
+                                Navigator.of(context).pop(); //창 닫기
+                              })),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Container(
+                        child: CustomElevatedButton(
+                            text: "확인", funPageRoute: () {}),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
-          ),
-        ),
-        ]
-      ,);
-    });
+          );
+        });
   }
 }
