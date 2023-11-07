@@ -4,8 +4,8 @@ import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/auth/user_search/widget/pw_search_form.dart';
+import 'package:flutter_blog/ui/widgets/appbar/custom_nav_appbar.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_text_button.dart';
-import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 
 class PwSearchBody extends StatelessWidget {
   const PwSearchBody({

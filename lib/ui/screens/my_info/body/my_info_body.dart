@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/ui/screens/my_info/widget/my_info_arrow_board.dart';
 import 'package:flutter_blog/ui/screens/my_info/widget/my_info_coupon.dart';
 import 'package:flutter_blog/ui/screens/my_info/widget/my_info_profile.dart';
 import 'package:flutter_blog/ui/screens/my_info/my_info_shipment_address.dart';
-import 'package:flutter_blog/ui/widgets/custom_main_appbar.dart';
 
 class MyInfoBody extends StatelessWidget {
   const MyInfoBody({super.key});

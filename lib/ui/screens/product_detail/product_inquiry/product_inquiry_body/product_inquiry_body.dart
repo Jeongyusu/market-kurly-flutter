@@ -26,7 +26,7 @@ class ProductInquiryBody extends StatelessWidget {
             child: CustomTextButton(
               "상품 문의하기",
               () {
-                Navigator.pushNamed(context, Move.joinScreen);
+                Navigator.pushNamed(context, Move.productInquirySaveScreen);
               },
             ),
           ),

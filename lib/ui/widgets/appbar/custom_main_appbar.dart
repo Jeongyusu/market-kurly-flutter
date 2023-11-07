@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_screen.dart';
-import 'package:flutter_blog/ui/widgets/custom_cart_and_quantity.dart';
+import 'package:flutter_blog/ui/widgets/cart_items/custom_cart_and_quantity.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

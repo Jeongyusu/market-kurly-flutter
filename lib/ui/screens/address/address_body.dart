@@ -7,7 +7,6 @@ import 'package:flutter_blog/ui/screens/address/address_detail_setting.dart';
 import 'package:flutter_blog/ui/screens/address/address_list_view_model.dart';
 import 'package:flutter_blog/ui/screens/address/widget/address_caption.dart';
 import 'package:flutter_blog/ui/screens/address/widget/address_nav_appbar.dart';
-import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:remedi_kopo/remedi_kopo.dart';
 

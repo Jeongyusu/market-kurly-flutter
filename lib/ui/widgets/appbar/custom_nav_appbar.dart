@@ -3,12 +3,10 @@ import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_screen.dart';
+import 'package:flutter_blog/ui/widgets/cart_items/custom_cart_and_black.dart';
 import 'package:flutter_blog/ui/widgets/icons_and_images/custom_cart_icon.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'custom_cart_and_black.dart';
-import 'custom_cart_and_quantity.dart';
 
 class CustomNavAppBar extends ConsumerWidget implements PreferredSizeWidget {
   final String text;

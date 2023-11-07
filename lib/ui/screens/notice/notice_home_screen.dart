@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/ui/screens/notice/notice_detail_screen.dart';
-import 'package:flutter_blog/ui/widgets/custom_simple_appbar.dart';
+import 'package:flutter_blog/ui/widgets/appbar/custom_simple_appbar.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_bold.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_thin.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class NoticeHomeScreen extends StatelessWidget {
-  const NoticeHomeScreen({super.key});
+class CustomerNoticeHomeScreen extends StatelessWidget {
+  const CustomerNoticeHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class NoticeHomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const NoticeDetailScreen()),
+                          builder: (context) => const CustomerNoticeDetailScreen()),
                     );
                   },
                   child: Column(

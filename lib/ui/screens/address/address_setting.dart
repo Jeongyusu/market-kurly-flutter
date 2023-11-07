@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/ui/screens/address/widget/address_nav_appbar.dart';
-import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 
 class AddressSetPage extends StatelessWidget {
   const AddressSetPage({super.key});
