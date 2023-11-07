@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/ui/screens/category/category_body/category_body.dart';
-import 'package:flutter_blog/ui/widgets/custom_main_appbar.dart';
+import 'package:flutter_blog/ui/widgets/appbar/custom_main_appbar.dart';
 
 import 'widget/category_product.dart';
 

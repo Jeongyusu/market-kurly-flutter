@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
-import 'package:flutter_blog/ui/widgets/custom_simple_appbar.dart';
+import 'package:flutter_blog/ui/widgets/appbar/custom_simple_appbar.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_soft_thin.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_thin.dart';
 
-class NoticeDetailScreen extends StatelessWidget {
-  const NoticeDetailScreen({super.key});
+class CustomerNoticeDetailScreen extends StatelessWidget {
+  const CustomerNoticeDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

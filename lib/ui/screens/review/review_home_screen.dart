@@ -3,19 +3,19 @@ import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/ui/screens/review/body/review_home_screen_body.dart';
 import 'package:flutter_blog/ui/screens/review/widget/review_home_product_second.dart';
-import 'package:flutter_blog/ui/widgets/custom_review_home_appbar.dart';
+import 'package:flutter_blog/ui/widgets/appbar/custom_review_home_appbar.dart';
 
 import 'widget/review_home_order_number.dart';
 import 'widget/review_home_product.dart';
 
-class ReviewHomeScreen extends StatefulWidget {
-  const ReviewHomeScreen({super.key});
+class MyInfoReviewHomeScreen extends StatefulWidget {
+  const MyInfoReviewHomeScreen({super.key});
 
   @override
-  State<ReviewHomeScreen> createState() => _ReviewHomeScreenState();
+  State<MyInfoReviewHomeScreen> createState() => _MyInfoReviewHomeScreenState();
 }
 
-class _ReviewHomeScreenState extends State<ReviewHomeScreen>
+class _MyInfoReviewHomeScreenState extends State<MyInfoReviewHomeScreen>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
 
@@ -31,4 +31,3 @@ class _ReviewHomeScreenState extends State<ReviewHomeScreen>
     return ReviewHomeScreenBody(tabController: _tabController);
   }
 }
-

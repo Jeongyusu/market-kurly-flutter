@@ -5,7 +5,7 @@ import 'package:flutter_blog/ui/screens/home/menu/benefit/benefit_screen.dart';
 import 'package:flutter_blog/ui/screens/home/menu/best/best_screen.dart';
 import 'package:flutter_blog/ui/screens/home/menu/kurly/kurly_screen.dart';
 import 'package:flutter_blog/ui/screens/home/menu/new_product/new_screen.dart';
-import 'package:flutter_blog/ui/widgets/custom_main_appbar.dart';
+import 'package:flutter_blog/ui/widgets/appbar/custom_main_appbar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required TabController? tabController})

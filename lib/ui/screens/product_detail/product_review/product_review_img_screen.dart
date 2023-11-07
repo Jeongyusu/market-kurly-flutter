@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
-import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 
 class ProductReviewImgScreen extends StatefulWidget {
   const ProductReviewImgScreen({Key? key}) : super(key: key);

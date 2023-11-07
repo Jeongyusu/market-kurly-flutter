@@ -4,9 +4,9 @@ import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/auth/login_screen/widgets/login_form.dart';
+import 'package:flutter_blog/ui/widgets/appbar/custom_nav_appbar.dart';
 import 'package:flutter_blog/ui/widgets/icons_and_images/custom_logo.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_text_button.dart';
-import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 
 class LoginBody extends StatelessWidget {
   const LoginBody({Key? key}) : super(key: key);

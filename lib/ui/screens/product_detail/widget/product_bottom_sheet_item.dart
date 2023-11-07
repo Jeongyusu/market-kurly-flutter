@@ -122,10 +122,10 @@ class ProductBottomSheetItem extends StatelessWidget {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text("2,900"),
-                                          // CustomOptionCount(
-                                          //   key: UniqueKey(),
-                                          //   index: index,
-                                          // ),
+                                          CustomOptionCount(
+                                            key: UniqueKey(),
+                                            index: index,
+                                          ),
                                         ],
                                       )
                                     ],

@@ -7,12 +7,16 @@ import 'package:flutter_blog/ui/screens/product_detail/product_inquiry/product_i
 import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/widget/product_detail_tabbar.dart';
 import 'package:flutter_blog/ui/screens/product_detail/widget/product_detail_bottom_sheet.dart';
-import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
+import 'package:flutter_blog/ui/widgets/appbar/custom_nav_appbar.dart';
 
 class ProductDetailScreen extends StatefulWidget {
-  const ProductDetailScreen({super.key, required TabController? tabController})
-      : _tabController = tabController;
   final TabController? _tabController;
+  final int productId;
+  const ProductDetailScreen({
+    super.key,
+    required TabController? tabController,
+    required this.productId,
+  }) : _tabController = tabController;
 
   @override
   State<ProductDetailScreen> createState() => _ProductDetailScreenState();
@@ -64,7 +68,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen>
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  ProductDescriptionScreen(),
+                  ProductDescriptionScreen(
+                    productId: widget.productId,
+                  ),
                   ProductInfoScreen(),
                   ProductReviewScreen(),
                   ProductInquiryScreen(),

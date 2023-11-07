@@ -7,7 +7,7 @@ import 'package:flutter_blog/ui/screens/search/widget/search_text_form.dart';
 import 'package:flutter_blog/ui/screens/search/widget/search_text_form_field.dart';
 import 'package:flutter_blog/ui/screens/search/widget/search_text_title.dart';
 import 'package:flutter_blog/ui/screens/search/widget/search_word_list.dart';
-import 'package:flutter_blog/ui/widgets/custom_main_appbar.dart';
+import 'package:flutter_blog/ui/widgets/appbar/custom_main_appbar.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});

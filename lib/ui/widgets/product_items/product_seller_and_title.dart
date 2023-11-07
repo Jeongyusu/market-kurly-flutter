@@ -4,7 +4,7 @@ import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/home/product_list_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProductSellerAndTitle extends ConsumerWidget {
+class ProductSellerAndTitle extends StatelessWidget {
   final String? sellerName;
   final String? productTitle;
   const ProductSellerAndTitle({
@@ -14,8 +14,7 @@ class ProductSellerAndTitle extends ConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    ProductListModel? model = ref.watch(productNewListProvider);
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Container(
