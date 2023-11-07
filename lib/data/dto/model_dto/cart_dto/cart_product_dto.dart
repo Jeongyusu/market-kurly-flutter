@@ -10,7 +10,7 @@ class CartProductDTO {
   int discountRate;
   int discountedPrice;
   int optionQuantity;
-
+  bool? isChecked;
 
   CartProductDTO(
       this.cartId,
@@ -39,17 +39,16 @@ class CartProductDTO {
         optionQuantity = json["optionQuantity"];
 
   Map<String, dynamic> toJson() => {
-    "cartId": cartId,
-    "productId": productId,
-    "productPic": productPic,
-    "productName": productName,
-    "optionId": optionId,
-    "optionName": optionName,
-    "sellerName": cartId,
-    "originPrice": originPrice,
-    "discountRate": discountRate,
-    "discountedPrice": discountedPrice,
-    "optionQuantity": optionQuantity,
-  };
+        "cartId": cartId,
+        "productId": productId,
+        "productPic": productPic,
+        "productName": productName,
+        "optionId": optionId,
+        "optionName": optionName,
+        "sellerName": cartId,
+        "originPrice": originPrice,
+        "discountRate": discountRate,
+        "discountedPrice": discountedPrice,
+        "optionQuantity": optionQuantity,
+      };
 }
-

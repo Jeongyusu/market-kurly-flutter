@@ -20,7 +20,7 @@ class CartPriceArea extends ConsumerWidget {
         children: [
           TextSpaceBetweenItem(
             leftText: "상품금액",
-            rightText: "${cartListModel!.cartDTO.totalBeforePrice}원",
+            rightText: if(cartListModel!.cartDTO.cartProducts[",)
             leftTextStyle: basicText(),
             rightTextStyle: basicText(),
           ),

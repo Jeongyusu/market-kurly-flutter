@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/ui/screens/address/address_screen.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/join_screen.dart';
 import 'package:flutter_blog/ui/screens/auth/login_screen/login_screen.dart';
 import 'package:flutter_blog/ui/screens/auth/user_search/id_search_complete_screen/id_search_complete_screen.dart';
@@ -48,6 +49,7 @@ class Move {
   static String noticeDetailScreen = "/notice/detailScreen";
   static String userQuestionFormScreen = "/user/questionFormScreen";
   static String userQuestionScreen = "/product/questionScreen";
+  static String addressScreen = "/address";
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
@@ -75,5 +77,6 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.noticeDetailScreen: (context) => NoticeDetailScreen(),
     Move.userQuestionFormScreen: (context) => UserQuestionFormScreen(),
     Move.userQuestionScreen: (context) => UserQuestionScreen(),
+    Move.addressScreen: (context) => AddressScreen(),
   };
 }

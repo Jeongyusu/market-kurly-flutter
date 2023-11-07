@@ -25,28 +25,28 @@ class CartOptionItem extends ConsumerWidget {
         child: Row(
           children: [
             AspectRatio(
-              aspectRatio: 1 / 1,
-              child: Image.network(
-                'http://192.168.0.134:8080${cartListModel?.cartDTO.cartProducts[index].productPic}', // 이미지의 URL
-                width: 200, // 이미지의 가로 크기
-                height: 150, // 이미지의 세로 크기
-                fit: BoxFit.cover, // 이미지의 맞춤 방법 (옵션)
-                loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-                  if (loadingProgress == null) {
-                    return child;
-                  } else {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                            : null,
-                      ),
-                    );
-                  }
-                },
-              )
-
-            ),
+                aspectRatio: 1 / 1,
+                child: Image.network(
+                  'http://192.168.0.42:8080${cartListModel?.cartDTO.cartProducts[index].productPic}', // 이미지의 URL
+                  width: 200, // 이미지의 가로 크기
+                  height: 150, // 이미지의 세로 크기
+                  fit: BoxFit.cover, // 이미지의 맞춤 방법 (옵션)
+                  loadingBuilder: (BuildContext context, Widget child,
+                      ImageChunkEvent? loadingProgress) {
+                    if (loadingProgress == null) {
+                      return child;
+                    } else {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                              : null,
+                        ),
+                      );
+                    }
+                  },
+                )),
             SizedBox(
               width: smallGap,
             ),
