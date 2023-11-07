@@ -3,6 +3,7 @@ import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/_core/utils/validator_util.dart';
+import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_text_form_field.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
 import 'package:flutter_blog/ui/widgets/appbar/custom_simple_appbar.dart';
 import 'package:flutter_blog/ui/widgets/text_form_field/custom_text_form_field.dart';
@@ -18,54 +19,50 @@ class MyInfoUpdateBody extends StatelessWidget {
     return Scaffold(
       appBar: CustomSimpleAppbar(
           title: Text(
-        "개인정보 수정",
+        "개인정보수정",
         style: subTitleReqular(),
       )),
       body: Form(
         key: formKey,
         child: Padding(
-          padding: const EdgeInsets.only(left: 20, top: 10),
+          padding: const EdgeInsets.only(left: 16, top: 20, right: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "비밀번호 재확인",
-                style: subTitleReqular(),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Text("회원님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인해주세요.",
-                    style: greyToneText()),
-              ),
-              Text(
-                "아이디",
-                style: subTitleReqular(),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Container(
-                    width: 350,
-                    child: CustomTextFormField(
-                        placeholderText: "    현재 아이디",
-                        funValidator: validatePassword(),
-                        controller: password)),
+                style: subTitleSmall(),
               ),
               SizedBox(
-                height: smallGap,
+                height: xsmallGap,
               ),
-              Text(
-                "비밀번호",
-                style: subTitleReqular(),
+              Text("회원님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인해주세요.",
+                  style: greyToneText()),
+              SizedBox(
+                height: mediumGap,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Container(
                     width: 350,
-                    child: CustomTextFormField(
-                        placeholderText: "    현재 비밀번호를 입력하세요",
-                        funValidator: validatePassword(),
-                        controller: password)),
+                    child: CustomJoinTextFormField(
+                      text: "아이디",
+                      placeholderText: "현재 아이디",
+                      funValidator: validatePassword(),
+                      controller: password,
+                    )),
               ),
+              SizedBox(
+                height: xsmallGap,
+              ),
+              Container(
+                  width: 350,
+                  child: CustomJoinTextFormField(
+                    text: "비밀번호",
+                    placeholderText: "현재 비밀번호를 입력하세요",
+                    funValidator: validatePassword(),
+                    controller: password,
+                  )),
               SizedBox(
                 height: mediumGap,
               ),

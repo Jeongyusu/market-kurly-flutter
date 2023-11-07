@@ -43,7 +43,7 @@ class CustomJoinTextFormField extends ConsumerWidget {
             hintText: "$placeholderText",
             hintStyle: TextStyle(
               color: formColor,
-              fontSize: 13,
+              fontSize: 14,
             ),
             enabledBorder: OutlineInputBorder(
               // 3. 기본 TextFormField 디자인
