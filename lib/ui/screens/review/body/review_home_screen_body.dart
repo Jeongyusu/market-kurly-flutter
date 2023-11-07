@@ -4,7 +4,7 @@ import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/ui/screens/review/widget/review_home_order_number.dart';
 import 'package:flutter_blog/ui/screens/review/widget/review_home_product.dart';
 import 'package:flutter_blog/ui/screens/review/widget/review_home_product_second.dart';
-import 'package:flutter_blog/ui/widgets/custom_review_home_appbar.dart';
+import 'package:flutter_blog/ui/widgets/appbar/custom_review_home_appbar.dart';
 
 class ReviewHomeScreenBody extends StatelessWidget {
   const ReviewHomeScreenBody({

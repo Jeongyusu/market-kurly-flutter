@@ -6,7 +6,7 @@ import 'package:flutter_blog/ui/screens/coupon/widget/coupon_bottom_appbar.dart'
 import 'package:flutter_blog/ui/screens/user_question/widget/user_question_camera.dart';
 import 'package:flutter_blog/ui/screens/user_question/widget/user_question_drop_down.dart';
 import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
-import 'package:flutter_blog/ui/widgets/custom_simple_appbar.dart';
+import 'package:flutter_blog/ui/widgets/appbar/custom_simple_appbar.dart';
 import 'package:flutter_blog/ui/widgets/text_form_field/custom_text_area.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
@@ -14,9 +14,9 @@ import 'package:image_picker/image_picker.dart';
 import 'widget/user_question_bottom_appbar.dart';
 import 'widget/user_question_dropdown2.dart';
 
-class UserQuestionFormScreen extends ConsumerWidget {
+class CustomerQuestionFormScreen extends ConsumerWidget {
   final TextEditingController? controller;
-  const UserQuestionFormScreen({super.key, this.controller});
+  const CustomerQuestionFormScreen({super.key, this.controller});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

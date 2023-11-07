@@ -14,7 +14,7 @@ class MyInfoShipmentAddress extends StatelessWidget {
       color: pointColor,
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, Move.addressScreen);
+          Navigator.pushNamed(context, Move.myInfoAddressScreen);
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

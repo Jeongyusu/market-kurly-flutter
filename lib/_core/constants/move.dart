@@ -28,62 +28,92 @@ import 'package:flutter_blog/ui/screens/user_question/user_question_form_screen.
 import 'package:flutter_blog/ui/screens/user_question/user_question_screen.dart';
 
 class Move {
+  // splash
   static String splashScreen = "/splash";
+
+  // main
+  static String mainScreen = "/main";
+
+  // auth
   static String loginScreen = "/login";
   static String joinScreen = "/join";
+
+  //id & pw
+  static String idSearchScreen = "/login/idSearch";
+  static String idSearchCompleteScreen = "/login/idSearch/complete";
+  static String pwSearchScreen = "/login/pwSearch";
+  static String pwNewSetScreen = "/login/pw/insert";
+  static String pwSearchCompleteScreen = "/login/pwSearch/complete";
+
+  // my_info
   static String myInfoScreen = "/user/info";
   static String myInfoUpdateScreen = "/user/info/updateScreen";
   static String myInfoUpdateDetailScreen = "/user/info/update/detailScreen";
-  static String mainScreen = "/main/productList";
+  static String myInfoAddressScreen = "/user/info/address";
+  static String myInfoCouponHomeScreen = "/user/info/coupon/homeScreen";
+  static String myInfoReviewHomeScreen = "/user/info/review/homeScreen";
+
+  // cart
   static String cartScreen = "/cart/save";
   static String cartOrderSheetScreen = "/cart/orderSheetScreen";
   static String cartOrderCancelScreen = "/cart/orderCancelScreen";
-  static String pwSearchScreen = "/login/pwSearch";
-  static String idSearchScreen = "/login/idSearch";
-  static String idSearchCompleteScreen = "/login/idSearch/complete";
-  static String pwSearchCompleteScreen = "/login/pwSearch/complete";
-  static String pwNewSetScreen = "/login/pw/insert";
-  static String reviewHomeScreen = "/review/homeScreen";
-  static String productReviewImgScreen = "/review/detailImg";
-  static String productReviewSaveScreen = "/review/save";
-  static String couponHomeScreen = "/coupon/homeScreen";
-  static String customerCenterHomeScreen = "/customerCenter/homeScreen";
-  static String noticeHomeScreen = "/notice/homeScreen";
-  static String noticeDetailScreen = "/notice/detailScreen";
-  static String userQuestionScreen = "/user/questionScreen";
+
+  // product
   static String productInquirySaveScreen = "/product/inquery/save";
-  static String addressScreen = "/address";
-  static String userQuestionFormScreen = "/user/questionFormScreen";
+  static String productReviewImgScreen = "/product/review/detailImg";
+  static String productReviewSaveScreen = "/product/review/save";
+
+  // customer
+  static String customerHomeScreen = "/customerCenter/homeScreen";
+  static String customerNoticeHomeScreen = "customer/notice/homeScreen";
+  static String customerNoticeDetailScreen = "customer/notice/detailScreen";
+  static String customerQuestionScreen = "customer/questionScreen";
+  static String customerQuestionFormScreen = "customer/questionFormScreen";
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
   return {
+    // splash
     Move.splashScreen: (context) => const SplashScreen(),
+
+    // main
+    Move.mainScreen: (context) => const MainScreen(),
+
+    // auth
     Move.loginScreen: (context) => const LoginScreen(),
     Move.joinScreen: (context) => const JoinScreen(),
-    Move.mainScreen: (context) => const MainScreen(),
-    Move.cartScreen: (context) => CartScreen(),
-    Move.pwSearchScreen: (context) => PwSearchScreen(),
+
+    // id & pw
     Move.idSearchScreen: (context) => IdSearchScreen(),
-    Move.pwSearchCompleteScreen: (context) => PwSearchCompleteScreen(),
     Move.idSearchCompleteScreen: (context) => IdSearchCompleteScreen(),
+    Move.pwSearchScreen: (context) => PwSearchScreen(),
     Move.pwNewSetScreen: (context) => PwNewSetScreen(),
-    Move.cartOrderSheetScreen: (context) => CartOderSheetScreen(),
-    Move.cartOrderCancelScreen: (context) => CartOderCancelScreen(),
+    Move.pwSearchCompleteScreen: (context) => PwSearchCompleteScreen(),
+
+    // my_info
     Move.myInfoScreen: (context) => MyInfoScreen(),
     Move.myInfoUpdateScreen: (context) => MyInfoUpdateScreen(),
     Move.myInfoUpdateDetailScreen: (context) => MyInfoUpdateDetailScreen(),
-    Move.reviewHomeScreen: (context) => ReviewHomeScreen(),
+    Move.myInfoCouponHomeScreen: (context) => MyInfoCouponHomeScreen(),
+    Move.myInfoAddressScreen: (context) => MyInfoAddressScreen(),
+    Move.myInfoReviewHomeScreen: (context) => MyInfoReviewHomeScreen(),
+
+    // cart
+    Move.cartScreen: (context) => CartScreen(),
+    Move.cartOrderSheetScreen: (context) => CartOderSheetScreen(),
+    Move.cartOrderCancelScreen: (context) => CartOderCancelScreen(),
+
     Move.productReviewImgScreen: (context) => ProductReviewImgScreen(),
     Move.productReviewSaveScreen: (context) => ProductReviewSaveScreen(),
-    Move.couponHomeScreen: (context) => CouponHomeScreen(),
-    Move.customerCenterHomeScreen: (context) => CustomerCenterHomeScreen(),
-    Move.noticeHomeScreen: (context) => NoticeHomeScreen(),
-    Move.noticeDetailScreen: (context) => NoticeDetailScreen(),
+
+    // product
     Move.productInquirySaveScreen: (context) => ProductInquirySaveScreen(),
-    Move.addressScreen: (context) => AddressScreen(),
-    Move.userQuestionFormScreen: (context) => UserQuestionFormScreen(),
-    Move.userQuestionScreen: (context) => UserQuestionScreen(),
-    Move.addressScreen: (context) => AddressScreen(),
+
+    // customer
+    Move.customerHomeScreen: (context) => CustomerHomeScreen(),
+    Move.customerNoticeHomeScreen: (context) => CustomerNoticeHomeScreen(),
+    Move.customerNoticeDetailScreen: (context) => CustomerNoticeDetailScreen(),
+    Move.customerQuestionFormScreen: (context) => CustomerQuestionFormScreen(),
+    Move.customerQuestionScreen: (context) => CustomerQuestionScreen(),
   };
 }

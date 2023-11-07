@@ -6,8 +6,8 @@ import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/auth/login_screen/widgets/login_form.dart';
 import 'package:flutter_blog/ui/screens/auth/user_search/widget/id_search_form.dart';
 import 'package:flutter_blog/ui/screens/auth/user_search/widget/pw_search_form.dart';
+import 'package:flutter_blog/ui/widgets/appbar/custom_nav_appbar.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_text_button.dart';
-import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 
 class IdSearchBody extends StatelessWidget {
   const IdSearchBody({

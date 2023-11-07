@@ -3,8 +3,8 @@ import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/widget/product_rating_bar_item.dart';
 
-class ProductRating extends StatelessWidget {
-  const ProductRating({
+class ProductReviewRating extends StatelessWidget {
+  const ProductReviewRating({
     super.key,
   });
 
