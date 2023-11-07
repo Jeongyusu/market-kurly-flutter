@@ -22,6 +22,7 @@ class CartOderSheetScreen extends ConsumerWidget {
             },
             style: ElevatedButton.styleFrom(
               fixedSize: Size.fromHeight(50),
+
               backgroundColor: primaryColor,
             ),
             child: Text("주문하기"),

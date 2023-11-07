@@ -15,17 +15,14 @@ class CartOptionTitle extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     CartListModel? cartDTOListModel = ref.watch(cartListProvider);
 
-    return Row(
-      children: [
-        Flexible(
-          child: Container(
-              child: Text(
-            "${cartDTOListModel?.cartDTO.cartProducts[index].productSeller ?? ""} "
-            "${cartDTOListModel?.cartDTO.cartProducts[index].productTitle ?? ""}",
-            style: strongTextmMedium(),
-          )),
-        ),
-      ],
+    return Container(
+      width: 320,
+      child: RichText(
+         text: TextSpan(text:  "[${cartDTOListModel?.cartDTO.cartProducts[index].sellerName ?? ""}]"
+              "${cartDTOListModel?.cartDTO.cartProducts[index].productName ?? ""}",
+            style: subContentsBold(),),
+            overflow: TextOverflow.ellipsis, maxLines: 2,
+      ),
     );
   }
 }

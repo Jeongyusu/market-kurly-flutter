@@ -110,7 +110,8 @@ class MyInfoUpdateForm extends ConsumerWidget {
                   username: joinFormModel!.username,
                   userEmail: joinFormModel!.userEmail,
                   userBirth: joinFormModel?.userBirth ?? null,
-                  userGender: joinFormModel?.userGender ?? null);
+                  userGender: joinFormModel?.userGender ?? null,
+                  role: "NORMAL");
 
               ref.read(sessionProvider).join(joinReqDTO);
             },

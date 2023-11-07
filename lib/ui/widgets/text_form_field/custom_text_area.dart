@@ -9,7 +9,7 @@ class CustomTextArea extends StatelessWidget {
 
   const CustomTextArea({
     Key? key,
-    this.funValidator,
+    required this.funValidator,
     required this.controller,
     required this.hintText,
     this.initValue = "",

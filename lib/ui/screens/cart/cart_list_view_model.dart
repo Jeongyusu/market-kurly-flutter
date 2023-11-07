@@ -3,6 +3,7 @@ import 'package:flutter_blog/data/dto/response_dto.dart';
 import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_dto.dart';
 import 'package:flutter_blog/data/model/post.dart';
 import 'package:flutter_blog/data/repository/cart_repsository.dart';
+import 'package:flutter_blog/data/store/param_store.dart';
 import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_blog/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,8 +22,10 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
 
   Future<void> notifyInit() async {
 
-    // SessionStore sessionStore = ref.read(sessionProvider);
-    ResponseDTO responseDTO = await CartDTORepository().fetchCartList();
+    SessionStore sessionStore = ref.read(sessionProvider);
+    String jwt = sessionStore.jwt ?? "";
+    Logger().d("jwt테스트${jwt}");
+    ResponseDTO responseDTO = await CartDTORepository().fetchCartList(jwt);
     Logger().d("여까지실행");
     Logger().d("여기까지2 ${responseDTO.response}");
     state = CartListModel(responseDTO.response);
@@ -31,7 +34,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
   void plusQuantity(int index) {
     Logger().d("플러스 클릭됨");
     if (index >= 0 && index < state!.cartDTO.cartProducts.length) {
-      state!.cartDTO.cartProducts[index].quentity++;
+      state!.cartDTO.cartProducts[index].optionQuantity++;
     }
     state = CartListModel(state!.cartDTO);
   }
@@ -39,8 +42,8 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
   void minusQuantity(int index) {
     Logger().d("마이너스 클릭됨");
     if (index >= 0 && index < state!.cartDTO.cartProducts.length) {
-      if (state!.cartDTO.cartProducts[index].quentity > 0) {
-        state!.cartDTO.cartProducts[index].quentity--;
+      if (state!.cartDTO.cartProducts[index].optionQuantity > 0) {
+        state!.cartDTO.cartProducts[index].optionQuantity--;
       }
     }
     state = CartListModel(state!.cartDTO);
@@ -52,7 +55,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
     if (state != null) {
       int sumOriginPrice = 0;
       state!.cartDTO.cartProducts.forEach((cartProduct) {
-        sumOriginPrice += cartProduct.beforeDiscount * cartProduct.quentity;
+        sumOriginPrice += cartProduct.originPrice * cartProduct.optionQuantity;
         state!.cartDTO.totalBeforePrice = sumOriginPrice;
         state = CartListModel(state!.cartDTO);
       });
@@ -66,12 +69,23 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
       int sumDiscountPrice = 0;
       state!.cartDTO.cartProducts.forEach((cartProduct) {
         sumDiscountPrice +=
-            (cartProduct.beforeDiscount - cartProduct.discountedPrice) *
-                (cartProduct.quentity);
+            (cartProduct.originPrice - cartProduct.discountedPrice) *
+                (cartProduct.optionQuantity);
         state!.cartDTO.totalDiscountPrice = sumDiscountPrice;
         state = CartListModel(state!.cartDTO);
       });
     }
+  }
+  void selectedCartItemRemove() {
+
+    Param? param = ref.read(paramProvider);
+    param!.removeList!.sort((a, b) => b.compareTo(a));
+    for (int index in param!.removeList!) {
+      if (index >= 0 && index < state!.cartDTO!.cartProducts.length) {
+        state!.cartDTO!.cartProducts.removeAt(index);
+      }
+    }
+    state = CartListModel(state!.cartDTO);
   }
   // Future<void> notifyAdd(PostSaveReqDTO dto) async {
   //   SessionStore sessionStore = ref.read(sessionProvider);

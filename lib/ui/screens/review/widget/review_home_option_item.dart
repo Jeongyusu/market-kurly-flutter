@@ -29,7 +29,7 @@ class ReviewHomeOptionItem extends ConsumerWidget {
             Expanded(
               flex: 1,
               child: Image.asset(
-                'assets${cartListModel?.cartDTO.cartProducts[index].image}',
+                'assets${cartListModel?.cartDTO.cartProducts[index].productPic}',
                 fit: BoxFit.cover,
                 width: 50,
                 height: 90,

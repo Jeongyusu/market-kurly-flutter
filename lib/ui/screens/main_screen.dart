@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
+import 'package:flutter_blog/data/store/session_store.dart';
+import 'package:flutter_blog/ui/screens/auth/login_screen/login_screen.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_screen.dart';
 import 'package:flutter_blog/ui/screens/category/category_screen.dart';
 import 'package:flutter_blog/ui/screens/home/home_screen.dart';
 import 'package:flutter_blog/ui/screens/my_info/my_info_screen.dart';
 import 'package:flutter_blog/ui/screens/search/search_screen.dart';
 import 'package:flutter_blog/ui/widgets/navigation_items/custom_navigation_item.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MainScreen extends StatefulWidget {
@@ -42,7 +45,14 @@ class _MainScreenState extends State<MainScreen>
           HomeScreen(tabController: _tabController),
           CategoryScreen(),
           SearchScreen(),
-          MyInfoScreen(),
+          Consumer(builder: (context, ref, child) {
+            SessionStore sessionStore = ref.read(sessionProvider);
+            if(sessionStore.isLogin){
+              return MyInfoScreen();
+            } else {
+              return LoginScreen();
+            }
+          },),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

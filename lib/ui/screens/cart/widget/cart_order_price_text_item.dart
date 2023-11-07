@@ -26,11 +26,11 @@ class CartOrderPriceTextItem extends ConsumerWidget {
           width: smallGap,
         ),
         Text(
-            "${cartDTOListModel?.cartDTO.cartProducts[index].beforeDiscount}원" ??
+            "${cartDTOListModel?.cartDTO.cartProducts[index].originPrice}원" ??
                 "에러",
             style: disabledText()),
         Text(" |  ", style: greyToneText(),),
-        Text("${cartDTOListModel?.cartDTO.cartProducts[index].quentity}개" ?? "에러",
+        Text("${cartDTOListModel?.cartDTO.cartProducts[index].optionQuantity}개" ?? "에러",
           style: basicText(),
         ),
       ],
