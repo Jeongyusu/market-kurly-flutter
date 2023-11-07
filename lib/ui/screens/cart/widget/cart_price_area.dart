@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
+import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_product_dto.dart';
+import 'package:flutter_blog/data/dto/model_dto/product_dto/product_dto.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_blog/ui/widgets/text_items/custom_text_sbtween_item.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,6 +16,12 @@ class CartPriceArea extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     CartListModel? cartListModel = ref.watch(cartListProvider);
+
+    // List<CartProductDTO> productList =
+    //     cartListModel!.cartDTO.cartProducts; // productDTO 배열을 포함하는 변수
+    // List<CartProductDTO> selectedProducts =
+    //     productList.where((product) => product.isChecked == true).toList();
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(

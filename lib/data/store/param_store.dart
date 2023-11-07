@@ -17,6 +17,7 @@ class ParamStore extends StateNotifier<Param?> {
     List<int> updatedRemoveList = [...state!.removeList ?? [], index];
     state = Param(removeList: updatedRemoveList);
   }
+
   void removeListRemove(int index) {
     List<int> currentRemoveList = state!.removeList!;
     if (currentRemoveList != null && currentRemoveList.contains(index)) {
@@ -25,23 +26,23 @@ class ParamStore extends StateNotifier<Param?> {
     }
   }
 
-  void notifyInit(){
+  void notifyInit() {
     CartListModel? cartListModel = ref.read(cartListProvider);
     List<int> initialRemoveList = state!.removeList ?? [];
-    for (int i = initialRemoveList.length; i < cartListModel!.cartDTO!.cartProducts.length; i++) {
+    for (int i = initialRemoveList.length;
+        i < cartListModel!.cartDTO!.cartProducts.length;
+        i++) {
       initialRemoveList.add(i);
     }
     state = Param(removeList: initialRemoveList, isChecked: true);
-
   }
 
   void AllChecked(bool value) {
-    if(state!.isChecked == value) {
+    if (state!.isChecked == value) {
       state = Param(isChecked: !value);
-    }else{
+    } else {
       state = Param(isChecked: value);
     }
-
   }
 
   void AllDispose() {
@@ -50,6 +51,5 @@ class ParamStore extends StateNotifier<Param?> {
 }
 
 final paramProvider = StateNotifierProvider<ParamStore, Param?>((ref) {
-  return ParamStore(
-      Param(isChecked: true, removeList: []),ref)..notifyInit();
+  return ParamStore(Param(isChecked: true, removeList: []), ref)..notifyInit();
 });

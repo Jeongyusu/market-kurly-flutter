@@ -7,12 +7,12 @@ import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_check_box_rounded/flutter_check_box_rounded.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CheckBoxItem extends ConsumerWidget {
+class CartCheckBoxItem extends ConsumerWidget {
   static const double defaultSize = 24.0;
   String text;
   TextStyle? textStyle;
   double? iconSize;
-  CheckBoxItem({
+  CartCheckBoxItem({
     required this.text,
     this.textStyle,
     this.iconSize,
@@ -26,13 +26,12 @@ class CheckBoxItem extends ConsumerWidget {
     return Row(
       children: [
         CheckBoxRounded(
-          isChecked: param!.isChecked,
+          isChecked: true,
           onTap: (bool? value) {
             print(value);
-            ref.watch(paramProvider.notifier).AllChecked(value!);
-            for(int i=0; i<cartListModel!.cartDTO.cartProducts.length; i++){
-              ref.read(paramProvider.notifier).removeListAdd(i);
-            }
+            ref.read(cartListProvider.notifier).AllChecked(value!);
+            ref.read(cartListProvider.notifier).calSumOriginPrice();
+            ref.read(cartListProvider.notifier).calSumDiscountPrice();
           },
           checkedColor: primaryColor02,
           size: iconSize ?? defaultSize,

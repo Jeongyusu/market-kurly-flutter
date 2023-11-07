@@ -19,7 +19,6 @@ class CartOptionArea extends ConsumerWidget {
     Param? param = ref.watch(paramProvider);
     CartListModel? cartListModel = ref.watch(cartListProvider);
 
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: ListView.builder(
@@ -35,16 +34,14 @@ class CartOptionArea extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CheckBoxRounded(
-                    isChecked: param!.isChecked,
+                    isChecked:
+                        cartListModel!.cartDTO.cartProducts[index].isChecked,
                     onTap: (bool? value) {
-                      if (value == true){
-                        ref.read(paramProvider.notifier).removeListAdd(index);
-                        Logger().d("리무브리스트테스트중${param.removeList!.length}");
-                      } else {
-                        ref.read(paramProvider.notifier).removeListRemove(index);
-                        Logger().d("리무브리스트테스트중${param.removeList!.length}");
-
-                      }
+                      ref
+                          .read(cartListProvider.notifier)
+                          .isCheckedChanged(index);
+                      ref.read(cartListProvider.notifier).calSumOriginPrice();
+                      ref.read(cartListProvider.notifier).calSumDiscountPrice();
                     },
                     checkedColor: primaryColor,
                     size: 22,
