@@ -11,7 +11,7 @@ import 'package:flutter_blog/ui/screens/cart/widget/cart_option_title.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_price_area.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_price_text_item.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_total_btn.dart';
-import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
+import 'package:flutter_blog/ui/screens/cart/widget/cart_checkbox_item.dart';
 import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 import 'package:flutter_blog/ui/widgets/custom_option_count.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_bold.dart';
@@ -55,4 +55,3 @@ class CartBody extends StatelessWidget {
     );
   }
 }
-

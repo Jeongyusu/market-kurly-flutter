@@ -34,6 +34,7 @@ class Move {
   static String myInfoScreen = "/user/info";
   static String myInfoUpdateScreen = "/user/info/updateScreen";
   static String myInfoUpdateDetailScreen = "/user/info/update/detailScreen";
+  static String myInfoCouponHomeScreen = "/user/info/couponHomeScreen";
   static String mainScreen = "/main/productList";
   static String cartScreen = "/cart/save";
   static String cartOrderSheetScreen = "/cart/orderSheetScreen";

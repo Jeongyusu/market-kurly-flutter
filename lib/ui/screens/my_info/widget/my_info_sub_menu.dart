@@ -13,7 +13,7 @@ class MyInfoSubMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, Move.myInfoUpdateScreen);
+        Navigator.pushNamed(context, Move.myInfoCouponHomeScreen);
       },
       child: Padding(
         padding: const EdgeInsets.only(top: 20, bottom: 20),

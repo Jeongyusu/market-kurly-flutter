@@ -7,12 +7,12 @@ import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_check_box_rounded/flutter_check_box_rounded.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CheckBoxItem extends ConsumerWidget {
+class CartCheckBoxItem extends ConsumerWidget {
   static const double defaultSize = 24.0;
   String text;
   TextStyle? textStyle;
   double? iconSize;
-  CheckBoxItem({
+  CartCheckBoxItem({
     required this.text,
     this.textStyle,
     this.iconSize,

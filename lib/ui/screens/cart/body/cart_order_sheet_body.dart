@@ -15,7 +15,7 @@ import 'package:flutter_blog/ui/screens/cart/widget/cart_order_shipment_address.
 import 'package:flutter_blog/ui/screens/cart/widget/cart_price_area.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_price_text_item.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/coupon_drop_down.dart';
-import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
+import 'package:flutter_blog/ui/screens/cart/widget/cart_checkbox_item.dart';
 import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 import 'package:flutter_blog/ui/widgets/custom_option_count.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_bold.dart';
@@ -114,7 +114,7 @@ class CartOrderSheetBody extends ConsumerWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CheckBoxItem(
+            CartCheckBoxItem(
               text: "전체선택",
               textStyle: basicTextBig(),
             ),

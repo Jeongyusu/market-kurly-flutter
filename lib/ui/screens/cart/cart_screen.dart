@@ -6,7 +6,7 @@ import 'package:flutter_blog/ui/screens/cart/body/cart_body.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_blog/data/store/param_store.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_price_area.dart';
-import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
+import 'package:flutter_blog/ui/screens/cart/widget/cart_checkbox_item.dart';
 import 'package:flutter_blog/ui/widgets/text_items/custom_text_sbtween_item.dart';
 import 'package:flutter_check_box_rounded/flutter_check_box_rounded.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

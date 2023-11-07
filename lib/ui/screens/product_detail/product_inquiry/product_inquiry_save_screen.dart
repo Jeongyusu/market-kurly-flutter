@@ -8,7 +8,8 @@ import 'package:flutter_blog/ui/screens/user_question/widget/user_question_botto
 import 'package:flutter_blog/ui/screens/user_question/widget/user_question_camera.dart';
 import 'package:flutter_blog/ui/screens/user_question/widget/user_question_drop_down.dart';
 import 'package:flutter_blog/ui/screens/user_question/widget/user_question_dropdown2.dart';
-import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
+import 'package:flutter_blog/ui/screens/cart/widget/cart_checkbox_item.dart';
+import 'package:flutter_blog/ui/widgets/button_items/custom_check_box_item.dart';
 import 'package:flutter_blog/ui/widgets/custom_nav_appbar.dart';
 import 'package:flutter_blog/ui/widgets/custom_simple_appbar.dart';
 import 'package:flutter_blog/ui/widgets/text_form_field/custom_text_area.dart';

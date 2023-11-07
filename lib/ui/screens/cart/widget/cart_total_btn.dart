@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/data/store/param_store.dart';
-import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
+import 'package:flutter_blog/ui/screens/cart/widget/cart_checkbox_item.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
@@ -20,7 +20,7 @@ class CartTotalBtn extends ConsumerWidget {
         children: [
           InkWell(
             onTap: () {},
-            child: CheckBoxItem(
+            child: CartCheckBoxItem(
               text: "전체선택",
               textStyle: basicTextBig(),
             ),
