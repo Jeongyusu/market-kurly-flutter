@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_rich_text_item.dart';
-import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
+import 'package:flutter_blog/ui/screens/cart/widget/cart_checkbox_item.dart';
+import 'package:flutter_blog/ui/widgets/button_items/custom_check_box_item.dart';
 
 class JoinTermAgreement extends StatelessWidget {
   const JoinTermAgreement({

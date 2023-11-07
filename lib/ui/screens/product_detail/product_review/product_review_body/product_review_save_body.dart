@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/widget/product_review_contents.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/widget/product_review_rating.dart';
-import 'package:flutter_blog/ui/screens/user_question/widget/user_question_camera.dart';
 import 'package:flutter_blog/ui/widgets/appbar/custom_nav_appbar.dart';
-import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
 import 'package:flutter_blog/ui/widgets/text_items/custom_camera_text_area.dart';
 
 class ProductReviewSaveBody extends StatelessWidget {

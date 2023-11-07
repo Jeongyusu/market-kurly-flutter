@@ -8,7 +8,7 @@ import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_blog/ui/widgets/custom_date_picker.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_rich_text_item.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_term_agreement.dart';
-import 'package:flutter_blog/ui/widgets/button_items/custom_checkbox_item.dart';
+import 'package:flutter_blog/ui/screens/cart/widget/cart_checkbox_item.dart';
 import 'package:flutter_blog/ui/widgets/button_items/custom_radio_button_item.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_bold.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_text_form_field.dart';

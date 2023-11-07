@@ -10,7 +10,7 @@ class CartProductDTO {
   int discountRate;
   int discountedPrice;
   int optionQuantity;
-  bool? isChecked;
+  bool? isChecked = true;
 
   CartProductDTO(
       this.cartId,
