@@ -28,6 +28,8 @@ class CartTotalBtn extends ConsumerWidget {
           InkWell(
             onTap: () {
               ref.read(cartListProvider.notifier).checkedRemove();
+              ref.read(cartListProvider.notifier).calSumOriginPrice();
+              ref.read(cartListProvider.notifier).calSumDiscountPrice();
               Logger()
                   .d("남은 리스트갯수 ${cartListModel!.cartDTO!.cartProducts.length}");
             },

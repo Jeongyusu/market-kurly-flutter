@@ -33,6 +33,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
   void checkedRemove() {
     state!.cartDTO.cartProducts
         .removeWhere((cartProduct) => cartProduct.isChecked ?? false);
+    state = CartListModel(state!.cartDTO);
   }
 
   void AllChecked(bool value) {

@@ -37,21 +37,11 @@ class CartOptionArea extends ConsumerWidget {
                     isChecked:
                         cartListModel!.cartDTO.cartProducts[index].isChecked,
                     onTap: (bool? value) {
-                      if (value == true) {
-                        ref.read(paramProvider.notifier).removeListAdd(index);
-                        ref
-                            .read(cartListProvider.notifier)
-                            .isCheckedChanged(index);
-                        Logger().d("리무브리스트테스트중${param!.removeList!.length}");
-                      } else {
-                        ref
-                            .read(paramProvider.notifier)
-                            .removeListRemove(index);
-                        ref
-                            .read(cartListProvider.notifier)
-                            .isCheckedChanged(index);
-                        Logger().d("리무브리스트테스트중${param!.removeList!.length}");
-                      }
+                      ref
+                          .read(cartListProvider.notifier)
+                          .isCheckedChanged(index);
+                      ref.read(cartListProvider.notifier).calSumOriginPrice();
+                      ref.read(cartListProvider.notifier).calSumDiscountPrice();
                     },
                     checkedColor: primaryColor,
                     size: 22,
