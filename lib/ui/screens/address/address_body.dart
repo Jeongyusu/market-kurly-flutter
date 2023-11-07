@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/data/model/address.dart';
 import 'package:flutter_blog/ui/screens/address/address_detail.dart';
@@ -87,7 +88,7 @@ class AddressBody extends ConsumerWidget {
                 child: Text(
                   "추가",
                   style: TextStyle(
-                      color: Colors.purple, fontWeight: FontWeight.bold),
+                      color: primaryColor, fontWeight: FontWeight.bold),
                 ),
               ),
             )

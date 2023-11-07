@@ -12,40 +12,40 @@ class MyInfoShipmentAddress extends StatelessWidget {
       width: 450,
       height: 50,
       color: pointColor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, Move.addressScreen);
-            },
-            child: Padding(
+      child: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, Move.addressScreen);
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
               padding: const EdgeInsets.only(left: 20),
               child: Text(
                 "배송지",
                 style: basicTextBig(),
               ),
             ),
-          ),
-          Container(
-              constraints: BoxConstraints(maxWidth: 250),
-              child: Row(
-                children: [
-                  Flexible(
-                      child: Text(
-                    "부산광역시 연제구 거제2동 그린컴퓨터 아카데미입니다",
-                    overflow: TextOverflow.ellipsis,
-                  )),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Icon(
-                      Icons.arrow_forward_ios,
-                      size: 15,
+            Container(
+                constraints: BoxConstraints(maxWidth: 250),
+                child: Row(
+                  children: [
+                    Flexible(
+                        child: Text(
+                      "부산광역시 연제구 거제2동 그린컴퓨터 아카데미입니다",
+                      overflow: TextOverflow.ellipsis,
+                    )),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: Icon(
+                        Icons.arrow_forward_ios,
+                        size: 15,
+                      ),
                     ),
-                  ),
-                ],
-              ))
-        ],
+                  ],
+                ))
+          ],
+        ),
       ),
     );
   }

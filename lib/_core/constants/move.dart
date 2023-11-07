@@ -84,5 +84,6 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.addressScreen: (context) => AddressScreen(),
     Move.userQuestionFormScreen: (context) => UserQuestionFormScreen(),
     Move.userQuestionScreen: (context) => UserQuestionScreen(),
+    Move.addressScreen: (context) => AddressScreen(),
   };
 }
