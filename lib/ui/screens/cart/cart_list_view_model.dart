@@ -21,7 +21,6 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
   Ref ref;
 
   Future<void> notifyInit() async {
-
     SessionStore sessionStore = ref.read(sessionProvider);
     String jwt = sessionStore.jwt ?? "";
     Logger().d("jwt테스트${jwt}");
@@ -29,6 +28,32 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
     Logger().d("여까지실행");
     Logger().d("여기까지2 ${responseDTO.response}");
     state = CartListModel(responseDTO.response);
+  }
+
+  void checkedRemove() {
+    state!.cartDTO.cartProducts
+        .removeWhere((cartProduct) => cartProduct.isChecked ?? false);
+  }
+
+  void AllChecked(bool value) {
+    if (value == true) {
+      state!.cartDTO.cartProducts.forEach((cartProduct) {
+        cartProduct.isChecked = true;
+      });
+    } else {
+      state!.cartDTO.cartProducts.forEach((cartProduct) {
+        cartProduct.isChecked = false;
+      });
+    }
+    state = CartListModel(state!.cartDTO);
+  }
+
+  void isCheckedChanged(int index) {
+    Logger().d("isChecked호출됨");
+    state!.cartDTO.cartProducts[index].isChecked =
+        !(state!.cartDTO.cartProducts[index].isChecked ?? false);
+    state = CartListModel(state!.cartDTO);
+    Logger().d("개별체크박스value${state!.cartDTO.cartProducts[index].isChecked}");
   }
 
   void plusQuantity(int index) {
@@ -54,11 +79,16 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
     Logger().d("상품금액 합계 출력됨");
     if (state != null) {
       int sumOriginPrice = 0;
+
       state!.cartDTO.cartProducts.forEach((cartProduct) {
-        sumOriginPrice += cartProduct.originPrice * cartProduct.optionQuantity;
-        state!.cartDTO.totalBeforePrice = sumOriginPrice;
-        state = CartListModel(state!.cartDTO);
+        if (cartProduct.isChecked ?? false) {
+          sumOriginPrice +=
+              cartProduct.originPrice * cartProduct.optionQuantity;
+        }
       });
+
+      state!.cartDTO.totalBeforePrice = sumOriginPrice;
+      state = CartListModel(state!.cartDTO);
     }
   }
 
@@ -68,16 +98,18 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
     if (state != null) {
       int sumDiscountPrice = 0;
       state!.cartDTO.cartProducts.forEach((cartProduct) {
-        sumDiscountPrice +=
-            (cartProduct.originPrice - cartProduct.discountedPrice) *
-                (cartProduct.optionQuantity);
+        if (cartProduct.isChecked ?? false) {
+          sumDiscountPrice +=
+              (cartProduct.originPrice - cartProduct.discountedPrice) *
+                  (cartProduct.optionQuantity);
+        }
         state!.cartDTO.totalDiscountPrice = sumDiscountPrice;
         state = CartListModel(state!.cartDTO);
       });
     }
   }
-  void selectedCartItemRemove() {
 
+  void selectedCartItemRemove() {
     Param? param = ref.read(paramProvider);
     param!.removeList!.sort((a, b) => b.compareTo(a));
     for (int index in param!.removeList!) {

@@ -26,13 +26,15 @@ class CheckBoxItem extends ConsumerWidget {
     return Row(
       children: [
         CheckBoxRounded(
-          isChecked: param!.isChecked,
+          isChecked: true,
           onTap: (bool? value) {
             print(value);
-            ref.watch(paramProvider.notifier).AllChecked(value!);
-            for(int i=0; i<cartListModel!.cartDTO.cartProducts.length; i++){
-              ref.read(paramProvider.notifier).removeListAdd(i);
-            }
+            ref.read(cartListProvider.notifier).AllChecked(value!);
+            // for (int i = 0;
+            //     i < cartListModel!.cartDTO.cartProducts.length;
+            //     i++) {
+            //   ref.read(paramProvider.notifier).removeListAdd(i);
+            // }
           },
           checkedColor: primaryColor02,
           size: iconSize ?? defaultSize,

@@ -14,31 +14,30 @@ class CartTotalBtn extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     CartListModel? cartListModel = ref.read(cartListProvider);
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            InkWell(
-              onTap: () {
-              },
-              child: CheckBoxItem(
-                text: "전체선택",
-                textStyle: basicTextBig(),
-              ),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          InkWell(
+            onTap: () {},
+            child: CheckBoxItem(
+              text: "전체선택",
+              textStyle: basicTextBig(),
             ),
-            InkWell(
-              onTap: () {
-                ref.read(cartListProvider.notifier).selectedCartItemRemove();
-                Logger().d("남은 리스트갯수 ${cartListModel!.cartDTO!.cartProducts.length}");
-              },
-              child: Text(
-                "선택삭제",
-                style: basicText(),
-              ),
+          ),
+          InkWell(
+            onTap: () {
+              ref.read(cartListProvider.notifier).checkedRemove();
+              Logger()
+                  .d("남은 리스트갯수 ${cartListModel!.cartDTO!.cartProducts.length}");
+            },
+            child: Text(
+              "선택삭제",
+              style: basicText(),
             ),
-          ],
-        ),
-      );
-    }
+          ),
+        ],
+      ),
+    );
   }
-
+}
