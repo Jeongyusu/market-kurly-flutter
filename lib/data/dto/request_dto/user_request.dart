@@ -16,7 +16,7 @@ class JoinReqDTO {
       required this.userPassword,
       required this.username,
       required this.userEmail,
-        required this.role,
+      required this.role,
       this.userBirth,
       this.userGender});
 
@@ -27,7 +27,7 @@ class JoinReqDTO {
         "userEmail": userEmail,
         "userBirth": DateFormat('yyyy-MM-dd').format(userBirth!),
         "userGender": userGender,
-        "role":role,
+        "role": role,
       };
 }
 
@@ -37,5 +37,35 @@ class LoginReqDTO {
 
   LoginReqDTO({required this.userId, required this.userPassword});
 
-  Map<String, dynamic> toJson() => {"userId": userId, "userPassword": userPassword};
+  Map<String, dynamic> toJson() =>
+      {"userId": userId, "userPassword": userPassword};
+}
+
+class UserUpdateReqDTO {
+  final String userId;
+  final String userPassword;
+  final String username;
+  final String userEmail;
+  final DateTime? userBirth;
+  final String? userGender;
+  final String role;
+
+  UserUpdateReqDTO(
+      {required this.userId,
+      required this.userPassword,
+      required this.username,
+      required this.userEmail,
+      required this.role,
+      this.userBirth,
+      this.userGender});
+
+  Map<String, dynamic> toJson() => {
+        "userId": userId,
+        "username": username,
+        "userPassword": userPassword,
+        "userEmail": userEmail,
+        "userBirth": DateFormat('yyyy-MM-dd').format(userBirth!),
+        "userGender": userGender,
+        "role": role,
+      };
 }
