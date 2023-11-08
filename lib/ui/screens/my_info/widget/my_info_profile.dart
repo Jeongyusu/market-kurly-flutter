@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/data/store/session_store.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MyInfoProfile extends StatelessWidget {
+class MyInfoProfile extends ConsumerWidget {
   const MyInfoProfile({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    SessionStore sessionStore = ref.read(sessionProvider);
     return Padding(
       padding: const EdgeInsets.only(top: 20, bottom: 20, left: 20),
       child: Row(
@@ -19,7 +22,7 @@ class MyInfoProfile extends StatelessWidget {
             width: 20,
           ),
           Text(
-            "마켓컬리 님",
+            "${sessionStore.user!.username}님",
             style: strongTextmMedium(),
           ),
         ],

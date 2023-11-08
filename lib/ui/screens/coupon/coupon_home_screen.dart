@@ -23,7 +23,7 @@ class MyInfoCouponHomeScreen extends StatelessWidget {
       bottomNavigationBar: CouponBottomAppbar(
         text: "등록하기",
         funPageRoute: () {},
-        controller: TextEditingController(),
+        controller: controller,
       ),
     );
   }
