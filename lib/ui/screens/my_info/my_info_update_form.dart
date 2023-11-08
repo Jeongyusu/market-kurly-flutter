@@ -26,7 +26,6 @@ class MyInfoUpdateForm extends ConsumerWidget {
   final _userPassword = TextEditingController();
   final _userConfirmPassword = TextEditingController();
   final _userEmail = TextEditingController();
-  final _userGender = TextEditingController();
 
   final User? user;
   MyInfoUpdateForm({this.user, Key? key}) : super(key: key);
@@ -35,6 +34,8 @@ class MyInfoUpdateForm extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     MyInfoUpdateFormModel? myInfoUpdateFormModel =
         ref.watch(myInfoUpdateFormProvider);
+    SessionStore? sessionStore = ref.read(sessionProvider);
+
     return Form(
       key: _formKey,
       child: Column(
@@ -49,6 +50,7 @@ class MyInfoUpdateForm extends ConsumerWidget {
                     text: "아이디",
                     funValidator: validateUsername(),
                     enabled: false,
+                    placeholderText: "${sessionStore!.user!.userId}",
                   ),
                 ),
               ],
@@ -56,24 +58,14 @@ class MyInfoUpdateForm extends ConsumerWidget {
           ),
           const SizedBox(height: mediumGap),
           CustomJoinTextFormField(
-            changeFormData: (value) {
-              ref
-                  .read(myInfoUpdateFormProvider.notifier)
-                  .setUserPassword(value);
-            },
             controller: _userPassword,
             text: "비밀번호",
             placeholderText: "비밀번호를 입력해주세요",
-            obscureText: false,
+            obscureText: true,
             funValidator: validatePassword(),
           ),
           const SizedBox(height: mediumGap),
           CustomJoinTextFormField(
-            changeFormData: (value) {
-              ref
-                  .read(myInfoUpdateFormProvider.notifier)
-                  .setUserConfirmPassword(value);
-            },
             controller: _userConfirmPassword,
             text: "비밀번호 확인",
             placeholderText: "비밀번호를 한번 더 입력해주세요",
@@ -84,16 +76,17 @@ class MyInfoUpdateForm extends ConsumerWidget {
           CustomJoinTextFormField(
             controller: _userName,
             text: "이름",
-            enabled: false,
             funValidator: validateUsername(),
+            placeholderText: "${sessionStore!.user!.username}",
           ),
           const SizedBox(height: mediumGap),
           CustomJoinTextFormField(
             controller: _userEmail,
             text: "이메일",
-            placeholderText: "예) marketkurly@kurly.com",
+            placeholderText: "${sessionStore!.user!.userEmail}",
             obscureText: false,
             funValidator: validateEmail(),
+            enabled: true,
           ),
           const SizedBox(height: mediumGap),
           DatePicker(),
@@ -105,17 +98,16 @@ class MyInfoUpdateForm extends ConsumerWidget {
           CustomElevatedButton(
             text: "수정하기",
             funPageRoute: () {
-              if (_formKey.currentState!.validate()) {
-                UserUpdateReqDTO userUpdateDTO = UserUpdateReqDTO(
-                    userId: _userId.text,
-                    username: _userName.text,
-                    userPassword: myInfoUpdateFormModel!.userPassword,
-                    userEmail: myInfoUpdateFormModel!.userEmail,
-                    userBirth: myInfoUpdateFormModel?.userBirth ?? null,
-                    userGender: myInfoUpdateFormModel?.userGender ?? null,
-                    role: "NORMAL");
-                ref.read(sessionProvider).userUpdate(userUpdateDTO);
-              }
+              // Logger().d(sessionStore.);
+              UserUpdateReqDTO userUpdateDTO = UserUpdateReqDTO(
+                  userId: sessionStore.user!.userId,
+                  username: myInfoUpdateFormModel!.username,
+                  userPassword: myInfoUpdateFormModel!.userPassword,
+                  userEmail: myInfoUpdateFormModel.userEmail,
+                  userBirth: myInfoUpdateFormModel?.userBirth ?? null,
+                  userGender: sessionStore.user!.userGender,
+                  role: "NORMAL");
+              ref.read(sessionProvider).userUpdate(userUpdateDTO);
             },
           ),
         ],

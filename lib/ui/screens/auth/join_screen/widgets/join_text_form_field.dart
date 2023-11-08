@@ -37,6 +37,7 @@ class CustomJoinTextFormField extends ConsumerWidget {
         JoinRichTextItem(text: text, strong: strong),
         const SizedBox(height: smallGap),
         TextFormField(
+          initialValue: initValue,
           enabled: enabled,
           controller: controller,
           onChanged: changeFormData,

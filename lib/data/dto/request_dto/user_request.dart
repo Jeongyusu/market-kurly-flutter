@@ -69,3 +69,18 @@ class UserUpdateReqDTO {
         "role": role,
       };
 }
+
+class UpdateCheckDTO {
+  final String userId;
+  final String userPassword;
+
+  UpdateCheckDTO({
+    required this.userId,
+    required this.userPassword,
+  });
+
+  Map<String, dynamic> toJson() => {
+        "userId": userId,
+        "userPassword": userPassword,
+      };
+}

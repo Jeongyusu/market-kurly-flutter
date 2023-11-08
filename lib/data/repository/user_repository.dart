@@ -7,28 +7,44 @@ import 'package:logger/logger.dart';
 
 // V -> P(전역프로바이더, 뷰모델) -> R
 class UserRepository {
-  Future<ResponseDTO> fetchUserUpdate(UserUpdateReqDTO userUpdateReqDTO) async {
-    Logger().d(userUpdateReqDTO.userBirth);
+  //  회원 정보 체크
+  Future<ResponseDTO> fetchUserUpdateCheck(
+      UpdateCheckDTO updateCheckDTO) async {
     try {
-      // dynamic -> http body
-      Response<dynamic> response =
-      await dio.post("/api/users/update", data: userUpdateReqDTO.toJson());
-      Logger().d("요청완료됨111");
-      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
-      // responseDTO.data = User.fromJson(responseDTO.data);
+      Logger().d("정보 확인 체크 1");
+      Response<dynamic> response = await dio.post("/api/users/updateCheck",
+          data: updateCheckDTO.toJson());
+      Logger().d("정보 확인 체크 2");
 
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      Logger().d("정보 확인 체크 3");
       return responseDTO;
     } catch (e) {
-      return ResponseDTO(success: false, response: null, error: "중복된 유저명입니다.");
+      return ResponseDTO(
+          success: false, response: null, error: "회원 정보가 맞지 않습니다.");
     }
   }
 
-  Future<ResponseDTO> fetchJoin(JoinReqDTO requestDTO) async {
-    Logger().d(requestDTO.userBirth);
+//  회원 정보 수정
+  Future<ResponseDTO> fetchUserUpdate(UserUpdateReqDTO userUpdateReqDTO) async {
     try {
       // dynamic -> http body
       Response<dynamic> response =
-      await dio.post("/api/users/join", data: requestDTO.toJson());
+          await dio.post("/api/users/update", data: userUpdateReqDTO.toJson());
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      return responseDTO;
+    } catch (e) {
+      return ResponseDTO(
+          success: false, response: null, error: "정보 수정을 완료할 수 없습니다.");
+    }
+  }
+
+//  회원가입
+  Future<ResponseDTO> fetchJoin(JoinReqDTO requestDTO) async {
+    Logger().d(requestDTO.userBirth);
+    try {
+      Response<dynamic> response =
+          await dio.post("/api/users/join", data: requestDTO.toJson());
       Logger().d("요청완료됨111");
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       // responseDTO.data = User.fromJson(responseDTO.data);
@@ -40,6 +56,7 @@ class UserRepository {
     }
   }
 
+//  로그인
   Future<ResponseDTO> fetchLogin(LoginReqDTO requestDTO) async {
     try {
       Logger().d("fetchLogin요청됨");

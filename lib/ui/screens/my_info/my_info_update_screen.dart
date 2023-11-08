@@ -10,11 +10,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class MyInfoUpdateScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final _password = TextEditingController();
+  final _userId = TextEditingController();
   MyInfoUpdateScreen({super.key});
-
 
   @override
   Widget build(BuildContext context) {
-    return MyInfoUpdateBody(formKey: _formKey, password: _password);
+    return MyInfoUpdateBody(
+        formKey: _formKey, password: _password, userId: _userId);
   }
 }

@@ -23,6 +23,25 @@ class SessionStore extends SessionUser {
   // 1. 화면 context에 접근하는 법
   final mContext = navigatorKey.currentContext;
 
+  Future<void> userUpdateCheck(UpdateCheckDTO updateCheckDTO) async {
+    Logger().d("여기까지 실행됨");
+    // 1. 통신 코드
+    ResponseDTO responseDTO =
+        await UserRepository().fetchUserUpdateCheck(updateCheckDTO);
+    Logger().d("여기까지 실행됨1");
+
+    // 2. 비지니스 로직
+    if (responseDTO.success == true) {
+      Navigator.pushNamed(mContext!, Move.myInfoUpdateDetailScreen);
+    } else {
+      ScaffoldMessenger.of(mContext!).showSnackBar(
+        SnackBar(
+          content: Text(responseDTO.error!),
+        ),
+      );
+    }
+  }
+
   Future<void> userUpdate(UserUpdateReqDTO userUpdateReqDTO) async {
     Logger().d("여기까지 실행됨");
     // 1. 통신 코드
@@ -31,8 +50,8 @@ class SessionStore extends SessionUser {
     Logger().d("여기까지 실행됨1");
 
     // 2. 비지니스 로직
-    if (responseDTO.response == true) {
-      Navigator.pushNamed(mContext!, Move.loginScreen);
+    if (responseDTO.success == true) {
+      Navigator.pushNamed(mContext!, Move.myInfoScreen);
     } else {
       ScaffoldMessenger.of(mContext!).showSnackBar(
         SnackBar(
