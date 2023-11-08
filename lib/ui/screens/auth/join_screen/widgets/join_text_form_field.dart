@@ -8,8 +8,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class CustomJoinTextFormField extends ConsumerWidget {
   final String text;
   final String? strong;
-
-  final String placeholderText;
+  final bool? enabled;
+  final String? initValue;
+  final String? placeholderText;
   final bool obscureText;
   final funValidator;
   final changeFormData;
@@ -17,8 +18,10 @@ class CustomJoinTextFormField extends ConsumerWidget {
 
   const CustomJoinTextFormField({
     Key? key,
+    this.enabled,
+    this.initValue,
     required this.text,
-    required this.placeholderText,
+    this.placeholderText,
     this.obscureText = false,
     required this.funValidator,
     this.changeFormData,
@@ -34,6 +37,8 @@ class CustomJoinTextFormField extends ConsumerWidget {
         JoinRichTextItem(text: text, strong: strong),
         const SizedBox(height: smallGap),
         TextFormField(
+          initialValue: initValue,
+          enabled: enabled,
           controller: controller,
           onChanged: changeFormData,
           validator: funValidator,
@@ -43,7 +48,7 @@ class CustomJoinTextFormField extends ConsumerWidget {
             hintText: "$placeholderText",
             hintStyle: TextStyle(
               color: formColor,
-              fontSize: 13,
+              fontSize: 14,
             ),
             enabledBorder: OutlineInputBorder(
               // 3. 기본 TextFormField 디자인

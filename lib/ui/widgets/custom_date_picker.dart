@@ -4,6 +4,7 @@ import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/data/store/param_store.dart';
+import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/join_form_view_model.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_rich_text_item.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,6 +15,7 @@ class DatePicker extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     JoinFormModel? model = ref.watch(joinFormProvider);
+    SessionStore sessionStore = ref.read(sessionProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
