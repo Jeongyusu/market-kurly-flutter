@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
+import 'package:flutter_blog/data/repository/product_repository.dart';
 
 class SearchTextFormField extends StatelessWidget {
   const SearchTextFormField({
@@ -42,7 +43,9 @@ class SearchTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(5),
         ),
       ),
-      onFieldSubmitted: (value) {},
+      onFieldSubmitted: (value) {
+        ProductRepository().fetchSearchProductList(value);
+      },
     );
   }
 }
