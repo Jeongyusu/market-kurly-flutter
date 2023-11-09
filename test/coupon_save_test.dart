@@ -6,7 +6,7 @@ import 'package:logger/logger.dart';
 void main() async {
   String jwt =
       "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtZXRhY29kaW5nLWtleSIsImlkIjoxLCJ1c2VyRW1haWwiOiJzc2FyQG5hdGUuY29tIiwicm9sZSI6Ik5PUk1BTCIsImV4cCI6MTcwMDEwMzk5M30.4EKQzwgoD4mHgkvXo5L0hMrU_qE4fYmyD6zOLevH8jxp-nqt8P-eaRJ8moNTcXvabkCxf8Wzn9u988dhd88Z7A";
-  CouponRegisterDTO couponRegisterDTO = CouponRegisterDTO("a52d");
+  CouponRegisterDTO couponRegisterDTO = CouponRegisterDTO("712bad3a-a05c-4df4");
   Logger().d(couponRegisterDTO.couponNumber);
   await fetchCouponSave(jwt, couponRegisterDTO);
 }

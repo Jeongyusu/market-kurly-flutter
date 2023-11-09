@@ -3,6 +3,7 @@ import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:logger/logger.dart';
 
 class CustomOptionCount extends ConsumerWidget {
   final int index;
@@ -30,6 +31,8 @@ class CustomOptionCount extends ConsumerWidget {
               height: 20,
               child: GestureDetector(
                 onTap: () {
+                  Logger().d(
+                      "개별 금액 출력됨 ${cartListModel!.cartDTO.cartProducts[index].optionQuantity}");
                   ref.read(cartListProvider.notifier).minusQuantity(index);
                   ref.read(cartListProvider.notifier).calSumOriginPrice();
                   ref.read(cartListProvider.notifier).calSumDiscountPrice();
@@ -44,8 +47,9 @@ class CustomOptionCount extends ConsumerWidget {
             SizedBox(
               width: 10,
             ),
-            Text("${cartListModel?.cartDTO.cartProducts[index].optionQuantity}" ??
-                "에러"),
+            Text(
+                "${cartListModel?.cartDTO.cartProducts[index].optionQuantity}" ??
+                    "에러"),
             SizedBox(
               width: 10,
             ),
@@ -54,6 +58,8 @@ class CustomOptionCount extends ConsumerWidget {
               height: 20,
               child: GestureDetector(
                 onTap: () {
+                  Logger().d(
+                      "개별 금액 출력됨 ${cartListModel!.cartDTO.cartProducts[index].optionQuantity}");
                   ref.watch(cartListProvider.notifier).calSumDiscountPrice();
                   ref.read(cartListProvider.notifier).calSumOriginPrice();
                   ref.read(cartListProvider.notifier).plusQuantity(index);
