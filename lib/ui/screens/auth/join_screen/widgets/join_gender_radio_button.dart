@@ -30,6 +30,7 @@ class JoinGenderRadioButton extends ConsumerWidget {
           value: "MAN",
           groupValue: model?.userGender ?? "성별없음",
           onChanged: (value) {
+            print(value);
             ref.read(joinFormProvider.notifier).setUserGender(value!);
           },
         ),
@@ -38,6 +39,7 @@ class JoinGenderRadioButton extends ConsumerWidget {
           value: "WOMAN",
           groupValue: model?.userGender ?? "성별없음",
           onChanged: (value) {
+            print(value);
             ref.read(joinFormProvider.notifier).setUserGender(value!);
           },
         ),

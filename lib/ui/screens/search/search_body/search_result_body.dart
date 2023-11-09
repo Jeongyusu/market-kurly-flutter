@@ -34,8 +34,6 @@ class _SearchResultScreenState extends ConsumerState<SearchResultBody> {
     });
   }
 
-
-
   String _selectedValue = "평점순";
   @override
   Widget build(BuildContext context) {
@@ -113,18 +111,18 @@ class _SearchResultScreenState extends ConsumerState<SearchResultBody> {
                   itemCount: images.length,
                   itemBuilder: (BuildContext context, int index) {
                     return CustomProductItem(
-                      productId: bestProducts!.result[index].productId,
-                      images:
-                      "${imgUrl}${bestProducts!.result[index].productThumnail}",
-                      sellerName: bestProducts!.result[index].productName,
-                      discountRate:
-                      bestProducts!.result[index].discountRate,
-                      disablePrice:
-                      bestProducts!.result[index].originPrice,
-                      productTitle:
-                      bestProducts!.result[index].productName,
-                      totalPrice:
-                      bestProducts!.result[index].discountedPrice,
+                      // productId: bestProducts!.result[index].productId,
+                      // images:
+                      // "${imgUrl}${bestProducts!.result[index].productThumnail}",
+                      // sellerName: bestProducts!.result[index].productName,
+                      // discountRate:
+                      // bestProducts!.result[index].discountRate,
+                      // disablePrice:
+                      // bestProducts!.result[index].originPrice,
+                      // productTitle:
+                      // bestProducts!.result[index].productName,
+                      // totalPrice:
+                      // bestProducts!.result[index].discountedPrice,
                       index: index,
                     );
                   },
@@ -139,7 +137,6 @@ class _SearchResultScreenState extends ConsumerState<SearchResultBody> {
           ),
         ),
       ],
-    );
     );
   }
 }

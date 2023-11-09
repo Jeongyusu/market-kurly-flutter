@@ -27,6 +27,7 @@ class JoinForm extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     JoinFormModel? joinFormModel = ref.watch(joinFormProvider);
+    SessionStore? sessionStore = ref.read(sessionProvider);
     return Form(
       key: _formKey,
       child: Column(

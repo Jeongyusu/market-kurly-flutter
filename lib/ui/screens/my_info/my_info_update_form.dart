@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/_core/constants/color.dart';
-import 'package:flutter_blog/_core/constants/font.dart';
-import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/_core/utils/validator_util.dart';
 import 'package:flutter_blog/data/dto/request_dto/user_request.dart';
-import 'package:flutter_blog/data/store/param_store.dart';
+import 'package:flutter_blog/data/model/user.dart';
 import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/join_form_view_model.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_gender_radio_button.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_term_agreement.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_text_form_field.dart';
+import 'package:flutter_blog/ui/screens/my_info/body/my_info_update_view_model.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_text_button.dart';
 import 'package:flutter_blog/ui/widgets/custom_date_picker.dart';
@@ -23,11 +21,21 @@ import 'package:logger/logger.dart';
 
 class MyInfoUpdateForm extends ConsumerWidget {
   final _formKey = GlobalKey<FormState>();
-  MyInfoUpdateForm({Key? key}) : super(key: key);
+  final _userId = TextEditingController();
+  final _userName = TextEditingController();
+  final _userPassword = TextEditingController();
+  final _userConfirmPassword = TextEditingController();
+  final _userEmail = TextEditingController();
+
+  final User? user;
+  MyInfoUpdateForm({this.user, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    JoinFormModel? joinFormModel = ref.watch(joinFormProvider);
+    MyInfoUpdateFormModel? myInfoUpdateFormModel =
+        ref.watch(myInfoUpdateFormProvider);
+    SessionStore? sessionStore = ref.read(sessionProvider);
+
     return Form(
       key: _formKey,
       child: Column(
@@ -38,13 +46,11 @@ class MyInfoUpdateForm extends ConsumerWidget {
               children: [
                 Expanded(
                   child: CustomJoinTextFormField(
-                    changeFormData: (value) {
-                      ref.read(joinFormProvider.notifier).setUserId(value);
-                    },
+                    controller: _userId,
                     text: "아이디",
-                    placeholderText: "아이디를 입력해주세요",
-                    obscureText: false,
                     funValidator: validateUsername(),
+                    enabled: false,
+                    placeholderText: "${sessionStore!.user!.userId}",
                   ),
                 ),
               ],
@@ -52,19 +58,15 @@ class MyInfoUpdateForm extends ConsumerWidget {
           ),
           const SizedBox(height: mediumGap),
           CustomJoinTextFormField(
-            changeFormData: (value) {
-              ref.read(joinFormProvider.notifier).setUserPassword(value);
-            },
+            controller: _userPassword,
             text: "비밀번호",
             placeholderText: "비밀번호를 입력해주세요",
-            obscureText: false,
+            obscureText: true,
             funValidator: validatePassword(),
           ),
           const SizedBox(height: mediumGap),
           CustomJoinTextFormField(
-            changeFormData: (value) {
-              ref.read(joinFormProvider.notifier).setUserConfirmPassword(value);
-            },
+            controller: _userConfirmPassword,
             text: "비밀번호 확인",
             placeholderText: "비밀번호를 한번 더 입력해주세요",
             obscureText: true,
@@ -72,23 +74,19 @@ class MyInfoUpdateForm extends ConsumerWidget {
           ),
           const SizedBox(height: mediumGap),
           CustomJoinTextFormField(
-            changeFormData: (value) {
-              ref.read(joinFormProvider.notifier).setUsername(value);
-            },
+            controller: _userName,
             text: "이름",
-            placeholderText: "이름을 입력해주세요",
-            obscureText: true,
             funValidator: validateUsername(),
+            placeholderText: "${sessionStore!.user!.username}",
           ),
           const SizedBox(height: mediumGap),
           CustomJoinTextFormField(
-            changeFormData: (value) {
-              ref.read(joinFormProvider.notifier).setUserEmail(value);
-            },
+            controller: _userEmail,
             text: "이메일",
-            placeholderText: "예) marketkurly@kurly.com",
-            obscureText: true,
+            placeholderText: "${sessionStore!.user!.userEmail}",
+            obscureText: false,
             funValidator: validateEmail(),
+            enabled: true,
           ),
           const SizedBox(height: mediumGap),
           DatePicker(),
@@ -100,20 +98,16 @@ class MyInfoUpdateForm extends ConsumerWidget {
           CustomElevatedButton(
             text: "수정하기",
             funPageRoute: () {
-              //ref.read(sessionProvider).join(joinReqDTO);
-              //Navigator.pushNamed(context, Move.loginScreen);
-              Logger().d("나여기 ${joinFormModel}");
-
-              JoinReqDTO joinReqDTO = JoinReqDTO(
-                  userId: joinFormModel!.userId,
-                  userPassword: joinFormModel!.userPassword,
-                  username: joinFormModel!.username,
-                  userEmail: joinFormModel!.userEmail,
-                  userBirth: joinFormModel?.userBirth ?? null,
-                  userGender: joinFormModel?.userGender ?? null,
+              // Logger().d(sessionStore.);
+              UserUpdateReqDTO userUpdateDTO = UserUpdateReqDTO(
+                  userId: sessionStore.user!.userId,
+                  username: myInfoUpdateFormModel!.username,
+                  userPassword: myInfoUpdateFormModel!.userPassword,
+                  userEmail: myInfoUpdateFormModel.userEmail,
+                  userBirth: myInfoUpdateFormModel?.userBirth ?? null,
+                  userGender: sessionStore.user!.userGender,
                   role: "NORMAL");
-
-              ref.read(sessionProvider).join(joinReqDTO);
+              ref.read(sessionProvider).userUpdate(userUpdateDTO);
             },
           ),
         ],

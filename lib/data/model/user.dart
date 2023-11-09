@@ -40,8 +40,6 @@ class User {
         userGender = json["userGender"],
         role = json["role"];
 
-
-
   @override
   String toString() {
     return 'User{username: $username, email: $userEmail}';
