@@ -4,6 +4,7 @@ import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/_core/utils/validator_util.dart';
 import 'package:flutter_blog/ui/screens/auth/login_screen/widgets/login_text_form_field.dart';
+import 'package:flutter_blog/ui/screens/coupon/coupon_view_model.dart';
 import 'package:flutter_blog/ui/screens/coupon/widget/coupon_text_form_field.dart';
 import 'package:flutter_blog/ui/screens/product_detail/widget/product_detail_appbar.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
@@ -12,8 +13,10 @@ import 'package:flutter_blog/ui/widgets/custom_option_count.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_bold.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_thin.dart';
 import 'package:flutter_blog/ui/widgets/text_form_field/custom_text_form_field.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 
-class CouponBottomAppbar extends StatelessWidget {
+class CouponBottomAppbar extends ConsumerWidget {
   final String text;
   final Function? funPageRoute;
   final TextEditingController controller;
@@ -27,13 +30,13 @@ class CouponBottomAppbar extends StatelessWidget {
       this.funValidator});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return BottomAppBar(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: ElevatedButton(
           onPressed: () {
-            couponShowDialog(context);
+            couponShowDialog(context, ref);
           },
           style: ElevatedButton.styleFrom(
             fixedSize: Size.fromHeight(50),
@@ -45,7 +48,7 @@ class CouponBottomAppbar extends StatelessWidget {
     );
   }
 
-  void couponShowDialog(BuildContext context) {
+  void couponShowDialog(BuildContext context, WidgetRef ref) {
     showDialog(
         context: context,
         barrierDismissible: true,
@@ -87,7 +90,13 @@ class CouponBottomAppbar extends StatelessWidget {
                     Expanded(
                       child: Container(
                         child: CustomElevatedButton(
-                            text: "확인", funPageRoute: () {}),
+                            text: "확인",
+                            funPageRoute: () {
+                              ref
+                                  .read(couponProvider.notifier)
+                                  .saveCoupon(controller.text);
+                              Navigator.pop(context);
+                            }),
                       ),
                     ),
                   ],
