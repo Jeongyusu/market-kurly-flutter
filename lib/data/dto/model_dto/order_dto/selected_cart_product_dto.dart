@@ -1,3 +1,5 @@
+import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_product_dto.dart';
+
 class SelectedCartProductDTO {
   int cartId;
   int productId;
@@ -34,4 +36,20 @@ class SelectedCartProductDTO {
         "totalOptionDiscountedPrice": totalOptionDiscountedPrice,
         "optionQuantity": optionQuantity,
       };
+
+
+  factory SelectedCartProductDTO.fromCartProductDTO(CartProductDTO cartProductDTO) {
+    return SelectedCartProductDTO(
+      cartProductDTO.cartId,
+      cartProductDTO.productId,
+      cartProductDTO.productPic,
+      cartProductDTO.productName,
+      cartProductDTO.optionId,
+      cartProductDTO.optionName,
+      cartProductDTO.sellerName,
+      cartProductDTO.originPrice * cartProductDTO.optionQuantity,
+      cartProductDTO.discountedPrice * cartProductDTO.optionQuantity,
+      cartProductDTO.optionQuantity,
+    );
+  }
 }
