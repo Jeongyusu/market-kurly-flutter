@@ -1,12 +1,14 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_blog/_core/constants/http.dart';
 import 'package:flutter_blog/data/dto/model_dto/product_dto/product_dto.dart';
 import 'package:flutter_blog/data/dto/model_dto/product_dto/product_list_dto.dart';
+import 'package:flutter_blog/data/dto/model_dto/product_dto/product_search_dto.dart';
 import 'package:flutter_blog/data/dto/response_dto.dart';
+import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:logger/logger.dart';
 
 class ProductRepository {
 //  상세화면 리스트
-
   Future<ResponseDTO> fetchProductDetail(int id) async {
     try {
       // 통신
@@ -141,6 +143,20 @@ class ProductRepository {
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       Logger().d(responseDTO.response);
       responseDTO.response = ProductListDTO.fromJson(responseDTO.response);
+      return responseDTO;
+    } catch (e) {
+      return ResponseDTO(success: false, response: null, error: "오류");
+    }
+  }
+  // 키워드 검색 상품
+  Future<ResponseDTO> fetchSearchProductList(value) async {
+    try {
+      final response = await dio.get("/api/test/product/search?keyword=value");
+      Logger().d(response.data);
+
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      Logger().d(responseDTO.response);
+      responseDTO.response = ProductSearchDTO.fromJson(responseDTO.response);
       return responseDTO;
     } catch (e) {
       return ResponseDTO(success: false, response: null, error: "오류");
