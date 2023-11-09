@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/_core/constants/http.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_option_title.dart';
@@ -18,6 +19,8 @@ class CartOrderCancelOptionItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     CartListModel? cartListModel = ref.watch(cartListProvider);
+    String imgUrl = dio.options.baseUrl;
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Container(
@@ -27,8 +30,8 @@ class CartOrderCancelOptionItem extends ConsumerWidget {
           children: [
             AspectRatio(
               aspectRatio: 1 / 1,
-              child: Image.asset(
-                'assets${cartListModel?.cartDTO.cartProducts[index].productName}',
+              child: Image.network(
+                '${imgUrl}${cartListModel?.cartDTO.cartProducts[index].productPic}',
                 fit: BoxFit.cover,
               ),
             ),
@@ -40,7 +43,10 @@ class CartOrderCancelOptionItem extends ConsumerWidget {
               children: [
                 CartOptionTitle(index: index),
                 CartOrderPriceTextItem(index: index),
-                Text("취소완료", style: basicTextSmall(),),
+                Text(
+                  "취소완료",
+                  style: basicTextSmall(),
+                ),
                 Spacer(),
                 // CustomOptionCount(index: index),
               ],

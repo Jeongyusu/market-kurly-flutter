@@ -16,12 +16,16 @@ class CartOptionTitle extends ConsumerWidget {
     CartListModel? cartDTOListModel = ref.watch(cartListProvider);
 
     return Container(
-      width: 320,
+      width: 220,
       child: RichText(
-         text: TextSpan(text:  "[${cartDTOListModel?.cartDTO.cartProducts[index].sellerName ?? ""}]"
+        text: TextSpan(
+          text:
+              "[${cartDTOListModel?.cartDTO.cartProducts[index].sellerName ?? ""}]"
               "${cartDTOListModel?.cartDTO.cartProducts[index].productName ?? ""}",
-            style: subContentsBold(),),
-            overflow: TextOverflow.ellipsis, maxLines: 2,
+          style: subContentsBold(),
+        ),
+        overflow: TextOverflow.ellipsis,
+        maxLines: 2,
       ),
     );
   }

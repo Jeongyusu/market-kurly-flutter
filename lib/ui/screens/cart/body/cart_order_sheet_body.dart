@@ -89,27 +89,4 @@ class CartOrderSheetBody extends ConsumerWidget {
       ],
     );
   }
-
-  // 장바구니 삭제버튼
-  Widget _cartTotalBtn() {
-    return Align(
-      alignment: Alignment.center, // 요소를 수평 중앙에 정렬
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CartCheckBoxItem(
-              text: "전체선택",
-              textStyle: basicTextBig(),
-            ),
-            Text(
-              "선택삭제",
-              style: basicText(),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }

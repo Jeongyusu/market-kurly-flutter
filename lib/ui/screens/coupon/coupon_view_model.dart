@@ -19,10 +19,14 @@ class CouponViewModel extends StateNotifier<CouponModel?> {
     SessionStore sessionStore = ref.read(sessionProvider);
     String jwt = sessionStore.jwt ?? "";
     Logger().d("jwt테스트${jwt}");
-    ResponseDTO responseDTO = await CouponRepository().fetchCouponList(jwt);
-    Logger().d("여까지실행");
-    Logger().d("여기까지2 ${responseDTO.response}");
-    state = CouponModel(userCouponDTOList: responseDTO.response);
+    try {
+      ResponseDTO responseDTO = await CouponRepository().fetchCouponList(jwt);
+      Logger().d("여까지실행");
+      Logger().d("여기까지2 ${responseDTO.response}");
+      state = CouponModel(userCouponDTOList: responseDTO.response);
+    } catch (e) {
+      Logger().d("에러 발생");
+    }
   }
 
   Future<void> saveCoupon(String couponNumber) async {
@@ -34,6 +38,10 @@ class CouponViewModel extends StateNotifier<CouponModel?> {
         await CouponRepository().fetchCouponSave(jwt, couponRegisterDTO);
     Logger().d("쿠폰 정상 저장됨");
     Logger().d(responseDTO.response);
+    await notifyInit();
+  }
+
+  Future<void> notifytest() async {
     await notifyInit();
   }
 }
