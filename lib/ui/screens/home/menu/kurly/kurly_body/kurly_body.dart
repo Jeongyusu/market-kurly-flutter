@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
+import 'package:flutter_blog/ui/screens/home/menu/kurly/widget/kurly_bottom_img.dart';
+import 'package:flutter_blog/ui/screens/home/menu/kurly/widget/kurly_hot_product_list.dart';
+import 'package:flutter_blog/ui/screens/home/menu/kurly/widget/kurly_recommend_product_list.dart';
+import 'package:flutter_blog/ui/screens/home/menu/kurly/widget/kurly_sale_product_list.dart';
 import 'package:flutter_blog/ui/screens/home/widget/home_kurly_main_slider.dart';
 import 'package:flutter_blog/ui/screens/home/widget/home_kurly_menu_title.dart';
-import 'package:flutter_blog/ui/widgets/product_items/custom_product_grid.dart';
-import 'package:flutter_blog/ui/widgets/product_items/custom_product_hoziontal_list.dart';
 
 class KurlyBody extends StatelessWidget {
-
   const KurlyBody({
     super.key,
     required ScrollController scrollController,
@@ -21,36 +22,12 @@ class KurlyBody extends StatelessWidget {
       slivers: [
         HomeKurlyMainSlider(),
         HomeKurlyMenuTitle(title: "지금 가장 핫한 상품"),
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: CustomProductHorizontalList(),
-          ),
-        ),
+        KurlyHotProductList(),
         HomeKurlyMenuTitle(title: "초특가 반값 SALE"),
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: CustomProductHorizontalList(),
-          ),
-        ),
+        KurlySaleProductList(),
         HomeKurlyMenuTitle(title: "MD추천"),
-        SliverPadding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          sliver: CustomProductGrid(),
-        ),
-        SliverPadding(
-          padding: EdgeInsets.only(top: smallGap),
-          sliver: SliverToBoxAdapter(
-            child: AspectRatio(
-              aspectRatio: 12 / 9,
-              child: Image.asset(
-                "assets/images/main_bottom_img.png",
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
+        KurlyRecommendProductList(),
+        KurlyBottomImg(),
       ],
     );
   }

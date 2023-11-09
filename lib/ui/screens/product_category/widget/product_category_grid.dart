@@ -40,7 +40,6 @@ class ProductCategoryGrid extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return CustomProductItem(
             images: images,
-            index: index,
             sellerName: sellerName,
             productTitle: productTitle,
             disablePrice: disablePrice,

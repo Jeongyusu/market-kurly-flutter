@@ -1,3 +1,4 @@
+import 'package:flutter_blog/data/dto/model_dto/product_dto/product_dto.dart';
 import 'package:flutter_blog/data/dto/model_dto/product_dto/product_summary.dart';
 
 class ProductListDTO {
@@ -22,5 +23,37 @@ class ProductListDTO {
             .map(
               (e) => ProductSummary.fromJson(e as Map<String, dynamic>),
             )
+            .toList();
+}
+
+class ProductMainListsDTO {
+  List<ProductStarMainDTO> productStarMainDTOs;
+  List<ProductDiscountMainDTO> productDiscountMainDTOs;
+  List<ProductRandomMainDTO> productRandomMainDTOs;
+
+  ProductMainListsDTO(
+    this.productStarMainDTOs,
+    this.productDiscountMainDTOs,
+    this.productRandomMainDTOs,
+  );
+
+  Map<String, dynamic> toJson() => {
+        "productStarMainDTOs": productStarMainDTOs,
+        "productDiscountMainDTOs": productDiscountMainDTOs,
+        "productRandomMainDTOs": productRandomMainDTOs,
+      };
+
+  ProductMainListsDTO.fromJson(Map<String, dynamic> json)
+      : productStarMainDTOs = (json["productStarMainDTOs"] as List<dynamic>)
+            .map((e) => ProductStarMainDTO.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        productDiscountMainDTOs =
+            (json["productDiscountMainDTOs"] as List<dynamic>)
+                .map((e) =>
+                    ProductDiscountMainDTO.fromJson(e as Map<String, dynamic>))
+                .toList(),
+        productRandomMainDTOs = (json["productRandomMainDTOs"] as List<dynamic>)
+            .map(
+                (e) => ProductRandomMainDTO.fromJson(e as Map<String, dynamic>))
             .toList();
 }

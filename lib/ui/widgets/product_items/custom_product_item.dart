@@ -14,7 +14,7 @@ import 'package:logger/logger.dart';
 import '../../../_core/constants/color.dart';
 import 'product_seller_and_title.dart';
 
-class CustomProductItem extends ConsumerWidget {
+class CustomProductItem extends StatelessWidget {
   final int? productId;
   final String? images;
   final String? sellerName;
@@ -22,22 +22,22 @@ class CustomProductItem extends ConsumerWidget {
   final int? disablePrice;
   final int? discountRate;
   final int? totalPrice;
-  final int index;
+  final double? reviewGrade;
 
   const CustomProductItem({
     super.key,
     this.productId,
     this.images,
-    required this.index,
     this.sellerName,
     this.productTitle,
     this.disablePrice,
     this.discountRate,
     this.totalPrice,
+    this.reviewGrade,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 16.0),
       child: InkWell(
@@ -55,25 +55,32 @@ class CustomProductItem extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ProductThumbnail(images: images, index: index),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: CustomCartButton(),
-                ),
-                ProductSellerAndTitle(
-                  productTitle: productTitle,
-                  sellerName: sellerName,
-                ),
-                ProductDiscountAndPrice(
-                  disablePrice: disablePrice,
-                  discountRate: discountRate,
-                  totalPrice: totalPrice,
-                ),
-                CustomReviewIcon(),
-              ],
+            Container(
+              height: 220,
+              child: ProductThumbnail(images: images),
+            ),
+            Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: CustomCartButton(),
+                  ),
+                  ProductSellerAndTitle(
+                    productTitle: productTitle,
+                    sellerName: sellerName,
+                  ),
+                  ProductDiscountAndPrice(
+                    disablePrice: disablePrice,
+                    discountRate: discountRate,
+                    totalPrice: totalPrice,
+                  ),
+                  CustomReviewIcon(
+                    reviewGrade: reviewGrade,
+                  ),
+                ],
+              ),
             )
           ],
         ),
