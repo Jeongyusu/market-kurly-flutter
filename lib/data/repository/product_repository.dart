@@ -20,7 +20,24 @@ class ProductRepository {
 
       responseDTO.response =
           ProductDescriptionDTO.fromJson(responseDTO.response);
-      Logger().d("키키");
+      return responseDTO;
+    } catch (e) {
+      return ResponseDTO(success: false, response: null, error: "오류");
+    }
+  }
+
+  //  컬리추천 리스트
+  Future<ResponseDTO> fetchMainProductList() async {
+    try {
+      final response = await dio.get("/api/test/product");
+      Logger().d(response.data);
+
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      Logger().d(responseDTO.response);
+      Logger().d("야야");
+
+      responseDTO.response = ProductMainListsDTO.fromJson(responseDTO.response);
+      Logger().d("호호");
       return responseDTO;
     } catch (e) {
       return ResponseDTO(success: false, response: null, error: "오류");

@@ -3,8 +3,8 @@ import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomStarIcon extends StatelessWidget {
-  const CustomStarIcon({
+class CustomStarHalfIcon extends StatelessWidget {
+  const CustomStarHalfIcon({
     super.key,
   });
 
@@ -14,7 +14,7 @@ class CustomStarIcon extends StatelessWidget {
       width: 18,
       height: 18,
       child: Image.asset(
-        "assets/images/star_icon.png",
+        "assets/images/star_half_icon.png",
         fit: BoxFit.cover,
       ),
     );

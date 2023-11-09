@@ -29,10 +29,11 @@ class ProductDescriptionBody extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
+              height: 480,
               child: AspectRatio(
                 aspectRatio: 1 / 1,
                 child: Image.network(
-                  "${imgUrl}${productDetail!}",
+                  "${imgUrl}${productDetail!.productThumbnail}",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -50,8 +51,11 @@ class ProductDescriptionBody extends ConsumerWidget {
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                text: productDetail.seller,
+                                text: "[ ${productDetail.seller} ]",
                                 style: strongTextSmall(),
+                              ),
+                              WidgetSpan(
+                                child: SizedBox(width: xsmallGap),
                               ),
                               TextSpan(
                                 text: productDetail.productName,

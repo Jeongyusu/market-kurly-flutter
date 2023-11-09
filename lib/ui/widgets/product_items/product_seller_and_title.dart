@@ -27,7 +27,7 @@ class ProductSellerAndTitle extends StatelessWidget {
                 style: basicText(),
               ),
               WidgetSpan(
-                child: SizedBox(width: smallGap),
+                child: SizedBox(width: xsmallGap),
               ),
               TextSpan(
                 text: "${productTitle}",

@@ -18,8 +18,8 @@ class CustomProductGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverGrid(
       delegate: SliverChildBuilderDelegate(
-        (context, index) {
-          return CustomProductItem(index: index);
+            (context, index) {
+          return CustomProductItem();
         },
         childCount: 4,
       ),
