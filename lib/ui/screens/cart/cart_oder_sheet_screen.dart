@@ -13,7 +13,6 @@ class CartOderSheetScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     CartListModel? cartListModel = ref.watch(cartListProvider);
-    var cartProducts = cartListModel!.cartDTO.cartProducts;
     return Scaffold(
       body: CartOrderSheetBody(),
       bottomNavigationBar: BottomAppBar(
@@ -21,11 +20,12 @@ class CartOderSheetScreen extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: ElevatedButton(
             onPressed: () {
-
+              SelectedCartListDTO selectedCartListDTO =
+                  SelectedCartListDTO.fromCartDTO(cartListModel!.cartDTO,
+                      cartListModel!.cartDTO.totalPrice, 1);
             },
             style: ElevatedButton.styleFrom(
               fixedSize: Size.fromHeight(50),
-
               backgroundColor: primaryColor,
             ),
             child: Text("주문하기"),
