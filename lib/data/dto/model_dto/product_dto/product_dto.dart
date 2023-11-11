@@ -1,4 +1,6 @@
 //제품 상세
+import 'package:flutter_blog/data/model/option.dart';
+
 class ProductDescriptionDTO {
   final int productId;
   final String productName;
@@ -10,6 +12,7 @@ class ProductDescriptionDTO {
   final String productOrigin;
   final String productDetailImage;
   final String seller;
+  final List<Option> options;
 
   ProductDescriptionDTO(
     this.productId,
@@ -22,6 +25,7 @@ class ProductDescriptionDTO {
     this.productOrigin,
     this.productDetailImage,
     this.seller,
+      this.options
   );
 
   ProductDescriptionDTO.fromJson(Map<String, dynamic> json)
@@ -34,7 +38,10 @@ class ProductDescriptionDTO {
         originPrice = json["originPrice"],
         productOrigin = json["productOrigin"],
         productDetailImage = json["productDetailImage"],
-        seller = json["seller"];
+        seller = json["seller"],
+        options = (json["options"] as List<dynamic>)
+            .map((e) => Option.fromJson(e as Map<String, dynamic>))
+            .toList();
 }
 
 //핫한 상품

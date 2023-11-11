@@ -72,7 +72,7 @@ class CartOrderSheetBody extends ConsumerWidget {
                       style: subTitleReqular(),
                     ),
                     children: [
-                      CartOrderCoupondropdown(),
+                      CartOrderCouponDropdown(),
                     ],
                   ),
                 ),

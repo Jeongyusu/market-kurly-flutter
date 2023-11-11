@@ -11,10 +11,12 @@ import 'package:flutter_blog/ui/widgets/line/custom_line_thin.dart';
 class ProductDetailBottomSheet extends StatelessWidget {
   final String text;
   final funPageRoute;
+  final productId;
   const ProductDetailBottomSheet({
     super.key,
     required this.text,
     this.funPageRoute,
+    this.productId
   });
 
   @override
@@ -28,7 +30,7 @@ class ProductDetailBottomSheet extends StatelessWidget {
               isScrollControlled: true,
               context: context,
               builder: (BuildContext context) {
-                return ProductBottomSheetItem();
+                return ProductBottomSheetItem(productId: productId);
               },
             );
           },

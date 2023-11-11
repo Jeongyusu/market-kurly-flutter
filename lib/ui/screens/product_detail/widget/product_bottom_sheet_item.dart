@@ -2,20 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
+import 'package:flutter_blog/ui/screens/product_detail/product_description/product_description_view_model.dart';
 import 'package:flutter_blog/ui/screens/product_detail/widget/product_cart_bottom_bar.dart';
 import 'package:flutter_blog/ui/screens/product_detail/widget/product_detail_appbar.dart';
+import 'package:flutter_blog/ui/screens/product_detail/widget/product_option_count.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
 import 'package:flutter_blog/ui/widgets/custom_option_count.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_bold.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_thin.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProductBottomSheetItem extends StatelessWidget {
+class ProductBottomSheetItem extends ConsumerWidget {
+  final productId;
   const ProductBottomSheetItem({
-    super.key,
+    super.key, this.productId
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ProductDescriptionModel? model = ref.watch(productDescriptionProvider(productId));
     return Builder(
       builder: (BuildContext innerContext) {
         return Stack(
@@ -65,14 +70,14 @@ class ProductBottomSheetItem extends StatelessWidget {
                                 text: TextSpan(
                                   children: [
                                     TextSpan(
-                                      text: "[ 귤림원 ]",
+                                      text: "[ ${model!.productDescriptionDTO!.seller} ]",
                                       style: subContents(),
                                     ),
                                     WidgetSpan(
                                       child: SizedBox(width: xsmallGap),
                                     ),
                                     TextSpan(
-                                      text: "고당도 제주 유라 감귤 800g",
+                                      text: model!.productDescriptionDTO!.productName,
                                       style: subContents(),
                                     ),
                                   ],
@@ -111,7 +116,7 @@ class ProductBottomSheetItem extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text("새콤달콤 제주 하우스 감귤"),
+                                      Text(model!.productDescriptionDTO!.options[index].optionName),
                                       SizedBox(
                                         height: xsmallGap,
                                       ),
@@ -121,11 +126,8 @@ class ProductBottomSheetItem extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text("2,900"),
-                                          CustomOptionCount(
-                                            key: UniqueKey(),
-                                            index: index,
-                                          ),
+                                          Text("${model!.productDescriptionDTO!.options[index].optionPrice}"),
+                                          ProductOptionCount(index: index, productId: productId,),
                                         ],
                                       )
                                     ],
@@ -135,7 +137,7 @@ class ProductBottomSheetItem extends StatelessWidget {
                             ],
                           );
                         },
-                        childCount: 8,
+                        childCount: model!.productDescriptionDTO!.options.length,
                       ),
                     ),
                   ),

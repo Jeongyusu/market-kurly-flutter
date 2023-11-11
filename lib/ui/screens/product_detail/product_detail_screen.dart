@@ -92,7 +92,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen>
               ),
             ),
             bottomNavigationBar:
-                ProductDetailBottomSheet(funPageRoute: () {}, text: "구매하기"),
+                ProductDetailBottomSheet(funPageRoute: () {}, text: "구매하기", productId: widget.productId),
           );
         }
       },

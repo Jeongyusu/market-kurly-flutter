@@ -3,14 +3,14 @@ import 'package:flutter_blog/ui/screens/coupon/coupon_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
-class CartOrderCoupondropdown extends ConsumerStatefulWidget {
-  const CartOrderCoupondropdown({super.key});
+class CartOrderCouponDropdown extends ConsumerStatefulWidget {
+  const CartOrderCouponDropdown({super.key});
 
   @override
-  ConsumerState createState() => _CartOrderCoupondropdownState();
+  ConsumerState<CartOrderCouponDropdown> createState() => _CartOrderCouponDropdownState();
 }
 
-class _CartOrderCoupondropdownState extends ConsumerState {
+class _CartOrderCouponDropdownState extends ConsumerState<CartOrderCouponDropdown> {
   final _optionList = [
     "회원가입 10% 쿠폰",
     "상품 1000원 할인 쿠폰",
@@ -22,6 +22,8 @@ class _CartOrderCoupondropdownState extends ConsumerState {
   void initState() {
     super.initState();
     setState(() {
+      CouponModel? couponModel = ref.read(couponProvider);
+      Logger().d("나여기 ${couponModel!.userCouponDTOList![0].couponName}");
       _selectedOption = _optionList[0];
     });
   }
@@ -34,7 +36,7 @@ class _CartOrderCoupondropdownState extends ConsumerState {
 
   @override
   Widget build(BuildContext context) {
-    CouponModel? couponModel = ref.read(couponProvider);
+    // Logger().d("나여기 ${couponModel!.userCouponDTOList![0].couponId}");
     return Column(
       children: [
         SizedBox(

@@ -14,7 +14,7 @@ class ProductDescriptionModel {
   ProductDescriptionModel({required this.productDescriptionDTO});
 }
 
-// 창고
+// 창고g
 class ProductDescriptionViewModel
     extends StateNotifier<ProductDescriptionModel?> {
   final mContext = navigatorKey.currentContext;
