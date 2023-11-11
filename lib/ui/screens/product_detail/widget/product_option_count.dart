@@ -41,6 +41,8 @@ class _ProductOptionCountState extends ConsumerState<ProductOptionCount> {
               child: GestureDetector(
                 onTap: () {
                   ref.read(productCartProvider(widget.productId).notifier).minusQuantity(widget.index);
+                  Logger().d(model?.selectedOptionDTOs[widget.index].optionQuantity ?? 0);
+
                 },
                 child: SvgPicture.asset(
                   "assets/icons/minus.svg",
@@ -53,7 +55,7 @@ class _ProductOptionCountState extends ConsumerState<ProductOptionCount> {
               width: 10,
             ),
             Text(
-                "${model?.selectedOptionDTOs[widget.index].optionQuantity ?? 0}"),
+                "${model!.selectedOptionDTOs[widget.index].optionQuantity}"),
             SizedBox(
               width: 10,
             ),
@@ -62,8 +64,8 @@ class _ProductOptionCountState extends ConsumerState<ProductOptionCount> {
               height: 20,
               child: GestureDetector(
                 onTap: () {
-                  ref.read(cartListProvider.notifier).plusQuantity(widget.index);
-                  Logger().d(model?.selectedOptionDTOs[widget.index].optionQuantity ?? 0);
+                  ref.read(productCartProvider(widget.productId).notifier).plusQuantity(widget.index);
+                  Logger().d(model!.selectedOptionDTOs[widget.index].optionQuantity);
                 },
                 child: SvgPicture.asset(
                   "assets/icons/plus.svg",
