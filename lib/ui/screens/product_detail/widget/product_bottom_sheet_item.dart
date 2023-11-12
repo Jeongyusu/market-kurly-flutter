@@ -148,7 +148,7 @@ class ProductBottomSheetItem extends ConsumerWidget {
               bottom: 0,
               left: 0,
               right: 0,
-              child: ProductCartBottomBar(),
+              child: ProductCartBottomBar(productId: productId),
             ),
           ],
         );

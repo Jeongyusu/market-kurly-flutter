@@ -1,5 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/http.dart';
+import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_save_dto.dart';
+import 'package:flutter_blog/data/dto/model_dto/cart_dto/selected_option_dto.dart';
+import 'package:flutter_blog/data/dto/model_dto/order_dto/selected_cart_list_dto.dart';
 import 'package:flutter_blog/data/dto/response_dto.dart';
 import 'package:flutter_blog/data/dto/request_dto/user_request.dart';
 import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_dto.dart';
@@ -10,8 +14,13 @@ import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
+import '../../_core/constants/move.dart';
+import '../../main.dart';
+
 // V -> P(전역프로바이더, 뷰모델) -> R
 class CartDTORepository {
+  final mContext = navigatorKey.currentContext;
+
   Future<ResponseDTO> fetchCartList(String jwt) async {
     try {
       // 1. 통신
@@ -35,7 +44,38 @@ class CartDTORepository {
     }
   }
 
-  // Future<ResponseDTO> fetchPost(String jwt, int id) async {
+  Future<void> saveCartList(String jwt, CartSaveDTO cartSaveDTO) async {
+    try {
+      // 1. 통신
+      Logger().d("saveCartList동작중");
+      final response = await dio.post("/api/carts/insert", options: Options(
+        headers: {
+          "Authorization": "Bearer $jwt",
+          // 다른 필요한 헤더도 추가할 수 있습니다.
+        },
+      ),
+      data: cartSaveDTO.toJson());
+      Logger().d(response.data);
+      // 2. ResponseDTO 파싱
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+
+      // 3. ResponseDTO의 data 파싱
+      Logger().d("CartSaveDTO파싱완료");
+      if (responseDTO.success == true) {
+        Navigator.pushNamed(mContext!, Move.myInfoUpdateDetailScreen);
+      } else {
+        ScaffoldMessenger.of(mContext!).showSnackBar(
+          SnackBar(
+            content: Text(responseDTO.error!),
+          ),
+        );
+      }
+    } catch (e) {
+    }
+  }
+
+
+// Future<ResponseDTO> fetchPost(String jwt, int id) async {
   //   try {
   //     // 통신
   //     Response response = await dio.get("/post/$id",

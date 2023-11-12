@@ -37,6 +37,7 @@ class ProductDetailViewModel extends StateNotifier<ProductDetailModal?> {
     Logger().d("마이너스 클릭됨${state!.selectedOptionDTOs[index].optionQuantity}" );
 
   }
+
 }
 
 
