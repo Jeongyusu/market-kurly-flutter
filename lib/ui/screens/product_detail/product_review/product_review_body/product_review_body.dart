@@ -10,9 +10,11 @@ import '../../../../widgets/icons_and_images/custom_review_icon.dart';
 import '../widget/product_review_img_list.dart';
 
 class ProductReviewBody extends StatelessWidget {
+  final double? reviewGrade;
   const ProductReviewBody({
     super.key,
     required this.formattedDate,
+    this.reviewGrade,
   });
 
   final String formattedDate;
@@ -80,7 +82,9 @@ class ProductReviewBody extends StatelessWidget {
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 4.0),
-                                child: CustomReviewIcon(),
+                                // child: CustomReviewIcon(
+                                //   totalReviewGrade: reviewGrade,
+                                // ),
                               ),
                             ],
                           )

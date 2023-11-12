@@ -40,8 +40,8 @@ class KurlySaleProductList extends ConsumerWidget {
                         .productDiscountMainDTOs[index].productId,
                     images:
                         "${imgUrl}${productSaleList!.productDiscountMainDTOs[index].productThumbnail}",
-                    sellerName:
-                        "[ ${productSaleList!.productDiscountMainDTOs[index].sellerName} ]",
+                    sellerName: productSaleList!
+                        .productDiscountMainDTOs[index].sellerName,
                     productTitle: productSaleList!
                         .productDiscountMainDTOs[index].productName,
                     disablePrice: productSaleList!
@@ -51,6 +51,8 @@ class KurlySaleProductList extends ConsumerWidget {
                         .productDiscountMainDTOs[index].discountRate,
                     totalPrice: productSaleList!
                         .productDiscountMainDTOs[index].minOptionPrice,
+                    reviewGrade: productSaleList!
+                        .productDiscountMainDTOs[index].avgStarCount,
                   ),
                 );
               },

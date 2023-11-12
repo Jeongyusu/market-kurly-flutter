@@ -6,6 +6,7 @@ class ProductSummary {
   final int originPrice;
   final int discountRate;
   final int discountedPrice;
+  final int categoryId;
   final double averageStarCount;
 
   ProductSummary(
@@ -16,21 +17,9 @@ class ProductSummary {
     this.originPrice,
     this.discountRate,
     this.discountedPrice,
+    this.categoryId,
     this.averageStarCount,
   );
-
-  Map<String, dynamic> toJson() {
-    return {
-      "productId": productId,
-      "productThumnail": productThumnail,
-      "productName": productName,
-      "sellerName": sellerName,
-      "originPrice": originPrice,
-      "discountRate": discountRate,
-      "discountedPrice": discountedPrice,
-      "averageStarCount": averageStarCount,
-    };
-  }
 
   ProductSummary.fromJson(Map<String, dynamic> json)
       : productId = json["productId"],
@@ -40,5 +29,6 @@ class ProductSummary {
         originPrice = json["originPrice"],
         discountRate = json["discountRate"],
         discountedPrice = json["discountedPrice"],
+        categoryId = json["categoryId"],
         averageStarCount = json["averageStarCount"];
 }

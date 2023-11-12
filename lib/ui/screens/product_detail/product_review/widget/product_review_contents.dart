@@ -6,10 +6,10 @@ import 'package:flutter_blog/ui/widgets/text_form_field/custom_text_area.dart';
 class ProductReviewContents extends StatelessWidget {
   const ProductReviewContents({
     super.key,
-    required this.controller,
+    this.contents,
   });
 
-  final TextEditingController? controller;
+  final contents;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class ProductReviewContents extends StatelessWidget {
             child: CustomTextArea(
               hintText: "문의하실 내용을 입력해주세요. (0/5,000)",
               funValidator: validateContent(),
-              controller: controller ?? TextEditingController(),
+              contents: contents,
             ),
           ),
         ],

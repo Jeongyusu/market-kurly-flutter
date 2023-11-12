@@ -55,7 +55,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen>
     return Consumer(
       builder: (BuildContext context, WidgetRef ref, Widget? child) {
         ProductDescriptionModel? model =
-            ref.watch(productDescriptionProvider(widget.productId));
+        ref.watch(productDescriptionProvider(widget.productId));
         if (model == null) {
           return const Center(child: CircularProgressIndicator());
         } else {
@@ -92,7 +92,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen>
               ),
             ),
             bottomNavigationBar:
-                ProductDetailBottomSheet(funPageRoute: () {}, text: "구매하기"),
+            ProductDetailBottomSheet(funPageRoute: () {}, text: "구매하기"),
           );
         }
       },

@@ -33,8 +33,8 @@ class KurlyRecommendProductList extends ConsumerWidget {
                     .productRandomMainDTOs[index].productId,
                 images:
                     "${imgUrl}${productRecommendList!.productRandomMainDTOs[index].productThumbnail}",
-                sellerName:
-                    "[ ${productRecommendList!.productRandomMainDTOs[index].sellerName} ]",
+                sellerName: productRecommendList!
+                    .productRandomMainDTOs[index].sellerName,
                 productTitle: productRecommendList!
                     .productRandomMainDTOs[index].productName,
                 disablePrice: productRecommendList!
@@ -43,6 +43,8 @@ class KurlyRecommendProductList extends ConsumerWidget {
                     .productRandomMainDTOs[index].discountRate,
                 totalPrice: productRecommendList!
                     .productRandomMainDTOs[index].minOptionPrice,
+                reviewGrade: productRecommendList
+                    .productStarMainDTOs[index].avgStarCount,
               );
             },
             childCount: 4,

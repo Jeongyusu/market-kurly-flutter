@@ -13,15 +13,20 @@ import 'package:flutter_blog/ui/screens/cart/cart_order_cancel_screen.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_screen.dart';
 import 'package:flutter_blog/ui/screens/coupon/coupon_home_screen.dart';
 import 'package:flutter_blog/ui/screens/customer_center/customer_center_home_screen.dart';
+import 'package:flutter_blog/ui/screens/home/menu/kurly/hot_product_screen.dart';
+import 'package:flutter_blog/ui/screens/home/menu/kurly/recommend_product_screen.dart';
+import 'package:flutter_blog/ui/screens/home/menu/kurly/sale_product_screen.dart';
 import 'package:flutter_blog/ui/screens/main_screen.dart';
 import 'package:flutter_blog/ui/screens/my_info/my_info_screen.dart';
 import 'package:flutter_blog/ui/screens/my_info/my_info_update_detail_screen.dart';
 import 'package:flutter_blog/ui/screens/my_info/my_info_update_screen.dart';
 import 'package:flutter_blog/ui/screens/notice/notice_detail_screen.dart';
 import 'package:flutter_blog/ui/screens/notice/notice_home_screen.dart';
+import 'package:flutter_blog/ui/screens/product_category/product_category_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_inquiry/product_inquiry_save_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_img_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_save_screen.dart';
+import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_screen.dart';
 import 'package:flutter_blog/ui/screens/review/review_home_screen.dart';
 import 'package:flutter_blog/ui/screens/splash_screen.dart';
 import 'package:flutter_blog/ui/screens/user_question/user_question_form_screen.dart';
@@ -59,9 +64,15 @@ class Move {
   static String cartOrderCancelScreen = "/cart/orderCancelScreen";
 
   // product
-  static String productInquirySaveScreen = "/product/inquery/save";
-  static String productReviewImgScreen = "/product/review/detailImg";
-  static String productReviewSaveScreen = "/product/review/save";
+  static String productInquirySaveScreen = "/product/inquery/saveScreen";
+  static String productReviewImgScreen = "/product/review/detailImgScreen";
+  static String productReviewSaveScreen = "/product/review/ListScreen";
+  static String productReviewScreen = "/product/review/saveScreen";
+  static String hotProductScreen = "/product/kurly/hotProductListScreen";
+  static String saleProductScreen = "/product/kurly/saleProductListScreen";
+  static String recommendProductScreen =
+      "/product/kurly/recommendProductListScreen";
+  static String productCategoryScreen = "/product/category/detailScreen";
 
   // customer
   static String customerHomeScreen = "/customerCenter/homeScreen";
@@ -103,11 +114,15 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.cartOrderSheetScreen: (context) => CartOderSheetScreen(),
     Move.cartOrderCancelScreen: (context) => CartOderCancelScreen(),
 
+    // product
+    Move.productReviewImgScreen: (context) => ProductReviewImgScreen(),
     Move.productReviewImgScreen: (context) => ProductReviewImgScreen(),
     Move.productReviewSaveScreen: (context) => ProductReviewSaveScreen(),
-
-    // product
-    Move.productInquirySaveScreen: (context) => ProductInquirySaveScreen(),
+    Move.productReviewScreen: (context) => ProductReviewScreen(),
+    Move.productCategoryScreen: (context) => ProductCategoryScreen(),
+    Move.hotProductScreen: (context) => HotProductScreen(),
+    Move.saleProductScreen: (context) => SaleProductScreen(),
+    Move.recommendProductScreen: (context) => RecommendProductScreen(),
 
     // customer
     Move.customerHomeScreen: (context) => CustomerHomeScreen(),

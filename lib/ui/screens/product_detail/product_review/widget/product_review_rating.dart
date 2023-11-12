@@ -4,9 +4,12 @@ import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/widget/product_rating_bar_item.dart';
 
 class ProductReviewRating extends StatelessWidget {
+  final ValueChanged<int>? starCount; // 추가
+
   const ProductReviewRating({
-    super.key,
-  });
+    Key? key,
+    this.starCount, // 추가
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,9 @@ class ProductReviewRating extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Center(
-              child: ProductRatingBarItem(),
+              child: ProductRatingBarItem(
+                starCount: starCount,
+              ),
             ),
           ),
         ],
