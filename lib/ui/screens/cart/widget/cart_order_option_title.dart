@@ -14,15 +14,13 @@ class CartOrderOptionTitle extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     CartListModel? cartListModel = ref.watch(cartListProvider);
-    var orderCartItems = cartListModel!.cartDTO.cartProducts.where((e) => e.isChecked == true).toList();
-
     return Container(
       width: 220,
       child: RichText(
         text: TextSpan(
           text:
-          "[${orderCartItems[index].sellerName ?? ""}]"
-              "${orderCartItems[index].productName ?? ""}",
+          "[${cartListModel!.checkedCartDTO![index].sellerName ?? ""}]"
+              "${cartListModel!.checkedCartDTO![index].productName ?? ""}",
           style: subContentsBold(),
         ),
         overflow: TextOverflow.ellipsis,

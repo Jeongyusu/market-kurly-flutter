@@ -14,7 +14,7 @@ import 'package:logger/logger.dart';
 // 1. 창고 데이터
 class CartListModel {
   CartDTO cartDTO;
-  List<CartProductDTO>? checkedCartDTO;
+  List<CartProductDTO>? checkedCartDTO = [];
   CartListModel(this.cartDTO);
 }
 
@@ -35,7 +35,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
 
   void checkedCartDTO() {
     state!.checkedCartDTO = state!.cartDTO.cartProducts.where((element) => element.isChecked == true).toList();
-    state = CartListModel(state!.cartDTO);
+    // state = CartListModel(state!.cartDTO);
 
 }
 

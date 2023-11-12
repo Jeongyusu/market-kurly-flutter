@@ -32,6 +32,8 @@ class CartScreen extends ConsumerWidget {
             child: ElevatedButton(
               onPressed: () {
                 print("주문하기 클릭됨");
+                ref.read(cartListProvider.notifier).checkedCartDTO();
+                Logger().d("장바구니체크 ${cartListModel.checkedCartDTO![0].optionQuantity}");
                 Navigator.pushNamed(context, Move.cartOrderSheetScreen);
               },
               style: ElevatedButton.styleFrom(

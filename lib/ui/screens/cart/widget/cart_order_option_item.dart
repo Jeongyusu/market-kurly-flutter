@@ -22,7 +22,6 @@ class CartOrderOptionItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     CartListModel? cartListModel = ref.watch(cartListProvider);
-    var orderCartItems = cartListModel!.cartDTO.cartProducts.where((e) => e.isChecked == true).toList();
     String imgUrl = dio.options.baseUrl;
 
     return Padding(
@@ -35,7 +34,7 @@ class CartOrderOptionItem extends ConsumerWidget {
             AspectRatio(
               aspectRatio: 1 / 1,
               child: Image.network(
-                '${imgUrl}${orderCartItems[index].productPic}',
+                '${imgUrl}${cartListModel!.checkedCartDTO![index].productPic}',
                 fit: BoxFit.cover,
               ),
             ),
