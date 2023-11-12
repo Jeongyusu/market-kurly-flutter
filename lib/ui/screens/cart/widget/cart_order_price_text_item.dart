@@ -13,13 +13,14 @@ class CartOrderPriceTextItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CartListModel? cartDTOListModel = ref.watch(cartListProvider);
+    CartListModel? cartListModel = ref.watch(cartListProvider);
+    var orderCartItems = cartListModel!.cartDTO.cartProducts.where((e) => e.isChecked == true).toList();
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "${cartDTOListModel?.cartDTO.cartProducts[index].discountedPrice}원" ??
+          "${orderCartItems[index].discountedPrice}원" ??
               "에러",
           style: strongTextmMedium(),
         ),
@@ -27,11 +28,11 @@ class CartOrderPriceTextItem extends ConsumerWidget {
           width: smallGap,
         ),
         Text(
-            "${cartDTOListModel?.cartDTO.cartProducts[index].originPrice}원" ??
+            "${orderCartItems[index].originPrice}원" ??
                 "에러",
             style: disabledText()),
         Text(" |  ", style: greyToneText(),),
-        Text("${cartDTOListModel?.cartDTO.cartProducts[index].optionQuantity}개" ?? "에러",
+        Text("${orderCartItems[index].optionQuantity}개" ?? "에러",
           style: basicText(),
         ),
       ],
