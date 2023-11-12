@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_product_dto.dart';
 import 'package:flutter_blog/data/dto/response_dto.dart';
 import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_dto.dart';
 import 'package:flutter_blog/data/model/post.dart';
@@ -9,9 +10,11 @@ import 'package:flutter_blog/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
+
 // 1. 창고 데이터
 class CartListModel {
   CartDTO cartDTO;
+  List<CartProductDTO>? checkedCartDTO;
   CartListModel(this.cartDTO);
 }
 
@@ -29,6 +32,12 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
     Logger().d("여기까지2 ${responseDTO.response}");
     state = CartListModel(responseDTO.response);
   }
+
+  void checkedCartDTO() {
+    state!.checkedCartDTO = state!.cartDTO.cartProducts.where((element) => element.isChecked == true).toList();
+    state = CartListModel(state!.cartDTO);
+
+}
 
   void checkedRemove() {
     state!.cartDTO.cartProducts
