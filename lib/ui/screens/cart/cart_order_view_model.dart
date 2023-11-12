@@ -23,7 +23,7 @@ class CartOrderViewModel extends StateNotifier<CartOrderModel?> {
   void notifyInit() {
   CartListModel? cartListModel = ref.read(cartListProvider);
   SelectedCartListDTO selectedCartListDTO = SelectedCartListDTO.fromCartDTO(cartListModel!.cartDTO,
-  1, cartListModel!.cartDTO.totalPrice);
+    cartListModel!.checkedCartDTO!, 1);
   state = CartOrderModel(selectedCartListDTO);
 }
   Future<void> orderConfirm () async {

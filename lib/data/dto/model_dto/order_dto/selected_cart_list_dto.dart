@@ -1,4 +1,5 @@
 import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_dto.dart';
+import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_product_dto.dart';
 
 import 'selected_cart_product_dto.dart';
 
@@ -47,13 +48,13 @@ class SelectedCartListDTO {
         userCouponId = json["userCouponId"],
         addressId = json["addressId"];
 
-  factory SelectedCartListDTO.fromCartDTO(
-      CartDTO cartDTO, int finalPrice, int userCouponId) {
-    List<SelectedCartProductDTO> selectedCartProducts = cartDTO.cartProducts
+  factory SelectedCartListDTO.fromCartDTO(CartDTO cartDTO,
+  List<CartProductDTO> checkedCartDTO, int userCouponId) {
+    List<SelectedCartProductDTO> selectedCartProducts = checkedCartDTO
         .map((cartProduct) =>
             SelectedCartProductDTO.fromCartProductDTO(cartProduct))
         .toList();
 
-    return SelectedCartListDTO(selectedCartProducts, cartDTO.totalBeforePrice, cartDTO.totalDiscountPrice, cartDTO.deliveryFee, cartDTO.totalPrice, finalPrice, userCouponId, cartDTO.addressId);
+    return SelectedCartListDTO(selectedCartProducts, cartDTO.totalBeforePrice, cartDTO.totalDiscountPrice, cartDTO.deliveryFee, cartDTO.totalBeforePrice - cartDTO.totalDiscountPrice, cartDTO.totalBeforePrice - cartDTO.totalDiscountPrice - 2000, userCouponId, cartDTO.addressId);
   }
 }

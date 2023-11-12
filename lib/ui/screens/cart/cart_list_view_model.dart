@@ -71,7 +71,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
     if (index >= 0 && index < state!.cartDTO.cartProducts.length) {
       state!.cartDTO.cartProducts[index].optionQuantity++;
     }
-    state = CartListModel(state!.cartDTO);
+    // state = CartListModel(state!.cartDTO);
   }
 
   void minusQuantity(int index) {
@@ -81,7 +81,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
         state!.cartDTO.cartProducts[index].optionQuantity--;
       }
     }
-    state = CartListModel(state!.cartDTO);
+    // state = CartListModel(state!.cartDTO);
   }
 
   void calSumOriginPrice() {
@@ -93,7 +93,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
       state!.cartDTO.cartProducts.forEach((cartProduct) {
         if (cartProduct.isChecked ?? false) {
           sumOriginPrice +=
-              cartProduct.originPrice * cartProduct.optionQuantity;
+              cartProduct.originPrice * (cartProduct.optionQuantity);
         }
       });
 
