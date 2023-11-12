@@ -23,9 +23,7 @@ class ProductCartBottomBar extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     SessionStore sessionStore = ref.read(sessionProvider);
     ProductDetailModal? productDetailModel = ref.read(productCartProvider(productId));
-    List<SelectedOptionDTO> selectedOptionDTOList = productDetailModel!.selectedOptionDTOs.map((e) {
-      return SelectedOptionDTO(e.id, e.optionQuantity);
-    },).toList();
+
     return Container(
       color: basicColorW,
       width: double.infinity,
@@ -48,6 +46,9 @@ class ProductCartBottomBar extends ConsumerWidget {
               return ProductCartBottomSheet();
             },
           );
+          List<SelectedOptionDTO> selectedOptionDTOList = productDetailModel!.selectedOptionDTOs.map((e) {
+            return SelectedOptionDTO(e.id, e.optionQuantity);
+          },).toList();
           CartDTORepository().saveCartList(sessionStore.jwt!, CartSaveDTO(selectedOptionDTOList));
         },
         child: Text(

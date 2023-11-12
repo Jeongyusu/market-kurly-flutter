@@ -8,9 +8,9 @@ class SelectedCartListDTO {
   int totalDiscountPrice;
   int deliveryFee;
   int totalPrice;
-  int? finalPrice; // 최종 결제될 금액
-  int? userCouponId;
-  int? addressId;
+  int finalPrice; // 최종 결제될 금액
+  int userCouponId;
+  int addressId;
 
   SelectedCartListDTO(
       this.selectedCartProducts,
@@ -35,6 +35,18 @@ class SelectedCartListDTO {
         "addressId": addressId,
       };
 
+  SelectedCartListDTO.fromJson(Map<String, dynamic> json)
+      : selectedCartProducts = (json["selectedCartProducts"] as List<dynamic>)
+      .map((e) => SelectedCartProductDTO.fromJson(e as Map<String, dynamic>))
+      .toList(),
+        totalBeforePrice = json["totalBeforePrice"],
+        totalDiscountPrice = json["totalDiscountPrice"],
+        deliveryFee = json["deliveryFee"],
+        totalPrice = json["totalPrice"],
+        finalPrice = json["finalPrice"],
+        userCouponId = json["userCouponId"],
+        addressId = json["addressId"];
+
   factory SelectedCartListDTO.fromCartDTO(
       CartDTO cartDTO, int finalPrice, int userCouponId) {
     List<SelectedCartProductDTO> selectedCartProducts = cartDTO.cartProducts
@@ -42,14 +54,6 @@ class SelectedCartListDTO {
             SelectedCartProductDTO.fromCartProductDTO(cartProduct))
         .toList();
 
-    return SelectedCartListDTO(
-        selectedCartProducts,
-        cartDTO.totalBeforePrice,
-        cartDTO.totalDiscountPrice,
-        cartDTO.deliveryFee,
-        cartDTO.totalPrice,
-        cartDTO.addressId,
-        finalPrice,
-        userCouponId);
+    return SelectedCartListDTO(selectedCartProducts, cartDTO.totalBeforePrice, cartDTO.totalDiscountPrice, cartDTO.deliveryFee, cartDTO.totalPrice, finalPrice, userCouponId, cartDTO.addressId);
   }
 }

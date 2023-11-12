@@ -110,16 +110,16 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
     }
   }
 
-  void selectedCartItemRemove() {
-    Param? param = ref.read(paramProvider);
-    param!.removeList!.sort((a, b) => b.compareTo(a));
-    for (int index in param!.removeList!) {
-      if (index >= 0 && index < state!.cartDTO!.cartProducts.length) {
-        state!.cartDTO!.cartProducts.removeAt(index);
-      }
-    }
-    state = CartListModel(state!.cartDTO);
-  }
+  // void selectedCartItemRemove() {
+  //   Param? param = ref.read(paramProvider);
+  //   param!.removeList!.sort((a, b) => b.compareTo(a));
+  //   for (int index in param!.removeList!) {
+  //     if (index >= 0 && index < state!.cartDTO!.cartProducts.length) {
+  //       state!.cartDTO!.cartProducts.removeAt(index);
+  //     }
+  //   }
+  //   state = CartListModel(state!.cartDTO);
+  // }
   // Future<void> notifyAdd(PostSaveReqDTO dto) async {
   //   SessionStore sessionStore = ref.read(sessionProvider);
   //

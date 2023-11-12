@@ -32,24 +32,35 @@ class SelectedCartProductDTO {
         "optionId": optionId,
         "optionName": optionName,
         "sellerName": sellerName,
-        "totalOptionOriginPrice": totalOptionOriginPrice,
+        // "totalOptionOriginPrice": totalOptionOriginPrice,
         "totalOptionDiscountedPrice": totalOptionDiscountedPrice,
         "optionQuantity": optionQuantity,
       };
 
+  SelectedCartProductDTO.fromJson(Map<String, dynamic> json)
+      : cartId = json["cartId"],
+        productId = json["productId"],
+        productPic = json["productPic"],
+        productName = json["productName"],
+        optionId = json["optionId"],
+        optionName = json["optionName"],
+        sellerName = json["sellerName"],
+        totalOptionOriginPrice = json["totalOptionOriginPrice"],
+        totalOptionDiscountedPrice = json["totalOptionDiscountedPrice"],
+        optionQuantity = json["optionQuantity"];
+
 
   factory SelectedCartProductDTO.fromCartProductDTO(CartProductDTO cartProductDTO) {
     return SelectedCartProductDTO(
-      cartProductDTO.cartId,
-      cartProductDTO.productId,
-      cartProductDTO.productPic,
-      cartProductDTO.productName,
-      cartProductDTO.optionId,
-      cartProductDTO.optionName,
-      cartProductDTO.sellerName,
-      cartProductDTO.originPrice * cartProductDTO.optionQuantity,
-      cartProductDTO.discountedPrice * cartProductDTO.optionQuantity,
-      cartProductDTO.optionQuantity,
-    );
+        cartProductDTO.cartId,
+        cartProductDTO.productId,
+        cartProductDTO.productPic,
+        cartProductDTO.productName,
+        cartProductDTO.optionId,
+        cartProductDTO.optionName,
+        cartProductDTO.sellerName,
+        cartProductDTO.originPrice * cartProductDTO.optionQuantity,
+        cartProductDTO.discountedPrice * cartProductDTO.optionQuantity,
+        cartProductDTO.optionQuantity);
   }
 }

@@ -48,6 +48,8 @@ class CartDTORepository {
     try {
       // 1. 통신
       Logger().d("saveCartList동작중");
+      Logger().d("${cartSaveDTO.toJson()}");
+
       final response = await dio.post("/api/carts/insert", options: Options(
         headers: {
           "Authorization": "Bearer $jwt",
@@ -62,7 +64,6 @@ class CartDTORepository {
       // 3. ResponseDTO의 data 파싱
       Logger().d("CartSaveDTO파싱완료");
       if (responseDTO.success == true) {
-        Navigator.pushNamed(mContext!, Move.myInfoUpdateDetailScreen);
       } else {
         ScaffoldMessenger.of(mContext!).showSnackBar(
           SnackBar(
@@ -71,6 +72,36 @@ class CartDTORepository {
         );
       }
     } catch (e) {
+      Logger().d("장바구니 담기 실패");
+    }
+  }
+
+  Future<ResponseDTO> fetchOrderConfirm(String jwt, SelectedCartListDTO selectedCartListDTO) async {
+    try {
+      // 1. 통신
+      Logger().d("orderConfirm동작중");
+      Logger().d("${selectedCartListDTO.toJson()}");
+
+      final response = await dio.post("/api/carts/order", options: Options(
+        headers: {
+          "Authorization": "Bearer $jwt",
+          // 다른 필요한 헤더도 추가할 수 있습니다.
+        },
+      ),
+          data: selectedCartListDTO.toJson());
+
+      Logger().d("여기까지 완료");
+      Logger().d(response.data);
+      // 2. ResponseDTO 파싱
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      // responseDTO.response = SelectedCartListDTO.fromJson(responseDTO.response);
+
+      // 3. ResponseDTO의 data 파싱
+      Logger().d("SelectedCartListDTO 파싱완료");
+      return responseDTO;
+    } catch (e) {
+      Logger().d("장바구니 주문검증 실패");
+      return ResponseDTO(success: false, response: null, error: "카트검증실패");
     }
   }
 

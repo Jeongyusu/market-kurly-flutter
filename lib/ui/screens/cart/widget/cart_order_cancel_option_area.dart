@@ -17,14 +17,12 @@ class CartOrderCancelOptionArea extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     CartListModel? cartListModel = ref.watch(cartListProvider);
-    Param? param = ref.watch(paramProvider);
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: ListView.builder(
         shrinkWrap: true, // 이 줄을 추가
         primary: false,
-        itemCount: cartListModel?.cartDTO.cartProducts.length ?? 0,
+        itemCount: cartListModel!.cartDTO.cartProducts.length ?? 0,
         itemBuilder: (BuildContext context, int index) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,

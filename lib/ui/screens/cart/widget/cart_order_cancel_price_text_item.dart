@@ -4,22 +4,22 @@ import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CartOrderPriceTextItem extends ConsumerWidget {
+class CartOrderCancelPriceTextItem extends ConsumerWidget {
   final int index;
-  const CartOrderPriceTextItem({
+  const CartOrderCancelPriceTextItem({
     super.key,
     required this.index,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CartListModel? cartDTOListModel = ref.watch(cartListProvider);
+    CartListModel? cartListModel = ref.watch(cartListProvider);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "${cartDTOListModel?.cartDTO.cartProducts[index].discountedPrice}원" ??
+          "${cartListModel!.cartDTO.cartProducts[index].discountedPrice}원" ??
               "에러",
           style: strongTextmMedium(),
         ),
@@ -27,11 +27,11 @@ class CartOrderPriceTextItem extends ConsumerWidget {
           width: smallGap,
         ),
         Text(
-            "${cartDTOListModel?.cartDTO.cartProducts[index].originPrice}원" ??
+            "${cartListModel!.cartDTO.cartProducts[index].originPrice}원" ??
                 "에러",
             style: disabledText()),
         Text(" |  ", style: greyToneText(),),
-        Text("${cartDTOListModel?.cartDTO.cartProducts[index].optionQuantity}개" ?? "에러",
+        Text("${cartListModel!.cartDTO.cartProducts[index].optionQuantity}개" ?? "에러",
           style: basicText(),
         ),
       ],
