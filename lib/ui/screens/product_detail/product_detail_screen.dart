@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/data/dto/model_dto/product_dto/product_dto.dart';
+import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_description/product_description_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_description/product_description_view_model.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_info/product_info_screen.dart';
