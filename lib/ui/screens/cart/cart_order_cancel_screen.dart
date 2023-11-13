@@ -11,7 +11,6 @@ class CartOderCancelScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CartListModel? cartListModel = ref.watch(cartListProvider);
     return Scaffold(
       body: CartOrderCancelBody(),
       bottomNavigationBar: BottomAppBar(

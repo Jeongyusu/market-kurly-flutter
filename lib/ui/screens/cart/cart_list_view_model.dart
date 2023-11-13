@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_product_dto.dart';
 import 'package:flutter_blog/data/dto/response_dto.dart';
 import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_dto.dart';
 import 'package:flutter_blog/data/model/post.dart';
@@ -9,9 +10,11 @@ import 'package:flutter_blog/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
+
 // 1. 창고 데이터
 class CartListModel {
   CartDTO cartDTO;
+  List<CartProductDTO>? checkedCartDTO = [];
   CartListModel(this.cartDTO);
 }
 
@@ -29,6 +32,12 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
     Logger().d("여기까지2 ${responseDTO.response}");
     state = CartListModel(responseDTO.response);
   }
+
+  void checkedCartDTO() {
+    state!.checkedCartDTO = state!.cartDTO.cartProducts.where((element) => element.isChecked == true).toList();
+    // state = CartListModel(state!.cartDTO);
+
+}
 
   void checkedRemove() {
     state!.cartDTO.cartProducts
@@ -62,7 +71,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
     if (index >= 0 && index < state!.cartDTO.cartProducts.length) {
       state!.cartDTO.cartProducts[index].optionQuantity++;
     }
-    state = CartListModel(state!.cartDTO);
+    // state = CartListModel(state!.cartDTO);
   }
 
   void minusQuantity(int index) {
@@ -72,7 +81,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
         state!.cartDTO.cartProducts[index].optionQuantity--;
       }
     }
-    state = CartListModel(state!.cartDTO);
+    // state = CartListModel(state!.cartDTO);
   }
 
   void calSumOriginPrice() {
@@ -84,7 +93,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
       state!.cartDTO.cartProducts.forEach((cartProduct) {
         if (cartProduct.isChecked ?? false) {
           sumOriginPrice +=
-              cartProduct.originPrice * cartProduct.optionQuantity;
+              cartProduct.originPrice * (cartProduct.optionQuantity);
         }
       });
 
@@ -110,16 +119,16 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
     }
   }
 
-  void selectedCartItemRemove() {
-    Param? param = ref.read(paramProvider);
-    param!.removeList!.sort((a, b) => b.compareTo(a));
-    for (int index in param!.removeList!) {
-      if (index >= 0 && index < state!.cartDTO!.cartProducts.length) {
-        state!.cartDTO!.cartProducts.removeAt(index);
-      }
-    }
-    state = CartListModel(state!.cartDTO);
-  }
+  // void selectedCartItemRemove() {
+  //   Param? param = ref.read(paramProvider);
+  //   param!.removeList!.sort((a, b) => b.compareTo(a));
+  //   for (int index in param!.removeList!) {
+  //     if (index >= 0 && index < state!.cartDTO!.cartProducts.length) {
+  //       state!.cartDTO!.cartProducts.removeAt(index);
+  //     }
+  //   }
+  //   state = CartListModel(state!.cartDTO);
+  // }
   // Future<void> notifyAdd(PostSaveReqDTO dto) async {
   //   SessionStore sessionStore = ref.read(sessionProvider);
   //

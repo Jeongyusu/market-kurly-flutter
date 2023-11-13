@@ -1,5 +1,6 @@
 //제품 상세
-import 'dart:ffi';
+
+import 'package:flutter_blog/data/model/option.dart';
 
 class ProductDescriptionDTO {
   final int productId;
@@ -12,6 +13,7 @@ class ProductDescriptionDTO {
   final String productOrigin;
   final String productDetailImage;
   final String seller;
+  final List<Option> options;
 
   ProductDescriptionDTO(
       this.productId,
@@ -24,7 +26,7 @@ class ProductDescriptionDTO {
       this.productOrigin,
       this.productDetailImage,
       this.seller,
-      );
+      this.options);
 
   ProductDescriptionDTO.fromJson(Map<String, dynamic> json)
       : productId = json["productId"],
@@ -36,7 +38,10 @@ class ProductDescriptionDTO {
         originPrice = json["originPrice"],
         productOrigin = json["productOrigin"],
         productDetailImage = json["productDetailImage"],
-        seller = json["seller"];
+        seller = json["seller"],
+        options = (json["options"] as List<dynamic>)
+            .map((e) => Option.fromJson(e as Map<String, dynamic>))
+            .toList();
 }
 
 //핫한 상품
@@ -52,16 +57,16 @@ class ProductStarMainDTO {
   final double avgStarCount;
 
   ProductStarMainDTO(
-      this.productId,
-      this.sellerName,
-      this.productName,
-      this.productThumbnail,
-      this.minOptionPrice,
-      this.discountedminOptionPrice,
-      this.categoryId,
-      this.discountRate,
-      this.avgStarCount,
-      );
+    this.productId,
+    this.sellerName,
+    this.productName,
+    this.productThumbnail,
+    this.minOptionPrice,
+    this.discountedminOptionPrice,
+    this.categoryId,
+    this.discountRate,
+    this.avgStarCount,
+  );
 
   ProductStarMainDTO.fromJson(Map<String, dynamic> json)
       : productId = json["productId"],
@@ -88,16 +93,16 @@ class ProductDiscountMainDTO {
   final double avgStarCount;
 
   ProductDiscountMainDTO(
-      this.productId,
-      this.sellerName,
-      this.productName,
-      this.productThumbnail,
-      this.minOptionPrice,
-      this.categoryId,
-      this.discountedminOptionPrice,
-      this.discountRate,
-      this.avgStarCount,
-      );
+    this.productId,
+    this.sellerName,
+    this.productName,
+    this.productThumbnail,
+    this.minOptionPrice,
+    this.categoryId,
+    this.discountedminOptionPrice,
+    this.discountRate,
+    this.avgStarCount,
+  );
 
   ProductDiscountMainDTO.fromJson(Map<String, dynamic> json)
       : productId = json["productId"],
@@ -124,16 +129,16 @@ class ProductRandomMainDTO {
   final double avgStarCount;
 
   ProductRandomMainDTO(
-      this.productId,
-      this.sellerName,
-      this.productName,
-      this.productThumbnail,
-      this.minOptionPrice,
-      this.categoryId,
-      this.discountedminOptionPrice,
-      this.discountRate,
-      this.avgStarCount,
-      );
+    this.productId,
+    this.sellerName,
+    this.productName,
+    this.productThumbnail,
+    this.minOptionPrice,
+    this.categoryId,
+    this.discountedminOptionPrice,
+    this.discountRate,
+    this.avgStarCount,
+  );
 
   ProductRandomMainDTO.fromJson(Map<String, dynamic> json)
       : productId = json["productId"],

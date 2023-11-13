@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
+import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ProductCartBottomSheet extends StatelessWidget {
+class ProductCartBottomSheet extends ConsumerWidget {
   const ProductCartBottomSheet({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       height: 250,
       child: Column(
@@ -50,7 +53,10 @@ class ProductCartBottomSheet extends StatelessWidget {
                   height: smallGap,
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    ref.read(cartListProvider.notifier).notifyInit();
+                    Navigator.pushNamed(context, Move.cartScreen);
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
