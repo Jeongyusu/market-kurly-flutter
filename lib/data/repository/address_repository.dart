@@ -10,7 +10,7 @@ class AddressRepository {
     try {
       // 1. 통신
       Logger().d("fetchAddressList 동작중");
-      final response = await dio.get("/api/addresses");
+      final response = await dio.get("/api/users/addresses");
       Logger().d(response.data);
       // 2. ResponseDTO 파싱
       ResponseDTO toyResponseDTO = ResponseDTO.fromJson(response.data);
@@ -37,7 +37,7 @@ class AddressRepository {
       // 1. 통신
       // Request에 Body 데이터와 헤더 토큰값을 가지고 가야함
       // response안에 서버 측 응답으로 받은 http헤더와 body있음
-      final response = await dio.post("/api/test/save/address",
+      final response = await dio.post("/api/users/addresses/save",
           // data에 Map넣으면 자동으로 JSON으로 변환됨
           data: dto.toJson());
 

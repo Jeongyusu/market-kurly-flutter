@@ -30,7 +30,7 @@ class KurlySaleProductList extends ConsumerWidget {
             height: 410,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: images?.length,
+              itemCount: 5,
               itemExtent: 170,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
