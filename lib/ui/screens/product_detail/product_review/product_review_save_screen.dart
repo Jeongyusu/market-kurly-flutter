@@ -5,6 +5,8 @@ import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/_core/utils/validator_util.dart';
 import 'package:flutter_blog/data/dto/request_dto/review_request.dart';
+import 'package:flutter_blog/data/store/param_store.dart';
+import 'package:flutter_blog/data/store/parameter_store.dart';
 import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_view_model.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/widget/product_review_form.dart';
@@ -21,7 +23,15 @@ import 'product_review_body/product_review_save_body.dart';
 
 class ProductReviewSaveScreen extends StatelessWidget {
   final TextEditingController? controller;
-  ProductReviewSaveScreen({Key? key, this.controller}) : super(key: key);
+  final int? productId;
+  final int? writeableReviewId;
+  ProductReviewSaveScreen({
+    Key? key,
+    this.controller,
+    this.productId,
+    this.writeableReviewId,
+  }) : super(key: key);
+
   ProductReviewForm productReviewForm = ProductReviewForm();
 
   @override
@@ -48,18 +58,28 @@ class ProductReviewSaveScreen extends StatelessWidget {
                 builder: (BuildContext context, WidgetRef ref, Widget? child) {
                   SessionStore? sessionStore = ref.read(sessionProvider);
                   return CustomElevatedButton(
-                    funPageRoute: () {
+                    funPageRoute: () async {
                       print("클릭");
                       productReviewForm.submit(ref);
                       ProductReviewSaveDTO proReviewDTO = ProductReviewSaveDTO(
+                        productId: 1,
+                        writeableReviewId: 1,
                         reviewContent: productReviewForm.reviewContent.text,
-                        // reviewPics: productReviewForm.reviewPics.value,
-                        // starCount: productReviewForm.starCount,
+                        reviewPics: productReviewForm.reviewPics.value,
+                        starCount: productReviewForm.starCount,
                       );
-                      Logger().d(proReviewDTO);
-                      ref
-                          .read(productReviewProvider)
-                          .fetchReviewSave(proReviewDTO, sessionStore!.jwt!);
+                      Logger().d(proReviewDTO.reviewContent);
+                      Logger().d(proReviewDTO.starCount);
+                      Logger().d(proReviewDTO.reviewPics);
+
+                      //TODO - parameterStore use
+                      ParameterStore parameterStore =
+                          ref.read(parameterProvider);
+                      parameterStore.productReviewSaveDTO = proReviewDTO;
+                      SessionUser sessionUser = ref.read(sessionProvider);
+                      await ref
+                          .read(productReviewProvider.notifier)
+                          .notifyAdd(sessionUser!.jwt);
                     },
                     text: "등록",
                   );

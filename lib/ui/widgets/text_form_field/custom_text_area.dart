@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
+import 'package:logger/logger.dart';
 
 class CustomTextArea extends StatelessWidget {
   final hintText;

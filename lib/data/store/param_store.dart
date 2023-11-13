@@ -1,10 +1,12 @@
 // 창고
+import 'package:flutter_blog/data/dto/request_dto/review_request.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Param {
   bool? isChecked;
   List<int>? removeList;
+
   Param({this.isChecked, this.removeList});
 }
 

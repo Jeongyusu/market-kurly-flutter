@@ -12,21 +12,21 @@ class ProductRatingBarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RatingBar.builder(
-      initialRating: 3,
-      minRating: 1,
-      direction: Axis.horizontal,
-      allowHalfRating: true,
-      itemCount: 5,
-      itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-      itemBuilder: (context, _) => Icon(
-        Icons.star,
-        color: Colors.amber,
-      ),
-      onRatingUpdate: (double rating) {
-        // 클릭한 별점을 int로 변환하여 starCount 함수 호출
-        starCount?.call(rating.toInt());
-        print(rating);
-      },
-    );
+        initialRating: 3,
+        minRating: 1,
+        direction: Axis.horizontal,
+        allowHalfRating: true,
+        itemCount: 5,
+        itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+        itemBuilder: (context, _) => Icon(
+              Icons.star,
+              color: Colors.amber,
+            ),
+        onRatingUpdate: (double rating) {
+          // 클릭한 별점을 int로 변환하여 starCount 함수 호출
+          starCount?.call(rating.toInt());
+          // starCount;
+          print("하위위젯${rating}");
+        });
   }
 }

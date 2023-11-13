@@ -10,7 +10,7 @@ class ProductReviewSaveDTO {
     this.writeableReviewId,
     required this.reviewContent,
     this.starCount,
-    List<String>? reviewPics, // Nullable로 변경
+    List<String>? reviewPics,
   }) : reviewPics =
             reviewPics?.map((pic) => {"reviewBase": pic}).toList() ?? [];
 
@@ -18,7 +18,14 @@ class ProductReviewSaveDTO {
         "productId": productId,
         "writeableReviewId": writeableReviewId,
         "reviewContent": reviewContent,
-        "starCount": starCount?.toStringAsFixed(1), // null 체크 추가
+        "starCount": starCount?.toStringAsFixed(1),
         "reviewPics": reviewPics,
       };
+
+  ProductReviewSaveDTO.fromJson(Map<String, dynamic> json)
+      : productId = json["productId"],
+        writeableReviewId = json["writeableReviewId"],
+        reviewContent = json["reviewContent"],
+        starCount = json["starCount"],
+        reviewPics = json["reviewPics"];
 }

@@ -31,25 +31,27 @@ class ProductReviewForm extends StatefulWidget {
   }
 
   @override
-  _ProductReviewFormState createState() => _ProductReviewFormState();
+  _ProductReviewFormState createState() => _ProductReviewFormState(
+        reviewContent: reviewContent,
+        reviewPics: reviewPics,
+        starCount: starCount,
+      );
 }
 
 class _ProductReviewFormState extends State<ProductReviewForm> {
-  int? starCount;
-  final formKey = GlobalKey<FormState>();
-  final reviewContent = TextEditingController();
-  final reviewPics = ValueNotifier<List<String>>([]);
+  late TextEditingController reviewContent;
+  late ValueNotifier<List<String>> reviewPics;
+  late int starCount;
 
-  void submit(WidgetRef ref) {
-    if (formKey.currentState!.validate()) {
-      Logger().d("여기는 form 위젯 계층이에요 + ${reviewPics.value.length}");
-
-      ProductReviewSaveDTO proReqDTO = ProductReviewSaveDTO(
-        reviewContent: reviewContent.text,
-        reviewPics: reviewPics.value,
-        starCount: starCount,
-      );
-    }
+  // 생성자 수정
+  _ProductReviewFormState({
+    required TextEditingController reviewContent,
+    required ValueNotifier<List<String>> reviewPics,
+    required int starCount,
+  }) {
+    this.reviewContent = reviewContent;
+    this.reviewPics = reviewPics;
+    this.starCount = starCount;
   }
 
   @override
@@ -57,27 +59,26 @@ class _ProductReviewFormState extends State<ProductReviewForm> {
     return Padding(
       padding: EdgeInsets.all(16.0),
       child: Form(
-        key: formKey,
+        key: widget.formKey,
         child: Column(
           children: [
             ProductReviewRating(
               starCount: (value) {
                 setState(() {
-                  starCount = value.toInt();
+                  widget.starCount = value.toInt();
                 });
                 print("${starCount} 상위위젯");
               },
             ),
-            ProductReviewContents(contents: reviewContent),
+            // TODO - 여기 수정 widget.reviewContent
+            ProductReviewContents(contents: widget.reviewContent),
             SizedBox(
               height: smallGap,
             ),
-            // ImageWidget(),
-            // ImageUpload(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomCameraTextArea(photoList: reviewPics),
+                CustomCameraTextArea(photoList: widget.reviewPics),
               ],
             )
           ],
