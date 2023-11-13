@@ -47,7 +47,7 @@ class KurlyRecommendProductList extends ConsumerWidget {
                     .productStarMainDTOs[index].avgStarCount,
               );
             },
-            childCount: 4,
+            childCount: 6,
           ),
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 200.0,

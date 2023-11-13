@@ -47,12 +47,10 @@ class ProductCartBottomBar extends ConsumerWidget {
               return ProductCartBottomSheet();
             },
           );
-          List<SelectedOptionDTO> selectedOptionDTOList = productDetailModal!
-              .selectedOptionDTOs
-              .map((e) => SelectedOptionDTO(e.id, e.optionQuantity))
-              .toList();
-          CartDTORepository().saveCartList(
-              sessionStore.jwt!, CartSaveDTO(selectedOptionDTOList));
+
+          ref
+              .read(productCartProvider(productId).notifier)
+              .saveCartList(productId);
           ref.read(cartListProvider.notifier).notifyInit();
         },
         child: Text(

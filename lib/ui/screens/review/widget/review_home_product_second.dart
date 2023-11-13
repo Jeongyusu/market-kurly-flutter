@@ -20,9 +20,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class ReviewHomeProductSecond extends ConsumerWidget {
   String bottomRightText;
   TextStyle bottomRightTextStyle;
-  ReviewHomeProductSecond({
-    super.key, required this.bottomRightText, required this.bottomRightTextStyle
-  });
+  ReviewHomeProductSecond(
+      {super.key,
+      required this.bottomRightText,
+      required this.bottomRightTextStyle});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -50,11 +51,14 @@ class ReviewHomeProductSecond extends ConsumerWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          ReviewHomeOptionItem(index: index, bottomRightText: bottomRightText, bottomRightTextStyle: bottomRightTextStyle,),
+                          ReviewHomeOptionItem(
+                            index: index,
+                            bottomRightText: bottomRightText,
+                            bottomRightTextStyle: bottomRightTextStyle,
+                          ),
                         ],
                       ),
                       Expanded(
-                        flex: 1,
                         child: Column(
                           children: [
                             SizedBox(
@@ -73,7 +77,9 @@ class ReviewHomeProductSecond extends ConsumerWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 10,),
+                            SizedBox(
+                              height: 10,
+                            ),
                             Container(
                               width: 100,
                               height: 40,

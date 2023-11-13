@@ -30,6 +30,10 @@ class CartTotalBtn extends ConsumerWidget {
               ref.read(cartListProvider.notifier).checkedRemove();
               ref.read(cartListProvider.notifier).calSumOriginPrice();
               ref.read(cartListProvider.notifier).calSumDiscountPrice();
+              ref.read(cartListProvider.notifier).checkedCartDTO();
+              Logger().d("나요기요 ${cartListModel!.checkedCartDTO}");
+              ref.read(cartListProvider.notifier).removeCartList();
+
               Logger()
                   .d("남은 리스트갯수 ${cartListModel!.cartDTO!.cartProducts.length}");
             },
