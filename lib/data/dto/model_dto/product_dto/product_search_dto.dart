@@ -5,6 +5,7 @@ class ProductSearchDTO {
   int minOptionPrice;
   int discountedminOptionPrice;
   int discountRate;
+  int categoryId;
   double avgStarCount;
 
   ProductSearchDTO(
@@ -14,6 +15,7 @@ class ProductSearchDTO {
       this.minOptionPrice,
       this.discountedminOptionPrice,
       this.discountRate,
+      this.categoryId,
       this.avgStarCount);
 
   ProductSearchDTO.fromJson(Map<String, dynamic> json)
@@ -23,5 +25,6 @@ class ProductSearchDTO {
         minOptionPrice = json["minOptionPrice"],
         discountedminOptionPrice = json["discountedminOptionPrice"],
         discountRate = json["discountRate"],
+        categoryId = json["categoryId"],
         avgStarCount = json["avgStarCount"];
 }
