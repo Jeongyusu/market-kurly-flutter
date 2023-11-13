@@ -29,7 +29,7 @@ class ProductRepository {
   //  컬리추천 리스트
   Future<ResponseDTO> fetchMainProductList() async {
     try {
-      final response = await dio.get("/api/test/product");
+      final response = await dio.get("/api/product/lists");
       Logger().d(response.data);
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
@@ -107,7 +107,7 @@ class ProductRepository {
   //  컬리추천
   Future<ResponseDTO> fetchHomeProductList() async {
     try {
-      final response = await dio.get("/api/products/home?page=0");
+      final response = await dio.get("/api/product/lists");
       Logger().d(response.data);
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
@@ -122,7 +122,7 @@ class ProductRepository {
   //  가장 핫한 상품 리스트
   Future<ResponseDTO> fetchPopularProductList() async {
     try {
-      final response = await dio.get("/api/products/newproduct?page=0");
+      final response = await dio.get("/api/product/lists");
       Logger().d(response.data);
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
@@ -137,7 +137,7 @@ class ProductRepository {
   //  초특가 반값 SALE 상품 리스트
   Future<ResponseDTO> fetchSaleProductList() async {
     try {
-      final response = await dio.get("/api/products/newproduct?page=0");
+      final response = await dio.get("/api/product/lists");
       Logger().d(response.data);
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
@@ -152,7 +152,7 @@ class ProductRepository {
   //  MD추천 상품 리스트
   Future<ResponseDTO> fetchRecommendProductList() async {
     try {
-      final response = await dio.get("/api/products/newproduct?page=0");
+      final response = await dio.get("/api/product/lists");
       Logger().d(response.data);
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
