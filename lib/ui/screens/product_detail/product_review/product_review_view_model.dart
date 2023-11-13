@@ -48,7 +48,7 @@ class ProductReviewViewModel extends StateNotifier<ProductReviewModel?> {
       } else {
         ScaffoldMessenger.of(mContext!).showSnackBar(
           SnackBar(
-            content: Text("후기등록이 슬패했습니다."),
+            content: Text("후기등록이 실패했습니다."),
           ),
         );
       }
