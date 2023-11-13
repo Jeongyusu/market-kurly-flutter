@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/_core/constants/http.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_description/product_description_view_model.dart';
 import 'package:flutter_blog/ui/screens/product_detail/widget/product_cart_bottom_bar.dart';
@@ -20,6 +21,8 @@ class ProductBottomSheetItem extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ProductDescriptionModel? model =
         ref.watch(productDescriptionProvider(productId));
+    String imgUrl = dio.options.baseUrl;
+
     if (model == null) {
       return Center(child: CircularProgressIndicator());
     } else {
@@ -59,8 +62,8 @@ class ProductBottomSheetItem extends ConsumerWidget {
                                   height: 40,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(5),
-                                    child: Image.asset(
-                                      "assets/images/product01.jpg",
+                                    child: Image.network(
+                                      "${imgUrl}${model!.productDescriptionDTO.productThumbnail}",
                                       fit: BoxFit.cover,
                                     ),
                                   ),
