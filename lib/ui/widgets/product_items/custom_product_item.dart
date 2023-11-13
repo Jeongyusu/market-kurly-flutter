@@ -16,6 +16,7 @@ import 'product_seller_and_title.dart';
 
 class CustomProductItem extends StatelessWidget {
   final int? productId;
+  final int? categoryId;
   final String? images;
   final String? sellerName;
   final String? productTitle;
@@ -27,6 +28,7 @@ class CustomProductItem extends StatelessWidget {
   const CustomProductItem({
     super.key,
     this.productId,
+    this.categoryId,
     this.images,
     this.sellerName,
     this.productTitle,
@@ -77,7 +79,7 @@ class CustomProductItem extends StatelessWidget {
                     totalPrice: totalPrice,
                   ),
                   CustomReviewIcon(
-                    reviewGrade: reviewGrade,
+                    totalReviewGrade: reviewGrade,
                   ),
                 ],
               ),

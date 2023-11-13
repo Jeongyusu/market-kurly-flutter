@@ -23,7 +23,7 @@ class ProductSellerAndTitle extends StatelessWidget {
           text: TextSpan(
             children: [
               TextSpan(
-                text: "${sellerName}",
+                text: "[ ${sellerName} ]",
                 style: basicText(),
               ),
               WidgetSpan(

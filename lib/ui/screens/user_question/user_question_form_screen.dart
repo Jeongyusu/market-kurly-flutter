@@ -68,7 +68,7 @@ class CustomerQuestionFormScreen extends ConsumerWidget {
                     child: CustomTextArea(
                         hintText: "문의하실 내용을 입력해주세요. (0/5,000)",
                         funValidator: validateContent(),
-                        controller: controller ?? TextEditingController()),
+                        contents: controller ?? TextEditingController()),
                   ),
                   SizedBox(
                     height: 5,
@@ -122,7 +122,7 @@ class CustomerQuestionFormScreen extends ConsumerWidget {
         ),
       ]),
       bottomNavigationBar:
-          UserQuestionBottomAppbar(text: "등록하기", funPageRoute: () {}),
+      UserQuestionBottomAppbar(text: "등록하기", funPageRoute: () {}),
     );
   }
 }

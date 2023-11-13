@@ -81,6 +81,6 @@ class ReviewHomeScreenBody extends StatelessWidget {
               ),
             )
           ],
-        ));
+        ),);
   }
 }

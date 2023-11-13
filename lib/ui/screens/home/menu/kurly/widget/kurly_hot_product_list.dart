@@ -41,7 +41,7 @@ class KurlyHotProductList extends ConsumerWidget {
                     images:
                         "${imgUrl}${productHotList!.productStarMainDTOs[index].productThumbnail}",
                     sellerName:
-                        "[ ${productHotList!.productStarMainDTOs[index].sellerName} ]",
+                        productHotList!.productStarMainDTOs[index].sellerName,
                     productTitle:
                         productHotList!.productStarMainDTOs[index].productName,
                     disablePrice: productHotList!
@@ -50,6 +50,8 @@ class KurlyHotProductList extends ConsumerWidget {
                         productHotList!.productStarMainDTOs[index].discountRate,
                     totalPrice: productHotList!
                         .productStarMainDTOs[index].minOptionPrice,
+                    reviewGrade:
+                        productHotList!.productStarMainDTOs[index].avgStarCount,
                   ),
                 );
               },

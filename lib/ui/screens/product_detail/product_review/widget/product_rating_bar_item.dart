@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ProductRatingBarItem extends StatelessWidget {
+  final ValueChanged<int>? starCount;
+
   const ProductRatingBarItem({
-    super.key,
-  });
+    Key? key,
+    this.starCount,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +20,11 @@ class ProductRatingBarItem extends StatelessWidget {
       itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
       itemBuilder: (context, _) => Icon(
         Icons.star,
-        color: reviewColor,
+        color: Colors.amber,
       ),
-      onRatingUpdate: (rating) {
+      onRatingUpdate: (double rating) {
+        // 클릭한 별점을 int로 변환하여 starCount 함수 호출
+        starCount?.call(rating.toInt());
         print(rating);
       },
     );

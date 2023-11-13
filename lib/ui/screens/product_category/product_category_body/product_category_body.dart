@@ -125,7 +125,7 @@ class _ProductCategoryBodyState extends State<ProductCategoryBody> {
           child: IndexedStack(
             index: selectedCategory,
             children: [
-              // ProductCategoryGrid(images: images),
+              // ProductCategoryGrid(),
               Center(child: Text("트렌드")),
               Center(child: Text("라이프")),
               Center(child: Text("힐링")),
