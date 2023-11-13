@@ -34,10 +34,15 @@ class ProductDetailViewModel extends StateNotifier<ProductDetailModal?> {
     Logger().d("여기까지 실행됨");
     ProductDetailModal? productDetailModel =
         ref.read(productCartProvider(productId));
+    Logger().d(
+        "여기까지 실행됨11${productDetailModel!.selectedOptionDTOs[0].optionQuantity}");
+
     List<SelectedOptionDTO> selectedOptionDTOList = productDetailModel!
         .selectedOptionDTOs
         .map((e) => SelectedOptionDTO(e.id, e.optionQuantity))
         .toList();
+    Logger().d("장바구니테스트 ${selectedOptionDTOList[0].optionQuantity}");
+    Logger().d("장바구니테스트${selectedOptionDTOList[1].optionQuantity}");
     // 1. 통신 코드
     ResponseDTO responseDTO = await CartDTORepository().fetchSaveCartList(
         sessionStore.jwt!, CartSaveDTO(selectedOptionDTOList));
