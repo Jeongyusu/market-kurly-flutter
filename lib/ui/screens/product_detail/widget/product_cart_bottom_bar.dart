@@ -47,11 +47,17 @@ class ProductCartBottomBar extends ConsumerWidget {
               return ProductCartBottomSheet();
             },
           );
-
-          ref
-              .read(productCartProvider(productId).notifier)
-              .saveCartList(productId);
+          List<SelectedOptionDTO> selectedOptionDTOList = productDetailModal!
+              .selectedOptionDTOs
+              .map((e) => SelectedOptionDTO(e.id, e.optionQuantity))
+              .toList();
+          CartDTORepository().fetchSaveCartList(
+              sessionStore.jwt!, CartSaveDTO(selectedOptionDTOList));
           ref.read(cartListProvider.notifier).notifyInit();
+          // ref
+          //     .read(productCartProvider(productId).notifier)
+          //     .saveCartList(productId);
+          // ref.read(cartListProvider.notifier).notifyInit();
         },
         child: Text(
           "장바구니 담기",
