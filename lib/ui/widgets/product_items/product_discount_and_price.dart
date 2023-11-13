@@ -33,7 +33,7 @@ class ProductDiscountAndPrice extends StatelessWidget {
                 child: SizedBox(width: smallGap),
               ),
               TextSpan(
-                text: "${totalPrice}~",
+                text: "${totalPrice}원",
                 style: subTitleReqular(),
               ),
             ],

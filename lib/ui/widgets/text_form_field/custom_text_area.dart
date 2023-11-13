@@ -4,25 +4,23 @@ import 'package:flutter_blog/_core/constants/color.dart';
 class CustomTextArea extends StatelessWidget {
   final hintText;
   final funValidator;
-  final TextEditingController controller;
   final String initValue;
+  final contents;
 
   const CustomTextArea({
     Key? key,
     required this.funValidator,
-    required this.controller,
+    required this.contents,
     required this.hintText,
     this.initValue = "",
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    controller.text = initValue;
-
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: TextFormField(
-        controller: controller,
+        controller: contents,
         maxLines: 10,
         validator: funValidator,
         decoration: InputDecoration(

@@ -5,9 +5,11 @@ import 'package:flutter_blog/ui/screens/product_category/product_category_screen
 
 class HomeKurlyMenuTitle extends StatelessWidget {
   final String title;
+  final funPageRoute;
   const HomeKurlyMenuTitle({
     super.key,
     required this.title,
+    this.funPageRoute,
   });
 
   @override
@@ -27,13 +29,7 @@ class HomeKurlyMenuTitle extends StatelessWidget {
               ],
             ),
             InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ProductCategoryScreen()),
-                );
-              },
+              onTap: funPageRoute,
               child: Container(
                 padding: EdgeInsets.all(4.0),
                 child: Row(

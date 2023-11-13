@@ -1,4 +1,5 @@
 //제품 상세
+
 import 'package:flutter_blog/data/model/option.dart';
 
 class ProductDescriptionDTO {
@@ -15,18 +16,17 @@ class ProductDescriptionDTO {
   final List<Option> options;
 
   ProductDescriptionDTO(
-    this.productId,
-    this.productName,
-    this.productContent,
-    this.productThumbnail,
-    this.discountRate,
-    this.discountedPrice,
-    this.originPrice,
-    this.productOrigin,
-    this.productDetailImage,
-    this.seller,
-      this.options
-  );
+      this.productId,
+      this.productName,
+      this.productContent,
+      this.productThumbnail,
+      this.discountRate,
+      this.discountedPrice,
+      this.originPrice,
+      this.productOrigin,
+      this.productDetailImage,
+      this.seller,
+      this.options);
 
   ProductDescriptionDTO.fromJson(Map<String, dynamic> json)
       : productId = json["productId"],
@@ -52,6 +52,7 @@ class ProductStarMainDTO {
   final String productThumbnail;
   final int minOptionPrice;
   final int discountedminOptionPrice;
+  final int categoryId;
   final int discountRate;
   final double avgStarCount;
 
@@ -62,6 +63,7 @@ class ProductStarMainDTO {
     this.productThumbnail,
     this.minOptionPrice,
     this.discountedminOptionPrice,
+    this.categoryId,
     this.discountRate,
     this.avgStarCount,
   );
@@ -72,6 +74,7 @@ class ProductStarMainDTO {
         productName = json["productName"],
         productThumbnail = json["productThumbnail"],
         minOptionPrice = json["minOptionPrice"],
+        categoryId = json["categoryId"],
         discountedminOptionPrice = json["discountedminOptionPrice"],
         discountRate = json["discountRate"],
         avgStarCount = json["avgStarCount"];
@@ -84,6 +87,7 @@ class ProductDiscountMainDTO {
   final String productName;
   final String productThumbnail;
   final int minOptionPrice;
+  final int categoryId;
   final int discountedminOptionPrice;
   final int discountRate;
   final double avgStarCount;
@@ -94,6 +98,7 @@ class ProductDiscountMainDTO {
     this.productName,
     this.productThumbnail,
     this.minOptionPrice,
+    this.categoryId,
     this.discountedminOptionPrice,
     this.discountRate,
     this.avgStarCount,
@@ -104,6 +109,7 @@ class ProductDiscountMainDTO {
         sellerName = json["sellerName"],
         productName = json["productName"],
         productThumbnail = json["productThumbnail"],
+        categoryId = json["categoryId"],
         minOptionPrice = json["minOptionPrice"],
         discountedminOptionPrice = json["discountedminOptionPrice"],
         discountRate = json["discountRate"],
@@ -117,6 +123,7 @@ class ProductRandomMainDTO {
   final String productName;
   final String productThumbnail;
   final int minOptionPrice;
+  final int categoryId;
   final int discountedminOptionPrice;
   final int discountRate;
   final double avgStarCount;
@@ -127,6 +134,7 @@ class ProductRandomMainDTO {
     this.productName,
     this.productThumbnail,
     this.minOptionPrice,
+    this.categoryId,
     this.discountedminOptionPrice,
     this.discountRate,
     this.avgStarCount,
@@ -137,6 +145,7 @@ class ProductRandomMainDTO {
         sellerName = json["sellerName"],
         productName = json["productName"],
         productThumbnail = json["productThumbnail"],
+        categoryId = json["categoryId"],
         minOptionPrice = json["minOptionPrice"],
         discountedminOptionPrice = json["discountedminOptionPrice"],
         discountRate = json["discountRate"],

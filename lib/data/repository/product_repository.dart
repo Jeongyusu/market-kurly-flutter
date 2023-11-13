@@ -45,6 +45,21 @@ class ProductRepository {
   }
 
   //  신상품리스트
+  Future<ResponseDTO> fetchFinalSaleProductList() async {
+    try {
+      final response = await dio.get("/api/products/finalsale?page=0");
+      Logger().d(response.data);
+
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      Logger().d(responseDTO.response);
+      responseDTO.response = ProductListDTO.fromJson(responseDTO.response);
+      return responseDTO;
+    } catch (e) {
+      return ResponseDTO(success: false, response: null, error: "오류");
+    }
+  }
+
+  //  신상품리스트
   Future<ResponseDTO> fetchNewProductList() async {
     try {
       final response = await dio.get("/api/products/newproduct?page=0");
@@ -148,6 +163,7 @@ class ProductRepository {
       return ResponseDTO(success: false, response: null, error: "오류");
     }
   }
+
   // 키워드 검색 상품
   Future<ResponseDTO> fetchSearchProductList(value) async {
     try {

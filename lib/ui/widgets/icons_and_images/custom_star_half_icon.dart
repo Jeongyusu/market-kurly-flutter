@@ -11,8 +11,8 @@ class CustomStarHalfIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 18,
-      height: 18,
+      width: 15,
+      height: 15,
       child: Image.asset(
         "assets/images/star_half_icon.png",
         fit: BoxFit.cover,

@@ -1,36 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
-import 'package:flutter_blog/_core/constants/http.dart';
-import 'package:flutter_blog/data/dto/model_dto/product_dto/product_list_dto.dart';
+import 'package:flutter_blog/data/dto/model_dto/product_dto/product_dto.dart';
 import 'package:flutter_blog/ui/screens/category/category_list_view_model.dart';
-import 'package:flutter_blog/ui/screens/home/menu/new_product/widget/new_product_list.dart';
+import 'package:flutter_blog/ui/screens/home/menu/best/widget/best_product_list.dart';
+import 'package:flutter_blog/ui/screens/home/menu/kurly/widget/hot_product_list.dart';
+import 'package:flutter_blog/ui/screens/home/menu/kurly/widget/kurly_hot_product_list.dart';
+import 'package:flutter_blog/ui/screens/home/menu/kurly/widget/recommend_product_list.dart';
+import 'package:flutter_blog/ui/screens/home/menu/kurly/widget/sale_product_list.dart';
 import 'package:flutter_blog/ui/screens/home/product_list_view_model.dart';
-import 'package:flutter_blog/ui/screens/product_category/widget/product_category_grid.dart';
-import 'package:flutter_blog/ui/widgets/product_items/custom_product_item.dart';
+import 'package:flutter_blog/ui/widgets/appbar/custom_nav_appbar.dart';
+import 'package:flutter_blog/ui/widgets/product_items/product_category.dart';
 import 'package:flutter_blog/ui/widgets/product_items/product_count_and_filter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class NewBody extends ConsumerStatefulWidget {
-  const NewBody({
-    super.key,
-  });
+class SaleProductBody extends ConsumerStatefulWidget {
+  const SaleProductBody({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  ConsumerState<NewBody> createState() => _NewBodyState();
+  ConsumerState<SaleProductBody> createState() => _SaleProductBodyState();
 }
 
-class _NewBodyState extends ConsumerState<NewBody> {
-  final List<String> categoryTitle = [
-    '한식,양식 중식',
-    '중식, 한식,양식 중식',
-    '양식,한식,양식 중식',
-    '양식',
-  ];
-
+class _SaleProductBodyState extends ConsumerState<SaleProductBody> {
   int selectedCategory = 0;
 
   void onCategorySelected(int categoryId) {
-    print("Category $categoryId selected");
     setState(() {
       selectedCategory = categoryId;
     });
@@ -41,23 +36,22 @@ class _NewBodyState extends ConsumerState<NewBody> {
   @override
   Widget build(BuildContext context) {
     CategoryModel? categoryType = ref.watch(categoryListProvider);
-    ProductListModel? productListModel = ref.watch(productNewListProvider);
-    if (productListModel == null) {
+    ProductListModel? productListModel = ref.watch(productMainListProvider);
+    List<ProductDiscountMainDTO>? productSaleProducts =
+        productListModel?.productMainList?.productDiscountMainDTOs;
+
+    if (productListModel == null || categoryType == null) {
       return const Center(child: CircularProgressIndicator());
     } else {
       return CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
-            child: Container(
-              height: 300,
-              child: Image.asset(
-                "assets/images/new_banner.png",
-                fit: BoxFit.cover,
-              ),
-            ),
+          CustomNavAppBar(
+            text: "초특가 반값 SALE",
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
-          ProductCountAndFilter(
-              count: productListModel!.productList!.result.length),
+          ProductCountAndFilter(count: productSaleProducts!.length),
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.only(left: 16.0),
@@ -65,7 +59,7 @@ class _NewBodyState extends ConsumerState<NewBody> {
                 height: 50,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: categoryType!.categorys.length + 1,
+                  itemCount: categoryType!.categorys.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
                       padding: const EdgeInsets.only(right: 8.0),
@@ -116,9 +110,10 @@ class _NewBodyState extends ConsumerState<NewBody> {
             ),
           ),
           SliverFillRemaining(
-            child: NewProductList(
+            child: SaleProductList(
               categoryId: selectedCategory,
-              productOneList: productListModel?.productList?.result
+              productSaleList: productListModel
+                  ?.productMainList?.productDiscountMainDTOs
                   .where((e) => e.categoryId == selectedCategory + 1)
                   .toList(),
             ),

@@ -48,7 +48,7 @@ class ProductInquirySaveScreen extends ConsumerWidget {
                         child: CustomTextArea(
                             hintText: "문의하실 내용을 입력해주세요. (0/5,000)",
                             funValidator: validateContent(),
-                            controller: controller ?? TextEditingController()),
+                            contents: controller ?? TextEditingController()),
                       ),
                       SizedBox(
                         height: smallGap,

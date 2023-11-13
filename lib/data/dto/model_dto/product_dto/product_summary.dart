@@ -10,16 +10,16 @@ class ProductSummary {
   final double averageStarCount;
 
   ProductSummary(
-      this.productId,
-      this.productThumnail,
-      this.sellerName,
-      this.productName,
-      this.originPrice,
-      this.discountRate,
-      this.discountedPrice,
-      this.categoryId,
-      this.averageStarCount,
-      );
+    this.productId,
+    this.productThumnail,
+    this.sellerName,
+    this.productName,
+    this.originPrice,
+    this.discountRate,
+    this.discountedPrice,
+    this.categoryId,
+    this.averageStarCount,
+  );
 
   ProductSummary.fromJson(Map<String, dynamic> json)
       : productId = json["productId"],
