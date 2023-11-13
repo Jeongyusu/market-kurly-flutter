@@ -10,15 +10,13 @@ class ProductThumbnail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(5),
-        child: AspectRatio(
-          aspectRatio: 1 / 1,
-          child: Image.network(
-            "${images}",
-            fit: BoxFit.cover,
-          ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(5),
+      child: AspectRatio(
+        aspectRatio: 1 / 1,
+        child: Image.network(
+          "${images}",
+          fit: BoxFit.cover,
         ),
       ),
     );
