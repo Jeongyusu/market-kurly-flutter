@@ -36,6 +36,6 @@ class ProductDescriptionViewModel
 final productDescriptionProvider = StateNotifierProvider.family
     .autoDispose<ProductDescriptionViewModel, ProductDescriptionModel?, int>(
         (ref, productId) {
-  Logger().d("productDetail 창고 만들어짐 $productId");
-  return ProductDescriptionViewModel(ref, null)..notifyInit(productId);
-});
+      Logger().d("productDetail 창고 만들어짐 $productId");
+      return ProductDescriptionViewModel(ref, null)..notifyInit(productId);
+    });

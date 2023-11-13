@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_checkbox_item.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_bold.dart';
 
-class CartOrderPayment extends StatelessWidget {
+class CartOrderPayment extends StatefulWidget {
   const CartOrderPayment({super.key});
 
+  @override
+  State<CartOrderPayment> createState() => _CartOrderPaymentState();
+}
+
+class _CartOrderPaymentState extends State<CartOrderPayment> {
+  Color Color1 = Color(0xffffffff);
+  Color pontColor1 = Colors.black;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -103,22 +111,33 @@ class CartOrderPayment extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          Container(
-                            width: 150,
-                            height: 40,
-                            decoration: BoxDecoration(
-                                border: Border.all(width: 1.0),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Image.asset('assets/icons/naverpay.jpg',
-                                    width: 40, height: 20),
-                                Text("네이버페이")
-                              ],
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                Color1 = primaryColor02;
+                                pontColor1 = Colors.white;
+                              });
+                            },
+                            child: Container(
+                              width: 150,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  border: Border.all(width: 1.0),
+                                  color: Color1,
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Image.asset('assets/icons/naverpay.jpg',
+                                      width: 40, height: 20),
+                                  Text(
+                                    "네이버페이",
+                                    style: TextStyle(color: pontColor1),
+                                  )
+                                ],
+                              ),
                             ),
                           )
                         ],

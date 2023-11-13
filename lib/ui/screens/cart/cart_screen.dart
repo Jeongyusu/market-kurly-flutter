@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/cart/body/cart_body.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
@@ -31,6 +32,9 @@ class CartScreen extends ConsumerWidget {
             child: ElevatedButton(
               onPressed: () {
                 print("주문하기 클릭됨");
+                ref.read(cartListProvider.notifier).checkedCartDTO();
+                Logger().d("장바구니체크 ${cartListModel.checkedCartDTO![0].optionQuantity}");
+                Navigator.pushNamed(context, Move.cartOrderSheetScreen);
               },
               style: ElevatedButton.styleFrom(
                 fixedSize: Size.fromHeight(50),

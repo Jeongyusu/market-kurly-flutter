@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/ui/screens/cart/widget/cart_order_cancel_option_area.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_order_cancel_price_area.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_order_cancel_question.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_order_option_area.dart';
@@ -48,7 +49,7 @@ class CartOrderCancelBody extends ConsumerWidget {
                       border: Border.all(color: disableColor, width: 1.0),
                       borderRadius: BorderRadius.circular(5)),
                 ),
-                CartOrderOptionArea(),
+                CartOrderCancelOptionArea(),
                 CustomLineBold(),
                 Container(
                   child: ExpansionTile(

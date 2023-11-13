@@ -65,7 +65,7 @@ class CartOrderPriceArea extends ConsumerWidget {
           ),
           TextSpaceBetweenItem(
             leftText: " 쿠폰할인",
-            rightText: "0원",
+            rightText: "2000원",
             leftTextStyle: basicText(),
             rightTextStyle: basicText(),
           ),
@@ -87,7 +87,7 @@ class CartOrderPriceArea extends ConsumerWidget {
             child: TextSpaceBetweenItem(
               leftText: "최종결제금액",
               rightText:
-                  "${cartListModel!.cartDTO.totalBeforePrice - cartListModel.cartDTO.totalDiscountPrice}원",
+                  "${cartListModel!.cartDTO.totalBeforePrice - cartListModel.cartDTO.totalDiscountPrice - 2000}원",
               leftTextStyle: basicTextBig(),
               rightTextStyle: strongTextmMedium(),
             ),

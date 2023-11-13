@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
+import 'package:flutter_blog/ui/screens/product_detail/product_detail_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:logger/logger.dart';
 
-class CustomOptionCount extends ConsumerWidget {
+class ProductOptionCount extends ConsumerStatefulWidget {
   final int index;
-  const CustomOptionCount({
+  final productId;
+  const ProductOptionCount({
     super.key,
     required this.index,
+    this.productId
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    CartListModel? cartListModel = ref.watch(cartListProvider);
+  ConsumerState<ProductOptionCount> createState() => _ProductOptionCountState();
+}
+
+class _ProductOptionCountState extends ConsumerState<ProductOptionCount> {
+  @override
+  Widget build(BuildContext context) {
+    ProductDetailModal? model = ref.watch(productCartProvider(widget.productId));
+
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: bgAndLineColor),
@@ -31,11 +40,9 @@ class CustomOptionCount extends ConsumerWidget {
               height: 20,
               child: GestureDetector(
                 onTap: () {
-                  Logger().d(
-                      "개별 금액 출력됨 ${cartListModel!.cartDTO.cartProducts[index].optionQuantity}");
-                  ref.read(cartListProvider.notifier).minusQuantity(index);
-                  ref.read(cartListProvider.notifier).calSumOriginPrice();
-                  ref.read(cartListProvider.notifier).calSumDiscountPrice();
+                  ref.read(productCartProvider(widget.productId).notifier).minusQuantity(widget.index);
+                  Logger().d(model?.selectedOptionDTOs[widget.index].optionQuantity ?? 0);
+
                 },
                 child: SvgPicture.asset(
                   "assets/icons/minus.svg",
@@ -48,8 +55,7 @@ class CustomOptionCount extends ConsumerWidget {
               width: 10,
             ),
             Text(
-                "${cartListModel?.cartDTO.cartProducts[index].optionQuantity}" ??
-                    "에러"),
+                "${model!.selectedOptionDTOs[widget.index].optionQuantity}"),
             SizedBox(
               width: 10,
             ),
@@ -58,11 +64,8 @@ class CustomOptionCount extends ConsumerWidget {
               height: 20,
               child: GestureDetector(
                 onTap: () {
-                  Logger().d(
-                      "개별 금액 출력됨 ${cartListModel!.cartDTO.cartProducts[index].optionQuantity}");
-                  ref.watch(cartListProvider.notifier).calSumDiscountPrice();
-                  ref.read(cartListProvider.notifier).calSumOriginPrice();
-                  ref.read(cartListProvider.notifier).plusQuantity(index);
+                  ref.read(productCartProvider(widget.productId).notifier).plusQuantity(widget.index);
+                  Logger().d(model!.selectedOptionDTOs[widget.index].optionQuantity);
                 },
                 child: SvgPicture.asset(
                   "assets/icons/plus.svg",

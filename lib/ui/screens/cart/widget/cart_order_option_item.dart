@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/http.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
+import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_product_dto.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_option_title.dart';
-import 'package:flutter_blog/ui/screens/cart/widget/cart_order_cancel_price_text_item.dart';
-import 'package:flutter_blog/ui/screens/cart/widget/cart_order_cancle_option_title.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_order_price_text_item.dart';
 import 'package:flutter_blog/ui/screens/cart/widget/cart_price_text_item.dart';
 import 'package:flutter_blog/ui/widgets/custom_option_count.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CartOrderCancelOptionItem extends ConsumerWidget {
+import 'cart_order_option_title.dart';
+
+class CartOrderOptionItem extends ConsumerWidget {
   final int index;
-  const CartOrderCancelOptionItem({
+  const CartOrderOptionItem({
     super.key,
     required this.index,
   });
@@ -33,7 +34,7 @@ class CartOrderCancelOptionItem extends ConsumerWidget {
             AspectRatio(
               aspectRatio: 1 / 1,
               child: Image.network(
-                '${imgUrl}${cartListModel!.cartDTO.cartProducts[index].productPic}',
+                '${imgUrl}${cartListModel!.checkedCartDTO![index].productPic}',
                 fit: BoxFit.cover,
               ),
             ),
@@ -43,8 +44,8 @@ class CartOrderCancelOptionItem extends ConsumerWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CartOrderCancleOptionTitle(index: index),
-                CartOrderCancelPriceTextItem(index: index),
+                CartOrderOptionTitle(index: index),
+                CartOrderPriceTextItem(index: index),
                 // Text(
                 //   "취소완료",
                 //   style: basicTextSmall(),
