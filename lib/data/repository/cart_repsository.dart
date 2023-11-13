@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/http.dart';
+import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_delete_list_dto.dart';
 import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_save_dto.dart';
 import 'package:flutter_blog/data/dto/model_dto/cart_dto/selected_option_dto.dart';
 import 'package:flutter_blog/data/dto/model_dto/order_dto/selected_cart_list_dto.dart';
@@ -25,12 +26,15 @@ class CartDTORepository {
     try {
       // 1. 통신
       Logger().d("fetchCartList동작중");
-      final response = await dio.get("/api/carts", options: Options(
-        headers: {
-          "Authorization": "Bearer $jwt",
-          // 다른 필요한 헤더도 추가할 수 있습니다.
-        },
-      ),);
+      final response = await dio.get(
+        "/api/carts",
+        options: Options(
+          headers: {
+            "Authorization": "Bearer $jwt",
+            // 다른 필요한 헤더도 추가할 수 있습니다.
+          },
+        ),
+      );
       Logger().d(response.data);
       // 2. ResponseDTO 파싱
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
@@ -44,50 +48,100 @@ class CartDTORepository {
     }
   }
 
-  Future<void> saveCartList(String jwt, CartSaveDTO cartSaveDTO) async {
+  Future<ResponseDTO> fetchSaveCartList(
+      String jwt, CartSaveDTO cartSaveDTO) async {
     try {
       // 1. 통신
       Logger().d("saveCartList동작중");
       Logger().d("${cartSaveDTO.toJson()}");
 
-      final response = await dio.post("/api/carts/insert", options: Options(
-        headers: {
-          "Authorization": "Bearer $jwt",
-          // 다른 필요한 헤더도 추가할 수 있습니다.
-        },
-      ),
-      data: cartSaveDTO.toJson());
+      final response = await dio.post("/api/carts/insert",
+          options: Options(
+            headers: {
+              "Authorization": "Bearer $jwt",
+              // 다른 필요한 헤더도 추가할 수 있습니다.
+            },
+          ),
+          data: cartSaveDTO.toJson());
+      Logger().d(response.data);
+      // 2. ResponseDTO 파싱
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+
+      // 3. ResponseDTO의 data 파싱
+      return responseDTO;
+    } catch (e) {
+      return ResponseDTO(success: false, response: null, error: "카트목록 저장 실패");
+    }
+  }
+
+  Future<ResponseDTO> fetchRemoveCartList(
+      String jwt, CartDeleteListDTO cartDeleteListDTO) async {
+    try {
+      // 1. 통신
+      Logger().d("removeCartList동작중");
+      Logger().d("${cartDeleteListDTO.toJson()}");
+
+      final response = await dio.post("/api/carts/delete",
+          options: Options(
+            headers: {
+              "Authorization": "Bearer $jwt",
+              // 다른 필요한 헤더도 추가할 수 있습니다.
+            },
+          ),
+          data: cartDeleteListDTO.toJson());
       Logger().d(response.data);
       // 2. ResponseDTO 파싱
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 
       // 3. ResponseDTO의 data 파싱
       Logger().d("CartSaveDTO파싱완료");
-      if (responseDTO.success == true) {
-      } else {
-        ScaffoldMessenger.of(mContext!).showSnackBar(
-          SnackBar(
-            content: Text(responseDTO.error!),
-          ),
-        );
-      }
+      return responseDTO;
     } catch (e) {
-      Logger().d("장바구니 담기 실패");
+      return ResponseDTO(success: false, response: null, error: "카트목록 선택삭제 실패");
     }
   }
 
-  Future<ResponseDTO> fetchOrderConfirm(String jwt, SelectedCartListDTO selectedCartListDTO) async {
+  Future<ResponseDTO> fetchRemoveAllCart(String jwt) async {
+    try {
+      // 1. 통신
+      Logger().d("removeCartList동작중");
+      // Logger().d("${cartDeleteListDTO.toJson()}");
+
+      final response = await dio.post(
+        "/api/carts/delete/all",
+        options: Options(
+          headers: {
+            "Authorization": "Bearer $jwt",
+            // 다른 필요한 헤더도 추가할 수 있습니다.
+          },
+        ),
+      );
+      Logger().d(response.data);
+      // 2. ResponseDTO 파싱
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+
+      // 3. ResponseDTO의 data 파싱
+      Logger().d("fetchRemoveAllCart파싱완료");
+      return responseDTO;
+    } catch (e) {
+      return ResponseDTO(success: false, response: null, error: "카트목록 전체삭제 실패");
+    }
+  }
+
+  Future<ResponseDTO> fetchOrderConfirm(
+      String jwt, SelectedCartListDTO selectedCartListDTO) async {
     try {
       // 1. 통신
       Logger().d("orderConfirm동작중");
       Logger().d("${selectedCartListDTO.toJson()}");
 
-      final response = await dio.post("/api/carts/order", options: Options(
-        headers: {
-          "Authorization": "Bearer $jwt",
-          // 다른 필요한 헤더도 추가할 수 있습니다.
-        },
-      ),
+      final response = await dio.post("/api/carts/order",
+          options: Options(
+            headers: {
+              "Authorization": "Bearer $jwt",
+              // 다른 필요한 헤더도 추가할 수 있습니다.
+            },
+          ),
           data: selectedCartListDTO.toJson());
 
       Logger().d("여기까지 완료");
@@ -104,7 +158,6 @@ class CartDTORepository {
       return ResponseDTO(success: false, response: null, error: "카트검증실패");
     }
   }
-
 
 // Future<ResponseDTO> fetchPost(String jwt, int id) async {
   //   try {

@@ -14,35 +14,34 @@ class CartOrderModel {
   CartOrderModel(this.selectedCartListDTO);
 }
 
-
 class CartOrderViewModel extends StateNotifier<CartOrderModel?> {
   final mContext = navigatorKey.currentContext;
   Ref ref;
   CartOrderViewModel(super._state, this.ref);
 
   void notifyInit() {
-  CartListModel? cartListModel = ref.read(cartListProvider);
-  SelectedCartListDTO selectedCartListDTO = SelectedCartListDTO.fromCartDTO(cartListModel!.cartDTO,
-    cartListModel!.checkedCartDTO!, 1);
-  state = CartOrderModel(selectedCartListDTO);
-}
-  Future<void> orderConfirm () async {
+    CartListModel? cartListModel = ref.read(cartListProvider);
+    SelectedCartListDTO selectedCartListDTO = SelectedCartListDTO.fromCartDTO(
+        cartListModel!.cartDTO, cartListModel!.checkedCartDTO!, 1);
+    state = CartOrderModel(selectedCartListDTO);
+  }
+
+  Future<void> orderConfirm() async {
     SessionStore sessionStore = ref.read(sessionProvider);
-    ResponseDTO responseDTO = await CartDTORepository().fetchOrderConfirm(sessionStore.jwt!, state!.selectedCartListDTO);
-    if(responseDTO.success == true) {
-      Navigator.pushNamed(mContext!, Move.cartOrderCancelScreen);
+    ResponseDTO responseDTO = await CartDTORepository()
+        .fetchOrderConfirm(sessionStore.jwt!, state!.selectedCartListDTO);
+    if (responseDTO.success == true) {
+      // Navigator.pushNamed(mContext!, Move.cartOrderCancelScreen);
       Logger().d("결제성공");
     } else {
       Logger().d("결제실패");
+      // Navigator.pushNamed(mContext!, Move.cartOrderCancelScreen);
     }
   }
-
-
-
 }
 
-
 final cartOrderProvider =
-StateNotifierProvider.autoDispose<CartOrderViewModel,CartOrderModel?>((ref) {
+    StateNotifierProvider.autoDispose<CartOrderViewModel, CartOrderModel?>(
+        (ref) {
   return CartOrderViewModel(null, ref)..notifyInit();
 });

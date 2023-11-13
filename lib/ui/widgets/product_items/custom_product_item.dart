@@ -67,7 +67,7 @@ class CustomProductItem extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0),
-                    child: CustomCartButton(),
+                    child: CustomCartButton(productId: productId),
                   ),
                   ProductSellerAndTitle(
                     productTitle: productTitle,

@@ -7,6 +7,7 @@ import 'package:flutter_blog/ui/screens/cart/body/cart_body.dart';
 import 'package:flutter_blog/ui/screens/cart/body/cart_order_sheet_body.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_order_view_model.dart';
+import 'package:flutter_blog/ui/screens/payment/pay_home_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CartOderSheetScreen extends ConsumerWidget {
@@ -22,6 +23,11 @@ class CartOderSheetScreen extends ConsumerWidget {
           child: ElevatedButton(
             onPressed: () {
               ref.read(cartOrderProvider.notifier).orderConfirm();
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return PayHomePage(price: 3000, months: 1);
+                },
+              ));
             },
             style: ElevatedButton.styleFrom(
               fixedSize: Size.fromHeight(50),

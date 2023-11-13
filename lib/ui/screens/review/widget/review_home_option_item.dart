@@ -12,9 +12,11 @@ class ReviewHomeOptionItem extends ConsumerWidget {
   final int index;
   String bottomRightText;
   TextStyle bottomRightTextStyle;
-  ReviewHomeOptionItem({
-    super.key, required this.index,
-    required this.bottomRightText, required this.bottomRightTextStyle});
+  ReviewHomeOptionItem(
+      {super.key,
+      required this.index,
+      required this.bottomRightText,
+      required this.bottomRightTextStyle});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,7 +29,6 @@ class ReviewHomeOptionItem extends ConsumerWidget {
         child: Row(
           children: [
             Expanded(
-              flex: 1,
               child: Image.asset(
                 'assets${cartListModel?.cartDTO.cartProducts[index].productPic}',
                 fit: BoxFit.cover,

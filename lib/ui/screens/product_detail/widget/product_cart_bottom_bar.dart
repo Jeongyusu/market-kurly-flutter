@@ -17,14 +17,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductCartBottomBar extends ConsumerWidget {
   final productId;
-  const ProductCartBottomBar({
-    super.key, this.productId
-  });
+  const ProductCartBottomBar({super.key, this.productId});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     SessionStore sessionStore = ref.read(sessionProvider);
     CartListModel? cartListModel = ref.read(cartListProvider);
+    ProductDetailModal? productDetailModal =
+        ref.read(productCartProvider(productId));
     return Container(
       color: basicColorW,
       width: double.infinity,
@@ -47,8 +47,17 @@ class ProductCartBottomBar extends ConsumerWidget {
               return ProductCartBottomSheet();
             },
           );
-          List<SelectedOptionDTO> selectedOptionDTOList = cartListModel!.checkedCartDTO!.map((e) =>SelectedOptionDTO(e.optionId, e.optionQuantity)).toList();
-          CartDTORepository().saveCartList(sessionStore.jwt!, CartSaveDTO(selectedOptionDTOList));
+          List<SelectedOptionDTO> selectedOptionDTOList = productDetailModal!
+              .selectedOptionDTOs
+              .map((e) => SelectedOptionDTO(e.id, e.optionQuantity))
+              .toList();
+          CartDTORepository().fetchSaveCartList(
+              sessionStore.jwt!, CartSaveDTO(selectedOptionDTOList));
+          ref.read(cartListProvider.notifier).notifyInit();
+          // ref
+          //     .read(productCartProvider(productId).notifier)
+          //     .saveCartList(productId);
+          // ref.read(cartListProvider.notifier).notifyInit();
         },
         child: Text(
           "장바구니 담기",

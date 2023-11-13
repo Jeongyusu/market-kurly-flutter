@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_delete_list_dto.dart';
 import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_product_dto.dart';
 import 'package:flutter_blog/data/dto/response_dto.dart';
 import 'package:flutter_blog/data/dto/model_dto/cart_dto/cart_dto.dart';
@@ -9,7 +10,6 @@ import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_blog/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
-
 
 // 1. 창고 데이터
 class CartListModel {
@@ -33,11 +33,39 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
     state = CartListModel(responseDTO.response);
   }
 
-  void checkedCartDTO() {
-    state!.checkedCartDTO = state!.cartDTO.cartProducts.where((element) => element.isChecked == true).toList();
-    // state = CartListModel(state!.cartDTO);
+  Future<void> removeCartList() async {
+    SessionStore sessionStore = ref.read(sessionProvider);
+    String jwt = sessionStore.jwt ?? "";
+    Logger().d("jwt테스트${jwt}");
+    checkedCartDTO();
+    List<int> removeCartIds =
+        state!.checkedCartDTO!.map((e) => e.cartId).toList();
+    Logger().d("리무브 리스트 테스트3 ${removeCartIds}");
+    CartDeleteListDTO cartDeleteListDTO = CartDeleteListDTO(removeCartIds);
+    ResponseDTO responseDTO =
+        await CartDTORepository().fetchRemoveCartList(jwt!, cartDeleteListDTO);
+    Logger().d("여까지실행");
+    Logger().d("여기까지2 ${responseDTO.response}");
+    state = CartListModel(responseDTO.response);
+  }
 
-}
+  Future<void> removeAllCart() async {
+    SessionStore sessionStore = ref.read(sessionProvider);
+    String jwt = sessionStore.jwt ?? "";
+    Logger().d("jwt테스트${jwt}");
+    ResponseDTO responseDTO =
+        await CartDTORepository().fetchRemoveAllCart(jwt!);
+    Logger().d("여까지실행");
+    Logger().d("여기까지2 ${responseDTO.response}");
+    state = CartListModel(responseDTO.response);
+  }
+
+  void checkedCartDTO() {
+    state!.checkedCartDTO = state!.cartDTO.cartProducts
+        .where((element) => element.isChecked == true)
+        .toList();
+    // state = CartListModel(state!.cartDTO);
+  }
 
   void checkedRemove() {
     state!.cartDTO.cartProducts
