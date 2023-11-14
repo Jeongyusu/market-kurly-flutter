@@ -43,11 +43,6 @@ class UserRepository {
           data: userUpdateReqDTO.toJson());
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
-      final jwt = response.headers["Authorization"];
-
-      if (jwt != null) {
-        responseDTO.token = jwt.first;
-      }
       Logger().d("jwt토큰 넣기");
       return responseDTO;
     } catch (e) {
