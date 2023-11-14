@@ -29,6 +29,7 @@ import 'package:flutter_blog/ui/screens/product_detail/product_review/product_re
 import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_save_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_screen.dart';
 import 'package:flutter_blog/ui/screens/review/review_home_screen.dart';
+import 'package:flutter_blog/ui/screens/search/search_result_screen.dart';
 import 'package:flutter_blog/ui/screens/splash_screen.dart';
 import 'package:flutter_blog/ui/screens/user_question/user_question_form_screen.dart';
 import 'package:flutter_blog/ui/screens/user_question/user_question_screen.dart';
@@ -75,6 +76,8 @@ class Move {
   static String recommendProductScreen =
       "/product/kurly/recommendProductListScreen";
   static String productCategoryScreen = "/product/category/detailScreen";
+  static String searchResultScreen = "/product/searchResultScreen";
+
 
   // customer
   static String customerHomeScreen = "/customerCenter/homeScreen";
@@ -82,6 +85,7 @@ class Move {
   static String customerNoticeDetailScreen = "customer/notice/detailScreen";
   static String customerQuestionScreen = "customer/questionScreen";
   static String customerQuestionFormScreen = "customer/questionFormScreen";
+
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
@@ -126,6 +130,7 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.hotProductScreen: (context) => HotProductScreen(),
     Move.saleProductScreen: (context) => SaleProductScreen(),
     Move.recommendProductScreen: (context) => RecommendProductScreen(),
+    Move.searchResultScreen: (context) => SearchResultScreen(),
 
     // customer
     Move.customerHomeScreen: (context) => CustomerHomeScreen(),

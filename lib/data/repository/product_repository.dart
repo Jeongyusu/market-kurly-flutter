@@ -167,15 +167,22 @@ class ProductRepository {
   // 키워드 검색 상품
   Future<ResponseDTO> fetchSearchProductList(value) async {
     try {
-      final response = await dio.get("/api/test/product/search?keyword=value");
+      final response = await dio.get("/api/product/search?keyword=${value}");
       Logger().d(response.data);
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       Logger().d(responseDTO.response);
-      responseDTO.response = ProductSearchDTO.fromJson(responseDTO.response);
+      // responseDTO.response 의 데이터 원본 형태: List<ProductSearchDTO> productSearchDTOS
+      // List<dynamic> mapList = responseDTO.response;
+      // Logger().d("나요기0");
+      // List<ProductSearchDTO> productSearchDTOs = mapList.map((e) => ProductSearchDTO.fromJson(e)).toList();
+      // Logger().d("나요기1");
+      // // responseDTO.response = productSearchDTOs;
+      // Logger().d("나요기2");
+
       return responseDTO;
     } catch (e) {
-      return ResponseDTO(success: false, response: null, error: "오류");
+      return ResponseDTO(success: false, response: null, error: "검색 오류");
     }
   }
 }

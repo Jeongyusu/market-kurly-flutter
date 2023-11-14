@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/data/repository/product_repository.dart';
+import 'package:flutter_blog/ui/screens/search/search_view_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SearchTextFormField extends StatelessWidget {
+class SearchTextFormField extends ConsumerWidget {
   const SearchTextFormField({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return TextFormField(
       cursorColor: primaryColor,
       decoration: InputDecoration(
@@ -44,7 +46,7 @@ class SearchTextFormField extends StatelessWidget {
         ),
       ),
       onFieldSubmitted: (value) {
-        ProductRepository().fetchSearchProductList(value);
+       ref.read(searchProvider.notifier).searchProductList(value);
       },
     );
   }
