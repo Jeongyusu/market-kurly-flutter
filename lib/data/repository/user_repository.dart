@@ -12,7 +12,7 @@ class UserRepository {
       String jwt, UpdateCheckDTO updateCheckDTO) async {
     try {
       Logger().d("정보 확인 체크 1");
-      Response<dynamic> response = await dio.post("/api/users/updateCheck",
+      Response<dynamic> response = await dio.post("/api/check/update",
           options: Options(headers: {
             "Authorization": "Bearer $jwt",
             // 다른 필요한 헤더도 추가할 수 있습니다.
@@ -30,11 +30,17 @@ class UserRepository {
   }
 
 //  회원 정보 수정
-  Future<ResponseDTO> fetchUserUpdate(UserUpdateReqDTO userUpdateReqDTO) async {
+  Future<ResponseDTO> fetchUserUpdate(
+      String jwt, UserUpdateReqDTO userUpdateReqDTO) async {
     try {
       // dynamic -> http body
-      Response<dynamic> response =
-          await dio.post("/api/users/update", data: userUpdateReqDTO.toJson());
+      Response<dynamic> response = await dio.post("/api/users/update",
+          options: Options(headers: {
+            "Authorization": "Bearer $jwt",
+            // 다른 필요한 헤더도 추가할 수 있습니다.
+          }),
+          data: userUpdateReqDTO.toJson());
+
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       return responseDTO;
     } catch (e) {

@@ -20,11 +20,14 @@ class CartOrderCancelPriceArea extends ConsumerWidget {
         children: [
           TextSpaceBetweenItem(
             leftText: " 상품금액",
-            rightText: "${cartListModel!.cartDTO.totalBeforePrice}원",
+            rightText:
+                "${cartListModel!.cartDTO.totalBeforePrice - cartListModel!.cartDTO.totalDiscountPrice}원",
             leftTextStyle: subContents(),
             rightTextStyle: basicText(),
           ),
-          SizedBox(height: smallGap,),
+          SizedBox(
+            height: smallGap,
+          ),
           TextSpaceBetweenItem(
             leftText: " 배송비",
             rightText: "0원",
@@ -36,7 +39,8 @@ class CartOrderCancelPriceArea extends ConsumerWidget {
           ),
           TextSpaceBetweenItem(
             leftText: " 결제금액",
-            rightText: "0원",
+            rightText:
+                "${cartListModel!.cartDTO.totalBeforePrice - cartListModel!.cartDTO.totalDiscountPrice}원",
             leftTextStyle: subContents(),
             rightTextStyle: basicText(),
           ),
