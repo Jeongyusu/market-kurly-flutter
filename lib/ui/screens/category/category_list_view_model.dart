@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // 1. 창고 데이터
 class CategoryModel {
   List<Category> categorys;
+  int? selectedcategoryId;
   CategoryModel(this.categorys);
 }
 
@@ -29,6 +30,10 @@ class CategoryViewModel extends StateNotifier<CategoryModel?> {
     print("categorys 파싱 responseDTO : ${categorys}");
     // 2. 비지니스 로직
     state = CategoryModel(categorys);
+  }
+
+  void selectCategoryId(categoryId){
+    state!.selectedcategoryId = categoryId;
   }
 }
 

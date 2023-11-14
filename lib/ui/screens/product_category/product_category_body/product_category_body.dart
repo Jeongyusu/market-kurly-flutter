@@ -12,49 +12,14 @@ import 'package:flutter_blog/ui/widgets/product_items/custom_filter_dropdown.dar
 import 'package:flutter_blog/ui/widgets/product_items/custom_product_count.dart';
 import 'package:flutter_blog/ui/widgets/product_items/product_category.dart';
 import 'package:flutter_blog/ui/widgets/product_items/product_count_and_filter.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ProductCategoryBody extends StatefulWidget {
+class ProductCategoryBody extends ConsumerWidget {
   const ProductCategoryBody({Key? key}) : super(key: key);
 
   @override
-  State<ProductCategoryBody> createState() => _ProductCategoryBodyState();
-}
-
-class _ProductCategoryBodyState extends State<ProductCategoryBody> {
-  final List<String> imagePaths = [
-    'assets/images/banner_01.png',
-    'assets/images/banner_02.png',
-    'assets/images/banner_03.png',
-    'assets/images/banner_04.png',
-  ];
-
-  final List<String> images = [
-    'assets/images/1.jpg',
-    'assets/images/2.jpg',
-    'assets/images/3.jpg',
-    'assets/images/4.jpg',
-  ];
-
-  final List<String> categoryTitle = [
-    '한식,양식 중식',
-    '중식, 한식,양식 중식',
-    '양식,한식',
-    '한식,양식',
-    '중식, 한식,양식',
-  ];
-
-  int selectedCategory = 0;
-
-  void onCategorySelected(int categoryId) {
-    print("Category $categoryId selected"); // 디버깅 메시지
-    setState(() {
-      selectedCategory = categoryId;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return CustomScrollView(
       physics: NeverScrollableScrollPhysics(),
       slivers: [
