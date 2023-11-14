@@ -1,6 +1,32 @@
 import 'package:flutter_blog/data/dto/model_dto/product_dto/product_dto.dart';
 import 'package:flutter_blog/data/dto/model_dto/product_dto/product_summary.dart';
 
+class ProductDetailDTO {
+  final String username;
+  final int starCount;
+  final String productName;
+  final DateTime reviewCreatedAt;
+  final List<dynamic>? reviewPics;
+  final String reviewContent;
+
+  ProductDetailDTO(
+    this.username,
+    this.starCount,
+    this.productName,
+    this.reviewCreatedAt,
+    this.reviewPics,
+    this.reviewContent,
+  );
+
+  ProductDetailDTO.fromJson(Map<String, dynamic> json)
+      : username = json["username"],
+        starCount = json["starCount"],
+        productName = json["productName"],
+        reviewCreatedAt = json["reviewCreatedAt"],
+        reviewPics = json["reviewPics"],
+        reviewContent = json["reviewContent"];
+}
+
 class ProductListDTO {
   final int totalCount;
   final List<ProductSummary> result;

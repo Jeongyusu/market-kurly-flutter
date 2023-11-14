@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/data/dto/model_dto/product_dto/product_dto.dart';
+import 'package:flutter_blog/data/dto/model_dto/product_dto/product_list_dto.dart';
 import 'package:flutter_blog/data/dto/request_dto/review_request.dart';
 import 'package:flutter_blog/data/dto/response_dto.dart';
 import 'package:flutter_blog/data/repository/product_detail_repository.dart';
@@ -14,9 +15,11 @@ import 'package:logger/logger.dart';
 
 class ProductReviewModel {
   final ProductReviewSaveDTO? productReviewSaveDTO;
+  final ProductDetailDTO? productDetailList;
 
   ProductReviewModel({
     this.productReviewSaveDTO,
+    this.productDetailList,
   });
 }
 
@@ -26,29 +29,32 @@ class ProductReviewViewModel extends StateNotifier<ProductReviewModel?> {
 
   ProductReviewViewModel(this.ref, super.state);
 
-  Future<void> notifyAdd(String? jwt) async {
+  Future<void> reviewSave(String? jwt) async {
     Logger().d("notifiyAdd");
     if (mContext != null) {
       // 1. 통신 코드
       SessionUser sessionUser = ref.read(sessionProvider);
+
       ParameterStore parameterStore = ref.read(parameterProvider);
       ProductReviewSaveDTO? productReviewSaveDTO =
           parameterStore.productReviewSaveDTO;
+
       ResponseDTO responseDTO = await ProductDetailRepository()
           .fetchReviewSave(productReviewSaveDTO!, sessionUser.jwt!);
       Logger().d(11111);
 
-      ProductReviewSaveDTO reviewSave =
+      responseDTO.response =
           ProductReviewSaveDTO.fromJson(responseDTO.response);
-      state = ProductReviewModel(productReviewSaveDTO: reviewSave);
+      state = ProductReviewModel(productReviewSaveDTO: responseDTO.response);
+
       Logger().d(222222);
       // 2. 비지니스 로직
       if (responseDTO.success == true) {
-        Navigator.pushNamed(mContext!, Move.productReviewScreen);
+        Navigator.pushNamed(mContext!, Move.productReviewListScreen);
       } else {
         ScaffoldMessenger.of(mContext!).showSnackBar(
           SnackBar(
-            content: Text("후기등록이 슬패했습니다."),
+            content: Text("후기등록이 실패했습니다."),
           ),
         );
       }
@@ -57,6 +63,12 @@ class ProductReviewViewModel extends StateNotifier<ProductReviewModel?> {
       print("에러: mContext가 null입니다");
     }
   }
+
+  Future<void> reviewList() async {
+    ResponseDTO responseDTO = await ProductRepository().fetchNewProductList();
+    Logger().d(responseDTO);
+    state = ProductReviewModel(productDetailList: responseDTO.response);
+  }
 }
 
 // 3. 창고 관리자
@@ -64,5 +76,5 @@ class ProductReviewViewModel extends StateNotifier<ProductReviewModel?> {
 final productReviewProvider =
     StateNotifierProvider<ProductReviewViewModel, ProductReviewModel?>((ref) {
   SessionStore sessionUser = ref.read(sessionProvider);
-  return ProductReviewViewModel(ref, null)..notifyAdd(sessionUser.jwt);
+  return ProductReviewViewModel(ref, null)..reviewSave(sessionUser.jwt);
 });

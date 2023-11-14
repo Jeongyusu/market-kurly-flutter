@@ -21,10 +21,11 @@ class ProductReviewForm extends StatefulWidget {
     if (formKey.currentState!.validate()) {
       Logger().d("여기는 form 위젯 계층이에요 + ${reviewPics.value.length}");
 
-      // 여기서 reviewContent, reviewPics, starCount 중 어떤 것이 null인지 확인
+      List<ReviewBase>? reviewBaseList =
+          reviewPics.value?.map((pic) => ReviewBase(reviewBase: pic)).toList();
       ProductReviewSaveDTO proReqDTO = ProductReviewSaveDTO(
         reviewContent: reviewContent.text,
-        reviewPics: reviewPics.value,
+        reviewPics: reviewBaseList,
         starCount: starCount,
       );
     }
@@ -65,7 +66,7 @@ class _ProductReviewFormState extends State<ProductReviewForm> {
             ProductReviewRating(
               starCount: (value) {
                 setState(() {
-                  widget.starCount = value.toInt();
+                  widget.starCount = value;
                 });
                 print("${starCount} 상위위젯");
               },

@@ -65,7 +65,9 @@ class ProductReviewSaveScreen extends StatelessWidget {
                         productId: 1,
                         writeableReviewId: 1,
                         reviewContent: productReviewForm.reviewContent.text,
-                        reviewPics: productReviewForm.reviewPics.value,
+                        reviewPics: productReviewForm.reviewPics.value
+                            ?.map((pic) => ReviewBase(reviewBase: pic))
+                            .toList(),
                         starCount: productReviewForm.starCount,
                       );
                       Logger().d(proReviewDTO.reviewContent);
@@ -74,12 +76,12 @@ class ProductReviewSaveScreen extends StatelessWidget {
 
                       //TODO - parameterStore use
                       ParameterStore parameterStore =
-                          ref.read(parameterProvider);
+                      ref.read(parameterProvider);
                       parameterStore.productReviewSaveDTO = proReviewDTO;
                       SessionUser sessionUser = ref.read(sessionProvider);
                       await ref
                           .read(productReviewProvider.notifier)
-                          .notifyAdd(sessionUser!.jwt);
+                          .reviewSave(sessionUser!.jwt);
                     },
                     text: "등록",
                   );

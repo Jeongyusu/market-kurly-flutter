@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/widget/product_rating_bar_item.dart';
-import 'package:flutter_blog/ui/screens/product_detail/product_review/widget/product_review_form.dart';
 
 class ProductReviewRating extends StatelessWidget {
   final ValueChanged<int>? starCount; // 추가
 
-  ProductReviewRating({
+  const ProductReviewRating({
     Key? key,
     this.starCount, // 추가
   }) : super(key: key);
 
-  ProductReviewForm productReviewForm = ProductReviewForm();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,9 +30,7 @@ class ProductReviewRating extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Center(
               child: ProductRatingBarItem(
-                starCount: (value) {
-                  productReviewForm.starCount = value.toInt();
-                },
+                starCount: starCount,
               ),
             ),
           ),
