@@ -17,13 +17,13 @@ class ProductCategoryViewModel extends StateNotifier<ProductCategoryModel?>{
   Future<void> productCategoryList(int categoryId) async {
     ResponseDTO responseDTO = await ProductCategoryRepository().fetchProductCategoryList(categoryId);
     Logger().d("여까지실행");
-    Logger().d("여기까지2 ${responseDTO.response}");
+    // Logger().d("여기까지2 ${responseDTO.response.toString()}");
     state = ProductCategoryModel(responseDTO.response);
   }
 
 }
 
 final productCategoryProvider =
-StateNotifierProvider.autoDispose<ProductCategoryViewModel, ProductCategoryModel?>((ref) {
-  return ProductCategoryViewModel(null, ref);
+StateNotifierProvider.family<ProductCategoryViewModel, ProductCategoryModel?, int>((ref, categoryId) {
+  return ProductCategoryViewModel(ProductCategoryModel(ProductListDTO(0,[])), ref)..productCategoryList(categoryId);
 });

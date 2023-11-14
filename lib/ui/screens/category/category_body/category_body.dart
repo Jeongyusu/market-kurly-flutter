@@ -22,7 +22,7 @@ class CategoryBody extends ConsumerWidget {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              ref.read(categoryListProvider.notifier).selectCategoryId(categoryModel[index].id);
+              ref.read(categoryListProvider.notifier).selectCategoryIdAndCategoryName(categoryModel[index].id!, categoryModel[index].categoryType!);
               Navigator.pushNamed(context, Move.productCategoryScreen);
             },
             child: Card(
