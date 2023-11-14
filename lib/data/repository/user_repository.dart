@@ -11,7 +11,7 @@ class UserRepository {
       String jwt, UpdateCheckDTO updateCheckDTO) async {
     try {
       Logger().d("정보 확인 체크 1");
-      Response<dynamic> response = await dio.post("/api/users/updateCheck",
+      Response<dynamic> response = await dio.post("/api/check/update",
           options: Options(headers: {
             "Authorization": "Bearer $jwt",
             // 다른 필요한 헤더도 추가할 수 있습니다.
@@ -21,11 +21,7 @@ class UserRepository {
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       Logger().d("정보 확인 체크 3");
-      final jwt = response.headers["Authorization"];
 
-      if (jwt != null) {
-        responseDTO.token = jwt.first;
-      }
       Logger().d("jwt토큰 넣기");
       return responseDTO;
     } catch (e) {

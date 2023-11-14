@@ -59,20 +59,6 @@ class ProductReviewBody extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          // Padding(
-                          //   padding:
-                          //       const EdgeInsets.only(right: 8.0, bottom: 8.0),
-                          //   child: ClipRRect(
-                          //     borderRadius: BorderRadius.circular(40),
-                          //     child: Image.asset(
-                          //       "${reviewData[index].reviewPics}",
-                          //       width: 60,
-                          //       height: 60,
-                          //       fit: BoxFit.cover,
-                          //     ),
-                          //   ),
-                          // ),
-
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [

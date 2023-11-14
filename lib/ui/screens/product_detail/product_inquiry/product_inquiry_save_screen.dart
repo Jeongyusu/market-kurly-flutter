@@ -53,7 +53,6 @@ class ProductInquirySaveScreen extends ConsumerWidget {
                       SizedBox(
                         height: smallGap,
                       ),
-                      CustomCameraTextArea(),
                       CheckBoxItem(text: "비밀글로 문의하기"),
                     ],
                   ),

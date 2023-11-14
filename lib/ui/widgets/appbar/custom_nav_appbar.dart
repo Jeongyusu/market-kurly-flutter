@@ -30,7 +30,7 @@ class CustomNavAppBar extends ConsumerWidget implements PreferredSizeWidget {
       leading: IconButton(
         icon: Icon(Icons.arrow_back_ios_new, size: 22, color: basicColorB5),
         onPressed: () {
-          onPressed();
+          Navigator.pop(context);
         },
       ),
       titleSpacing: 0,
