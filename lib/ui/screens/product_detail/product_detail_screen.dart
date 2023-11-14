@@ -8,6 +8,7 @@ import 'package:flutter_blog/ui/screens/product_detail/product_description/produ
 import 'package:flutter_blog/ui/screens/product_detail/product_detail_view_model.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_info/product_info_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_inquiry/product_inquiry_screen.dart';
+import 'package:flutter_blog/ui/screens/product_detail/product_inquiry/product_inquiry_view_model.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/widget/product_detail_tabbar.dart';
 import 'package:flutter_blog/ui/screens/product_detail/widget/product_detail_bottom_sheet.dart';
@@ -56,6 +57,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen>
   Widget build(BuildContext context) {
     return Consumer(
       builder: (BuildContext context, WidgetRef ref, Widget? child) {
+        // ref.read(productInquiryProvider.notifier).selectProductID(widget.productId);
         ProductDescriptionModel? model =
             ref.watch(productDescriptionProvider(widget.productId));
         if (model == null) {
