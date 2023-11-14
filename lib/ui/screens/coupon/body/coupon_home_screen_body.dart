@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/ui/screens/coupon/coupon_view_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 
-class CouponHomeScreenBody extends StatelessWidget {
+class CouponHomeScreenBody extends ConsumerWidget {
   const CouponHomeScreenBody({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    CouponModel? couponModel = ref.watch(couponProvider);
+    Logger().d("===========================");
+    Logger().d(couponModel);
     return ListView.builder(
-      itemCount: 2,
+      itemCount: couponModel!.userCouponDTOList!.length,
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
@@ -24,11 +30,11 @@ class CouponHomeScreenBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "컬리멤버스 쿠폰팩",
+                  "${couponModel!.userCouponDTOList![index].couponName}",
                   style: couponTitle(),
                 ),
-                Text("최대 24,000원 할인"),
-                Text("무료배송 1장, 5,000원 할인 1장, 3,000원 할인 2장"),
+                Text("${couponModel!.userCouponDTOList![index].couponContent}"),
+                Text("컬리 회원가입 축하 쿠폰"),
               ],
             ),
           ),

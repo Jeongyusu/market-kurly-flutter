@@ -1,8 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_blog/data/dto/model_dto/coupon_dto/coupon_save_dto.dart';
 import 'package:flutter_blog/data/dto/model_dto/coupon_dto/user_coupon_dto.dart';
 import 'package:flutter_blog/data/dto/response_dto.dart';
 import 'package:flutter_blog/data/repository/coupon_repository.dart';
 import 'package:flutter_blog/data/store/session_store.dart';
+import 'package:flutter_blog/main.dart';
+import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
+import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_white_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
@@ -12,6 +16,7 @@ class CouponModel {
 }
 
 class CouponViewModel extends StateNotifier<CouponModel?> {
+  final mContext = navigatorKey.currentContext;
   CouponViewModel(super._state, this.ref);
   Ref ref;
 
@@ -38,7 +43,7 @@ class CouponViewModel extends StateNotifier<CouponModel?> {
         await CouponRepository().fetchCouponSave(jwt, couponRegisterDTO);
     Logger().d("쿠폰 정상 저장됨");
     Logger().d(responseDTO.response);
-    await notifyInit();
+    notifyInit();
   }
 
   Future<void> notifytest() async {
