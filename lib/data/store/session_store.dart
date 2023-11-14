@@ -27,7 +27,7 @@ class SessionStore extends SessionUser {
     Logger().d("여기까지 실행됨");
     // 1. 통신 코드
     ResponseDTO responseDTO =
-        await UserRepository().fetchUserUpdateCheck(updateCheckDTO);
+        await UserRepository().fetchUserUpdateCheck(jwt!, updateCheckDTO);
     Logger().d("여기까지 실행됨1");
 
     // 2. 비지니스 로직

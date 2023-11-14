@@ -6,14 +6,20 @@ class MyInfoSubMenu extends StatelessWidget {
   String leftText;
   String? left2Text;
   String? rightText;
-  MyInfoSubMenu(
-      {super.key, required this.leftText, this.left2Text, this.rightText});
+  String route;
+  MyInfoSubMenu({
+    super.key,
+    required this.leftText,
+    this.left2Text,
+    this.rightText,
+    required this.route,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, Move.myInfoUpdateScreen);
+        Navigator.pushNamed(context, route);
       },
       child: Padding(
         padding: const EdgeInsets.only(top: 20, bottom: 20),

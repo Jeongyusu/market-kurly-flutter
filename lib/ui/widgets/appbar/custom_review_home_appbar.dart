@@ -21,7 +21,9 @@ class CustomReviewHomeAppbar extends StatelessWidget
       backgroundColor: Colors.white,
       leading: IconButton(
         icon: Icon(Icons.arrow_back_ios_new, size: 22, color: basicColorB7),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
       actions: [
         Padding(
