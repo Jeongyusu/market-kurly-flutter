@@ -23,10 +23,9 @@ class ProductRatingBarItem extends StatelessWidget {
               color: Colors.amber,
             ),
         onRatingUpdate: (double rating) {
-          // 클릭한 별점을 int로 변환하여 starCount 함수 호출
+          // Convert double to int and then call starCount function
           starCount?.call(rating.toInt());
-          // starCount;
-          print("하위위젯${rating}");
+          print("하위위젯 ${rating}");
         });
   }
 }

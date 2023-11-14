@@ -25,6 +25,7 @@ import 'package:flutter_blog/ui/screens/notice/notice_home_screen.dart';
 import 'package:flutter_blog/ui/screens/product_category/product_category_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_inquiry/product_inquiry_save_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_img_screen.dart';
+import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_list_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_save_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_screen.dart';
 import 'package:flutter_blog/ui/screens/review/review_home_screen.dart';
@@ -67,8 +68,9 @@ class Move {
   // product
   static String productInquirySaveScreen = "/product/inquery/saveScreen";
   static String productReviewImgScreen = "/product/review/detailImgScreen";
-  static String productReviewSaveScreen = "/product/review/ListScreen";
-  static String productReviewScreen = "/product/review/saveScreen";
+  static String productReviewSaveScreen = "/product/review/save/Screen";
+  static String productReviewScreen = "/product/review/Screen";
+  static String productReviewListScreen = "/product/review/List/Screen";
   static String hotProductScreen = "/product/kurly/hotProductListScreen";
   static String saleProductScreen = "/product/kurly/saleProductListScreen";
   static String recommendProductScreen =
@@ -122,7 +124,8 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.productReviewImgScreen: (context) => ProductReviewImgScreen(),
     Move.productReviewImgScreen: (context) => ProductReviewImgScreen(),
     Move.productReviewSaveScreen: (context) => ProductReviewSaveScreen(),
-    Move.productReviewScreen: (context) => ProductReviewScreen(),
+    // Move.productReviewScreen: (context) => ProductReviewScreen(),
+    Move.productReviewListScreen: (context) => ProductReviewListScreen(),
     Move.productCategoryScreen: (context) => ProductCategoryScreen(),
     Move.hotProductScreen: (context) => HotProductScreen(),
     Move.saleProductScreen: (context) => SaleProductScreen(),

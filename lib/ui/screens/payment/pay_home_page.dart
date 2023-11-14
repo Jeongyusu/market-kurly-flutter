@@ -21,7 +21,7 @@ class PayHomePage extends ConsumerWidget {
 
     return IamportPayment(
       appBar: new AppBar(
-        title: new Text('구독권 결제'),
+        title: new Text('결제하기'),
       ),
       /* 웹뷰 로딩 컴포넌트 */
       initialChild: Container(

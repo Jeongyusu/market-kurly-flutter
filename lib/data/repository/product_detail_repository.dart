@@ -2,11 +2,14 @@ import 'package:dio/dio.dart';
 import 'package:flutter_blog/_core/constants/http.dart';
 import 'package:flutter_blog/data/dto/request_dto/review_request.dart';
 import 'package:flutter_blog/data/dto/response_dto.dart';
+import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:logger/logger.dart';
 
 class ProductDetailRepository {
   Future<ResponseDTO> fetchReviewSave(
       ProductReviewSaveDTO productReviewSaveDTO, String jwt) async {
+    Logger().d("리뷰등록테스트 1");
+    Logger().d("리뷰등록테스트 1" + jwt);
     try {
       // 1. 통신
       Logger().d("${productReviewSaveDTO.toJson()}");
