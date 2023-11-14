@@ -9,10 +9,14 @@ import 'package:logger/logger.dart';
 class UserRepository {
   //  회원 정보 체크
   Future<ResponseDTO> fetchUserUpdateCheck(
-      UpdateCheckDTO updateCheckDTO) async {
+      String jwt, UpdateCheckDTO updateCheckDTO) async {
     try {
       Logger().d("정보 확인 체크 1");
       Response<dynamic> response = await dio.post("/api/users/updateCheck",
+          options: Options(headers: {
+            "Authorization": "Bearer $jwt",
+            // 다른 필요한 헤더도 추가할 수 있습니다.
+          }),
           data: updateCheckDTO.toJson());
       Logger().d("정보 확인 체크 2");
 
