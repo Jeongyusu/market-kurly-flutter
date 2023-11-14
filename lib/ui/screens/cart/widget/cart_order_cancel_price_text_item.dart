@@ -19,7 +19,7 @@ class CartOrderCancelPriceTextItem extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "${cartListModel!.cartDTO.cartProducts[index].discountedPrice}원" ??
+          "${cartListModel!.cartDTO.cartProducts[index].discountedPrice * cartListModel!.cartDTO.cartProducts[index].optionQuantity}원" ??
               "에러",
           style: strongTextmMedium(),
         ),
@@ -27,11 +27,16 @@ class CartOrderCancelPriceTextItem extends ConsumerWidget {
           width: smallGap,
         ),
         Text(
-            "${cartListModel!.cartDTO.cartProducts[index].originPrice}원" ??
+            "${cartListModel!.cartDTO.cartProducts[index].originPrice * cartListModel!.cartDTO.cartProducts[index].optionQuantity}원" ??
                 "에러",
             style: disabledText()),
-        Text(" |  ", style: greyToneText(),),
-        Text("${cartListModel!.cartDTO.cartProducts[index].optionQuantity}개" ?? "에러",
+        Text(
+          " |  ",
+          style: greyToneText(),
+        ),
+        Text(
+          "${cartListModel!.cartDTO.cartProducts[index].optionQuantity}개" ??
+              "에러",
           style: basicText(),
         ),
       ],
