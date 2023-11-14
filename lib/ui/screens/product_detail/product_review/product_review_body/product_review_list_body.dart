@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
+import 'package:flutter_blog/data/dto/request_dto/review_request.dart';
 import 'package:flutter_blog/data/model/review.dart';
+import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_screen.dart';
+import 'package:flutter_blog/ui/widgets/appbar/custom_nav_appbar.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_text_button.dart';
 import 'package:flutter_blog/ui/widgets/text_items/custom_text_item.dart';
 
@@ -10,9 +13,9 @@ import '../../../../../_core/constants/font.dart';
 import '../../../../widgets/icons_and_images/custom_review_icon.dart';
 import '../widget/product_review_img_list.dart';
 
-class ProductReviewBody extends StatelessWidget {
+class ProductReviewListBody extends StatelessWidget {
   final double? reviewGrade;
-  const ProductReviewBody({
+  ProductReviewListBody({
     super.key,
     required this.formattedDate,
     this.reviewGrade,
@@ -20,21 +23,17 @@ class ProductReviewBody extends StatelessWidget {
 
   final String formattedDate;
 
+  // ProductReviewDetailDTO productReviewList = ProductReviewDetailDTO();
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        SliverPadding(
-          padding:
-              EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0, bottom: 4.0),
-          sliver: SliverToBoxAdapter(
-            child: CustomTextButton(
-              "후기 쓰기",
-              () {
-                Navigator.pushNamed(context, Move.productReviewSaveScreen);
-              },
-            ),
-          ),
+        CustomNavAppBar(
+          text: "후기 목록",
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, Move.productReviewScreen);
+          },
         ),
         SliverPadding(
           padding: const EdgeInsets.all(12.0),
@@ -85,12 +84,9 @@ class ProductReviewBody extends StatelessWidget {
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 12.0),
-                                child: Container(
-                                  width: 320,
-                                  child: Text(
-                                    "${reviewData[index].reviewContent}",
-                                    style: basicTextSmall(),
-                                  ),
+                                child: Text(
+                                  "${reviewData[index].reviewContent}",
+                                  style: basicTextSmall(),
                                 ),
                               ),
                             ],
