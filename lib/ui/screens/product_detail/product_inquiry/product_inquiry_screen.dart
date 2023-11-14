@@ -3,6 +3,7 @@ import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
+import 'package:flutter_blog/ui/screens/product_detail/product_inquiry/product_inquiry_body/product_inquiry_list_body.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_text_button.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';

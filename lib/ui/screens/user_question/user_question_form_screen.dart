@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/utils/validator_util.dart';
 import 'package:flutter_blog/ui/screens/auth/login_screen/widgets/login_text_form_field.dart';
 import 'package:flutter_blog/ui/screens/user_question/widget/user_question_camera.dart';
@@ -19,7 +20,7 @@ class CustomerQuestionFormScreen extends ConsumerWidget {
     return Scaffold(
       appBar: CustomSimpleAppbar(
         title: Text(
-          "문의작성",
+          "1:1 문의 작성",
           style: subTitleBold(),
         ),
       ),
@@ -73,7 +74,6 @@ class CustomerQuestionFormScreen extends ConsumerWidget {
                   SizedBox(
                     height: 5,
                   ),
-                  UserQuestionCamera(),
                   SizedBox(
                     height: 5,
                   ),
@@ -82,13 +82,6 @@ class CustomerQuestionFormScreen extends ConsumerWidget {
                     children: [
                       Text(
                         "· 상품과 무관한 내용이거나 음란 및 불법적인 내용은 통보없이 삭제될 수 있습니다.",
-                        style: subContentsSmaill(),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        "· 사진은 최대 8장까지 등록가능합니다.",
                         style: subContentsSmaill(),
                       ),
                       SizedBox(
@@ -121,8 +114,12 @@ class CustomerQuestionFormScreen extends ConsumerWidget {
           ],
         ),
       ]),
-      bottomNavigationBar:
-      UserQuestionBottomAppbar(text: "등록하기", funPageRoute: () {}),
+      bottomNavigationBar: UserQuestionBottomAppbar(
+        text: "등록하기",
+        funPageRoute: () {
+          Navigator.pushNamed(context, Move.customerQuestionListScreen);
+        },
+      ),
     );
   }
 }

@@ -25,7 +25,12 @@ class CustomerCenterHomeScreenBody extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              CustomElevatedButton(text: "1:1문의 작성", funPageRoute: () {}),
+              CustomElevatedButton(
+                text: "1:1문의 작성",
+                funPageRoute: () {
+                  Navigator.pushNamed(context, Move.customerQuestionFormScreen);
+                },
+              ),
             ],
           ),
         ),
@@ -36,7 +41,7 @@ class CustomerCenterHomeScreenBody extends StatelessWidget {
             children: [
               MyInfoSubMenu(
                 leftText: "1:1문의",
-                route: Move.customerQuestionScreen,
+                route: Move.customerQuestionListScreen,
               ),
               MyInfoSubMenu(
                 leftText: "공지사항",

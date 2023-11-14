@@ -33,7 +33,7 @@ List<ReviewBase> reviewPics2 = [
 
 List<ProductReviewDetailDTO> reviewData = [
   ProductReviewDetailDTO(
-    username: '강백호',
+    username: '백종원',
     starCount: 5,
     productName: '매일 두유 검은콩 (190ml X 12팩)',
     reviewCreatedAt: DateTime.now().subtract(Duration(days: 2)),

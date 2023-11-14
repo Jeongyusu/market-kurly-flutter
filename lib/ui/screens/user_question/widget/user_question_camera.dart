@@ -76,7 +76,6 @@ class _UserQuestionCameraState extends State<UserQuestionCamera> {
                             onPressed: () async {
                               multiImage = await picker.pickMultiImage();
                               setState(() {
-                                //multiImage를 통해 갤러리에서 가지고 온 사진들은 리스트 변수에 저장되므로 addAll()을 사용해서 images와 multiImage 리스트를 합쳐줍니다.
                                 images.addAll(multiImage);
                               });
                             },
