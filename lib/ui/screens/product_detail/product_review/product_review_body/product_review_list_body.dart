@@ -32,7 +32,8 @@ class ProductReviewListBody extends StatelessWidget {
         CustomNavAppBar(
           text: "후기 목록",
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ProductReviewScreen()));
           },
         ),
         SliverPadding(

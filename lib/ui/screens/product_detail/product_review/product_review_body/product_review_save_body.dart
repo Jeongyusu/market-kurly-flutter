@@ -13,10 +13,6 @@ class ProductReviewSaveBody extends StatelessWidget {
     required this.controller,
   });
   ProductReviewForm productReviewForm = new ProductReviewForm();
-  // TODO - 필드값 선언해주고
-  // TODO - 필드값 한곳에 모은다음에
-  // TODO - 필드값을 디티오에 담은 후
-  // TODO - 버튼에 ref 이용해서 담아온 디티오를 통신코드로 연결
 
   @override
   Widget build(BuildContext context) {

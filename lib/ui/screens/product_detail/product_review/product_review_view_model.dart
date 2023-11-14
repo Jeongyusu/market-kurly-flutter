@@ -50,7 +50,7 @@ class ProductReviewViewModel extends StateNotifier<ProductReviewModel?> {
       Logger().d(222222);
       // 2. 비지니스 로직
       if (responseDTO.success == true) {
-        Navigator.pushNamed(mContext!, Move.productReviewListScreen);
+        Navigator.pop(mContext!);
       } else {
         ScaffoldMessenger.of(mContext!).showSnackBar(
           SnackBar(
