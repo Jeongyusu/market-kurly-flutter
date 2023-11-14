@@ -7,7 +7,6 @@ import 'package:logger/logger.dart';
 
 // V -> P(전역프로바이더, 뷰모델) -> R
 class UserRepository {
-  //  회원 정보 체크
   Future<ResponseDTO> fetchUserUpdateCheck(
       UpdateCheckDTO updateCheckDTO) async {
     try {
@@ -18,6 +17,12 @@ class UserRepository {
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       Logger().d("정보 확인 체크 3");
+      final jwt = response.headers["Authorization"];
+
+      if (jwt != null) {
+        responseDTO.token = jwt.first;
+      }
+      Logger().d("jwt토큰 넣기");
       return responseDTO;
     } catch (e) {
       return ResponseDTO(
@@ -32,6 +37,12 @@ class UserRepository {
       Response<dynamic> response =
           await dio.post("/api/users/update", data: userUpdateReqDTO.toJson());
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      final jwt = response.headers["Authorization"];
+
+      if (jwt != null) {
+        responseDTO.token = jwt.first;
+      }
+      Logger().d("jwt토큰 넣기");
       return responseDTO;
     } catch (e) {
       return ResponseDTO(
