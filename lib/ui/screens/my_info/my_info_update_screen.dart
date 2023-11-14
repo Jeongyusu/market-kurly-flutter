@@ -8,14 +8,10 @@ import 'package:flutter_blog/ui/widgets/text_form_field/custom_text_form_field.d
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MyInfoUpdateScreen extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
-  final _password = TextEditingController();
-  final _userId = TextEditingController();
   MyInfoUpdateScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MyInfoUpdateBody(
-        formKey: _formKey, password: _password, userId: _userId);
+    return MyInfoUpdateBody();
   }
 }

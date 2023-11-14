@@ -32,7 +32,7 @@ class ProductReviewListBody extends StatelessWidget {
         CustomNavAppBar(
           text: "후기 목록",
           onPressed: () {
-            Navigator.pushReplacementNamed(context, Move.productReviewScreen);
+            Navigator.pop(context);
           },
         ),
         SliverPadding(
@@ -84,9 +84,12 @@ class ProductReviewListBody extends StatelessWidget {
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 12.0),
-                                child: Text(
-                                  "${reviewData[index].reviewContent}",
-                                  style: basicTextSmall(),
+                                child: Container(
+                                  width: 320,
+                                  child: Text(
+                                    "${reviewData[index].reviewContent}",
+                                    style: basicTextSmall(),
+                                  ),
                                 ),
                               ),
                             ],
@@ -94,7 +97,7 @@ class ProductReviewListBody extends StatelessWidget {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 4.0),
+                        padding: const EdgeInsets.only(bottom: 4.0, right: 4.0),
                         child: ProductReviewImgList(
                           images: reviewData[index].reviewPics,
                         ),

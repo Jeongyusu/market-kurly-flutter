@@ -14,16 +14,11 @@ import 'package:flutter_blog/ui/widgets/text_form_field/custom_text_form_field.d
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MyInfoUpdateBody extends ConsumerWidget {
-  final formKey;
-  final userId;
-  final password;
+  final formKey = GlobalKey<FormState>();
+  final _userId = TextEditingController();
+  final _userPassword = TextEditingController();
   final User? user;
-  const MyInfoUpdateBody(
-      {super.key,
-      this.user,
-      required this.formKey,
-      required this.password,
-      this.userId});
+  MyInfoUpdateBody({this.user, Key? key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -63,7 +58,7 @@ class MyInfoUpdateBody extends ConsumerWidget {
                     text: "아이디",
                     placeholderText: "현재 아이디",
                     funValidator: validatePassword(),
-                    controller: userId,
+                    controller: _userId,
                   ),
                 ),
               ),
@@ -81,7 +76,7 @@ class MyInfoUpdateBody extends ConsumerWidget {
                     text: "비밀번호",
                     placeholderText: "현재 비밀번호를 입력하세요",
                     funValidator: validatePassword(),
-                    controller: password,
+                    controller: _userPassword,
                     obscureText: true,
                   )),
               SizedBox(

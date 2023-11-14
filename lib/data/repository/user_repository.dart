@@ -12,8 +12,8 @@ class UserRepository {
       UpdateCheckDTO updateCheckDTO) async {
     try {
       Logger().d("정보 확인 체크 1");
-      Response<dynamic> response = await dio.post("/api/users/updateCheck",
-          data: updateCheckDTO.toJson());
+      Response<dynamic> response =
+          await dio.post("/api/check/update", data: updateCheckDTO.toJson());
       Logger().d("정보 확인 체크 2");
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
