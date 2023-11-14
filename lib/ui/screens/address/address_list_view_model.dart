@@ -3,6 +3,7 @@ import 'package:flutter_blog/data/dto/request_dto/address_request.dart';
 import 'package:flutter_blog/data/dto/response_dto.dart';
 import 'package:flutter_blog/data/model/address.dart';
 import 'package:flutter_blog/data/repository/address_repository.dart';
+import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_blog/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
@@ -22,9 +23,10 @@ class AddressListViewModel extends StateNotifier<AddressListModel?> {
   Ref ref;
 
   Future<void> notifyInit() async {
+    SessionStore sessionStore = ref.read(sessionProvider);
     print("Address notifyInit 실행");
     // 1. 통신 코드
-    ResponseDTO responseDTO = await AddressRepository().fetchAddressList();
+    ResponseDTO responseDTO = await AddressRepository().fetchAddressList(sessionStore.jwt!);
 
     print("AddressViewModel 통신코드실행 responseDTO : ${responseDTO.response}");
     List<Address> addresses = responseDTO.response;
@@ -34,8 +36,9 @@ class AddressListViewModel extends StateNotifier<AddressListModel?> {
   }
 
   Future<void> notifyAdd(AddressSaveReqDTO dto) async {
+    SessionStore sessionStore = ref.read(sessionProvider);
     Logger().d("notifyAdd 호출 / AddressSaveReqDTO : ${dto}");
-    ResponseDTO responseDTO = await AddressRepository().savePost(dto);
+    ResponseDTO responseDTO = await AddressRepository().savePost(sessionStore.jwt!,dto);
 
     if (responseDTO.success == true) {
       Logger().d("responseDTO.success 성공 : ${responseDTO.success}");

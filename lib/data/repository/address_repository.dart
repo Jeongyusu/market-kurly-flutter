@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_blog/_core/constants/http.dart';
 import 'package:flutter_blog/data/dto/request_dto/address_request.dart';
 import 'package:flutter_blog/data/dto/response_dto.dart';
@@ -6,11 +7,17 @@ import 'package:logger/logger.dart';
 
 // V -> P(전역프로바이더, 뷰모델) -> R
 class AddressRepository {
-  Future<ResponseDTO> fetchAddressList() async {
+  Future<ResponseDTO> fetchAddressList(String jwt) async {
     try {
       // 1. 통신
       Logger().d("fetchAddressList 동작중");
-      final response = await dio.get("/api/users/addresses");
+      final response = await dio.get("/api/users/addresses",
+        options: Options(
+        headers: {
+          "Authorization": "Bearer $jwt",
+          // 다른 필요한 헤더도 추가할 수 있습니다.
+        },
+      ),);
       Logger().d(response.data);
       // 2. ResponseDTO 파싱
       ResponseDTO toyResponseDTO = ResponseDTO.fromJson(response.data);
@@ -30,7 +37,7 @@ class AddressRepository {
     }
   }
 
-  Future<ResponseDTO> savePost(AddressSaveReqDTO dto) async {
+  Future<ResponseDTO> savePost(String jwt, AddressSaveReqDTO dto) async {
     Logger().d("savePost 호출");
     // 통신은 무조건 try-catch
     try {
@@ -38,6 +45,12 @@ class AddressRepository {
       // Request에 Body 데이터와 헤더 토큰값을 가지고 가야함
       // response안에 서버 측 응답으로 받은 http헤더와 body있음
       final response = await dio.post("/api/users/addresses/save",
+          options: Options(
+            headers: {
+              "Authorization": "Bearer $jwt",
+              // 다른 필요한 헤더도 추가할 수 있습니다.
+            },
+          ),
           // data에 Map넣으면 자동으로 JSON으로 변환됨
           data: dto.toJson());
 

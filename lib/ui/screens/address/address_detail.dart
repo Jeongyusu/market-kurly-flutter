@@ -28,17 +28,17 @@ class AddressDetail extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (isDefaultAddress == true)
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Container(
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Text("기본 배송지", style: TextStyle(fontSize: 12)),
-                      ),
-                      decoration: BoxDecoration(color: Colors.black12),
+                isDefaultAddress == true ?  ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Text("기본 배송지", style: TextStyle(fontSize: 12)),
                     ),
+                    decoration: BoxDecoration(color: Colors.black12),
                   ),
+                ) : SizedBox()
+                 ,
                 SizedBox(
                   height: 1,
                 ),

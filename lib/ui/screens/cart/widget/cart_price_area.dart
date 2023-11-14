@@ -16,12 +16,7 @@ class CartPriceArea extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     CartListModel? cartListModel = ref.watch(cartListProvider);
-
-    // List<CartProductDTO> productList =
-    //     cartListModel!.cartDTO.cartProducts; // productDTO 배열을 포함하는 변수
-    // List<CartProductDTO> selectedProducts =
-    //     productList.where((product) => product.isChecked == true).toList();
-
+    int deliveryFee = cartListModel!.cartDTO.totalBeforePrice - cartListModel.cartDTO.totalDiscountPrice >= 20000 ? 0 : 3500;
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -46,7 +41,7 @@ class CartPriceArea extends ConsumerWidget {
           ),
           TextSpaceBetweenItem(
             leftText: "배송비",
-            rightText: "0원",
+            rightText: "${deliveryFee}원",
             leftTextStyle: basicText(),
             rightTextStyle: basicText(),
           ),
@@ -68,7 +63,7 @@ class CartPriceArea extends ConsumerWidget {
             child: TextSpaceBetweenItem(
               leftText: "결제예정금액",
               rightText:
-                  "${cartListModel!.cartDTO.totalBeforePrice - cartListModel.cartDTO.totalDiscountPrice}원",
+                  "${cartListModel!.cartDTO.totalBeforePrice - cartListModel.cartDTO.totalDiscountPrice + deliveryFee}원",
               leftTextStyle: basicTextBig(),
               rightTextStyle: strongTextmMedium(),
             ),

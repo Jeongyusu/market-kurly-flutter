@@ -22,8 +22,6 @@ class _CartOrderCouponDropdownState extends ConsumerState<CartOrderCouponDropdow
   void initState() {
     super.initState();
     setState(() {
-      CouponModel? couponModel = ref.read(couponProvider);
-      Logger().d("나여기 ${couponModel!.userCouponDTOList![0].couponName}");
       _selectedOption = _optionList[0];
     });
   }

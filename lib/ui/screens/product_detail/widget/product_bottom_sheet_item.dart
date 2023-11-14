@@ -12,6 +12,7 @@ import 'package:flutter_blog/ui/widgets/custom_option_count.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_bold.dart';
 import 'package:flutter_blog/ui/widgets/line/custom_line_thin.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 class ProductBottomSheetItem extends ConsumerWidget {
   final productId;
@@ -134,8 +135,8 @@ class ProductBottomSheetItem extends ConsumerWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(
-                                                "${model!.productDescriptionDTO!.options[index].optionPrice}"),
+                                            Text("${NumberFormat('#,##0').format(model!.productDescriptionDTO!.options[index].optionPrice)}원"),
+                                                // "${model!.productDescriptionDTO!.options[index].optionPrice}"),
                                             ProductOptionCount(
                                               index: index,
                                               productId: productId,
