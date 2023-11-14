@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/_core/utils/validator_util.dart';
 import 'package:flutter_blog/ui/screens/auth/login_screen/widgets/login_text_form_field.dart';
@@ -62,8 +63,12 @@ class ProductInquirySaveScreen extends ConsumerWidget {
           ),
         ],
       ),
-      bottomNavigationBar:
-          UserQuestionBottomAppbar(text: "등록하기", funPageRoute: null),
+      bottomNavigationBar: UserQuestionBottomAppbar(
+        text: "등록하기",
+        funPageRoute: () {
+          Navigator.pop(context);
+        },
+      ),
     );
   }
 }

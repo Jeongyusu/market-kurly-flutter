@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/move.dart';
-import 'package:flutter_blog/ui/screens/user_question/user_question_form_screen.dart';
 
 class MyInfoSubMenu extends StatelessWidget {
   String leftText;
@@ -20,12 +19,7 @@ class MyInfoSubMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => CustomerQuestionFormScreen(),
-          ),
-        );
+        Navigator.pushNamed(context, route);
       },
       child: Padding(
         padding: const EdgeInsets.only(top: 20, bottom: 20),

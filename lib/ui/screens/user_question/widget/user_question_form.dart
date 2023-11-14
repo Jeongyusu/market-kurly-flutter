@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
+import 'package:flutter_blog/_core/constants/size.dart';
 import 'package:flutter_blog/_core/utils/validator_util.dart';
 import 'package:flutter_blog/ui/screens/auth/login_screen/widgets/login_text_form_field.dart';
 import 'package:flutter_blog/ui/screens/user_question/widget/user_question_dropdown2.dart';
@@ -30,6 +31,9 @@ class UserQuestionForm extends StatelessWidget {
                       "문의 유형",
                       style: basicTextSmallAndBold(),
                     ),
+                    SizedBox(
+                      height: xsmallGap,
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child:
@@ -40,13 +44,16 @@ class UserQuestionForm extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(
+            height: smallGap,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "문의 유형",
+                  "문의 제목",
                   style: basicTextSmallAndBold(),
                 ),
                 Container(

@@ -19,7 +19,7 @@ class CustomerQuestionScreen extends ConsumerWidget {
     return Scaffold(
       appBar: CustomSimpleAppbar(
         title: Text(
-          "문의작성",
+          "1:1문의 작성",
           style: subTitleBold(),
         ),
       ),

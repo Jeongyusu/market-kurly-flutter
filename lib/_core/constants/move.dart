@@ -23,7 +23,9 @@ import 'package:flutter_blog/ui/screens/my_info/my_info_update_screen.dart';
 import 'package:flutter_blog/ui/screens/notice/notice_detail_screen.dart';
 import 'package:flutter_blog/ui/screens/notice/notice_home_screen.dart';
 import 'package:flutter_blog/ui/screens/product_category/product_category_screen.dart';
+import 'package:flutter_blog/ui/screens/product_detail/product_inquiry/product_inquiry_list_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_inquiry/product_inquiry_save_screen.dart';
+import 'package:flutter_blog/ui/screens/product_detail/product_inquiry/product_inquiry_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_img_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_list_screen.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_review/product_review_save_screen.dart';
@@ -32,6 +34,7 @@ import 'package:flutter_blog/ui/screens/review/review_home_screen.dart';
 import 'package:flutter_blog/ui/screens/search/search_result_screen.dart';
 import 'package:flutter_blog/ui/screens/splash_screen.dart';
 import 'package:flutter_blog/ui/screens/user_question/user_question_form_screen.dart';
+import 'package:flutter_blog/ui/screens/user_question/user_question_list_screen.dart';
 import 'package:flutter_blog/ui/screens/user_question/user_question_screen.dart';
 
 class Move {
@@ -67,6 +70,8 @@ class Move {
 
   // product
   static String productInquirySaveScreen = "/product/inquery/saveScreen";
+  static String productInquiryScreen = "/product/inquery/saveScreen";
+  static String productInquiryListScreen = "/product/inquery/List/Screen";
   static String productReviewImgScreen = "/product/review/detailImgScreen";
   static String productReviewSaveScreen = "/product/review/save/Screen";
   static String productReviewScreen = "/product/review/Screen";
@@ -78,14 +83,13 @@ class Move {
   static String productCategoryScreen = "/product/category/detailScreen";
   static String searchResultScreen = "/product/searchResultScreen";
 
-
   // customer
   static String customerHomeScreen = "/customerCenter/homeScreen";
   static String customerNoticeHomeScreen = "customer/notice/homeScreen";
   static String customerNoticeDetailScreen = "customer/notice/detailScreen";
   static String customerQuestionScreen = "customer/questionScreen";
   static String customerQuestionFormScreen = "customer/questionFormScreen";
-
+  static String customerQuestionListScreen = "/customer/question/List/Screen";
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
@@ -121,10 +125,13 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.cartOrderCancelScreen: (context) => CartOderCancelScreen(),
 
     // product
+    Move.productInquirySaveScreen: (context) => ProductInquirySaveScreen(),
+    Move.productInquiryScreen: (context) => ProductInquiryScreen(),
+    Move.productInquiryListScreen: (context) => ProductInquiryListScreen(),
     Move.productReviewImgScreen: (context) => ProductReviewImgScreen(),
     Move.productReviewImgScreen: (context) => ProductReviewImgScreen(),
     Move.productReviewSaveScreen: (context) => ProductReviewSaveScreen(),
-    // Move.productReviewScreen: (context) => ProductReviewScreen(),
+    Move.productReviewScreen: (context) => ProductReviewScreen(),
     Move.productReviewListScreen: (context) => ProductReviewListScreen(),
     Move.productCategoryScreen: (context) => ProductCategoryScreen(),
     Move.hotProductScreen: (context) => HotProductScreen(),
@@ -138,5 +145,6 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.customerNoticeDetailScreen: (context) => CustomerNoticeDetailScreen(),
     Move.customerQuestionFormScreen: (context) => CustomerQuestionFormScreen(),
     Move.customerQuestionScreen: (context) => CustomerQuestionScreen(),
+    Move.customerQuestionListScreen: (context) => CustomerQuestionListScreen(),
   };
 }
