@@ -78,9 +78,9 @@ class CustomProductItem extends StatelessWidget {
                     discountRate: discountRate,
                     totalPrice: totalPrice,
                   ),
-                  CustomReviewIcon(
-                    totalReviewGrade: reviewGrade,
-                  ),
+                  // CustomReviewIcon(
+                  //   totalReviewGrade: reviewGrade,
+                  // ),
                 ],
               ),
             )

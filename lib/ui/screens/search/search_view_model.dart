@@ -17,8 +17,10 @@ class SearchViewModel extends StateNotifier<SearchModel?> {
   Ref ref;
   SearchViewModel(super._state, this.ref);
 
-  Future<void> searchProductList (value) async {
-    ResponseDTO responseDTO = await ProductRepository().fetchSearchProductList(value);
+  Future<void> searchProductList(value) async {
+    ResponseDTO responseDTO =
+        await ProductRepository().fetchSearchProductList(value);
+    state = SearchModel(responseDTO.response);
     if (responseDTO.success == true) {
       Navigator.pushNamed(mContext!, Move.searchResultScreen);
     } else {
@@ -29,10 +31,9 @@ class SearchViewModel extends StateNotifier<SearchModel?> {
       );
     }
   }
-
 }
 
 final searchProvider =
-StateNotifierProvider.autoDispose<SearchViewModel, SearchModel?>((ref) {
+    StateNotifierProvider<SearchViewModel, SearchModel?>((ref) {
   return SearchViewModel(null, ref);
 });

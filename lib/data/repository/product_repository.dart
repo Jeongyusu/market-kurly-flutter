@@ -173,12 +173,13 @@ class ProductRepository {
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       Logger().d(responseDTO.response);
       // responseDTO.response 의 데이터 원본 형태: List<ProductSearchDTO> productSearchDTOS
-      // List<dynamic> mapList = responseDTO.response;
-      // Logger().d("나요기0");
-      // List<ProductSearchDTO> productSearchDTOs = mapList.map((e) => ProductSearchDTO.fromJson(e)).toList();
-      // Logger().d("나요기1");
-      // // responseDTO.response = productSearchDTOs;
-      // Logger().d("나요기2");
+      List<dynamic> mapList = responseDTO.response["productSearchDTOS"];
+      Logger().d("나요기0");
+      List<ProductSearchDTO> productSearchDTOs =
+          mapList.map((e) => ProductSearchDTO.fromJson(e)).toList();
+      Logger().d("나요기1");
+      responseDTO.response = productSearchDTOs;
+      Logger().d("나요기2");
 
       return responseDTO;
     } catch (e) {
