@@ -43,6 +43,7 @@ class JoinForm extends ConsumerWidget {
                       ref.read(joinFormProvider.notifier).setUserId(value);
                     },
                     text: "아이디",
+                    strong: " *",
                     placeholderText: "아이디를 입력해주세요",
                     obscureText: false,
                     funValidator: validateUsername(),
@@ -133,8 +134,9 @@ class JoinForm extends ConsumerWidget {
               ref.read(joinFormProvider.notifier).setUsername(value);
             },
             text: "이름",
+            strong: " *",
             placeholderText: "이름을 입력해주세요",
-            obscureText: true,
+            obscureText: false,
             funValidator: validateUsername(),
           ),
           const SizedBox(height: mediumGap),
@@ -143,8 +145,9 @@ class JoinForm extends ConsumerWidget {
               ref.read(joinFormProvider.notifier).setUserEmail(value);
             },
             text: "이메일",
+            strong: " *",
             placeholderText: "예) marketkurly@kurly.com",
-            obscureText: true,
+            obscureText: false,
             funValidator: validateEmail(),
           ),
           const SizedBox(height: mediumGap),
