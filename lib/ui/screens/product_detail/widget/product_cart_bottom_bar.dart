@@ -17,7 +17,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductCartBottomBar extends ConsumerWidget {
   final productId;
-  const ProductCartBottomBar({super.key, this.productId});
+  final ppp;
+  const ProductCartBottomBar({super.key, this.productId, this.ppp});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -44,7 +45,7 @@ class ProductCartBottomBar extends ConsumerWidget {
               borderRadius: BorderRadius.circular(20.0),
             ),
             builder: (BuildContext context) {
-              return ProductCartBottomSheet();
+              return ProductCartBottomSheet(ppp: ppp);
             },
           );
           List<SelectedOptionDTO> selectedOptionDTOList = productDetailModal!

@@ -21,10 +21,6 @@ class ReviewHomeOrderNumber extends StatelessWidget {
           SizedBox(
             width: 100,
           ),
-          Text(
-            "10월31일 배송완료",
-            style: reviewOrderNumber(),
-          ),
         ],
       ),
     );

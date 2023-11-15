@@ -135,8 +135,9 @@ class ProductBottomSheetItem extends ConsumerWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text("${NumberFormat('#,##0').format(model!.productDescriptionDTO!.options[index].optionPrice)}원"),
-                                                // "${model!.productDescriptionDTO!.options[index].optionPrice}"),
+                                            Text(
+                                                "${NumberFormat('#,##0').format(model!.productDescriptionDTO!.options[index].optionPrice)}원"),
+                                            // "${model!.productDescriptionDTO!.options[index].optionPrice}"),
                                             ProductOptionCount(
                                               index: index,
                                               productId: productId,
@@ -162,7 +163,9 @@ class ProductBottomSheetItem extends ConsumerWidget {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                child: ProductCartBottomBar(productId: productId),
+                child: ProductCartBottomBar(
+                    productId: productId,
+                    ppp: model!.productDescriptionDTO.productThumbnail),
               ),
             ],
           );

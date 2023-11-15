@@ -54,7 +54,7 @@ class ProductInquiryTitle extends StatelessWidget {
           children: [
             AnswerStatusAndUser(
               answerStatus: "답변대기",
-              userName: "서태웅",
+              userName: "백종원",
               statusStyle: statusStyle,
             ),
             Text(
