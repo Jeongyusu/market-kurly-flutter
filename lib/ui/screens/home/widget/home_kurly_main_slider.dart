@@ -1,6 +1,7 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
+import 'package:flutter_blog/_core/constants/move.dart';
 
 class HomeKurlyMainSlider extends StatefulWidget {
   const HomeKurlyMainSlider({
@@ -45,13 +46,18 @@ class _HomeKurlyMainSliderState extends State<HomeKurlyMainSlider>
           itemBuilder: (BuildContext context, int index) {
             return Stack(
               children: [
-                Container(
-                  height: 300,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(imagePaths[index]),
-                      fit: BoxFit.cover,
-                      alignment: Alignment.center,
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, Move.splashScreen);
+                  },
+                  child: Container(
+                    height: 300,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(imagePaths[index]),
+                        fit: BoxFit.cover,
+                        alignment: Alignment.center,
+                      ),
                     ),
                   ),
                 ),

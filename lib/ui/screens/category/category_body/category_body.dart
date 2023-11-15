@@ -4,10 +4,13 @@ import 'package:flutter_blog/_core/constants/http.dart';
 import 'package:flutter_blog/_core/constants/move.dart';
 import 'package:flutter_blog/data/model/category.dart';
 import 'package:flutter_blog/ui/screens/category/category_list_view_model.dart';
+import 'package:flutter_blog/ui/screens/home/product_list_view_model.dart';
+import 'package:flutter_blog/ui/screens/product_category/product_category_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CategoryBody extends ConsumerWidget {
-  CategoryBody({Key? key}) : super(key: key);
+  final int? categoryId;
+  CategoryBody({Key? key, this.categoryId}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,7 +25,10 @@ class CategoryBody extends ConsumerWidget {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              ref.read(categoryListProvider.notifier).selectCategoryIdAndCategoryName(categoryModel[index].id!, categoryModel[index].categoryType!);
+              ref
+                  .read(categoryListProvider.notifier)
+                  .selectCategoryIdAndCategoryName(categoryModel[index].id!,
+                      categoryModel[index].categoryType!);
               Navigator.pushNamed(context, Move.productCategoryScreen);
             },
             child: Card(

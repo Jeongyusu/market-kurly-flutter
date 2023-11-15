@@ -9,8 +9,9 @@ class ProductCategoryScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CategoryModel? categoryModel =ref.read(categoryListProvider);
-    ProductCategoryModel? model = ref.read(productCategoryProvider(categoryModel!.selectedcategoryId!));
+    CategoryModel? categoryModel = ref.read(categoryListProvider);
+    ProductCategoryModel? model =
+        ref.read(productCategoryProvider(categoryModel!.selectedcategoryId!));
     return Scaffold(
       body: ProductCategoryBody(),
     );

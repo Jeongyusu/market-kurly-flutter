@@ -5,32 +5,24 @@ import 'package:flutter_blog/data/dto/model_dto/product_dto/product_list_dto.dar
 import 'package:flutter_blog/ui/screens/category/category_list_view_model.dart';
 import 'package:flutter_blog/ui/screens/home/menu/new_product/widget/new_product_list.dart';
 import 'package:flutter_blog/ui/screens/home/product_list_view_model.dart';
-import 'package:flutter_blog/ui/screens/product_category/widget/product_category_grid.dart';
+import 'package:flutter_blog/ui/screens/product_category/widget/product_category_list.dart';
 import 'package:flutter_blog/ui/widgets/product_items/custom_product_item.dart';
 import 'package:flutter_blog/ui/widgets/product_items/product_count_and_filter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class NewBody extends ConsumerStatefulWidget {
   const NewBody({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   ConsumerState<NewBody> createState() => _NewBodyState();
 }
 
 class _NewBodyState extends ConsumerState<NewBody> {
-  final List<String> categoryTitle = [
-    '한식,양식 중식',
-    '중식, 한식,양식 중식',
-    '양식,한식,양식 중식',
-    '양식',
-  ];
-
   int selectedCategory = 0;
 
   void onCategorySelected(int categoryId) {
-    print("Category $categoryId selected");
     setState(() {
       selectedCategory = categoryId;
     });
@@ -65,7 +57,7 @@ class _NewBodyState extends ConsumerState<NewBody> {
                 height: 50,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: categoryType!.categorys.length + 1,
+                  itemCount: categoryType!.categorys.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
                       padding: const EdgeInsets.only(right: 8.0),

@@ -26,6 +26,12 @@ class ProductListViewModel extends StateNotifier<ProductListModel?> {
   ProductListViewModel(super._state, this.ref);
   Ref ref;
 
+  Future<void> fetchCategoryProducts(int id) async {
+    ResponseDTO responseDTO = await ProductRepository().fetchCategoryList(id);
+    Logger().d(responseDTO);
+    state = ProductListModel(productList: responseDTO.response);
+  }
+
   Future<void> fetchFinalSaleProducts() async {
     ResponseDTO responseDTO =
         await ProductRepository().fetchFinalSaleProductList();
@@ -53,6 +59,13 @@ class ProductListViewModel extends StateNotifier<ProductListModel?> {
     state = ProductListModel(productMainList: responseDTO.response);
   }
 }
+
+// 신상품 창고 관리자
+final productCategoryListProvider =
+    StateNotifierProvider.family<ProductListViewModel, ProductListModel?, int>(
+        (ref, id) {
+  return ProductListViewModel(null, ref)..fetchCategoryProducts(id);
+});
 
 // 신상품 창고 관리자
 final productNewListProvider =
