@@ -19,7 +19,7 @@ class MyInfoBody extends StatelessWidget {
               MyInfoCoupon(),
               MyInfoShipmentAddress(),
               Container(
-                padding: EdgeInsets.only(left: 20),
+                padding: EdgeInsets.only(left: 20, right: 20),
                 child: MyInfoArrowBoard(),
               ),
             ],

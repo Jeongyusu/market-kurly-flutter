@@ -114,8 +114,8 @@ class _CartOrderPaymentState extends State<CartOrderPayment> {
                           InkWell(
                             onTap: () {
                               setState(() {
-                                Color1 = primaryColor02;
-                                pontColor1 = Colors.white;
+                                Color1 = Colors.yellow;
+                                pontColor1 = Colors.black;
                               });
                             },
                             child: Container(
@@ -123,7 +123,7 @@ class _CartOrderPaymentState extends State<CartOrderPayment> {
                               height: 40,
                               decoration: BoxDecoration(
                                   border: Border.all(width: 1.0),
-                                  color: Colors.yellow,
+                                  color: Color1,
                                   borderRadius: BorderRadius.circular(20)),
                               child: Row(
                                 children: [
