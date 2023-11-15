@@ -23,7 +23,9 @@ class CouponRepository {
       Logger().d(response.data);
       // 2. ResponseDTO 파싱
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
-      List<dynamic> mapList = responseDTO.response;
+      Logger().d("요기요");
+      Logger().d(responseDTO.response);
+      List<dynamic> mapList = responseDTO.response["userCouponDTOs"];
       List<UserCouponDTO> userCouponList =
           mapList.map((e) => UserCouponDTO.fromJson(e)).toList();
       responseDTO.response = userCouponList;

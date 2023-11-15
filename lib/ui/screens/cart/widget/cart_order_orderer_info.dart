@@ -41,7 +41,7 @@ class CartOrderOrdererInfo extends ConsumerWidget {
                 width: 20,
               ),
               Text(
-                "${addressListModel!.addresses[0].receiverTel}",
+                "010-1234-5678",
                 style: subTitleSmall(),
               ),
             ],
@@ -58,7 +58,7 @@ class CartOrderOrdererInfo extends ConsumerWidget {
               SizedBox(
                 width: 20,
               ),
-              Text("${addressListModel!.addresses[0].receiverName}",
+              Text("ssar@nate.com",
                   style: subTitleSmall()),
             ],
           ),

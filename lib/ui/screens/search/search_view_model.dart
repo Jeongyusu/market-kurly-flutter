@@ -8,7 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SearchModel {
   List<ProductSearchDTO> productSearchDTOS;
-
+  String? inputValue;
   SearchModel(this.productSearchDTOS);
 }
 
@@ -17,8 +17,11 @@ class SearchViewModel extends StateNotifier<SearchModel?> {
   Ref ref;
   SearchViewModel(super._state, this.ref);
 
-  Future<void> searchProductList (value) async {
-    ResponseDTO responseDTO = await ProductRepository().fetchSearchProductList(value);
+  Future<void> searchProductList(value) async {
+    ResponseDTO responseDTO =
+        await ProductRepository().fetchSearchProductList(value);
+    state = SearchModel(responseDTO.response);
+    state!.inputValue = value;
     if (responseDTO.success == true) {
       Navigator.pushNamed(mContext!, Move.searchResultScreen);
     } else {
@@ -29,10 +32,9 @@ class SearchViewModel extends StateNotifier<SearchModel?> {
       );
     }
   }
-
 }
 
 final searchProvider =
-StateNotifierProvider.autoDispose<SearchViewModel, SearchModel?>((ref) {
+    StateNotifierProvider<SearchViewModel, SearchModel?>((ref) {
   return SearchViewModel(null, ref);
 });

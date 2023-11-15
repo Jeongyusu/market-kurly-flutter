@@ -13,7 +13,6 @@ import 'package:logger/logger.dart';
 
 class ProductDetailModal {
   List<Option> selectedOptionDTOs;
-
   ProductDetailModal(this.selectedOptionDTOs);
 }
 
