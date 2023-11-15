@@ -20,31 +20,25 @@ class CartScreen extends ConsumerWidget {
   // 초기 수량
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CartListModel? cartListModel = ref.watch(cartListProvider);
-    if (cartListModel == null) {
-      return Center(child: CircularProgressIndicator());
-    } else {
-      return Scaffold(
-        body: CartBody(),
-        bottomNavigationBar: BottomAppBar(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            child: ElevatedButton(
-              onPressed: () {
-                print("주문하기 클릭됨");
-                ref.read(cartListProvider.notifier).checkedCartDTO();
-                Logger().d("장바구니체크 ${cartListModel.checkedCartDTO![0].optionQuantity}");
-                Navigator.pushNamed(context, Move.cartOrderSheetScreen);
-              },
-              style: ElevatedButton.styleFrom(
-                fixedSize: Size.fromHeight(50),
-                backgroundColor: primaryColor,
-              ),
-              child: Text("주문하기"),
+    return Scaffold(
+      body: CartBody(),
+      bottomNavigationBar: BottomAppBar(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child: ElevatedButton(
+            onPressed: () {
+              print("주문하기 클릭됨");
+              ref.read(cartListProvider.notifier).checkedCartDTO();
+              Navigator.pushNamed(context, Move.cartOrderSheetScreen);
+            },
+            style: ElevatedButton.styleFrom(
+              fixedSize: Size.fromHeight(50),
+              backgroundColor: primaryColor,
             ),
+            child: Text("주문하기"),
           ),
         ),
-      );
-    }
+      ),
+    );
   }
 }
