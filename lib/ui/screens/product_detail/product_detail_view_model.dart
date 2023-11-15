@@ -7,6 +7,7 @@ import 'package:flutter_blog/data/model/option.dart';
 import 'package:flutter_blog/data/repository/cart_repsository.dart';
 import 'package:flutter_blog/data/store/session_store.dart';
 import 'package:flutter_blog/main.dart';
+import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_blog/ui/screens/product_detail/product_description/product_description_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';

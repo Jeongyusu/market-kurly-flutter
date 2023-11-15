@@ -14,7 +14,7 @@ import 'package:logger/logger.dart';
 // 1. 창고 데이터
 class CartListModel {
   CartDTO cartDTO;
-  List<CartProductDTO>? checkedCartDTO = [];
+  List<CartProductDTO> checkedCartDTO = [];
   CartListModel(this.cartDTO);
 }
 
