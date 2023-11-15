@@ -33,7 +33,7 @@ class CartOrderCancelOptionItem extends ConsumerWidget {
             AspectRatio(
               aspectRatio: 1 / 1,
               child: Image.network(
-                '${imgUrl}${cartListModel!.cartDTO.cartProducts[index].productPic}',
+                '${imgUrl}${cartListModel!.checkedCartDTO![index].productPic}',
                 fit: BoxFit.cover,
               ),
             ),

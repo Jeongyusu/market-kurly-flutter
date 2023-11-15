@@ -22,7 +22,7 @@ class CartOrderCancelOptionArea extends ConsumerWidget {
       child: ListView.builder(
         shrinkWrap: true, // 이 줄을 추가
         primary: false,
-        itemCount: cartListModel!.cartDTO.cartProducts.length ?? 0,
+        itemCount: cartListModel!.checkedCartDTO!.length ?? 0,
         itemBuilder: (BuildContext context, int index) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,

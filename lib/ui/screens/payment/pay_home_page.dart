@@ -58,6 +58,7 @@ class PayHomePage extends ConsumerWidget {
           ResponseDTO responseDTO =
               await paymentRepository().fetchPayment(requestDTO);
           if (responseDTO.success == true) {
+            Navigator.pushNamed(context, Move.cartOrderCancelScreen);
             return AlertDialog(content: Text("결제 완료"));
           } else {
             return AlertDialog(content: Text("결제는 완료, 서버 통신 실패"));
