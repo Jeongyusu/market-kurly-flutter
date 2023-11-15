@@ -123,18 +123,21 @@ class _CartOrderPaymentState extends State<CartOrderPayment> {
                               height: 40,
                               decoration: BoxDecoration(
                                   border: Border.all(width: 1.0),
-                                  color: Color1,
+                                  color: Colors.yellow,
                                   borderRadius: BorderRadius.circular(20)),
                               child: Row(
                                 children: [
                                   SizedBox(
                                     width: 20,
                                   ),
-                                  Image.asset('assets/icons/naverpay.jpg',
-                                      width: 40, height: 20),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image.asset('assets/icons/kakao.png',
+                                        width: 40, height: 20),
+                                  ),
                                   Text(
-                                    "네이버페이",
-                                    style: TextStyle(color: pontColor1),
+                                    "카카오페이",
+                                    style: TextStyle(color: Colors.black),
                                   )
                                 ],
                               ),
