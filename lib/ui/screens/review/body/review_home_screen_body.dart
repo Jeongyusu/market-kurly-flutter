@@ -28,10 +28,10 @@ class ReviewHomeScreenBody extends StatelessWidget {
             controller: _tabController,
             tabs: [
               Tab(
-                child: Text("작성가능 후기(0)", style: tabBarTitle()),
+                child: Text("작성가능 후기", style: tabBarTitle()),
               ),
               Tab(
-                child: Text("작성완료 후기(0)", style: tabBarTitle()),
+                child: Text("작성완료 후기", style: tabBarTitle()),
               ),
             ],
             indicatorColor: primaryColor, // 선택된 탭 아래의 선 색상
@@ -51,7 +51,7 @@ class ReviewHomeScreenBody extends StatelessWidget {
                       children: [
                         ReviewHomeOrderNumber(),
                         ReviewHomeProduct(
-                            bottomRightText: "7일 남음",
+                            bottomRightText: "",
                             bottomRightTextStyle: reviewDeadLine()),
                       ],
                     );
@@ -62,10 +62,7 @@ class ReviewHomeScreenBody extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
-                        ReviewHomeOrderNumber(),
-                        ReviewHomeProductSecond(
-                            bottomRightText: "2023-10-14 작성",
-                            bottomRightTextStyle: basicTextSmall()),
+
                       ],
                     );
                   },

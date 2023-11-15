@@ -20,9 +20,9 @@ class ReviewHomeOptionTitle extends ConsumerWidget {
         Flexible(
           child: Container(
               child: Text(
-            "${cartDTOListModel?.cartDTO.cartProducts[index].sellerName ?? ""} "
+            "[${cartDTOListModel?.cartDTO.cartProducts[index].sellerName ?? ""}]"
             "${cartDTOListModel?.cartDTO.cartProducts[index].productName ?? ""}",
-            style: strongTextmMedium(),
+            style: subTitleSmall(),
           )),
         ),
       ],

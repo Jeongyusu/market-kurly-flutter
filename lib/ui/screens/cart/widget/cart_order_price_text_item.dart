@@ -18,7 +18,7 @@ class CartOrderPriceTextItem extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "${cartListModel!.checkedCartDTO![index].discountedPrice}원" ??
+          "${cartListModel!.checkedCartDTO![index].discountedPrice * cartListModel!.checkedCartDTO![index].optionQuantity}원" ??
               "에러",
           style: strongTextmMedium(),
         ),
@@ -26,7 +26,7 @@ class CartOrderPriceTextItem extends ConsumerWidget {
           width: smallGap,
         ),
         Text(
-            "${cartListModel!.checkedCartDTO![index].originPrice}원" ??
+            "${cartListModel!.checkedCartDTO![index].originPrice * cartListModel!.checkedCartDTO![index].optionQuantity}원" ??
                 "에러",
             style: disabledText()),
         Text(" |  ", style: greyToneText(),),

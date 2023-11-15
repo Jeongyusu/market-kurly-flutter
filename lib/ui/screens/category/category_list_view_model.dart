@@ -3,11 +3,15 @@ import 'package:flutter_blog/data/dto/response_dto.dart';
 import 'package:flutter_blog/data/model/category.dart';
 import 'package:flutter_blog/data/repository/category_repository.dart';
 import 'package:flutter_blog/main.dart';
+import 'package:flutter_blog/ui/screens/product_category/product_category_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 
 // 1. 창고 데이터
 class CategoryModel {
   List<Category> categorys;
+  int? selectedcategoryId;
+  String? selectedCategoryName ;
   CategoryModel(this.categorys);
 }
 
@@ -29,6 +33,12 @@ class CategoryViewModel extends StateNotifier<CategoryModel?> {
     print("categorys 파싱 responseDTO : ${categorys}");
     // 2. 비지니스 로직
     state = CategoryModel(categorys);
+  }
+
+  void selectCategoryIdAndCategoryName(int categoryId, String categoryName){
+    state!.selectedcategoryId = categoryId;
+    state!.selectedCategoryName = categoryName;
+    ProductCategoryModel? productCategoryModel = ref.read(productCategoryProvider(categoryId));
   }
 }
 
