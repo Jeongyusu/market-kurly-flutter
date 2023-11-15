@@ -16,7 +16,11 @@ class CartPriceArea extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     CartListModel? cartListModel = ref.watch(cartListProvider);
-    int deliveryFee = cartListModel!.cartDTO.totalBeforePrice - cartListModel.cartDTO.totalDiscountPrice >= 20000 ? 0 : 3500;
+    int deliveryFee = cartListModel!.cartDTO.totalBeforePrice -
+                cartListModel.cartDTO.totalDiscountPrice >=
+            20000
+        ? 0
+        : 3500;
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(

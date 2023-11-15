@@ -21,8 +21,6 @@ class CartCheckBoxItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Param? param = ref.watch(paramProvider);
-    CartListModel? cartListModel = ref.read(cartListProvider);
     return Row(
       children: [
         CheckBoxRounded(
