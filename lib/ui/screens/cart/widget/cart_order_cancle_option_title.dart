@@ -18,9 +18,8 @@ class CartOrderCancleOptionTitle extends ConsumerWidget {
       width: 220,
       child: RichText(
         text: TextSpan(
-          text:
-          "[${cartListModel!.cartDTO.cartProducts[index].sellerName ?? ""}]"
-              "${cartListModel!.cartDTO.cartProducts[index].productName ?? ""}",
+          text: "[${cartListModel!.checkedCartDTO![index].sellerName ?? ""}]"
+              "${cartListModel!.checkedCartDTO![index].productName ?? ""}",
           style: subContentsBold(),
         ),
         overflow: TextOverflow.ellipsis,
