@@ -75,7 +75,7 @@ class JoinForm extends ConsumerWidget {
                             width: 150,
                             child: AlertDialog(
                               title: Text(
-                                '사용할 수 없는 아이디입니다.',
+                                '사용할 수 있는 아이디입니다.',
                                 style: subTitleSmall(),
                               ),
                               actions: [
@@ -136,7 +136,7 @@ class JoinForm extends ConsumerWidget {
             text: "이름",
             strong: " *",
             placeholderText: "이름을 입력해주세요",
-            obscureText: true,
+            obscureText: false,
             funValidator: validateUsername(),
           ),
           const SizedBox(height: mediumGap),
@@ -147,7 +147,7 @@ class JoinForm extends ConsumerWidget {
             text: "이메일",
             strong: " *",
             placeholderText: "예) marketkurly@kurly.com",
-            obscureText: true,
+            obscureText: false,
             funValidator: validateEmail(),
           ),
           const SizedBox(height: mediumGap),
