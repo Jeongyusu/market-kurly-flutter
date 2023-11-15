@@ -22,7 +22,7 @@ class MyInfoShipmentAddress extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 20),
               child: Text(
-                "배송지",
+                "배송지 관리",
                 style: basicTextBig(),
               ),
             ),
@@ -32,7 +32,7 @@ class MyInfoShipmentAddress extends StatelessWidget {
                   children: [
                     Flexible(
                         child: Text(
-                      "부산광역시 연제구 거제2동 그린컴퓨터 아카데미입니다",
+                      "                                                                    ",
                       overflow: TextOverflow.ellipsis,
                     )),
                     Padding(
