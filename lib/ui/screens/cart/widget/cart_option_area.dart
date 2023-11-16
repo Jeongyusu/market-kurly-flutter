@@ -16,9 +16,7 @@ class CartOptionArea extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Param? param = ref.watch(paramProvider);
     CartListModel? cartListModel = ref.watch(cartListProvider);
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: ListView.builder(

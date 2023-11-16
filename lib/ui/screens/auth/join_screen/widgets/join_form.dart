@@ -12,6 +12,7 @@ import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_gender_rad
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_term_agreement.dart';
 import 'package:flutter_blog/ui/screens/auth/join_screen/widgets/join_text_form_field.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_button.dart';
+import 'package:flutter_blog/ui/widgets/button_items/button/custom_elavated_white_button.dart';
 import 'package:flutter_blog/ui/widgets/button_items/button/custom_text_button.dart';
 import 'package:flutter_blog/ui/widgets/custom_date_picker.dart';
 import 'package:flutter_blog/ui/widgets/button_items/custom_radio_button_item.dart';
@@ -64,7 +65,7 @@ class JoinForm extends ConsumerWidget {
                       child: Align(
                         alignment: Alignment.center,
                         child:
-                            Text("중복확인", style: TextStyle(color: primaryColor)),
+                        Text("중복확인", style: TextStyle(color: primaryColor)),
                       ),
                     ),
                     onTap: () {
@@ -94,7 +95,7 @@ class JoinForm extends ConsumerWidget {
                               backgroundColor: basicColorW,
                               shape: RoundedRectangleBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
+                                BorderRadius.all(Radius.circular(10)),
                               ),
                             ),
                           );
@@ -114,7 +115,7 @@ class JoinForm extends ConsumerWidget {
             text: "비밀번호",
             strong: " *",
             placeholderText: "비밀번호를 입력해주세요",
-            obscureText: false,
+            obscureText: true,
             funValidator: validatePassword(),
           ),
           const SizedBox(height: mediumGap),
@@ -164,17 +165,62 @@ class JoinForm extends ConsumerWidget {
             funPageRoute: () {
               Logger().d("나여기 ${joinFormModel}");
 
-              JoinReqDTO joinReqDTO = JoinReqDTO(
-                  userId: joinFormModel!.userId,
-                  userPassword: joinFormModel!.userPassword,
-                  username: joinFormModel!.username,
-                  userEmail: joinFormModel!.userEmail,
-                  userBirth: joinFormModel?.userBirth ?? null,
-                  userGender: joinFormModel?.userGender ?? null,
-                  role: "NORMAL");
-
-              ref.read(sessionProvider).join(joinReqDTO);
-              Navigator.pushNamed(context, Move.loginScreen);
+              // JoinReqDTO joinReqDTO = JoinReqDTO(
+              //     userId: joinFormModel!.userId,
+              //     userPassword: joinFormModel!.userPassword,
+              //     username: joinFormModel!.username,
+              //     userEmail: joinFormModel!.userEmail,
+              //     userBirth: joinFormModel?.userBirth ?? null,
+              //     userGender: joinFormModel?.userGender ?? null,
+              //     role: "NORMAL");
+              //
+              // ref.read(sessionProvider).join(joinReqDTO);
+              return showDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text("회원가입을 진행하시겠습니까?"),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            "확인을 누르면 회원가입 후 로그인 화면으로 이동합니다.",
+                            style: subContents(),
+                          )
+                        ],
+                      ),
+                      actions: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Row(
+                            children: [
+                              Container(
+                                child: Expanded(
+                                    child: CustomElevatedWhiteButton(
+                                        text: "뒤로가기",
+                                        funPageRoute: () {
+                                          Navigator.of(context).pop(); //창 닫기
+                                        })),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Expanded(
+                                child: Container(
+                                  child: CustomElevatedButton(
+                                      text: "확인",
+                                      funPageRoute: () {
+                                        Navigator.pushNamed(context, Move.loginScreen);
+                                      }),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    );
+                  });
             },
           ),
         ],

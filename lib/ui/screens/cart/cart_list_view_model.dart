@@ -14,7 +14,7 @@ import 'package:logger/logger.dart';
 // 1. 창고 데이터
 class CartListModel {
   CartDTO cartDTO;
-  List<CartProductDTO> checkedCartDTO = [];
+  List<CartProductDTO>? checkedCartDTO = [];
   CartListModel(this.cartDTO);
 }
 
@@ -182,5 +182,7 @@ class CartListViewModel extends StateNotifier<CartListModel?> {
 // 3. 창고 관리자 (View 빌드되기 직전에 생성됨)
 final cartListProvider =
     StateNotifierProvider.autoDispose<CartListViewModel, CartListModel?>((ref) {
-  return CartListViewModel(null, ref)..notifyInit();
+  return CartListViewModel(
+      CartListModel(CartDTO([], 0, 0, 0, 0, 0, true, "", "")), ref)
+    ..notifyInit();
 });
