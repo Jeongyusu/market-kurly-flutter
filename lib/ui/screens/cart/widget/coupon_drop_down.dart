@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/data/dto/model_dto/coupon_dto/user_coupon_dto.dart';
+import 'package:flutter_blog/data/store/param_store.dart';
 import 'package:flutter_blog/ui/screens/coupon/coupon_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
@@ -11,30 +13,38 @@ class CartOrderCouponDropdown extends ConsumerStatefulWidget {
 }
 
 class _CartOrderCouponDropdownState extends ConsumerState<CartOrderCouponDropdown> {
-  final _optionList = [
-    "회원가입 10% 쿠폰",
-    "상품 1000원 할인 쿠폰",
-    "상품 2000원 할인 쿠폰",
-  ];
-  String _selectedOption = '';
+  List<String> _optionList = [];
+  int? _selectedOption;
 
-  @override
-  void initState() {
-    super.initState();
-    setState(() {
-      _selectedOption = _optionList[0];
-    });
-  }
 
-  void onChanged(String? newValue) {
+
+  void onChanged(int? newValue) {
     setState(() {
       _selectedOption = newValue!;
+      Logger().d("선택된 쿠폰의 쿠폰번호는 ${_selectedOption}입니다.");
+      Param param = ref.read(paramProvider);
+      param.couponId = newValue;
+      UserCouponDTO selectedCoupon = ref
+          .read(couponProvider)!
+          .userCouponDTOList!
+          .firstWhere((coupon) => coupon.couponId == _selectedOption);
+      param.couponAmount = selectedCoupon.reduceAmount;
     });
   }
+
+  String extractNumber(String couponName) {
+    RegExp regex = RegExp(r'\d+');
+    Match match = regex.firstMatch(couponName)!;
+    return match.group(0) ?? "";
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    List<String> myCouponList = ref.read(couponProvider.notifier).makeCouponList();
+    CouponModel? couponModel = ref.watch(couponProvider);
+    if(couponModel == null) {
+      return Center(child: Image.asset('assets/images/giphy.gif', fit: BoxFit.cover, width: 200, height: 200),);
+    }
     return Column(
       children: [
         SizedBox(
@@ -42,16 +52,16 @@ class _CartOrderCouponDropdownState extends ConsumerState<CartOrderCouponDropdow
         ),
         Container(
           width: 300,
-          child: DropdownButton<String>(
+          child: DropdownButton<int>(
             isExpanded: true,
-            items: myCouponList.map((String option) {
-              return DropdownMenuItem<String>(
-                value: option,
-                child: Text(option),
+            items: couponModel!.userCouponDTOList!.map((UserCouponDTO userCouponDTO) {
+              return DropdownMenuItem<int>(
+                value: userCouponDTO!.couponId,
+                child: Text(userCouponDTO.couponName),
               );
             }).toList(),
             onChanged: onChanged,
-            value: _selectedOption,
+            value: _selectedOption ?? 1,
             hint: Text("유형을 선택하세요"),
           ),
         ),

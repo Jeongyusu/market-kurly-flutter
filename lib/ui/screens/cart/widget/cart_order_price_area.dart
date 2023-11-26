@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/_core/constants/size.dart';
+import 'package:flutter_blog/data/store/param_store.dart';
 import 'package:flutter_blog/ui/screens/cart/cart_list_view_model.dart';
 import 'package:flutter_blog/ui/widgets/text_items/custom_text_sbtween_item.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,7 +16,13 @@ class CartOrderPriceArea extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     CartListModel? cartListModel = ref.watch(cartListProvider);
     int deliveryFee = cartListModel!.cartDTO.totalBeforePrice - cartListModel.cartDTO.totalDiscountPrice >= 20000 ? 0 : 3500;
-
+    Param param = ref.read(paramProvider);
+    int couponDiscount;
+    if(param.couponAmount! < 100){
+      couponDiscount = cartListModel!.cartDTO.totalBeforePrice * param!.couponAmount!;
+    } else {
+      couponDiscount = param!.couponAmount!;
+    }
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -67,7 +74,7 @@ class CartOrderPriceArea extends ConsumerWidget {
           ),
           TextSpaceBetweenItem(
             leftText: " 쿠폰할인",
-            rightText: "2000원",
+            rightText: "${couponDiscount ?? 0}원",
             leftTextStyle: basicText(),
             rightTextStyle: basicText(),
           ),
@@ -89,7 +96,7 @@ class CartOrderPriceArea extends ConsumerWidget {
             child: TextSpaceBetweenItem(
               leftText: "최종결제금액",
               rightText:
-              "${cartListModel!.cartDTO.totalBeforePrice - cartListModel.cartDTO.totalDiscountPrice + deliveryFee - 2000}원",
+              "${cartListModel!.cartDTO.totalBeforePrice - cartListModel.cartDTO.totalDiscountPrice + deliveryFee - couponDiscount ?? 0}원",
               leftTextStyle: basicTextBig(),
               rightTextStyle: strongTextmMedium(),
             ),

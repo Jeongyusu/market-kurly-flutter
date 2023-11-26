@@ -3,7 +3,6 @@ import 'package:flutter_blog/_core/constants/color.dart';
 import 'package:flutter_blog/_core/constants/font.dart';
 import 'package:flutter_blog/ui/screens/coupon/coupon_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logger/logger.dart';
 
 class CouponHomeScreenBody extends ConsumerWidget {
   const CouponHomeScreenBody({super.key});
