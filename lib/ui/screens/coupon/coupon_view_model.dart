@@ -46,12 +46,17 @@ class CouponViewModel extends StateNotifier<CouponModel?> {
     notifyInit();
   }
 
+  List<String> makeCouponList(){
+    List<String> myCouponList = state!.userCouponDTOList!.map((e) => e.couponName).toList();
+    return myCouponList;
+  }
+
   Future<void> notifytest() async {
     await notifyInit();
   }
 }
 
 final couponProvider =
-    StateNotifierProvider<CouponViewModel, CouponModel?>((ref) {
+    StateNotifierProvider.autoDispose<CouponViewModel, CouponModel?>((ref) {
   return CouponViewModel(null, ref)..notifyInit();
 });

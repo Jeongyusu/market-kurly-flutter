@@ -11,8 +11,9 @@ class CouponHomeScreenBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     CouponModel? couponModel = ref.watch(couponProvider);
-    Logger().d("===========================");
-    Logger().d(couponModel);
+    if(couponModel?.userCouponDTOList == null) {
+      return Center(child: Image.asset('assets/images/giphy.gif', fit: BoxFit.cover, width: 200, height: 200),);
+    }
     return ListView.builder(
       itemCount: couponModel!.userCouponDTOList!.length,
       itemBuilder: (context, index) {
@@ -34,7 +35,7 @@ class CouponHomeScreenBody extends ConsumerWidget {
                   style: couponTitle(),
                 ),
                 Text("${couponModel!.userCouponDTOList![index].couponContent}"),
-                Text("컬리 회원가입 축하 쿠폰"),
+                Text("${couponModel!.userCouponDTOList![index].isExpired ? "사용불가" : "사용가능"}"),
               ],
             ),
           ),

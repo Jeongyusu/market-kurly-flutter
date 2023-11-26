@@ -34,7 +34,7 @@ class _CartOrderCouponDropdownState extends ConsumerState<CartOrderCouponDropdow
 
   @override
   Widget build(BuildContext context) {
-    // Logger().d("나여기 ${couponModel!.userCouponDTOList![0].couponId}");
+    List<String> myCouponList = ref.read(couponProvider.notifier).makeCouponList();
     return Column(
       children: [
         SizedBox(
@@ -44,7 +44,7 @@ class _CartOrderCouponDropdownState extends ConsumerState<CartOrderCouponDropdow
           width: 300,
           child: DropdownButton<String>(
             isExpanded: true,
-            items: _optionList.map((String option) {
+            items: myCouponList.map((String option) {
               return DropdownMenuItem<String>(
                 value: option,
                 child: Text(option),
