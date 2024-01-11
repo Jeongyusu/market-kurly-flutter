@@ -51,18 +51,18 @@
 <br>
 
 ## 🪄ERD
-<img width="1094" alt="MySQL Workbench 2024-01-02 04-30-57" src="https://github.com/Jeongyusu/indie-fliker/assets/130957655/f98b2a62-d847-40c7-9b09-78c28727ac51">
+<img width="1094" alt="MySQL Workbench 2024-01-02 04-30-57" src="https://github.com/Jeongyusu/market-kurly-flutter/assets/130957655/73d6272f-a33a-4348-b375-5c1783682590">
 
 <br>
 <br>
 
 ## 💡기능 - 회원
-- 회원가입, 소셜 회원가입&로그인
+- 회원가입,로그인
 - 아이디 중복체크, 비밀번호 찾기
-- 찜하기, 온라인 펀딩 및 결제
-- 오프라인 좌석 예매, 환불
-- 온라인 스트리밍, 후기 작성
-- 채팅하기
+- 챕터별/필터별 상품 보기
+- 상품검색, 쿠폰등록
+- 장바구니 담기, 결제
+- 배송지관리
 <br>
 
 |회원가입|카카오 회원가입&로그인|
