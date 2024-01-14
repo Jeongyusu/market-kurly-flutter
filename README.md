@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="20%" height="20%" src="https://github.com/Jeongyusu/market-kurly-flutter/assets/130957655/581fa4ac-3d19-4abd-aa2d-0470c05a0994" alt="Your Image Alt Text">
+    <img width="100%" height="100%" src="https://github.com/Jeongyusu/market-kurly-flutter/assets/130957655/0090ca09-3285-4184-a6f1-a6efef25637b" alt="Your Image Alt Text">
 </p>
 
 ## 🎬 프로젝트 개요
