@@ -55,6 +55,11 @@
 
 <br>
 <br>
+## 시연영상 링크(유튜브) <br>
+마켓 컬리 시연영상 : https://youtu.be/O51bvixjvRg <br>
+2배속 시연영상 : https://youtu.be/qZonRf_sbzE
+
+
 
 
 
